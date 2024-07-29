@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import openpyxl
 
@@ -26,7 +28,12 @@ class AssumptionsWorkbookInterface:
     [250 rows x 27 columns]
     """
     def __init__(self, file_path):
-        self.file_path = file_path
+        if not isinstance(file_path, Path):
+            self.file_path = Path(file_path)
+        else:
+            self.file_path = file_path
+
+        self.file = pd.ExcelFile(self.file_path)
         self.workbook_version = self._get_version()
         self._check_version_is_supported()
 
@@ -42,10 +49,13 @@ class AssumptionsWorkbookInterface:
         if self.workbook_version not in table_configs.keys():
             raise ValueError(f"The workbook version {self.workbook_version} is not supported.")
 
+    def _check_data_end_where_expected(self, end_row, range):
+        pass
+
     def _read_table(self, tab, start_row, end_row, range):
         nrows = end_row - start_row + 1
         data = pd.read_excel(
-            self.file_path,
+            self.file,
             sheet_name=tab,
             usecols=range,
             skiprows=start_row- 1,

@@ -1,5 +1,5 @@
 [project]
-name = "assumptions-workbook-interface"
+name = "isp-assumptions-parser"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
@@ -24,4 +24,4 @@ dev-dependencies = []
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/assumptions_workbook_interface"]
+packages = ["src/isp_assumptions_parser"]

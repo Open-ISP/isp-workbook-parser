@@ -15,9 +15,9 @@ et-xmlfile==1.1.0
 numpy==2.0.1
     # via pandas
 openpyxl==3.1.5
-    # via assumptions-workbook-interface
+    # via isp-assumptions-parser
 pandas==2.2.2
-    # via assumptions-workbook-interface
+    # via isp-assumptions-parser
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
