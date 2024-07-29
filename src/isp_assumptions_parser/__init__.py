@@ -1,1 +1,1 @@
-from .config_model import Table
+from .config_model import Table as Table
