@@ -7,7 +7,7 @@ from assumptions_workbook_settings import table_configs
 class AssumptionsWorkbookInterface:
     """
     Examples
-    >>> workbook = AssumptionsWorkbookInterface("workbooks/2023 IASR Assumptions Workbook v5.2.xlsx")
+    >>> workbook = AssumptionsWorkbookInterface("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
 
     >>> workbook.get_data('existing_generators_summary')
                         Generator  ... Auxiliary load (%)
