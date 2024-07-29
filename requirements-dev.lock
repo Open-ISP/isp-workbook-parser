@@ -70,6 +70,7 @@ pytz==2024.1
     # via pandas
 pyyaml==6.0.1
     # via pre-commit
+    # via isp-assumptions-parser
 six==1.16.0
     # via asttokens
     # via python-dateutil
