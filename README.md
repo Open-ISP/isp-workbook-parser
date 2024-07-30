@@ -1,9 +1,9 @@
-# ISP Assumptions Parser 
+# ISP Assumptions Parser
 
-A Python program for reading data from the Assumptions, Inputs, and Scenarios Report (AISR) MS Excel Workbook, 
+A Python program for reading data from the Assumptions, Inputs, and Scenarios Report (AISR) MS Excel Workbook,
 published by the Australian Energy Market Operator for use in the Integrated System Plan modelling.
 
-# Examples 
+# Examples
 
 ## Bulk export
 
