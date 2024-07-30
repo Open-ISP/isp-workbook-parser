@@ -23,20 +23,6 @@ class Parser:
     Save all the tables with available config to the directory example_output as csv files.
 
     >>> workbook.save_tables('example_output')
-                        Generator  ... Auxiliary load (%)
-    2                   Bayswater  ...     Black Coal NSW
-    3                     Eraring  ...     Black Coal NSW
-    4                    Mt Piper  ...     Black Coal NSW
-    5               Vales Point B  ...     Black Coal NSW
-    6                   Callide B  ...     Black Coal QLD
-    ..                        ...  ...                ...
-    247  Stockyard Hill Wind Farm  ...               Wind
-    248          Waubra Wind Farm  ...               Wind
-    249    Yaloak South Wind Farm  ...               Wind
-    250          Yambuk Wind Farm  ...               Wind
-    251          Yendon Wind Farm  ...               Wind
-    <BLANKLINE>
-    [250 rows x 27 columns]
     """
 
     def __init__(self, file_path):

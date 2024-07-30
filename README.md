@@ -1,6 +1,6 @@
 # ISP Assumptions Parser 
 
-A Python program for reading data from the Assumptions, Inputs, and Scenarios Report (AISR) MS Excel Workbook, 
+A Python program for reading data from the Assumptions, Inputs, and Scenarios Report (AISR) MS Excel Workbook
 published by the Australian Energy Market Operator for use in the Integrated System Plan modelling.
 
 # Examples 
@@ -19,7 +19,7 @@ workbook.save_tables('<path/to/output directory>')
 
 ## List tables with config
 
-List all the tables the parser has config for, for the given workbook version.
+List all the tables the parser has config for (for the given workbook version).
 
 ```python
 from isp_assumptions_parser import Parser
@@ -31,7 +31,7 @@ workbook.get_table_names()
 
 ## Get table as DataFrame
 
-Get a single table as a pd.DataFrame
+Get a single table as a pd.DataFrame.
 
 ```python
 from isp_assumptions_parser import Parser
