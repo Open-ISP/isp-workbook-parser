@@ -1,3 +1,3 @@
-# Assumptions workbook interface 
+# Assumptions workbook interface
 
-A Python API for reading data from the 
+A Python API for reading data from the

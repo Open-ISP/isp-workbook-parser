@@ -27,6 +27,7 @@ class AssumptionsWorkbookInterface:
     <BLANKLINE>
     [250 rows x 27 columns]
     """
+
     def __init__(self, file_path):
         if not isinstance(file_path, Path):
             self.file_path = Path(file_path)
@@ -38,16 +39,18 @@ class AssumptionsWorkbookInterface:
         self._check_version_is_supported()
 
     def _get_version(self):
-        sheet = openpyxl.load_workbook(self.file_path)['Change Log']
+        sheet = openpyxl.load_workbook(self.file_path)["Change Log"]
         last_value = None
-        for cell in sheet['B']:
+        for cell in sheet["B"]:
             if cell.value is not None:
                 last_value = cell.value
         return str(last_value)
 
     def _check_version_is_supported(self):
         if self.workbook_version not in table_configs.keys():
-            raise ValueError(f"The workbook version {self.workbook_version} is not supported.")
+            raise ValueError(
+                f"The workbook version {self.workbook_version} is not supported."
+            )
 
     def _check_data_end_where_expected(self, end_row, range):
         pass
@@ -58,8 +61,8 @@ class AssumptionsWorkbookInterface:
             self.file,
             sheet_name=tab,
             usecols=range,
-            skiprows=start_row- 1,
-            nrows=nrows
+            skiprows=start_row - 1,
+            nrows=nrows,
         )
         return data
 
@@ -72,15 +75,14 @@ class AssumptionsWorkbookInterface:
     def get_data(self, table_name):
         table_config = table_configs[self.workbook_version][table_name]
         data = self._read_table(
-            table_config['tab'],
-            table_config['start_row'],
-            table_config['end_row'],
-            table_config['range']
+            table_config["tab"],
+            table_config["start_row"],
+            table_config["end_row"],
+            table_config["range"],
         )
         data = self._clean_table(
             data,
-            table_config['column_name_corrections'],
-            table_config['junk_rows_at_start']
+            table_config["column_name_corrections"],
+            table_config["junk_rows_at_start"],
         )
         return data
-
