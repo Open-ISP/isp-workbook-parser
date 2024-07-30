@@ -86,8 +86,7 @@ class Parser:
         return self.table_names
 
     def get_table_from_config(self, table_config):
-        """Will write docs once we have finalised the config data format.
-        """
+        """Will write docs once we have finalised the config data format."""
         data = self._read_table(
             table_config["tab"],
             table_config["start_row"],
@@ -130,13 +129,17 @@ class Parser:
             ValueError("The parameter table_name must be provided as a string.")
 
         if table_name not in self.table_names:
-            ValueError("The table_name provided is not in the config for this workbook version.")
+            ValueError(
+                "The table_name provided is not in the config for this workbook version."
+            )
 
         table_config = table_configs[self.workbook_version][table_name]
         data = self.get_table_from_config(table_config)
         return data
 
-    def save_tables(self, directory: str | Path, tables: list[str] | str = 'all') -> None:
+    def save_tables(
+        self, directory: str | Path, tables: list[str] | str = "all"
+    ) -> None:
         """Saves tables from the assumptions workbook to the specified directory as CSV files.
 
         Examples:
@@ -164,15 +167,16 @@ class Parser:
         if not (isinstance(tables, str) or isinstance(tables, list)):
             ValueError("The parameter tables must be provided as str or list[str].")
 
-        if isinstance(tables, str) and tables != 'all':
-            ValueError("If the parameter tables is provided as a str it must \n",
-                       f"have the value 'all' but '{tables}' was provided.")
+        if isinstance(tables, str) and tables != "all":
+            ValueError(
+                "If the parameter tables is provided as a str it must \n",
+                f"have the value 'all' but '{tables}' was provided.",
+            )
 
-        if tables == 'all':
+        if tables == "all":
             tables = self.get_table_names()
 
         for table_name in tables:
             table = self.get_table(table_name)
             save_path = directory / Path(f"{table_name}.csv")
             table.to_csv(save_path)
-
