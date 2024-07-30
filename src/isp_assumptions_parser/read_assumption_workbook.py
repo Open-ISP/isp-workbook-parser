@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import openpyxl
 
-from assumptions_workbook_settings import table_configs
+from .assumptions_workbook_settings import table_configs
 
 
 class AssumptionsWorkbookInterface:
