@@ -48,4 +48,3 @@ Get a table by directly providing config.
 ```python
 # Will add once we settle on config format.
 ```
-

@@ -38,6 +38,7 @@ class Parser:
     <BLANKLINE>
     [250 rows x 27 columns]
     """
+
     def __init__(self, file_path):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
@@ -52,16 +53,18 @@ class Parser:
         return path
 
     def _get_version(self):
-        sheet = openpyxl.load_workbook(self.file_path)['Change Log']
+        sheet = openpyxl.load_workbook(self.file_path)["Change Log"]
         last_value = None
-        for cell in sheet['B']:
+        for cell in sheet["B"]:
             if cell.value is not None:
                 last_value = cell.value
         return str(last_value)
 
     def _check_version_is_supported(self):
         if self.workbook_version not in table_configs.keys():
-            raise ValueError(f"The workbook version {self.workbook_version} is not supported.")
+            raise ValueError(
+                f"The workbook version {self.workbook_version} is not supported."
+            )
 
     def _check_data_end_where_expected(self, end_row, range):
         pass
@@ -72,8 +75,8 @@ class Parser:
             self.file,
             sheet_name=tab,
             usecols=range,
-            skiprows=start_row- 1,
-            nrows=nrows
+            skiprows=start_row - 1,
+            nrows=nrows,
         )
         return data
 
@@ -100,15 +103,15 @@ class Parser:
         """Will write docs once we have finalised the config data format.
         """
         data = self._read_table(
-            table_config['tab'],
-            table_config['start_row'],
-            table_config['end_row'],
-            table_config['range']
+            table_config["tab"],
+            table_config["start_row"],
+            table_config["end_row"],
+            table_config["range"],
         )
         data = self._clean_table(
             data,
-            table_config['column_name_corrections'],
-            table_config['junk_rows_at_start']
+            table_config["column_name_corrections"],
+            table_config["junk_rows_at_start"],
         )
         return data
 
@@ -186,5 +189,4 @@ class Parser:
             table = self.get_table(table_name)
             save_path = directory / Path(f"{table_name}.csv")
             table.to_csv(save_path)
-
 
