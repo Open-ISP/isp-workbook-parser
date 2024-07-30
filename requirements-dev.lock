@@ -10,6 +10,8 @@
 #   universal: false
 
 -e file:.
+annotated-types==0.7.0
+    # via pydantic
 asttokens==2.4.1
     # via stack-data
 cfgv==3.4.0
@@ -18,12 +20,6 @@ decorator==5.1.1
     # via ipython
 distlib==0.3.8
     # via virtualenv
-annotated-types==0.7.0
-    # via pydantic
-asttokens==2.4.1
-    # via stack-data
-decorator==5.1.1
-    # via ipython
 et-xmlfile==1.1.0
     # via openpyxl
 executing==2.0.1
@@ -69,8 +65,8 @@ python-dateutil==2.9.0.post0
 pytz==2024.1
     # via pandas
 pyyaml==6.0.1
-    # via pre-commit
     # via isp-assumptions-parser
+    # via pre-commit
 six==1.16.0
     # via asttokens
     # via python-dateutil
@@ -79,14 +75,12 @@ stack-data==0.6.3
 traitlets==5.14.3
     # via ipython
     # via matplotlib-inline
-tzdata==2024.1
-    # via pandas
-virtualenv==20.26.3
-    # via pre-commit
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core
 tzdata==2024.1
     # via pandas
+virtualenv==20.26.3
+    # via pre-commit
 wcwidth==0.2.13
     # via prompt-toolkit
