@@ -17,6 +17,7 @@ asttokens==2.4.1
 cfgv==3.4.0
     # via pre-commit
 decorator==5.1.1
+    # via ipdb
     # via ipython
 distlib==0.3.8
     # via virtualenv
@@ -28,7 +29,9 @@ filelock==3.15.4
     # via virtualenv
 identify==2.6.0
     # via pre-commit
+ipdb==0.13.13
 ipython==8.26.0
+    # via ipdb
 jedi==0.19.1
     # via ipython
 matplotlib-inline==0.1.7

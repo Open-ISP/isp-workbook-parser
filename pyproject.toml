@@ -23,6 +23,7 @@ managed = true
 dev-dependencies = [
     "pre-commit>=3.8.0",
     "ipython>=8.26.0",
+    "ipdb>=0.13.13",
 ]
 
 [tool.hatch.metadata]
