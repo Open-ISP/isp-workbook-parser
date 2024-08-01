@@ -8,6 +8,7 @@ authors = [
 dependencies = [
     "pandas>=2.2.2",
     "openpyxl>=3.1.5",
+    "pytest>=8.3.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
