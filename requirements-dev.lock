@@ -14,10 +14,8 @@ asttokens==2.4.1
     # via stack-data
 cfgv==3.4.0
     # via pre-commit
-colorama==0.4.6
-    # via ipython
-    # via pytest
 decorator==5.1.1
+    # via ipdb
     # via ipython
 distlib==0.3.8
     # via virtualenv
@@ -33,6 +31,7 @@ iniconfig==2.0.0
     # via pytest
 ipdb==0.13.13
 ipython==8.26.0
+    # via ipdb
 jedi==0.19.1
     # via ipython
 matplotlib-inline==0.1.7
@@ -43,15 +42,23 @@ numpy==2.0.1
     # via pandas
 openpyxl==3.1.5
     # via isp-assumptions-parser
+packaging==24.1
+    # via pytest
 pandas==2.2.2
     # via isp-assumptions-parser
 parso==0.8.4
     # via jedi
+pexpect==4.9.0
+    # via ipython
 platformdirs==4.2.2
     # via virtualenv
+pluggy==1.5.0
+    # via pytest
 pre-commit==3.8.0
 prompt-toolkit==3.0.47
     # via ipython
+ptyprocess==0.7.0
+    # via pexpect
 pure-eval==0.2.3
     # via stack-data
 pygments==2.18.0
