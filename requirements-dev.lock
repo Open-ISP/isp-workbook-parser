@@ -30,6 +30,8 @@ filelock==3.15.4
 identify==2.6.0
     # via pre-commit
 ipdb==0.13.13
+iniconfig==2.0.0
+    # via pytest
 ipython==8.26.0
     # via ipdb
 jedi==0.19.1
@@ -42,6 +44,8 @@ numpy==2.0.1
     # via pandas
 openpyxl==3.1.5
     # via isp-assumptions-parser
+packaging==24.1
+    # via pytest
 pandas==2.2.2
     # via isp-assumptions-parser
 parso==0.8.4
@@ -50,6 +54,8 @@ pexpect==4.9.0
     # via ipython
 platformdirs==4.2.2
     # via virtualenv
+pluggy==1.5.0
+    # via pytest
 pre-commit==3.8.0
 prompt-toolkit==3.0.47
     # via ipython
@@ -63,6 +69,7 @@ pydantic-core==2.20.1
     # via pydantic
 pygments==2.18.0
     # via ipython
+pytest==8.3.2
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
