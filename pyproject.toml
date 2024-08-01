@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "pandas>=2.2.2",
     "openpyxl>=3.1.5",
+    "pydantic>=2.8.2",
+    "pyyaml>=6.0.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -21,6 +23,7 @@ managed = true
 dev-dependencies = [
     "pre-commit>=3.8.0",
     "ipython>=8.26.0",
+    "ipdb>=0.13.13",
     "pytest>=8.3.2",
 ]
 

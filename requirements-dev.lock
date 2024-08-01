@@ -10,11 +10,14 @@
 #   universal: false
 
 -e file:.
+annotated-types==0.7.0
+    # via pydantic
 asttokens==2.4.1
     # via stack-data
 cfgv==3.4.0
     # via pre-commit
 decorator==5.1.1
+    # via ipdb
     # via ipython
 distlib==0.3.8
     # via virtualenv
@@ -26,9 +29,11 @@ filelock==3.15.4
     # via virtualenv
 identify==2.6.0
     # via pre-commit
+ipdb==0.13.13
 iniconfig==2.0.0
     # via pytest
 ipython==8.26.0
+    # via ipdb
 jedi==0.19.1
     # via ipython
 matplotlib-inline==0.1.7
@@ -58,6 +63,10 @@ ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.3
     # via stack-data
+pydantic==2.8.2
+    # via isp-assumptions-parser
+pydantic-core==2.20.1
+    # via pydantic
 pygments==2.18.0
     # via ipython
 pytest==8.3.2
@@ -66,6 +75,7 @@ python-dateutil==2.9.0.post0
 pytz==2024.1
     # via pandas
 pyyaml==6.0.1
+    # via isp-assumptions-parser
     # via pre-commit
 six==1.16.0
     # via asttokens
@@ -75,6 +85,9 @@ stack-data==0.6.3
 traitlets==5.14.3
     # via ipython
     # via matplotlib-inline
+typing-extensions==4.12.2
+    # via pydantic
+    # via pydantic-core
 tzdata==2024.1
     # via pandas
 virtualenv==20.26.3

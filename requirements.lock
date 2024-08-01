@@ -10,6 +10,8 @@
 #   universal: false
 
 -e file:.
+annotated-types==0.7.0
+    # via pydantic
 et-xmlfile==1.1.0
     # via openpyxl
 numpy==2.0.1
@@ -18,11 +20,20 @@ openpyxl==3.1.5
     # via isp-assumptions-parser
 pandas==2.2.2
     # via isp-assumptions-parser
+pydantic==2.8.2
+    # via isp-assumptions-parser
+pydantic-core==2.20.1
+    # via pydantic
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
     # via pandas
+pyyaml==6.0.1
+    # via isp-assumptions-parser
 six==1.16.0
     # via python-dateutil
+typing-extensions==4.12.2
+    # via pydantic
+    # via pydantic-core
 tzdata==2024.1
     # via pandas
