@@ -133,7 +133,6 @@ table_configs = {
             "range": "B:F",
         },
         # Lead time and project life
-
         # Network Capability
         "flow_path_transfer_capability": {
             "tab": "Network Capability",
@@ -143,6 +142,5 @@ table_configs = {
             "end_row": 21,
             "range": "B:E",
         },
-
     }
 }

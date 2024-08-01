@@ -2,7 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 import openpyxl
-from pandas import ExcelFile
 
 from .assumptions_workbook_settings import table_configs
 
@@ -26,10 +25,7 @@ class Parser:
     >>> workbook.save_tables('example_output')
     """
 
-    def __init__(
-        self,
-        file_path: str | Path
-    ):
+    def __init__(self, file_path: str | Path):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
@@ -38,9 +34,7 @@ class Parser:
         self.table_names = table_configs[self.workbook_version].keys()
 
     @staticmethod
-    def _make_path_object(
-        path: str | Path
-    ):
+    def _make_path_object(path: str | Path):
         if not isinstance(path, Path):
             path = Path(path)
         return path
@@ -60,19 +54,16 @@ class Parser:
             )
 
     def _check_data_ends_where_expected(
-        self,
-        tab: str,
-        end_row: int,
-        range: str,
-        name: str
+        self, tab: str, end_row: int, range: str, name: str
     ):
         first_column = range.split(":")[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         second_col_index = first_col_index + 1
         # We check that value in the second column is blank because sometime the row after the first column will
         # contain notes on the data.
-        value_in_second_column_after_last_row = \
+        value_in_second_column_after_last_row = (
             self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
+        )
         if value_in_second_column_after_last_row is not None:
             if name is None:
                 error_message = "There is data in the row after the defined table end."
@@ -82,25 +73,23 @@ class Parser:
             raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_for_over_run_into_another_table(
-        data: pd.DataFrame,
-        name: str
-    ):
+    def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str):
         if data[data.columns[0]].isna().any():
             if name is None:
-                error_message = ("The first column of the table contains na values indicating the table end row is "
-                                 "incorrectly specified.")
+                error_message = (
+                    "The first column of the table contains na values indicating the table end row is "
+                    "incorrectly specified."
+                )
             else:
-                error_message = (f"The first column of the table {name} contains na values indicating the table end "
-                                 f"row is incorrectly specified.")
+                error_message = (
+                    f"The first column of the table {name} contains na values indicating the table end "
+                    f"row is incorrectly specified."
+                )
 
             raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_for_over_run_into_notes(
-        data: pd.DataFrame,
-        name: str
-    ):
+    def _check_for_over_run_into_notes(data: pd.DataFrame, name: str):
         notes_sub_strings = ["Notes:", "Note:", "Source:", "Sources:"]
         for sub_string in notes_sub_strings:
             if data[data.columns[0]].str.contains(sub_string).any():
@@ -112,30 +101,26 @@ class Parser:
                 raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_last_column_not_empty(
-        data: pd.DataFrame,
-        name: str
-    ):
+    def _check_last_column_not_empty(data: pd.DataFrame, name: str):
         if data[data.columns[-1]].isna().all():
             if name is None:
-                error_message = f"The last column of the table is empty."
+                error_message = "The last column of the table is empty."
             else:
                 error_message = f"The last column of the table {name} is empty."
 
             raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
-        self,
-        tab: str,
-        start_row: int,
-        end_row: int,
-        range: int,
-        name: str
+        self, tab: str, start_row: int, end_row: int, range: int, name: str
     ):
         last_column = range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
-        column_next_to_last_column = openpyxl.utils.get_column_letter(last_col_index + 1)
-        column_next_to_last_column = column_next_to_last_column + ":" + column_next_to_last_column
+        column_next_to_last_column = openpyxl.utils.get_column_letter(
+            last_col_index + 1
+        )
+        column_next_to_last_column = (
+            column_next_to_last_column + ":" + column_next_to_last_column
+        )
         range_error = False
         try:
             data = self._read_table(
@@ -146,7 +131,7 @@ class Parser:
             )
             if not data[data.columns[0]].isna().all():
                 range_error = True
-        except pd.errors.ParserError as e:
+        except pd.errors.ParserError:
             range_error = False
 
         if range_error:
@@ -157,13 +142,7 @@ class Parser:
 
             raise TableConfigError(error_message)
 
-    def _read_table(
-        self,
-        tab: str,
-        start_row: int,
-        end_row: int,
-        range: str
-    ):
+    def _read_table(self, tab: str, start_row: int, end_row: int, range: str):
         nrows = end_row - start_row
         data = pd.read_excel(
             io=self.file,
@@ -194,10 +173,7 @@ class Parser:
         return self.table_names
 
     def get_table_from_config(
-        self,
-        table_config,
-        name: str = None,
-        config_checks: bool = True
+        self, table_config, name: str = None, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -224,36 +200,24 @@ class Parser:
         )
         if config_checks:
             self._check_data_ends_where_expected(
-                table_config['tab'],
-                table_config['end_row'],
-                table_config['range'],
-                name=name
+                table_config["tab"],
+                table_config["end_row"],
+                table_config["range"],
+                name=name,
             )
             self._check_for_missed_column_on_right_hand_side_of_table(
                 table_config["tab"],
                 table_config["start_row"],
                 table_config["end_row"],
                 table_config["range"],
-                name)
-            self._check_for_over_run_into_another_table(
-                data,
-                name=name
+                name,
             )
-            self._check_for_over_run_into_notes(
-                data,
-                name=name
-            )
-            self._check_last_column_not_empty(
-                data,
-                name=name
-            )
+            self._check_for_over_run_into_another_table(data, name=name)
+            self._check_for_over_run_into_notes(data, name=name)
+            self._check_last_column_not_empty(data, name=name)
         return data
 
-    def get_table(
-        self,
-        table_name: str,
-        config_checks: bool = True
-    ) -> pd.DataFrame:
+    def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
         """Retrieves a table from the assumptions workbook and returns as pd.DataFrame.
 
         Examples
@@ -289,14 +253,16 @@ class Parser:
             )
 
         table_config = table_configs[self.workbook_version][table_name]
-        data = self.get_table_from_config(table_config, name=table_name, config_checks=config_checks)
+        data = self.get_table_from_config(
+            table_config, name=table_name, config_checks=config_checks
+        )
         return data
 
     def save_tables(
         self,
         directory: str | Path,
         tables: list[str] | str = "all",
-        config_checks: bool = True
+        config_checks: bool = True,
     ) -> None:
         """Saves tables from the assumptions workbook to the specified directory as CSV files.
 
@@ -343,5 +309,4 @@ class Parser:
 
 
 class TableConfigError(Exception):
-    """Raise for table configuration failing check.
-    """
+    """Raise for table configuration failing check."""
