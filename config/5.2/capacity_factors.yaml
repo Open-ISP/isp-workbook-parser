@@ -1,0 +1,23 @@
+wind_high_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [7, 8, 9]
+  end_row: 48
+  column_range: "B:R"
+  header_names:
+    - Wind High - REZ ID
+    - Wind High - REZ Name
+    - Wind High - Region
+    - Wind High - Reference year (Financial year ending) - 2011
+    - Wind High - Reference year (Financial year ending) - 2012
+    - Wind High - Reference year (Financial year ending) - 2013
+    - Wind High - Reference year (Financial year ending) - 2014
+    - Wind High - Reference year (Financial year ending) - 2015
+    - Wind High - Reference year (Financial year ending) - 2016
+    - Wind High - Reference year (Financial year ending) - 2017
+    - Wind High - Reference year (Financial year ending) - 2018
+    - Wind High - Reference year (Financial year ending) - 2019
+    - Wind High - Reference year (Financial year ending) - 2020
+    - Wind High - Reference year (Financial year ending) - 2021
+    - Wind High - Reference year (Financial year ending) - 2022
+    - Wind High - Reference year (Financial year ending) - 2023
+    - Wind High - Avg of ref years

@@ -1,6 +1,6 @@
 retirement_costs:
   sheet_name: "Retirement"
-  header_row: 9
+  header_rows: 9
   end_row: 16
   column_range: "H:I"
   header_names:
