@@ -21,6 +21,7 @@ managed = true
 dev-dependencies = [
     "pre-commit>=3.8.0",
     "ipython>=8.26.0",
+    "pytest>=8.3.2",
 ]
 
 [tool.hatch.metadata]
