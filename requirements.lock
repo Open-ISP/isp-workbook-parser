@@ -12,19 +12,11 @@
 -e file:.
 et-xmlfile==1.1.0
     # via openpyxl
-iniconfig==2.0.0
-    # via pytest
 numpy==2.0.1
     # via pandas
 openpyxl==3.1.5
     # via isp-assumptions-parser
-packaging==24.1
-    # via pytest
 pandas==2.2.2
-    # via isp-assumptions-parser
-pluggy==1.5.0
-    # via pytest
-pytest==8.3.2
     # via isp-assumptions-parser
 python-dateutil==2.9.0.post0
     # via pandas

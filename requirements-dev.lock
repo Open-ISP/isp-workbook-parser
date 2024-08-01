@@ -61,7 +61,6 @@ pure-eval==0.2.3
 pygments==2.18.0
     # via ipython
 pytest==8.3.2
-    # via isp-assumptions-parser
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
