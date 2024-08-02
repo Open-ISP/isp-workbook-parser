@@ -1,9 +1,10 @@
 import pandas as pd
 from isp_assumptions_parser import Table
 import numpy as np
+from pathlib import Path
 
 
-def read_table(table: Table) -> pd.DataFrame:
+def read_table(workbook_path: Path, table: Table) -> pd.DataFrame:
     """Parses a table given a YAML config for the table
 
     If `table.header_rows` is an integer, the table is parsed directly.
@@ -22,6 +23,7 @@ def read_table(table: Table) -> pd.DataFrame:
         header rows in the table are dropped
 
     Args:
+        workbook_path: Path to workbook
         table: Parsed table config
 
     Returns:
@@ -64,7 +66,7 @@ def read_table(table: Table) -> pd.DataFrame:
 
     if type(table.header_rows) is int:
         df = pd.read_excel(
-            "workbooks/5.2/2023 IASR Assumptions Workbook.xlsx",
+            workbook_path,
             sheet_name=table.sheet_name,
             header=(table.header_rows - 1),
             usecols=table.column_range,
@@ -73,7 +75,7 @@ def read_table(table: Table) -> pd.DataFrame:
         return df
     else:
         df_initial = pd.read_excel(
-            "workbooks/5.2/2023 IASR Assumptions Workbook.xlsx",
+            workbook_path,
             sheet_name=table.sheet_name,
             header=(table.header_rows[0] - 1),
             usecols=table.column_range,
