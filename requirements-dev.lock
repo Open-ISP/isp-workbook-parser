@@ -16,6 +16,9 @@ asttokens==2.4.1
     # via stack-data
 cfgv==3.4.0
     # via pre-commit
+colorama==0.4.6
+    # via ipython
+    # via pytest
 decorator==5.1.1
     # via ipdb
     # via ipython
@@ -29,9 +32,9 @@ filelock==3.15.4
     # via virtualenv
 identify==2.6.0
     # via pre-commit
-ipdb==0.13.13
 iniconfig==2.0.0
     # via pytest
+ipdb==0.13.13
 ipython==8.26.0
     # via ipdb
 jedi==0.19.1
@@ -50,8 +53,6 @@ pandas==2.2.2
     # via isp-assumptions-parser
 parso==0.8.4
     # via jedi
-pexpect==4.9.0
-    # via ipython
 platformdirs==4.2.2
     # via virtualenv
 pluggy==1.5.0
@@ -59,8 +60,6 @@ pluggy==1.5.0
 pre-commit==3.8.0
 prompt-toolkit==3.0.47
     # via ipython
-ptyprocess==0.7.0
-    # via pexpect
 pure-eval==0.2.3
     # via stack-data
 pydantic==2.8.2
