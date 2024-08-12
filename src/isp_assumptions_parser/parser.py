@@ -2,7 +2,6 @@ import os
 import glob
 from pathlib import Path
 import yaml
-from collections import OrderedDict
 
 import pandas as pd
 import openpyxl
@@ -31,17 +30,19 @@ class Parser:
     """
 
     def __init__(
-            self,
-            file_path: str | Path,
-            user_config_directory_path: str | Path = None,
-            user_config_version_path: str | Path = None
+        self,
+        file_path: str | Path,
+        user_config_directory_path: str | Path = None,
+        user_config_version_path: str | Path = None,
     ):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
         self.workbook_version = self._get_version()
         self.default_config_path = Path(__file__).parent / Path("../../config/")
-        self.config_path = self._determine_config_path(user_config_directory_path, user_config_version_path)
+        self.config_path = self._determine_config_path(
+            user_config_directory_path, user_config_version_path
+        )
         self.table_configs = self._load_config()
         self.table_names = list(self.table_configs.keys())
         self.check_headers = True
@@ -61,9 +62,9 @@ class Parser:
         return str(last_value)
 
     def _determine_config_path(
-            self,
-            user_config_directory_path: str | Path = None,
-            user_config_version_path: str | Path = None,
+        self,
+        user_config_directory_path: str | Path = None,
+        user_config_version_path: str | Path = None,
     ):
         if user_config_version_path is not None:
             config_path = self._make_path_object(user_config_version_path)
@@ -84,7 +85,7 @@ class Parser:
             )
 
     def _load_config(self):
-        pattern = os.path.join(self.config_path, '*.yaml')
+        pattern = os.path.join(self.config_path, "*.yaml")
         config_files = glob.glob(pattern)
         config = {}
         for file in config_files:
@@ -111,7 +112,8 @@ class Parser:
         if data[data.columns[0]].isna().any():
             error_message = (
                 f"The first column of the table {name} contains na values indicating the table end "
-                f"row is incorrectly specified.")
+                f"row is incorrectly specified."
+            )
             raise TableConfigError(error_message)
 
     @staticmethod
@@ -129,7 +131,7 @@ class Parser:
             raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
-            self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ):
         last_column = range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
@@ -256,9 +258,7 @@ class Parser:
             )
 
         table_config = self.table_configs[table_name]
-        data = self.get_table_from_config(
-            table_config, config_checks=config_checks
-        )
+        data = self.get_table_from_config(table_config, config_checks=config_checks)
         return data
 
     def save_tables(
@@ -370,7 +370,7 @@ class Parser:
             "header_rows",
             "end_row",
             "column_range",
-            "header_names"
+            "header_names",
         ]
 
         self.check_headers = False
@@ -383,13 +383,19 @@ class Parser:
                 tables_config_by_sheet[table_config.sheet_name] = {}
             table_config = table_config.dict()
             del table_config["name"]
-            table_config = {key: table_config[key] for key in field_save_order if key in table_config}
-            tables_config_by_sheet[table_config["sheet_name"]][table_name] = table_config
+            table_config = {
+                key: table_config[key]
+                for key in field_save_order
+                if key in table_config
+            }
+            tables_config_by_sheet[table_config["sheet_name"]][table_name] = (
+                table_config
+            )
 
         self.check_headers = True
 
         for sheet_name, tables in tables_config_by_sheet.items():
-            file_name = sheet_name.lower().rstrip().replace(' ', '_') + '.yaml'
+            file_name = sheet_name.lower().rstrip().replace(" ", "_") + ".yaml"
             file_path = directory / Path(file_name)
             with open(file_path, "w") as f:
                 yaml.safe_dump(tables, f, default_flow_style=False, sort_keys=False)
