@@ -1,9 +1,14 @@
+import os
+import glob
 from pathlib import Path
+import yaml
+from collections import OrderedDict
 
 import pandas as pd
 import openpyxl
 
-from .assumptions_workbook_settings import table_configs
+from .config_model import load_yaml
+from .read_table import read_table
 
 
 class Parser:
@@ -25,13 +30,21 @@ class Parser:
     >>> workbook.save_tables('example_output')
     """
 
-    def __init__(self, file_path: str | Path):
+    def __init__(
+            self,
+            file_path: str | Path,
+            user_config_directory_path: str | Path = None,
+            user_config_version_path: str | Path = None
+    ):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
         self.workbook_version = self._get_version()
-        self._check_version_is_supported()
-        self.table_names = table_configs[self.workbook_version].keys()
+        self.default_config_path = Path(__file__).parent / Path("../../config/")
+        self.config_path = self._determine_config_path(user_config_directory_path, user_config_version_path)
+        self.table_configs = self._load_config()
+        self.table_names = list(self.table_configs.keys())
+        self.check_headers = True
 
     @staticmethod
     def _make_path_object(path: str | Path):
@@ -47,11 +60,36 @@ class Parser:
                 last_value = cell.value
         return str(last_value)
 
-    def _check_version_is_supported(self):
-        if self.workbook_version not in table_configs.keys():
+    def _determine_config_path(
+            self,
+            user_config_directory_path: str | Path = None,
+            user_config_version_path: str | Path = None,
+    ):
+        if user_config_version_path is not None:
+            config_path = self._make_path_object(user_config_version_path)
+        else:
+            if user_config_directory_path is not None:
+                config_path = self._make_path_object(user_config_directory_path)
+            else:
+                config_path = self.default_config_path
+            self._check_version_is_supported(config_path)
+            config_path = config_path / Path(f"{self.workbook_version}/")
+        return config_path
+
+    def _check_version_is_supported(self, config_path):
+        versions = os.listdir(config_path)
+        if self.workbook_version not in versions:
             raise ValueError(
                 f"The workbook version {self.workbook_version} is not supported."
             )
+
+    def _load_config(self):
+        pattern = os.path.join(self.config_path, '*.yaml')
+        config_files = glob.glob(pattern)
+        config = {}
+        for file in config_files:
+            config.update(load_yaml(Path(file)))
+        return config
 
     def _check_data_ends_where_expected(
         self, tab: str, end_row: int, range: str, name: str
@@ -65,27 +103,15 @@ class Parser:
             self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
         )
         if value_in_second_column_after_last_row is not None:
-            if name is None:
-                error_message = "There is data in the row after the defined table end."
-            else:
-                error_message = f"There is data in the row after the defined table end for table {name}."
-
+            error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
 
     @staticmethod
     def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str):
         if data[data.columns[0]].isna().any():
-            if name is None:
-                error_message = (
-                    "The first column of the table contains na values indicating the table end row is "
-                    "incorrectly specified."
-                )
-            else:
-                error_message = (
-                    f"The first column of the table {name} contains na values indicating the table end "
-                    f"row is incorrectly specified."
-                )
-
+            error_message = (
+                f"The first column of the table {name} contains na values indicating the table end "
+                f"row is incorrectly specified.")
             raise TableConfigError(error_message)
 
     @staticmethod
@@ -93,25 +119,17 @@ class Parser:
         notes_sub_strings = ["Notes:", "Note:", "Source:", "Sources:"]
         for sub_string in notes_sub_strings:
             if data[data.columns[0]].str.contains(sub_string).any():
-                if name is None:
-                    error_message = f"The first column of the table contains the sub string '{sub_string}'."
-                else:
-                    error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
-
+                error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
                 raise TableConfigError(error_message)
 
     @staticmethod
     def _check_last_column_not_empty(data: pd.DataFrame, name: str):
         if data[data.columns[-1]].isna().all():
-            if name is None:
-                error_message = "The last column of the table is empty."
-            else:
-                error_message = f"The last column of the table {name} is empty."
-
+            error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
-        self, tab: str, start_row: int, end_row: int, range: int, name: str
+            self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ):
         last_column = range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
@@ -123,11 +141,12 @@ class Parser:
         )
         range_error = False
         try:
-            data = self._read_table(
-                tab,
-                start_row,
-                end_row,
-                column_next_to_last_column,
+            data = pd.read_excel(
+                self.file,
+                sheet_name=sheet_name,
+                header=start_row,
+                usecols=column_next_to_last_column,
+                nrows=(end_row - start_row),
             )
             if not data[data.columns[0]].isna().all():
                 range_error = True
@@ -135,29 +154,40 @@ class Parser:
             range_error = False
 
         if range_error:
-            if name is None:
-                error_message = "There is data in the column adjacent to the last column in the table."
-            else:
-                error_message = f"There is data in the column adjacent to the last column in the table {name}."
-
+            error_message = f"There is data in the column adjacent to the last column in the table {name}."
             raise TableConfigError(error_message)
 
-    def _read_table(self, tab: str, start_row: int, end_row: int, range: str):
-        nrows = end_row - start_row
-        data = pd.read_excel(
-            io=self.file,
-            sheet_name=tab,
-            usecols=range,
-            skiprows=start_row - 1,
-            nrows=nrows,
-        )
-        return data
-
     @staticmethod
-    def _clean_table(data, column_name_corrections, junk_rows_at_start):
-        data = data.rename(columns=column_name_corrections)
-        data = data.iloc[junk_rows_at_start:]
-        return data
+    def _check_headers(data: pd.DataFrame, table_config):
+        if list(data.columns) != table_config.header_names:
+            name = table_config.name
+            error_message = f"Column names for the table {name} don't match the header names provided in the config."
+            raise TableConfigError(error_message)
+
+    def _check_table(self, data, table_config):
+        if isinstance(table_config.header_rows, list):
+            start_row = table_config.header_rows[0]
+        else:
+            start_row = table_config.header_rows
+
+        self._check_data_ends_where_expected(
+            table_config.sheet_name,
+            table_config.end_row,
+            table_config.column_range,
+            table_config.name,
+        )
+        self._check_for_missed_column_on_right_hand_side_of_table(
+            table_config.sheet_name,
+            start_row,
+            table_config.end_row,
+            table_config.column_range,
+            table_config.name,
+        )
+        self._check_for_over_run_into_another_table(data, table_config.name)
+        self._check_for_over_run_into_notes(data, table_config.name)
+        self._check_last_column_not_empty(data, table_config.name)
+        if self.check_headers:
+            self._check_headers(data, table_config)
 
     def get_table_names(self) -> list[str]:
         """Returns the list of tables that there is config for extracting from the workbook version provided.
@@ -173,7 +203,7 @@ class Parser:
         return self.table_names
 
     def get_table_from_config(
-        self, table_config, name: str = None, config_checks: bool = True
+        self, table_config, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -181,40 +211,13 @@ class Parser:
 
         Args:
             table_config:
-            name: name of the table as a string, used when processing multiple tables so errors raised when checking
-                the config can specify which table the check failed for.
             config_checks: A boolean that specifies whether to check the table config by checking if the data
                 starts and ends where expected and the workbook header matches the config header.
 
         """
-        data = self._read_table(
-            table_config["tab"],
-            table_config["start_row"],
-            table_config["end_row"],
-            table_config["range"],
-        )
-        data = self._clean_table(
-            data,
-            table_config["column_name_corrections"],
-            table_config["junk_rows_at_start"],
-        )
+        data = read_table(self.file, table_config)
         if config_checks:
-            self._check_data_ends_where_expected(
-                table_config["tab"],
-                table_config["end_row"],
-                table_config["range"],
-                name=name,
-            )
-            self._check_for_missed_column_on_right_hand_side_of_table(
-                table_config["tab"],
-                table_config["start_row"],
-                table_config["end_row"],
-                table_config["range"],
-                name,
-            )
-            self._check_for_over_run_into_another_table(data, name=name)
-            self._check_for_over_run_into_notes(data, name=name)
-            self._check_last_column_not_empty(data, name=name)
+            self._check_table(data, table_config)
         return data
 
     def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
@@ -252,9 +255,9 @@ class Parser:
                 "The table_name provided is not in the config for this workbook version."
             )
 
-        table_config = table_configs[self.workbook_version][table_name]
+        table_config = self.table_configs[table_name]
         data = self.get_table_from_config(
-            table_config, name=table_name, config_checks=config_checks
+            table_config, config_checks=config_checks
         )
         return data
 
@@ -306,6 +309,91 @@ class Parser:
             table = self.get_table(table_name, config_checks=config_checks)
             save_path = directory / Path(f"{table_name}.csv")
             table.to_csv(save_path)
+
+    def save_config_with_headers(
+        self,
+        directory: str | Path,
+        tables: list[str] | str = "all",
+        config_checks: bool = True,
+    ) -> None:
+        """Saves a new version of the config with the header names as read from Excel Workbook.
+
+        The purpose of this method is to allow the user to write a new config without manually specifying the table
+        headers. Then this method can be run and a version of the config save with the header names automatically
+        saved to a new copy of the config files. To do this, tables are read without checking column names against
+        the header names in the config. Note, the purpose of normally checking the column names against the config
+        is to make sure the data hasn't changed format since the config for the version was written. Effectively, this
+        method can be used to create a config with a snapshot of the headers for a given version of the workbook.
+
+        Examples:
+        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+
+        >>> workbook.save_config_with_headers(
+        ... directory="example_output/config",
+        ... )
+
+        Args:
+            tables: A list of strings specifying which tables to extract from the workbook and save, or the
+                str 'all', which will result in all the tables the isp-assumptions-parser has config for being
+                saved.
+            directory: A str specifying the path to the directory or a pathlib Path object where the config files
+                will be saved.
+            config_checks: A boolean that specifies whether to check the tabe config by checking if the data
+                starts and ends where expected and the workbook header matches the config header. Note checking
+                the header names is always disabled for this method.
+
+        Returns:
+            None
+        """
+
+        directory = self._make_path_object(directory)
+
+        if not directory.is_dir():
+            ValueError("The path provided is not a directory.")
+
+        if not (isinstance(tables, str) or isinstance(tables, list)):
+            ValueError("The parameter tables must be provided as str or list[str].")
+
+        if isinstance(tables, str) and tables != "all":
+            ValueError(
+                "If the parameter tables is provided as a str it must \n",
+                f"have the value 'all' but '{tables}' was provided.",
+            )
+
+        if tables == "all":
+            tables = self.get_table_names()
+
+        tables_config_by_sheet = {}
+
+        field_save_order = [
+            "sheet_name",
+            "header_rows",
+            "end_row",
+            "column_range",
+            "header_names"
+        ]
+
+        self.check_headers = False
+
+        for table_name in tables:
+            table_config = self.table_configs[table_name]
+            table = self.get_table(table_name, config_checks=config_checks)
+            table_config.header_names = list(table.columns)
+            if table_config.sheet_name not in tables_config_by_sheet:
+                tables_config_by_sheet[table_config.sheet_name] = {}
+            table_config = table_config.dict()
+            del table_config["name"]
+            table_config = {key: table_config[key] for key in field_save_order if key in table_config}
+            tables_config_by_sheet[table_config["sheet_name"]][table_name] = table_config
+
+        self.check_headers = True
+
+        for sheet_name, tables in tables_config_by_sheet.items():
+            file_name = sheet_name.lower().rstrip().replace(' ', '_') + '.yaml'
+            file_path = directory / Path(file_name)
+            with open(file_path, "w") as f:
+                yaml.safe_dump(tables, f, default_flow_style=False, sort_keys=False)
+                f.close()
 
 
 class TableConfigError(Exception):

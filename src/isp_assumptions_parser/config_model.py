@@ -14,9 +14,9 @@ class Table(BaseModel):
     header_names: List[str]
 
 
-def load_yaml(path: Path) -> List[Table]:
+def load_yaml(path: Path) -> dict[Table]:
     with open(path, "r") as f:
         config = yaml.safe_load(f)
         f.close()
-    tables = [Table(name=name, **config[name]) for name in config]
+    tables = {name: Table(name=name, **config[name]) for name in config}
     return tables
