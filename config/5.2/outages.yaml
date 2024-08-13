@@ -1,0 +1,12 @@
+existing_generator_outages_2023-2024:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: [19, 20]
+  end_row: 28
+  column_range: "B:G"
+  header_names:
+    - Fuel type
+    - Forced Outage Rate (%) - Full outage (% of time)
+    - Forced Outage Rate (%) - Partial outage (% of time)
+    - Mean time to repair (hrs)  - Full outage
+    - Mean time to repair (hrs)  - Partial outage
+    - Partial Outage Derating Factor (%)
