@@ -30,9 +30,9 @@ class Parser:
     """
 
     def __init__(
-            self,
-            file_path: str | Path,
-            user_config_directory_path: str | Path = None
+        self,
+        file_path: str | Path,
+        user_config_directory_path: str | Path = None
     ):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
@@ -135,7 +135,8 @@ class Parser:
         if data[data.columns[0]].isna().any():
             error_message = (
                 f"The first column of the table {name} contains na values indicating the table end "
-                f"row is incorrectly specified.")
+                f"row is incorrectly specified."
+            )
             raise TableConfigError(error_message)
 
     @staticmethod
@@ -168,7 +169,7 @@ class Parser:
                 raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
-            self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ):
         """Checks if there is data in the column adjacent to last column specified in the config.
 
@@ -320,9 +321,7 @@ class Parser:
             )
 
         table_config = self.table_configs[table_name]
-        data = self.get_table_from_config(
-            table_config, config_checks=config_checks
-        )
+        data = self.get_table_from_config(table_config, config_checks=config_checks)
         return data
 
     def save_tables(
@@ -434,7 +433,7 @@ class Parser:
             "header_rows",
             "end_row",
             "column_range",
-            "header_names"
+            "header_names",
         ]
 
         self.check_headers = False
@@ -447,13 +446,19 @@ class Parser:
                 tables_config_by_sheet[table_config.sheet_name] = {}
             table_config = table_config.dict()
             del table_config["name"]
-            table_config = {key: table_config[key] for key in field_save_order if key in table_config}
-            tables_config_by_sheet[table_config["sheet_name"]][table_name] = table_config
+            table_config = {
+                key: table_config[key]
+                for key in field_save_order
+                if key in table_config
+            }
+            tables_config_by_sheet[table_config["sheet_name"]][table_name] = (
+                table_config
+            )
 
         self.check_headers = True
 
         for sheet_name, tables in tables_config_by_sheet.items():
-            file_name = sheet_name.lower().rstrip().replace(' ', '_') + '.yaml'
+            file_name = sheet_name.lower().rstrip().replace(" ", "_") + ".yaml"
             file_path = directory / Path(file_name)
             with open(file_path, "w") as f:
                 yaml.safe_dump(tables, f, default_flow_style=False, sort_keys=False)

@@ -1,7 +1,6 @@
 import pandas as pd
 from isp_assumptions_parser import Table
 import numpy as np
-from pathlib import Path
 
 
 def read_table(workbook_file: pd.ExcelFile, table: Table) -> pd.DataFrame:
