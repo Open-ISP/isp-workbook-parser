@@ -355,4 +355,3 @@ class Parser:
 
 class TableConfigError(Exception):
     """Raise for table configuration failing check."""
-    
