@@ -355,10 +355,4 @@ class Parser:
 
 class TableConfigError(Exception):
     """Raise for table configuration failing check."""
-
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()
-    # doctest.run_docstring_examples(f, globals())
+    
