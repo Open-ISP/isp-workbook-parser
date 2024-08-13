@@ -1,7 +1,6 @@
 import os
 import glob
 from pathlib import Path
-import yaml
 
 import pandas as pd
 import openpyxl
@@ -30,9 +29,7 @@ class Parser:
     """
 
     def __init__(
-        self,
-        file_path: str | Path,
-        user_config_directory_path: str | Path = None
+        self, file_path: str | Path, user_config_directory_path: str | Path = None
     ):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
@@ -45,8 +42,7 @@ class Parser:
 
     @staticmethod
     def _make_path_object(path: str | Path):
-        """If the path has been provided as a string convert it to a pathlib Path object.
-        """
+        """If the path has been provided as a string convert it to a pathlib Path object."""
         if not isinstance(path, Path):
             path = Path(path)
         return path
@@ -65,8 +61,8 @@ class Parser:
         return str(last_value)
 
     def _determine_config_path(
-            self,
-            user_config_directory_path: str | Path = None,
+        self,
+        user_config_directory_path: str | Path = None,
     ):
         """Determine the path to where the directory containing config yaml files are stored.
 
@@ -83,8 +79,7 @@ class Parser:
         return config_path
 
     def _check_version_is_supported(self, config_path):
-        """Check the default config directory contains a subdirectory that matches the workbook version number.
-        """
+        """Check the default config directory contains a subdirectory that matches the workbook version number."""
         versions = os.listdir(config_path)
         if self.workbook_version not in versions:
             raise ValueError(
@@ -92,9 +87,8 @@ class Parser:
             )
 
     def _load_config(self):
-        """Load all the yaml files stored in the config directory into a python dictionary with table names as keys.
-        """
-        pattern = os.path.join(self.config_path, '*.yaml')
+        """Load all the yaml files stored in the config directory into a python dictionary with table names as keys."""
+        pattern = os.path.join(self.config_path, "*.yaml")
         config_files = glob.glob(pattern)
         config = {}
         for file in config_files:
@@ -363,7 +357,8 @@ class TableConfigError(Exception):
     """Raise for table configuration failing check."""
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     # doctest.run_docstring_examples(f, globals())

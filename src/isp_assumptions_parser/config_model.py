@@ -1,5 +1,4 @@
 import yaml
-from pprint import pprint
 
 from pydantic import BaseModel
 from typing import List
