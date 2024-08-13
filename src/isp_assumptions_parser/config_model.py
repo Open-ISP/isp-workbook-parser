@@ -11,7 +11,6 @@ class Table(BaseModel):
     header_rows: int | List[int]
     end_row: int
     column_range: str
-    header_names: List[str]
 
 
 def load_yaml(path: Path) -> dict[Table]:

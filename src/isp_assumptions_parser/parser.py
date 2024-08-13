@@ -42,7 +42,6 @@ class Parser:
         self.config_path = self._determine_config_path(user_config_directory_path)
         self.table_configs = self._load_config()
         self.table_names = list(self.table_configs.keys())
-        self.check_headers = True
 
     @staticmethod
     def _make_path_object(path: str | Path):
@@ -203,21 +202,9 @@ class Parser:
             error_message = f"There is data in the column adjacent to the last column in the table {name}."
             raise TableConfigError(error_message)
 
-    @staticmethod
-    def _check_headers(data: pd.DataFrame, table_config):
-        """Check that the column names as read from the workbook match the expected column names from the config.
-
-        This check exists to catch instance where column names have been changed, a column has been deleted, or a column
-        has been added. By checking the workbook against a set of expected names
-        """
-        if list(data.columns) != table_config.header_names:
-            name = table_config.name
-            error_message = f"Column names for the table {name} don't match the header names provided in the config."
-            raise TableConfigError(error_message)
-
     def _check_table(self, data, table_config):
         if isinstance(table_config.header_rows, list):
-            start_row = table_config.header_rows[0]
+            start_row = table_config.header_rows[-1]
         else:
             start_row = table_config.header_rows
 
@@ -237,8 +224,6 @@ class Parser:
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
         self._check_no_columns_are_empty(data, table_config.name)
-        if self.check_headers:
-            self._check_headers(data, table_config)
 
     def get_table_names(self) -> list[str]:
         """Returns the list of tables that there is config for extracting from the workbook version provided.
@@ -247,6 +232,7 @@ class Parser:
         >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
 
         >>> workbook.get_table_names()
+        ['wind_high_capacity_factors', 'existing_generator_outages_2023-2024', 'retirement_costs']
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
@@ -272,7 +258,15 @@ class Parser:
 
         >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
 
-        >>> workbook.get_table_from_config(config)
+        >>> workbook.get_table_from_config(config).head()
+          Existing generator  ... Connection cost - Partial outage - Technology
+        2          Bayswater  ...                                Black Coal NSW
+        3            Eraring  ...                                Black Coal NSW
+        4           Mt Piper  ...                                Black Coal NSW
+        5      Vales Point B  ...                                Black Coal NSW
+        6          Callide B  ...                                Black Coal QLD
+        <BLANKLINE>
+        [5 rows x 28 columns]
 
         Args:
             table_config:
@@ -291,21 +285,15 @@ class Parser:
         Examples
         >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
 
-        >>> workbook.get_table('existing_generators_summary')
-                            Generator  ... Auxiliary load (%)
-        2                   Bayswater  ...     Black Coal NSW
-        3                     Eraring  ...     Black Coal NSW
-        4                    Mt Piper  ...     Black Coal NSW
-        5               Vales Point B  ...     Black Coal NSW
-        6                   Callide B  ...     Black Coal QLD
-        ..                        ...  ...                ...
-        247  Stockyard Hill Wind Farm  ...               Wind
-        248          Waubra Wind Farm  ...               Wind
-        249    Yaloak South Wind Farm  ...               Wind
-        250          Yambuk Wind Farm  ...               Wind
-        251          Yendon Wind Farm  ...               Wind
+        >>> workbook.get_table('wind_high_capacity_factors').head()
+          Wind High - REZ ID  ... Wind High - Avg of ref years
+        2                 Q1  ...                     0.456914
+        3                 Q2  ...                     0.417142
+        4                 Q3  ...       Resource limit of 0 MW
+        5                 Q4  ...                      0.34437
+        6                 Q5  ...                     0.326029
         <BLANKLINE>
-        [250 rows x 27 columns]
+        [5 rows x 17 columns]
 
         Args:
             table_name: string specifying the table to retrieve.
@@ -335,10 +323,7 @@ class Parser:
         Examples:
         >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
 
-        >>> workbook.save_tables(
-        ... directory="example_output",
-        ... tables=['existing_generators_summary']
-        ... )
+        >>> workbook.save_tables(directory="example_output")
 
         Args:
             tables: A list of strings specifying which tables to extract from the workbook and save, or the
@@ -373,97 +358,12 @@ class Parser:
             save_path = directory / Path(f"{table_name}.csv")
             table.to_csv(save_path)
 
-    def save_config_with_headers(
-        self,
-        directory: str | Path,
-        tables: list[str] | str = "all",
-        config_checks: bool = True,
-    ) -> None:
-        """Saves a new version of the config with the header names as read from Excel Workbook.
-
-        The purpose of this method is to allow the user to write a new config without manually specifying the table
-        headers. Then this method can be run and a version of the config save with the header names automatically
-        saved to a new copy of the config files. To do this, tables are read without checking column names against
-        the header names in the config. Note, the purpose of normally checking the column names against the config
-        is to make sure the data hasn't changed format since the config for the version was written. Effectively, this
-        method can be used to create a config with a snapshot of the headers for a given version of the workbook.
-
-        Examples:
-        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
-
-        >>> workbook.save_config_with_headers(
-        ... directory="example_output/config",
-        ... )
-
-        Args:
-            tables: A list of strings specifying which tables to extract from the workbook and save, or the
-                str 'all', which will result in all the tables the isp-assumptions-parser has config for being
-                saved.
-            directory: A str specifying the path to the directory or a pathlib Path object where the config files
-                will be saved.
-            config_checks: A boolean that specifies whether to check the tabe config by checking if the data
-                starts and ends where expected and the workbook header matches the config header. Note checking
-                the header names is always disabled for this method.
-
-        Returns:
-            None
-        """
-
-        directory = self._make_path_object(directory)
-
-        if not directory.is_dir():
-            ValueError("The path provided is not a directory.")
-
-        if not (isinstance(tables, str) or isinstance(tables, list)):
-            ValueError("The parameter tables must be provided as str or list[str].")
-
-        if isinstance(tables, str) and tables != "all":
-            ValueError(
-                "If the parameter tables is provided as a str it must \n",
-                f"have the value 'all' but '{tables}' was provided.",
-            )
-
-        if tables == "all":
-            tables = self.get_table_names()
-
-        tables_config_by_sheet = {}
-
-        field_save_order = [
-            "sheet_name",
-            "header_rows",
-            "end_row",
-            "column_range",
-            "header_names",
-        ]
-
-        self.check_headers = False
-
-        for table_name in tables:
-            table_config = self.table_configs[table_name]
-            table = self.get_table(table_name, config_checks=config_checks)
-            table_config.header_names = list(table.columns)
-            if table_config.sheet_name not in tables_config_by_sheet:
-                tables_config_by_sheet[table_config.sheet_name] = {}
-            table_config = table_config.dict()
-            del table_config["name"]
-            table_config = {
-                key: table_config[key]
-                for key in field_save_order
-                if key in table_config
-            }
-            tables_config_by_sheet[table_config["sheet_name"]][table_name] = (
-                table_config
-            )
-
-        self.check_headers = True
-
-        for sheet_name, tables in tables_config_by_sheet.items():
-            file_name = sheet_name.lower().rstrip().replace(" ", "_") + ".yaml"
-            file_path = directory / Path(file_name)
-            with open(file_path, "w") as f:
-                yaml.safe_dump(tables, f, default_flow_style=False, sort_keys=False)
-                f.close()
-
 
 class TableConfigError(Exception):
     """Raise for table configuration failing check."""
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+    # doctest.run_docstring_examples(f, globals())
