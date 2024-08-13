@@ -2,7 +2,6 @@ import os
 import glob
 from pathlib import Path
 import yaml
-from collections import OrderedDict
 
 import pandas as pd
 import openpyxl
@@ -33,26 +32,32 @@ class Parser:
     def __init__(
             self,
             file_path: str | Path,
-            user_config_directory_path: str | Path = None,
-            user_config_version_path: str | Path = None
+            user_config_directory_path: str | Path = None
     ):
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
         self.workbook_version = self._get_version()
         self.default_config_path = Path(__file__).parent / Path("../../config/")
-        self.config_path = self._determine_config_path(user_config_directory_path, user_config_version_path)
+        self.config_path = self._determine_config_path(user_config_directory_path)
         self.table_configs = self._load_config()
         self.table_names = list(self.table_configs.keys())
         self.check_headers = True
 
     @staticmethod
     def _make_path_object(path: str | Path):
+        """If the path has been provided as a string convert it to a pathlib Path object.
+        """
         if not isinstance(path, Path):
             path = Path(path)
         return path
 
     def _get_version(self):
+        """Extract the version number of the workbook from the sheet 'Change Log'.
+
+        In the change log the version number is last value in the 'B' column. This method iterates through the values
+        in the 'B' and returns the last value in the column.
+        """
         sheet = self.openpyxl_file["Change Log"]
         last_value = None
         for cell in sheet["B"]:
@@ -63,20 +68,24 @@ class Parser:
     def _determine_config_path(
             self,
             user_config_directory_path: str | Path = None,
-            user_config_version_path: str | Path = None,
     ):
-        if user_config_version_path is not None:
-            config_path = self._make_path_object(user_config_version_path)
+        """Determine the path to where the directory containing config yaml files are stored.
+
+        If the user has provided a path to a directory containing the config then set this as the path to load the
+        config yaml files from, otherwise use the default path and the workbook version number to construct a path
+        to correct config files for the workbook version, which are shipped with the package.
+        """
+        if user_config_directory_path is not None:
+            config_path = self._make_path_object(user_config_directory_path)
         else:
-            if user_config_directory_path is not None:
-                config_path = self._make_path_object(user_config_directory_path)
-            else:
-                config_path = self.default_config_path
+            config_path = self.default_config_path
             self._check_version_is_supported(config_path)
             config_path = config_path / Path(f"{self.workbook_version}/")
         return config_path
 
     def _check_version_is_supported(self, config_path):
+        """Check the default config directory contains a subdirectory that matches the workbook version number.
+        """
         versions = os.listdir(config_path)
         if self.workbook_version not in versions:
             raise ValueError(
@@ -84,6 +93,8 @@ class Parser:
             )
 
     def _load_config(self):
+        """Load all the yaml files stored in the config directory into a python dictionary with table names as keys.
+        """
         pattern = os.path.join(self.config_path, '*.yaml')
         config_files = glob.glob(pattern)
         config = {}
@@ -94,6 +105,12 @@ class Parser:
     def _check_data_ends_where_expected(
         self, tab: str, end_row: int, range: str, name: str
     ):
+        """Check that the cell after the last row of the table in the second column is blank.
+
+        While there are often notes on the data in the first cell after the first column ends, the first cell after the
+        second column ends appears to be always blank. Therefore, checking that this cell is blank can be used to verify
+        that the config has not specified a table end row that is before the actual last row of the table.
+        """
         first_column = range.split(":")[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         second_col_index = first_col_index + 1
@@ -108,6 +125,13 @@ class Parser:
 
     @staticmethod
     def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str):
+        """Check that the first column of the table does not contain NA values.
+
+        The first column of a table appears to always be an ID column with no blank values. The only reason that NA
+        values would appear in this column is if the end row specified in the config occurs after the end of the
+        table and inside a following table or set of notes. Therefore, the presence of NA values in the first column
+        can be used to check if the end row is incorrectly specified in the config.
+        """
         if data[data.columns[0]].isna().any():
             error_message = (
                 f"The first column of the table {name} contains na values indicating the table end "
@@ -116,6 +140,14 @@ class Parser:
 
     @staticmethod
     def _check_for_over_run_into_notes(data: pd.DataFrame, name: str):
+        """Check that the values in the first column don't contain substrings: "Notes:", "Note:", "Source:", "Sources:".
+
+        Often the first cell after the end of the first column contains notes on the table, which appear to always
+        contain one of the substrings "Notes:", "Note:", "Source:", "Sources:". If the end row is incorrectly specified
+        these notes can be read into the table without creating any NA values. Therefore, checking if these substrings
+        are present in any of the values in the first column is helpful in detecting if the end row is incorrectly
+        specified.
+        """
         notes_sub_strings = ["Notes:", "Note:", "Source:", "Sources:"]
         for sub_string in notes_sub_strings:
             if data[data.columns[0]].str.contains(sub_string).any():
@@ -123,14 +155,27 @@ class Parser:
                 raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_last_column_not_empty(data: pd.DataFrame, name: str):
-        if data[data.columns[-1]].isna().all():
-            error_message = f"The last column of the table {name} is empty."
-            raise TableConfigError(error_message)
+    def _check_no_columns_are_empty(data: pd.DataFrame, name: str):
+        """Check that no columns in the table are empty.
+
+        If the column range in the table config is incorrectly specified and the end column occurs after the end of the
+        table then empty columns of data could be read into the table. Checking that no columns in the table are
+        empty helps detect if the config is incorrect.
+        """
+        for column in data.columns:
+            if data[column].isna().all():
+                error_message = f"The last column of the table {name} is empty."
+                raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
             self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ):
+        """Checks if there is data in the column adjacent to last column specified in the config.
+
+        It appears that the column adjacent to the last column in a table is always blank. Therefore, checking if
+        there is data in the adjacent column can help detect when the column range in the config has been incorrectly
+        specified.
+        """
         last_column = range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
         column_next_to_last_column = openpyxl.utils.get_column_letter(
@@ -159,6 +204,11 @@ class Parser:
 
     @staticmethod
     def _check_headers(data: pd.DataFrame, table_config):
+        """Check that the column names as read from the workbook match the expected column names from the config.
+
+        This check exists to catch instance where column names have been changed, a column has been deleted, or a column
+        has been added. By checking the workbook against a set of expected names
+        """
         if list(data.columns) != table_config.header_names:
             name = table_config.name
             error_message = f"Column names for the table {name} don't match the header names provided in the config."
@@ -185,7 +235,7 @@ class Parser:
         )
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
-        self._check_last_column_not_empty(data, table_config.name)
+        self._check_no_columns_are_empty(data, table_config.name)
         if self.check_headers:
             self._check_headers(data, table_config)
 
@@ -208,6 +258,20 @@ class Parser:
         """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
         Examples:
+
+        >>> from isp_assumptions_parser import Table
+
+        >>> config = Table(
+        ... name='existing_generators_summary',
+        ... sheet_name='Summary Mapping',
+        ... header_rows=[4, 5, 6],
+        ... end_row=256,
+        ... column_range="B:AC",
+        ... )
+
+        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+
+        >>> workbook.get_table_from_config(config)
 
         Args:
             table_config:
