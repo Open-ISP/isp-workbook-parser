@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 class Table(BaseModel):
-    """ A pydantic class for storing the location of a table within an Excel Workbook, referred to as the table config.
+    """A pydantic class for storing the location of a table within an Excel Workbook, referred to as the table config.
 
     The pydantic class is used so that the type of each element of the configuration is validated.
 
@@ -37,6 +37,7 @@ class Table(BaseModel):
         end_row: int, the last row of table data.
         column_range: str, the columns over which the table is defined in the alphabetical format, i.e. 'B:F'
     """
+
     name: str
     sheet_name: str
     header_rows: int | List[int]
