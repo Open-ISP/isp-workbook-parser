@@ -66,7 +66,7 @@ def load_yaml(path: Path) -> dict[Table]:
 
     When read using load_yaml it will be converted to a dictionary contain Table instances:
 
-    >>> pprint(load_yaml(path_to_yaml))
+    >>> print(load_yaml(path_to_yaml))
     {'wind_high_capacity_factors': Table(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
 
     Args:

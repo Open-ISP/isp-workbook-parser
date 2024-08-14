@@ -68,6 +68,21 @@ def test_end_column_too_soon_throws_error():
         workbook.get_table_from_config(table_config)
 
 
+def test_start_column_too_far_throws_error():
+    table_config = Table(
+        name="DUMMY",
+        sheet_name="Network Capability",
+        header_rows=[6, 7],
+        end_row=21,
+        column_range="C:J",
+    )
+    error_message = (
+        "There is data in the column adjacent to the first column in the table DUMMY."
+    )
+    with pytest.raises(TableConfigError, match=error_message):
+        workbook.get_table_from_config(table_config)
+
+
 def test_good_config_throws_no_error():
     table_config = Table(
         name="DUMMY",

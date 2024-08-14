@@ -196,6 +196,41 @@ class Parser:
             error_message = f"There is data in the column adjacent to the last column in the table {name}."
             raise TableConfigError(error_message)
 
+    def _check_for_missed_column_on_left_hand_side_of_table(
+        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+    ):
+        """Checks if there is data in the column adjacent to first column specified in the config.
+
+        It appears that the column adjacent to the first column in a table is always blank. Therefore, checking if
+        there is data in the adjacent column can help detect when the column range in the config has been incorrectly
+        specified.
+        """
+        first_column = range.split(":")[0]
+        first_col_index = openpyxl.utils.column_index_from_string(first_column)
+        column_next_to_first_column = openpyxl.utils.get_column_letter(
+            first_col_index - 1
+        )
+        column_next_to_first_column = (
+            column_next_to_first_column + ":" + column_next_to_first_column
+        )
+        range_error = False
+        try:
+            data = pd.read_excel(
+                self.file,
+                sheet_name=sheet_name,
+                header=start_row,
+                usecols=column_next_to_first_column,
+                nrows=(end_row - start_row),
+            )
+            if not data[data.columns[0]].isna().all():
+                range_error = True
+        except pd.errors.ParserError:
+            range_error = False
+
+        if range_error:
+            error_message = f"There is data in the column adjacent to the first column in the table {name}."
+            raise TableConfigError(error_message)
+
     def _check_table(self, data, table_config):
         if isinstance(table_config.header_rows, list):
             start_row = table_config.header_rows[-1]
@@ -209,6 +244,13 @@ class Parser:
             table_config.name,
         )
         self._check_for_missed_column_on_right_hand_side_of_table(
+            table_config.sheet_name,
+            start_row,
+            table_config.end_row,
+            table_config.column_range,
+            table_config.name,
+        )
+        self._check_for_missed_column_on_left_hand_side_of_table(
             table_config.sheet_name,
             start_row,
             table_config.end_row,
