@@ -21,10 +21,10 @@ published by the Australian Energy Market Operator for use in their Integrated S
 2. Table configuration files for data tables are located in `src/config/<version>`
    - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version.
    - These are included with the package distributions.
-3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version. 
+3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version.
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
 
-> [!NOTE]  
+> [!NOTE]
 > This package makes some opinionated decisions when processing tables with multiple header rows, including how tables are reduced to a single header and how data in merged cells is handled. For more detail, refer to the docstring and code in [`read_table.py`](src/isp_workbook_parser/read_table.py).
 
 ## Table configurations
