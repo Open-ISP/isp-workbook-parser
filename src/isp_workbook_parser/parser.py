@@ -388,6 +388,8 @@ class Parser:
             None
         """
         directory = self._make_path_object(directory)
+        if not directory.exists():
+            directory.mkdir(parents=True)
 
         if not directory.is_dir():
             ValueError("The path provided is not a directory.")
