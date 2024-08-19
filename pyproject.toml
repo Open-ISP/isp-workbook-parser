@@ -1,5 +1,5 @@
 [project]
-name = "isp-assumptions-parser"
+name = "isp-workbook-parser"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "pandas>=2.2.2",
     "openpyxl>=3.1.5",
+    "pydantic>=2.8.2",
+    "pyyaml>=6.0.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -29,4 +31,4 @@ dev-dependencies = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/isp_assumptions_parser"]
+packages = ["src/isp_workbook_parser"]

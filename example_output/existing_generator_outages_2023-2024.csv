@@ -1,0 +1,9 @@
+,Fuel type,Forced Outage Rate (%) - Full outage (% of time),Forced Outage Rate (%) - Partial outage (% of time),Mean time to repair (hrs)  - Full outage,Mean time to repair (hrs)  - Partial outage,Partial Outage Derating Factor (%)
+1,Brown Coal,0.0775,0.1156,90.05,12.2,0.1791
+2,Black Coal NSW,0.0631,0.3146,157.62,33.97,0.166
+3,Black Coal QLD,0.0675,0.1286,185.0,56.42,0.2516
+4,OCGT,0.0721,0.0112,44.08,106.48,0.0999
+5,Small peaking plants,0.0958,0.0032,150.2,189.52,0.337
+6,Hydro,0.0511,0.0171,38.1,473.44,0.1518
+7,CCGT + Steam Turbine,0.0504,0.0166,61.19,40.35,0.1521
+8,Batteries,0.0184,-,26.05,-,-
