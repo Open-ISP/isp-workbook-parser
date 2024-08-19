@@ -1,19 +1,19 @@
 import pytest
 
-from isp_assumptions_parser.parser import Parser
-from isp_assumptions_parser.parser import TableConfigError
-from isp_assumptions_parser.config_model import Table
+from isp_workbook_parser import Parser
+from isp_workbook_parser.parser import TableConfigError
+from isp_workbook_parser.config_model import Table
 
-workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
 
 def test_end_row_runs_into_another_table_throws_error():
     table_config = Table(
         name="DUMMY",
-        sheet_name="Network Capability",
-        header_rows=[6, 7],
-        end_row=34,
-        column_range="B:J",
+        sheet_name="Aggregated energy storages",
+        header_rows=10,
+        end_row=23,
+        column_range="B:AF",
     )
     error_message = (
         "The first column of the table DUMMY contains na values indicating the table end row is "
