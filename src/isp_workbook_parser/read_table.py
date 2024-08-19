@@ -1,5 +1,5 @@
 import pandas as pd
-from isp_assumptions_parser import Table
+from isp_workbook_parser import Table
 import numpy as np
 
 

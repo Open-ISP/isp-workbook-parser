@@ -1,0 +1,5 @@
+existing_generator_outages_2023-2024:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: [19, 20]
+  end_row: 28
+  column_range: "B:G"

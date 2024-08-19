@@ -7,21 +7,33 @@ import openpyxl
 
 from .config_model import load_yaml
 from .read_table import read_table
+from typing import Any
 
 
 class Parser:
     """Extracts ISP inputs and assumptions data from the IASR workbbook.
 
-    The primary intend usage is to extract all the tables and save as csv files using the save_tables method, but
-    inidividual tables can be extracted as pd.DataFrames using get_table, and tables without pre-defined config can
-    be extracted with user specified config using get_table_from_config. For a list of tables with pre-defined config
-    compatible the version of the workbook provided use get_table_names.
+    If a directory path containing configs is provided by the user, this is used as the
+    path to load the config YAM files from. Otherwise a default path is constructed
+    using the workbook version number. This uses config files shipped with the package.
 
-    Examples
+    For a list of tables with pre-defined config (i.e. those shipped with the package)
+    compatible with the version of the workbook provided, use `Parser.get_table_names`.
 
-    Create a Parser instance for a particular workbook (will also check config is available for workbook version).
+    Usage:
+    1. Extract all the tables specified in the `Parser.config_path`, or, if this is not
+        provided, in the `Parser.default_config_path`. Saves these as csv files using the
+        `save_tables` method
+    2. Extract individual tables as `pd.DataFrame`s using `Parser.get_table`. Tables
+        specified should be included in the pre-defined config for the provided
+        workbook's version.
+    3. Extract tables using a user-specified config with `Parser.get_table_from_config`.
 
-    >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+    Examples:
+
+    Create a Parser instance for a particular workbook. Will also check config is available for workbook version.
+
+    >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
     Save all the tables with available config to the directory example_output as csv files.
 
@@ -30,7 +42,7 @@ class Parser:
 
     def __init__(
         self, file_path: str | Path, user_config_directory_path: str | Path = None
-    ):
+    ) -> None:
         self.file_path = self._make_path_object(file_path)
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
@@ -41,13 +53,13 @@ class Parser:
         self.table_names = list(self.table_configs.keys())
 
     @staticmethod
-    def _make_path_object(path: str | Path):
+    def _make_path_object(path: str | Path) -> Path:
         """If the path has been provided as a string convert it to a pathlib Path object."""
         if not isinstance(path, Path):
             path = Path(path)
         return path
 
-    def _get_version(self):
+    def _get_version(self) -> str:
         """Extract the version number of the workbook from the sheet 'Change Log'.
 
         In the change log the version number is last value in the 'B' column. This method iterates through the values
@@ -58,16 +70,17 @@ class Parser:
         for cell in sheet["B"]:
             if cell.value is not None:
                 last_value = cell.value
-        return str(last_value)
+        version = float(last_value)
+        return str(version)
 
     def _determine_config_path(
         self,
         user_config_directory_path: str | Path = None,
-    ):
-        """Determine the path to where the directory containing config yaml files are stored.
+    ) -> Path:
+        """Determine the path to where the directory containing config YAML files are stored.
 
         If the user has provided a path to a directory containing the config then set this as the path to load the
-        config yaml files from, otherwise use the default path and the workbook version number to construct a path
+        config YAML files from, otherwise use the default path and the workbook version number to construct a path
         to correct config files for the workbook version, which are shipped with the package.
         """
         if user_config_directory_path is not None:
@@ -78,7 +91,7 @@ class Parser:
             config_path = config_path / Path(f"{self.workbook_version}/")
         return config_path
 
-    def _check_version_is_supported(self, config_path):
+    def _check_version_is_supported(self, config_path) -> None:
         """Check the default config directory contains a subdirectory that matches the workbook version number."""
         versions = os.listdir(config_path)
         if self.workbook_version not in versions:
@@ -86,8 +99,8 @@ class Parser:
                 f"The workbook version {self.workbook_version} is not supported."
             )
 
-    def _load_config(self):
-        """Load all the yaml files stored in the config directory into a python dictionary with table names as keys."""
+    def _load_config(self) -> dict[str, dict[str, Any]]:
+        """Load all the YAML files stored in the config directory into a dictionary with table names as keys."""
         pattern = os.path.join(self.config_path, "*.yaml")
         config_files = glob.glob(pattern)
         config = {}
@@ -97,7 +110,7 @@ class Parser:
 
     def _check_data_ends_where_expected(
         self, tab: str, end_row: int, range: str, name: str
-    ):
+    ) -> None:
         """Check that the cell after the last row of the table in the second column is blank.
 
         While there are often notes on the data in the first cell after the first column ends, the first cell after the
@@ -117,7 +130,7 @@ class Parser:
             raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str):
+    def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str) -> None:
         """Check that the first column of the table does not contain NA values.
 
         The first column of a table appears to always be an ID column with no blank values. The only reason that NA
@@ -133,7 +146,7 @@ class Parser:
             raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_for_over_run_into_notes(data: pd.DataFrame, name: str):
+    def _check_for_over_run_into_notes(data: pd.DataFrame, name: str) -> None:
         """Check that the values in the first column don't contain substrings: "Notes:", "Note:", "Source:", "Sources:".
 
         Often the first cell after the end of the first column contains notes on the table, which appear to always
@@ -149,7 +162,7 @@ class Parser:
                 raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_no_columns_are_empty(data: pd.DataFrame, name: str):
+    def _check_no_columns_are_empty(data: pd.DataFrame, name: str) -> None:
         """Check that no columns in the table are empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
@@ -163,7 +176,7 @@ class Parser:
 
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
-    ):
+    ) -> None:
         """Checks if there is data in the column adjacent to last column specified in the config.
 
         It appears that the column adjacent to the last column in a table is always blank. Therefore, checking if
@@ -198,7 +211,7 @@ class Parser:
 
     def _check_for_missed_column_on_left_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
-    ):
+    ) -> None:
         """Checks if there is data in the column adjacent to first column specified in the config.
 
         It appears that the column adjacent to the first column in a table is always blank. Therefore, checking if
@@ -231,7 +244,7 @@ class Parser:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
             raise TableConfigError(error_message)
 
-    def _check_table(self, data, table_config):
+    def _check_table(self, data, table_config) -> None:
         if isinstance(table_config.header_rows, list):
             start_row = table_config.header_rows[-1]
         else:
@@ -262,13 +275,15 @@ class Parser:
         self._check_no_columns_are_empty(data, table_config.name)
 
     def get_table_names(self) -> list[str]:
-        """Returns the list of tables that there is config for extracting from the workbook version provided.
+        """Returns the list of tables that there is config for, based on the workbook version extracted from the workbook file provided.
 
         Examples:
-        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
-        >>> workbook.get_table_names()
-        ['wind_high_capacity_factors', 'existing_generator_outages_2023-2024', 'retirement_costs']
+        >>> names = workbook.get_table_names()
+
+        >>> sorted(names)
+        ['existing_generator_outages_2023-2024', 'retirement_costs', 'wind_high_capacity_factors']
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
@@ -282,17 +297,17 @@ class Parser:
 
         Examples:
 
-        >>> from isp_assumptions_parser import Table
+        >>> from isp_workbook_parser import Table
 
         >>> config = Table(
         ... name='existing_generators_summary',
         ... sheet_name='Summary Mapping',
         ... header_rows=[4, 5, 6],
-        ... end_row=256,
+        ... end_row=258,
         ... column_range="B:AC",
         ... )
 
-        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table_from_config(config).head()
           Existing generator  ... Connection cost - Partial outage - Technology
@@ -305,8 +320,8 @@ class Parser:
         [5 rows x 28 columns]
 
         Args:
-            table_config:
-            config_checks: A boolean that specifies whether to check the table config by checking if the data
+            table_config: A table configuration.
+            config_checks: Specifies whether to check the table config by checking if the data
                 starts and ends where expected and the workbook header matches the config header.
 
         """
@@ -316,10 +331,10 @@ class Parser:
         return data
 
     def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
-        """Retrieves a table from the assumptions workbook and returns as pd.DataFrame.
+        """Retrieves a table from the assumptions workbook and returns as `pd.DataFrame`.
 
         Examples
-        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
           Wind High - REZ ID  ... Wind High - Avg of ref years
@@ -332,8 +347,8 @@ class Parser:
         [5 rows x 17 columns]
 
         Args:
-            table_name: string specifying the table to retrieve.
-            config_checks: A boolean that specifies whether to check the tabe config by checking if the data
+            table_name: Specified the table to retrieve.
+            config_checks: Specifies whether to check the tabe config by checking if the data
                 starts and ends where expected and the workbook header matches the config header.
         """
         if not isinstance(table_name, str):
@@ -354,20 +369,20 @@ class Parser:
         tables: list[str] | str = "all",
         config_checks: bool = True,
     ) -> None:
-        """Saves tables from the assumptions workbook to the specified directory as CSV files.
+        """Saves tables from the provided workbook to the specified directory as CSV files.
 
         Examples:
-        >>> workbook = Parser("workbooks/5.2/2023 IASR Assumptions Workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.save_tables(directory="example_output")
 
         Args:
-            tables: A list of strings specifying which tables to extract from the workbook and save, or the
-                str 'all', which will result in all the tables the isp-assumptions-parser has config for being
+            tables: Which tables to extract from the workbook and save, or the str 'all',
+                which will result in all the tables the isp-workbook-parser has config for being
                 saved.
-            directory: A str specifying the path to the directory or a pathlib Path object.
-            config_checks: A boolean that specifies whether to check the tabe config by checking if the data
-                starts and ends where expected and the workbook header matches the config header.
+            directory: Path to the directory or a pathlib Path object.
+            config_checks: Specifies whether to check the tabe config by checking if the data
+                starts and ends where expected.
 
         Returns:
             None
