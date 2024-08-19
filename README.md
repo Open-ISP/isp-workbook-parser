@@ -17,9 +17,9 @@ published by the Australian Energy Market Operator for use in their Integrated S
 Export all the data tables the parser has a config file for to CSV files.
 
 ```python
-from isp_assumptions_parser import Parser
+from isp_workbook_parser import Parser
 
-workbook = Parser("<path/to/workbook>/2023 IASR Assumptions Workbook.xlsx")
+workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
 workbook.save_tables('<path/to/output directory>')
 ```
@@ -29,9 +29,9 @@ workbook.save_tables('<path/to/output directory>')
 List all the tables the parser has a config file for (for the given workbook version).
 
 ```python
-from isp_assumptions_parser import Parser
+from isp_workbook_parser import Parser
 
-workbook = Parser("<path/to/workbook>/2023 IASR Assumptions Workbook.xlsx")
+workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
 workbook.get_table_names()
 ```
@@ -41,9 +41,9 @@ workbook.get_table_names()
 Get a single table as a pandas `DataFrame`.
 
 ```python
-from isp_assumptions_parser import Parser
+from isp_workbook_parser import Parser
 
-workbook = Parser("<path/to/workbook>/2023 IASR Assumptions Workbook.xlsx")
+workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
 table = workbook.get_table("existing_generators_summary")
 ```
