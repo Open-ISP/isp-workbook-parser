@@ -297,9 +297,9 @@ class Parser:
 
         Examples:
 
-        >>> from isp_workbook_parser import Table
+        >>> from isp_workbook_parser import TableConfig
 
-        >>> config = Table(
+        >>> config = TableConfig(
         ... name='existing_generators_summary',
         ... sheet_name='Summary Mapping',
         ... header_rows=[4, 5, 6],

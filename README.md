@@ -84,11 +84,11 @@ table = workbook.get_table("retirement_costs")
 Get a table by directly providing the table config.
 
 ```python
-from isp_workbook_parser import Parser, Table
+from isp_workbook_parser import Parser, TableConfig
 
 workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
-table_config = Table(
+table_config = TableConfig(
   name="table_name",
   sheet_name="sheet_name",
   header_rows=5,

@@ -5,16 +5,16 @@ from typing import List
 from pathlib import Path
 
 
-class Table(BaseModel):
+class TableConfig(BaseModel):
     """A `Pydantic` class for storing the location of a table within an Excel Workbook, which is referred to as a table config throughout this package.
 
     The `Pydantic` class verifies the type of each element of the configuration.
 
     Examples:
 
-    A Table instance can be manually defined:
+    A TableConfig instance can be manually defined:
 
-    >>> table_config = Table(
+    >>> table_config = TableConfig(
     ... name='existing_generators_summary',
     ... sheet_name='Summary Mapping',
     ... header_rows=[4, 5, 6],
@@ -27,7 +27,7 @@ class Table(BaseModel):
     >>> table_configs = load_yaml(Path("config/6.0/capacity_factors.yaml"))
 
     >>> print(table_configs)
-    {'wind_high_capacity_factors': Table(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
 
     Attributes:
         name: the table name
@@ -45,10 +45,10 @@ class Table(BaseModel):
     column_range: str
 
 
-def load_yaml(path: Path) -> dict[Table]:
-    """Loads the YAML file specified by the path returning a dict of `Table`s.
+def load_yaml(path: Path) -> dict[str, TableConfig]:
+    """Loads the YAML file specified by the path returning a dict of `TableConfig`s.
 
-    Each table config defined in a YAML file is converted to a `Table` and stored in the dictionary using its name
+    Each table config defined in a YAML file is converted to a `TableConfig` and stored in the dictionary using its name
     as the key value.
 
     Examples:
@@ -65,10 +65,10 @@ def load_yaml(path: Path) -> dict[Table]:
       column_range: "B:R"
     <BLANKLINE>
 
-    When read using `load_yaml` it will be converted to a dictionary contain `Table` instances:
+    When read using `load_yaml` it will be converted to a dictionary contain `TableConfig` instances:
 
     >>> print(load_yaml(path_to_yaml))
-    {'wind_high_capacity_factors': Table(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
 
     Args:
         path: pathlib Path instance specifying the location of the YAML file.
@@ -77,5 +77,5 @@ def load_yaml(path: Path) -> dict[Table]:
     with open(path, "r") as f:
         config = yaml.safe_load(f)
         f.close()
-    tables = {name: Table(name=name, **config[name]) for name in config}
+    tables = {name: TableConfig(name=name, **config[name]) for name in config}
     return tables

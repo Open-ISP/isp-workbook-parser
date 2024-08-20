@@ -1,9 +1,9 @@
 import pandas as pd
-from isp_workbook_parser import Table
+from isp_workbook_parser import TableConfig
 import numpy as np
 
 
-def read_table(workbook_file: pd.ExcelFile, table: Table) -> pd.DataFrame:
+def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     """Parses a table given a YAML config for the table
 
     If `table.header_rows` is an integer, the table is parsed directly.
