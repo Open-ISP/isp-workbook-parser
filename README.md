@@ -40,7 +40,6 @@ Tables are defined in the configuration files using the following attributes:
 - `end_row`: the last row of table data
 - `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
 
-
 ## Examples
 
 ### Bulk export
@@ -98,3 +97,6 @@ table_config = TableConfig(
 
 workbook.get_table_from_config(table_config)
 ```
+
+## License
+`isp-workbook-parser` was created as a part of the [OpenISP project](https://github.com/Open-ISP). It is licensed under the terms of [GNU GPL-3.0-or-later](LICENSE) licences.
