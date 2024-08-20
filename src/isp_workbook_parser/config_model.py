@@ -24,7 +24,7 @@ class Table(BaseModel):
 
     Or created from YAML file, which can contain one or many table config definitions:
 
-    >>> table_configs = load_yaml(Path("config/6.0/capacity_factors.yaml"))
+    >>> table_configs = load_yaml(Path("src/config/6.0/capacity_factors.yaml"))
 
     >>> print(table_configs)
     {'wind_high_capacity_factors': Table(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
@@ -53,7 +53,7 @@ def load_yaml(path: Path) -> dict[Table]:
 
     Examples:
 
-    >>> path_to_yaml = Path("config/6.0/capacity_factors.yaml")
+    >>> path_to_yaml = Path("src/config/6.0/capacity_factors.yaml")
 
     The contents of the YAML file should look like:
 
