@@ -1,4 +1,4 @@
-# AEMO Integrated System Plan Assumptions Parser
+# AEMO Integrated System Plan Assumptions Workbook Parser
 
 A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook
 published by the Australian Energy Market Operator for use in their Integrated System Plan modelling.
