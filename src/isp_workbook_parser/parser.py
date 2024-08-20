@@ -47,7 +47,9 @@ class Parser:
         self.file = pd.ExcelFile(self.file_path)
         self.openpyxl_file = openpyxl.load_workbook(self.file_path)
         self.workbook_version = self._get_version()
-        self.default_config_path = Path(__file__).parent / Path("../../config/")
+        self.default_config_path = Path(__file__).parent.parent / Path(
+            "isp_table_configs"
+        )
         self.config_path = self._determine_config_path(user_config_directory_path)
         self.table_configs = self._load_config()
         self.table_names = list(self.table_configs.keys())
