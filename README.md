@@ -8,10 +8,10 @@ published by the Australian Energy Market Operator for use in their Integrated S
 - [How the package works](#how-the-package-works)
 - [Table configurations](#table-configurations)
 - [Examples](#examples)
- - [Bulk export](#bulk-export)
- - [List tables with configuration files](#list-tables-with-configuration-files)
- - [Get table as DataFrame](#get-table-as-dataframe)
- - [Get table with custom configuration](#get-table-with-custom-configuration)
+    - [Bulk export](#bulk-export)
+    - [List tables with configuration files](#list-tables-with-configuration-files)
+    - [Get table as DataFrame](#get-table-as-dataframe)
+    - [Get table with custom configuration](#get-table-with-custom-configuration)
 
 
 ## How the package works
