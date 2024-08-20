@@ -1,9 +1,11 @@
 [project]
 name = "isp-workbook-parser"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook published by the Australian Energy Market Operator for use in their Integrated System Plan modelling."
 authors = [
-    { name = "nick-gorman", email = "n.gorman305@gmail.com" }
+    { name = "nick-gorman", email = "n.gorman305@gmail.com" },
+    { name = "prakaa", email = "abiprakash007@gmail.com" },
+    { name = "dylanjmcconnell", email = "dylan.mcconnell@unsw.edu.au" }
 ]
 dependencies = [
     "pandas>=2.2.2",
@@ -12,7 +14,7 @@ dependencies = [
     "pyyaml>=6.0.1",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.9"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
