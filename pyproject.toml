@@ -40,4 +40,4 @@ addopts = "-ra --doctest-modules --cov=src/ --cov-branch --cov-report xml:tests/
 where = ["src"]
 
 [tool.setuptools.package-data]
-config = ["**/*.yaml"]
+isp_table_configs = ["**/*.yaml"]
