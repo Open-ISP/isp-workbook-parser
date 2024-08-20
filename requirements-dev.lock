@@ -16,6 +16,8 @@ asttokens==2.4.1
     # via stack-data
 cfgv==3.4.0
     # via pre-commit
+coverage==7.6.1
+    # via pytest-cov
 decorator==5.1.1
     # via ipdb
     # via ipython
@@ -70,6 +72,8 @@ pydantic-core==2.20.1
 pygments==2.18.0
     # via ipython
 pytest==8.3.2
+    # via pytest-cov
+pytest-cov==5.0.0
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
