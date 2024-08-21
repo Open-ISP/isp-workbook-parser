@@ -1,4 +1,9 @@
 # AEMO Integrated System Plan Assumptions Workbook Parser
+[![PyPI version](https://badge.fury.io/py/isp-workbook-parser.svg)](https://badge.fury.io/py/isp-workbook-parser)
+[![Continuous Integration and Deployment](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml/badge.svg)](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml)
+[![codecov](https://codecov.io/github/Open-ISP/isp-workbook-parser/graph/badge.svg?token=BUGWITKZV1)](https://codecov.io/github/Open-ISP/isp-workbook-parser)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Open-ISP/isp-workbook-parser/main.svg)](https://results.pre-commit.ci/latest/github/Open-ISP/isp-workbook-parser/main)
+[![Rye](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/rye/main/artwork/badge.json)](https://rye.astral.sh)
 
 A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook
 published by the Australian Energy Market Operator for use in their Integrated System Plan modelling.
@@ -98,5 +103,12 @@ table_config = TableConfig(
 workbook.get_table_from_config(table_config)
 ```
 
+## Contributing
+
+Interested in contributing to the source code or adding table configurations? Check out the [contributing guidelines](./CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
+
+Please note that this project is released with a [Code of Conduct](./CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+
 ## License
+
 `isp-workbook-parser` was created as a part of the [OpenISP project](https://github.com/Open-ISP). It is licensed under the terms of [GNU GPL-3.0-or-later](LICENSE) licences.
