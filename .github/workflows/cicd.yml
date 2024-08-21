@@ -69,8 +69,8 @@ jobs:
       # Sync dependencies
       - name: Sync dependencies
         run: rye sync
-      # Build 
-      - name: Build 
+      # Build
+      - name: Build
         run: rye build
       # Publish to PyPI
       - name: Publish package distributions to PyPI
