@@ -5,6 +5,29 @@ helps, and credit will always be given.
 
 ## Types of Contributions
 
+## Adding table configuration files (YAMLs)
+
+Table configuration files for each workbook version are bundled with this package. They are located within `src/isp_table_configs/<workbook version number>`. To add table configuration files:
+
+1. Follow the instructions in "Get Started!" below to create a new branch
+2. Commit the new table configurations
+3. Open a pull request, and if it passes config check tests, a maintainer will merge them in
+
+A YAML file can contain many tables, which are defined as objects. For example, we can define a table called "retirement costs" as follows:
+```yaml
+retirement_costs:
+  sheet_name: "Retirement"
+  header_rows: 9
+  end_row: 16
+  column_range: "H:I"
+```
+
+While we have no strict rules on how table configurations should be named and organised, we encourage the following:
+
+- Group tables of a common theme in one `.yaml` file
+  - For example, all tables that contain generation capacity factor data should ideally be defined within a single YAML file, e.g. `capacity_factors.yaml`
+- Name individual tables (e.g. `retirement_cost` as above) with sufficient detail such that another user using `Parser.get_tables()` can infer what data the table contains
+
 ### Report Bugs
 
 If you are reporting a bug, please include:

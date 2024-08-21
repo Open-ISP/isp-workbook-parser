@@ -45,6 +45,10 @@ Tables are defined in the configuration files using the following attributes:
 - `end_row`: the last row of table data
 - `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
 
+### Adding table configuration files to this package
+
+Refer to the [contributing instructions](./CONTRIBUTING.md) for details on how to contribute table configuration (YAML) files to this repository and package.
+
 ## Examples
 
 ### Bulk export
@@ -105,7 +109,7 @@ workbook.get_table_from_config(table_config)
 
 ## Contributing
 
-Interested in contributing to the source code or adding table configurations? Check out the [contributing guidelines](./CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
+Interested in contributing to the source code or adding table configurations? Check out the [contributing instructions](./CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
 
 Please note that this project is released with a [Code of Conduct](./CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
