@@ -13,7 +13,7 @@ Table configuration files for each workbook version are bundled with this packag
 2. Commit the new table configurations
 3. Open a pull request, and if it passes config check tests, a maintainer will merge them in
 
-A YAML file can contain many tables, which are defined as objects. For example, we can define a table called "retirement costs" as follows:
+A YAML file can contain many tables, which are defined as objects. For example, we can define a table called "retirement_costs" as follows:
 ```yaml
 retirement_costs:
   sheet_name: "Retirement"
@@ -24,7 +24,7 @@ retirement_costs:
 
 While we have no strict rules on how table configurations should be named and organised, we encourage the following:
 
-- Group tables of a common theme in one `.yaml` file
+- Group tables of a common theme in one `.yaml` file.
   - For example, all tables that contain generation capacity factor data should ideally be defined within a single YAML file, e.g. `capacity_factors.yaml`
 - Name individual tables (e.g. `retirement_cost` as above) with sufficient detail such that another user using `Parser.get_tables()` can infer what data the table contains
 
@@ -34,7 +34,7 @@ If you are reporting a bug, please include:
 
 * Your operating system name and version.
 * Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
+* Detailed steps to reproduce the bug, preferably with a simple code example that reproduces the bug.
 
 ### Fix Bugs
 
