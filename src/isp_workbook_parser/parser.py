@@ -239,7 +239,7 @@ class Parser:
             )
             if data[data.columns[0]].isna().all():
                 range_error = False
-            elif "DO NOT DELETE THIS COLUMN" in data.columns[0]:
+            elif "DO NOT DELETE THIS COLUMN" in data.columns[0] or first_column == "B":
                 range_error = False
             else:
                 range_error = True
