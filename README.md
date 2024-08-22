@@ -17,6 +17,8 @@ published by the Australian Energy Market Operator for use in their Integrated S
     - [List tables with configuration files](#list-tables-with-configuration-files)
     - [Get table as DataFrame](#get-table-as-dataframe)
     - [Get table with custom configuration](#get-table-with-custom-configuration)
+- [Contributing](#contributing)
+- [License](#license)
 
 
 ## How the package works
@@ -24,7 +26,8 @@ published by the Australian Energy Market Operator for use in their Integrated S
 1. Load a workbook using `Parser` (see examples below).
    - While we do not include workbooks with the package distribution, you can find the versions for which table configurations are written within `workbooks/<version>`.
 2. Table configuration files for data tables are located in `src/config/<version>`
-   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version.
+   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not
+     read in can also be provided, for example, in the case where AEMO has formatted a row with a strike through, indicating the data is no longer used.
    - These are included with the package distributions.
 3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version.
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
@@ -44,6 +47,7 @@ Tables are defined in the configuration files using the following attributes:
    - If the table header is defined over multiple rows, then provide a list of row numbers sorted in ascending order (e.g. `[6, 7, 8]`)
 - `end_row`: the last row of table data
 - `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
+- `skip_rows`: optional, a list of excel rows in the table but that should not be read in (e.g. `[15]`)
 
 ### Adding table configuration files to this package
 
