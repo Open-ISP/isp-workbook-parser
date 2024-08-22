@@ -1,7 +1,7 @@
 import yaml
 
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from pathlib import Path
 
 
@@ -36,6 +36,8 @@ class TableConfig(BaseModel):
             defined over multiple rows, then a list of the row numbers sorted in ascending order.
         end_row: the last row of table data.
         column_range: the columns over which the table is defined in the alphabetical format, i.e. 'B:F'
+        skip_rows: an `int` specifying a row to skip, or a list of `int` corresponding to
+            row numbers to skip.
     """
 
     name: str
@@ -43,6 +45,7 @@ class TableConfig(BaseModel):
     header_rows: int | List[int]
     end_row: int
     column_range: str
+    skip_rows: Optional[int | List[int]] = None
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
