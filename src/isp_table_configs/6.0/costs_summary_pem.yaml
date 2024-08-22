@@ -1,0 +1,11 @@
+pem_locational_cost_factors:
+  sheet_name: "Costs Summary - PEM"
+  header_rows: 9
+  end_row: 24
+  column_range: "B:F"
+
+pem_technology_cost_breakdown_ratios :
+  sheet_name: "Costs Summary - PEM"
+  header_rows: 36
+  end_row: 37
+  column_range: "B:F"

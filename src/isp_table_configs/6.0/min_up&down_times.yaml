@@ -1,0 +1,11 @@
+min_up_and_down_times_existing_generator:
+  sheet_name: "Min Up&Down Times"
+  header_rows: 8
+  end_row: 25
+  column_range: "B:E"
+
+min_up_and_down_times_new_entrants:
+  sheet_name: "Min Up&Down Times"
+  header_rows: 8
+  end_row: 12
+  column_range: "G:H"
