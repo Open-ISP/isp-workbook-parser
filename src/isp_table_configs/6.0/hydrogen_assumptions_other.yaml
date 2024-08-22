@@ -27,4 +27,3 @@ pem_electrolyser_technical_parameters :
   header_rows: 27
   end_row: 28
   column_range: "B:H"
-
