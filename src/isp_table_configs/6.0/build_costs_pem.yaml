@@ -1,4 +1,4 @@
-build_costs_pem_gencost_scenario_mapping:
+pem_gencost_scenario_mapping:
   sheet_name: "Build Costs - PEM"
   header_rows: 3
   end_row: 4
