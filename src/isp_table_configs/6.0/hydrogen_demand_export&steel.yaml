@@ -1,0 +1,35 @@
+hydrogen_demand_export&steel_consultant_forecast_mapping:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 8
+  end_row: 9
+  column_range: "B:E"
+
+hydrogen_demand_export&steel_progressive_change:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 12
+  end_row: 13
+  column_range: "B:AH"
+
+hydrogen_demand_export&steel_step_change:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 16
+  end_row: 17
+  column_range: "B:AH"
+
+hydrogen_demand_export&steel_green_energy_exports:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 20
+  end_row: 21
+  column_range: "B:AH"
+
+hydrogen_demand_for_green_steel_production:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 27
+  end_row: 28
+  column_range: "B:AH"
+
+electricity_demand_for_green_steel_production:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 36
+  end_row: 37
+  column_range: "B:AH"
