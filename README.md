@@ -47,7 +47,7 @@ Tables are defined in the configuration files using the following attributes:
    - If the table header is defined over multiple rows, then provide a list of row numbers sorted in ascending order (e.g. `[6, 7, 8]`)
 - `end_row`: the last row of table data
 - `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
-- `skip_rows`: optional, a list of excel rows in the table but that should not be read in (e.g. `[15]`)
+- `skip_rows`: optional, a list of excel rows in the table that should not be read in (e.g. `[15]`)
 
 ### Adding table configuration files to this package
 
