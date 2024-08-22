@@ -237,7 +237,11 @@ class Parser:
                 usecols=column_next_to_first_column,
                 nrows=(end_row - start_row),
             )
-            if not data[data.columns[0]].isna().all():
+            if data[data.columns[0]].isna().all():
+                range_error = False
+            elif any(data[data.columns[0]].str.contains("DO NOT DELETE THIS COLUMN")):
+                range_error = False
+            else:
                 range_error = True
         except pd.errors.ParserError:
             range_error = False
