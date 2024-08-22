@@ -3,3 +3,9 @@ retirement_costs:
   header_rows: 9
   end_row: 16
   column_range: "H:I"
+
+expected_closure_years:
+  sheet_name: "Retirement"
+  header_rows: 9
+  end_row: 460
+  column_range: "B:E"

@@ -1,0 +1,35 @@
+existing_generator_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  end_row: 258
+  column_range: "B:AB"
+
+committed_generator_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [261, 262, 263]
+  end_row: 290
+  column_range: "B:AB"
+
+anticipated_projects_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [293, 294, 295]
+  end_row: 311
+  column_range: "B:AB"
+
+batteries_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [314, 315, 316]
+  end_row: 370
+  column_range: "B:AB"
+
+additional_projects_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [372, 373, 374]
+  end_row: 387
+  column_range: "B:AB"
+
+new_entrants_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [390, 391, 392]
+  end_row: 680
+  column_range: "B:AG"
