@@ -1,13 +1,10 @@
 import pytest
 
-from isp_workbook_parser import Parser
 from isp_workbook_parser.parser import TableConfigError
 from isp_workbook_parser.config_model import TableConfig
 
-workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
-
-def test_end_row_runs_into_another_table_throws_error():
+def test_end_row_runs_into_another_table_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -20,10 +17,10 @@ def test_end_row_runs_into_another_table_throws_error():
         "incorrectly specified."
     )
     with pytest.raises(TableConfigError, match=error_message):
-        workbook.get_table_from_config(table_config)
+        workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_row_runs_into_notes_throws_error():
+def test_end_row_runs_into_notes_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -35,10 +32,10 @@ def test_end_row_runs_into_notes_throws_error():
         "The first column of the table DUMMY contains the sub string 'Notes:'."
     )
     with pytest.raises(TableConfigError, match=error_message):
-        workbook.get_table_from_config(table_config)
+        workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_row_too_soon_throws_error():
+def test_end_row_too_soon_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -50,10 +47,10 @@ def test_end_row_too_soon_throws_error():
         "There is data in the row after the defined table end for table DUMMY."
     )
     with pytest.raises(TableConfigError, match=error_message):
-        workbook.get_table_from_config(table_config)
+        workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_column_too_soon_throws_error():
+def test_end_column_too_soon_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -65,10 +62,10 @@ def test_end_column_too_soon_throws_error():
         "There is data in the column adjacent to the last column in the table DUMMY."
     )
     with pytest.raises(TableConfigError, match=error_message):
-        workbook.get_table_from_config(table_config)
+        workbook_v6.get_table_from_config(table_config)
 
 
-def test_start_column_too_far_throws_error():
+def test_start_column_too_far_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -80,10 +77,10 @@ def test_start_column_too_far_throws_error():
         "There is data in the column adjacent to the first column in the table DUMMY."
     )
     with pytest.raises(TableConfigError, match=error_message):
-        workbook.get_table_from_config(table_config)
+        workbook_v6.get_table_from_config(table_config)
 
 
-def test_good_config_throws_no_error():
+def test_good_config_throws_no_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -91,4 +88,4 @@ def test_good_config_throws_no_error():
         end_row=21,
         column_range="B:J",
     )
-    workbook.get_table_from_config(table_config)
+    workbook_v6.get_table_from_config(table_config)
