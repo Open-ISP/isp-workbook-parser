@@ -105,7 +105,6 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         assert sorted(table.header_rows) == table.header_rows
         # check that the header_rows are adjacent
         assert set(np.diff(table.header_rows)) == set([1])
-        # apply skip_rows before header processing
         # start processing multiple header rows
         header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
         initial_header = pd.Series(df_initial.columns)
