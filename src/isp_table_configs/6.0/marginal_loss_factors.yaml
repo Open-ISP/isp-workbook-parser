@@ -1,0 +1,17 @@
+existing_generators_marginal_loss_factors:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 260
+  column_range: "B:C"
+
+committed_projects_marginal_loss_factors:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 35
+  column_range: "E:G"
+
+new_entrants_marginal_loss_factors:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 103
+  column_range: "I:K"

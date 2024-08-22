@@ -77,5 +77,8 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
     with open(path, "r") as f:
         config = yaml.safe_load(f)
         f.close()
-    tables = {name: TableConfig(name=name, **config[name]) for name in config}
+    if config is not None:
+        tables = {name: TableConfig(name=name, **config[name]) for name in config}
+    else:
+        tables = {}
     return tables
