@@ -415,7 +415,7 @@ class Parser:
         for table_name in tables:
             table = self.get_table(table_name, config_checks=config_checks)
             save_path = directory / Path(f"{table_name}.csv")
-            table.to_csv(save_path)
+            table.to_csv(save_path, index=False)
 
 
 class TableConfigError(Exception):
