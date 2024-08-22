@@ -198,7 +198,7 @@ class Parser:
             data = pd.read_excel(
                 self.file,
                 sheet_name=sheet_name,
-                header=start_row,
+                header=start_row - 1,
                 usecols=column_next_to_last_column,
                 nrows=(end_row - start_row),
             )
@@ -233,13 +233,13 @@ class Parser:
             data = pd.read_excel(
                 self.file,
                 sheet_name=sheet_name,
-                header=start_row,
+                header=start_row - 1,
                 usecols=column_next_to_first_column,
                 nrows=(end_row - start_row),
             )
             if data[data.columns[0]].isna().all():
                 range_error = False
-            elif any(data[data.columns[0]].str.contains("DO NOT DELETE THIS COLUMN")):
+            elif "DO NOT DELETE THIS COLUMN" in data.columns[0]:
                 range_error = False
             else:
                 range_error = True
