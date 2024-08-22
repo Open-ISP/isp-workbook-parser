@@ -1,5 +1,6 @@
 import pandas as pd
 from isp_workbook_parser import TableConfig
+from typing import Union, List
 import numpy as np
 
 
@@ -57,11 +58,27 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         1. Dropping the header rows in the table
         2. Applying the merged headers as the columns of the DataFrame
         3. Forward fill values across columns (handles merged value cells)
+        4. Reset the DataFrame index
         """
         df_cleaned = df_initial.iloc[header_rows_in_table:, :]
         df_cleaned.columns = new_headers
-        df_cleaned = df_cleaned.ffill(axis=1)
+        df_cleaned = df_cleaned.ffill(axis=1).reset_index(drop=True)
         return df_cleaned
+
+    def _skip_rows_in_dataframe(
+        df: pd.DataFrame, config_skip_rows: Union[int, List[int]], last_header_row: int
+    ) -> pd.DataFrame:
+        """
+        Drop rows specified by `skip_rows` by applying an offset from the header and
+        dropping based on index values
+        """
+        df_reset_index = df.reset_index(drop=True)
+        if isinstance(config_skip_rows, int):
+            skip_rows = [config_skip_rows - last_header_row - 1]
+        else:
+            skip_rows = np.subtract(config_skip_rows, last_header_row + 1)
+        dropped = df_reset_index.drop(index=skip_rows).reset_index(drop=True)
+        return dropped
 
     if type(table.header_rows) is int:
         df = pd.read_excel(
@@ -71,6 +88,8 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             usecols=table.column_range,
             nrows=(table.end_row - table.header_rows),
         )
+        if table.skip_rows:
+            df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
         return df
     else:
         df_initial = pd.read_excel(
@@ -86,10 +105,11 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         assert sorted(table.header_rows) == table.header_rows
         # check that the header_rows are adjacent
         assert set(np.diff(table.header_rows)) == set([1])
+        # apply skip_rows before header processing
+        # start processing multiple header rows
         header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
         initial_header = pd.Series(df_initial.columns)
         ffilled_initial_header = _ffill_highest_header(initial_header)
-        # for multiple header rows
         filled_headers = []
         # ffill intermediate header rows
         for i in range(0, header_rows_in_table - 1):
@@ -108,4 +128,8 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         df_cleaned = _build_cleaned_dataframe(
             df_initial, header_rows_in_table, merged_headers
         )
+        if table.skip_rows:
+            df_cleaned = _skip_rows_in_dataframe(
+                df_cleaned, table.skip_rows, table.header_rows[-1]
+            )
         return df_cleaned
