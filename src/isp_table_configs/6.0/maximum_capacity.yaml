@@ -1,0 +1,35 @@
+maximum_capacity_new_entrants:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 27
+  column_range: "AD:AG"
+
+maximum_capacity_existing_generators:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 260
+  column_range: "B:D"
+
+maximum_capacity_committed_generators:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 35
+  column_range: "F:I"
+
+maximum_capacity_anticipated_projects:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 24
+  column_range: "K:N"
+
+maximum_capacity_existing_committed_and_anticipated_batteries:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 62
+  column_range: "P:U"
+
+maximum_capacity_additional_projects:
+  sheet_name: "Maximum capacity"
+  header_rows: 8
+  end_row: 21
+  column_range: "W:AB"

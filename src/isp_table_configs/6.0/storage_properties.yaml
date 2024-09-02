@@ -1,0 +1,5 @@
+biomass_prices:
+  sheet_name: "Storage properties"
+  header_rows: 4
+  end_row: 13
+  column_range: "B:H"

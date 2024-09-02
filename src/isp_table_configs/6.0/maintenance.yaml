@@ -1,0 +1,11 @@
+maintenance_existing_generators:
+  sheet_name: "Maintenance"
+  header_rows: 7
+  end_row: 19
+  column_range: "B:D"
+
+maintenance_new_entrants:
+  sheet_name: "Maintenance"
+  header_rows: 7
+  end_row: 26
+  column_range: "G:I"

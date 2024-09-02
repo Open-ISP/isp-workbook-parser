@@ -1,0 +1,59 @@
+#gas_and_liquid_fuel_prices_consultant_scenario_mapping:
+#  sheet_name: "Gas, Liquid fuel, H2 price"
+#  header_rows: 4
+#  end_row: 7
+#  column_range: "G:L"
+
+gas_prices_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 10
+  end_row: 59
+  column_range: "B:AI"
+
+gas_prices_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 62
+  end_row: 111
+  column_range: "B:AI"
+
+gas_prices_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 114
+  end_row: 163
+  column_range: "B:AI"
+
+industrial_fuel_costs_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 171
+  end_row: 177
+  column_range: "B:AI"
+
+industrial_fuel_costs_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 180
+  end_row: 186
+  column_range: "B:AI"
+
+industrial_fuel_costs_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 189
+  end_row: 195
+  column_range: "B:AI"
+
+liquid_fuel_prices:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 203
+  end_row: 207
+  column_range: "B:AI"
+
+hydrogen_prices:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 214
+  end_row: 218
+  column_range: "B:AI"
+
+biomethane_prices:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 224
+  end_row: 228
+  column_range: "B:AI"

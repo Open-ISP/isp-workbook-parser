@@ -127,7 +127,8 @@ class Parser:
         value_in_second_column_after_last_row = (
             self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
         )
-        if value_in_second_column_after_last_row is not None:
+        if (value_in_second_column_after_last_row is not None
+                and value_in_second_column_after_last_row == ''):
             error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
 
@@ -159,7 +160,7 @@ class Parser:
         """
         notes_sub_strings = ["Notes:", "Note:", "Source:", "Sources:"]
         for sub_string in notes_sub_strings:
-            if data[data.columns[0]].str.contains(sub_string).any():
+            if data[data.columns[0]].astype(str).str.contains(sub_string).any():
                 error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
                 raise TableConfigError(error_message)
 
@@ -168,13 +169,12 @@ class Parser:
         """Check that no columns in the table are empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
-        table then empty columns of data could be read into the table. Checking that no columns in the table are
+        table then empty columns of data could be read into the table. Checking if the last column in the table is
         empty helps detect if the config is incorrect.
         """
-        for column in data.columns:
-            if data[column].isna().all():
-                error_message = f"The last column of the table {name} is empty."
-                raise TableConfigError(error_message)
+        if data[data.columns[-1]].isna().all():
+            error_message = f"The last column of the table {name} is empty."
+            raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
@@ -202,6 +202,7 @@ class Parser:
                 usecols=column_next_to_last_column,
                 nrows=(end_row - start_row),
             )
+            data = data[~data.isin(['`'])]  # explicit exceptions for messy data
             if not data[data.columns[0]].isna().all():
                 range_error = True
         except pd.errors.ParserError:
@@ -248,6 +249,22 @@ class Parser:
 
         if range_error:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
+            raise TableConfigError(error_message)
+
+    def _check_if_end_row_is_on_sheet(self, table_config):
+        """Checks if end_row for the config is within the sheet.
+        """
+        if table_config.end_row > self.openpyxl_file[table_config.sheet_name].max_row:
+            error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+
+    def _check_if_end_column_is_on_sheet(self, table_config):
+        """Checks if end_row for the config is within the sheet.
+        """
+        last_column = table_config.column_range.split(":")[1]
+        last_col_index = openpyxl.utils.column_index_from_string(last_column)
+        if last_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
+            error_message = f"The end of the column range for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
     def _check_table(self, data, table_config) -> None:
@@ -331,6 +348,9 @@ class Parser:
                 starts and ends where expected and the workbook header matches the config header.
 
         """
+        if config_checks:
+            self._check_if_end_row_is_on_sheet(table_config)
+            self._check_if_end_column_is_on_sheet(table_config)
         data = read_table(self.file, table_config)
         if config_checks:
             self._check_table(data, table_config)

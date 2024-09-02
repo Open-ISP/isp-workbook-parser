@@ -1,0 +1,29 @@
+coal_and_biomass_price_consultant_scenario_mapping:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 5
+  end_row: 6
+  column_range: "H:K"
+
+coal_prices_progressive_change:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 9
+  end_row: 24
+  column_range: "B:AI"
+
+coal_prices_step_change:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 27
+  end_row: 42
+  column_range: "B:AI"
+
+coal_prices_green_energy_exports:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 45
+  end_row: 60
+  column_range: "B:AI"
+
+biomass_prices:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 64
+  end_row: 67
+  column_range: "B:AI"

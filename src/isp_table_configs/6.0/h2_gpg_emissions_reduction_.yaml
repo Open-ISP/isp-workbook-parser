@@ -1,0 +1,11 @@
+gpg_emissions_reduction_h2_kogan:
+  sheet_name: "H2 GPG_emissions reduction "
+  header_rows: 8
+  end_row: 11
+  column_range: "B:AH"
+
+gpg_emissions_reduction_h2_sa_turbine:
+  sheet_name: "H2 GPG_emissions reduction "
+  header_rows: 15
+  end_row: 18
+  column_range: "B:AH"

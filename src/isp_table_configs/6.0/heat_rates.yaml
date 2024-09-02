@@ -1,0 +1,11 @@
+heat_rates_existing_committed_anticipated_additional_generators:
+  sheet_name: "Heat rates"
+  header_rows: 8
+  end_row: 69
+  column_range: "B:D"
+
+heat_rates_new_entrants:
+  sheet_name: "Heat rates"
+  header_rows: 8
+  end_row: 14
+  column_range: "F:G"
