@@ -27,9 +27,11 @@ offshore_wind_fixed_capacity_factors:
   header_rows: [93, 94, 95]
   end_row: 102
   column_range: "B:R"
+  skip_rows: 102
 
 offshore_wind_floating_capacity_factors:
   sheet_name: "Capacity Factors "
   header_rows: [93, 94, 95]
   end_row: 102
   column_range: "T:AJ"
+  skip_rows: 102

@@ -1,0 +1,12 @@
+connection_costs_for_wind_and_solar:
+  sheet_name: "Connection cost"
+  header_rows: 7
+  end_row: 51
+  column_range: "B:I"
+  skip_rows: 51
+
+connection_costs_other:
+  sheet_name: "Connection cost"
+  header_rows: 59
+  end_row: 64
+  column_range: "B:Q"

@@ -1,0 +1,11 @@
+discount_rate:
+  sheet_name: "Financial parameters"
+  header_rows: 7
+  end_row: 9
+  column_range: "B:E"
+
+value_of_customer_reliability:
+  sheet_name: "Financial parameters"
+  header_rows: 16
+  end_row: 17
+  column_range: "B:G"

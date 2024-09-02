@@ -1,4 +1,4 @@
-gpg_min_stable_level_existing_generator:
+gpg_min_stable_level_existing_generators:
   sheet_name: "GPG Min Stable Level"
   header_rows: 9
   end_row: 34
