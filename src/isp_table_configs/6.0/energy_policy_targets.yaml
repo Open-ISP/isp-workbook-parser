@@ -1,0 +1,53 @@
+powering_australia_plan:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 22
+  end_row: 23
+  column_range: "B:C"
+
+powering_australia_plan_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 35
+  end_row: 39
+  column_range: "B:E"
+
+capacity_investment_scheme_renewable_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 57
+  end_row: 58
+  column_range: "B:H"
+
+capacity_investment_scheme_storage_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 76
+  end_row: 77
+  column_range: "B:H"
+
+nsw_roadmap_renewable_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 57
+  end_row: 58
+  column_range: "B:I"
+
+qld_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 141
+  end_row: 144
+  column_range: "B:C"
+
+qld_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 154
+  end_row: 156
+  column_range: "B:O"
+
+tas_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 173
+  end_row: 176
+  column_range: "B:C"
+
+tas_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 184
+  end_row: 186
+  column_range: "B:T"

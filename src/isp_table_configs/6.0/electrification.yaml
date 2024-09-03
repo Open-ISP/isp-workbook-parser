@@ -1,0 +1,29 @@
+electrification_consultant_scenario_mapping:
+  sheet_name: "Electrification"
+  header_rows: 9
+  end_row: 10
+  column_range: "B:F"
+
+electrification_progressive_change:
+  sheet_name: "Electrification"
+  header_rows: 13
+  end_row: 18
+  column_range: "B:AG"
+
+electrification_step_change:
+  sheet_name: "Electrification"
+  header_rows: 21
+  end_row: 26
+  column_range: "B:AG"
+
+electrification_green_energy_exports:
+  sheet_name: "Electrification"
+  header_rows: 29
+  end_row: 34
+  column_range: "B:AG"
+
+electrification_green_electrification_alternatives:
+  sheet_name: "Electrification"
+  header_rows: 37
+  end_row: 42
+  column_range: "B:AG"
