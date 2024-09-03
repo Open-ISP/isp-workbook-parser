@@ -42,12 +42,12 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     ... table=config,
     ... )
     >>> existing_gen_summary.head()
-      Existing generator  ... Connection cost - Partial outage - Technology
-    0          Bayswater  ...                                Black Coal NSW
-    1            Eraring  ...                                Black Coal NSW
-    2           Mt Piper  ...                                Black Coal NSW
-    3      Vales Point B  ...                                Black Coal NSW
-    4          Callide B  ...                                Black Coal QLD
+      Existing generator  ... Connection cost_Partial outage_Technology
+    0          Bayswater  ...                            Black Coal NSW
+    1            Eraring  ...                            Black Coal NSW
+    2           Mt Piper  ...                            Black Coal NSW
+    3      Vales Point B  ...                            Black Coal NSW
+    4          Callide B  ...                            Black Coal QLD
     <BLANKLINE>
     [5 rows x 28 columns]
 
@@ -150,7 +150,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         )
         # add separators manually - ignore any "" entries
         for series in filled_headers:
-            series[series != ""] = " - " + series[series != ""]
+            series[series != ""] = "_" + series[series != ""]
         merged_headers = ffilled_initial_header.str.cat(filled_headers)
         df_cleaned = _build_cleaned_dataframe(
             df_initial, header_rows_in_table, merged_headers
