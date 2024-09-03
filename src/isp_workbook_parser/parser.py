@@ -288,13 +288,13 @@ class Parser:
 
         >>> names = workbook.get_table_names()
 
-        >>> sorted(names)[0:3]
+        >>> names[0:3]
         ['additional_projects_summary', 'anticipated_projects_summary', 'batteries_summary']
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
         """
-        return self.table_names
+        return sorted(self.table_names)
 
     def get_table_from_config(
         self, table_config, config_checks: bool = True
