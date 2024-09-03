@@ -1,0 +1,11 @@
+nem_carbon_budget:
+  sheet_name: "Carbon Budgets"
+  header_rows: 7
+  end_row: 10
+  column_range: "B:E"
+
+regional_carbon_budget:
+  sheet_name: "Carbon Budgets"
+  header_rows: 21
+  end_row: 25
+  column_range: "B:E"
