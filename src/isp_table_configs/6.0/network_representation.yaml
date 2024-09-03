@@ -27,4 +27,3 @@ sub_regional_load_and_generation_representation:
   header_rows: 63
   end_row: 75
   column_range: "B:D"
-

@@ -39,4 +39,3 @@ network_committed_and_anticipated_project_timing:
   header_rows: 128
   end_row: 141
   column_range: "B:C"
-
