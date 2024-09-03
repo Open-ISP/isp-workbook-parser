@@ -310,20 +310,20 @@ class Parser:
         ... sheet_name='Summary Mapping',
         ... header_rows=[4, 5, 6],
         ... end_row=258,
-        ... column_range="B:AC",
+        ... column_range="B:AB",
         ... )
 
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table_from_config(config).head()
-          Existing generator  ... Connection cost_Partial outage_Technology
-        0          Bayswater  ...                            Black Coal NSW
-        1            Eraring  ...                            Black Coal NSW
-        2           Mt Piper  ...                            Black Coal NSW
-        3      Vales Point B  ...                            Black Coal NSW
-        4          Callide B  ...                            Black Coal QLD
+          Existing generator     Technology type  ...            MLF Auxiliary load (%)
+        0          Bayswater  Steam Sub Critical  ...      Bayswater     Black Coal NSW
+        1            Eraring  Steam Sub Critical  ...        Eraring     Black Coal NSW
+        2           Mt Piper  Steam Sub Critical  ...       Mt Piper     Black Coal NSW
+        3      Vales Point B  Steam Sub Critical  ...  Vales Point B     Black Coal NSW
+        4          Callide B  Steam Sub Critical  ...      Callide B     Black Coal QLD
         <BLANKLINE>
-        [5 rows x 28 columns]
+        [5 rows x 27 columns]
 
         Args:
             table_config: A table configuration.
