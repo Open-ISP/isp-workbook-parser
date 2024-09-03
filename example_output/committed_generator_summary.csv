@@ -2,7 +2,7 @@ Committed generator,Technology type,Region,Sub-region,REZ location,Status,Region
 (% of time)_Until 2022","Forced outage rate_Full outage
 (% of time)_Post 2022","Forced outage rate_Partial outage
 (% of time)_Until 2022","Forced outage rate_Partial outage
-(% of time)_Post 2022",Mean time to repair_Full outage_Until 2022,Mean time to repair_Full outage_Post 2022,Mean time to repair_Partial outage_Until 2022,Mean time to repair_Partial outage_Post 2022,Maintenance duration (%)_Partial outage,Minimum load (MW)_Partial outage,Maximum capacity factor (%)_Partial outage,FOM ($/kW/annum)_Partial outage,VOM ($/MWh sent-out)_Partial outage,Heat rate_Partial outage,MLF_Partial outage,Auxiliary load (%)_Partial outage
+(% of time)_Post 2022",Mean time to repair_Full outage_Until 2022,Mean time to repair_Full outage_Post 2022,Mean time to repair_Partial outage_Until 2022,Mean time to repair_Partial outage_Post 2022,Maintenance duration (%),Minimum load (MW),Maximum capacity factor (%),FOM ($/kW/annum),VOM ($/MWh sent-out),Heat rate,MLF,Auxiliary load (%)
 Kurri Kurri OCGT,OCGT,NSW,SNW,SNW,Committed,Committed,Gas,Kurri Kurri,Kurri Kurri OCGT,Kurri Kurri OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,Kurri Kurri OCGT,Kurri Kurri OCGT,Kurri Kurri OCGT2,Kurri Kurri OCGT,OCGT
 Tallawarra B*,OCGT,NSW,SNW,SNW,Committed,Committed,Gas,Tallawarra B,Tallawarra B*,Tallawarra B*,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,Tallawarra B,Tallawarra B,Tallawarra B,Tallawarra B*,OCGT
 Kidston ,Pumped Hydro,QLD,NQ,NQ,Committed,Committed,Water,Hydro,Kidston ,Kidston ,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,All Hydro,All Hydro,All Hydro,Kidston ,Hydro
