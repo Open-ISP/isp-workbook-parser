@@ -42,4 +42,4 @@ def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6):
     )
     df = workbook_v6.get_table_from_config(table_config)
     assert len(df) == (table_config.end_row - table_config.header_rows[-1] - 7)
-    assert df[df["Wind High - REZ ID"].str.contains("V")].empty
+    assert df[df["Wind High_REZ ID"].str.contains("V")].empty

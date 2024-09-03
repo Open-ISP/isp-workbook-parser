@@ -316,12 +316,12 @@ class Parser:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table_from_config(config).head()
-          Existing generator  ... Connection cost - Partial outage - Technology
-        0          Bayswater  ...                                Black Coal NSW
-        1            Eraring  ...                                Black Coal NSW
-        2           Mt Piper  ...                                Black Coal NSW
-        3      Vales Point B  ...                                Black Coal NSW
-        4          Callide B  ...                                Black Coal QLD
+          Existing generator  ... Connection cost_Partial outage_Technology
+        0          Bayswater  ...                            Black Coal NSW
+        1            Eraring  ...                            Black Coal NSW
+        2           Mt Piper  ...                            Black Coal NSW
+        3      Vales Point B  ...                            Black Coal NSW
+        4          Callide B  ...                            Black Coal QLD
         <BLANKLINE>
         [5 rows x 28 columns]
 
@@ -343,12 +343,12 @@ class Parser:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
-          Wind High - REZ ID  ... Wind High - Avg of ref years
-        0                 Q1  ...                     0.456914
-        1                 Q2  ...                     0.417142
-        2                 Q3  ...       Resource limit of 0 MW
-        3                 Q4  ...                      0.34437
-        4                 Q5  ...                     0.326029
+          Wind High_REZ ID  ... Wind High_Avg of ref years
+        0               Q1  ...                   0.456914
+        1               Q2  ...                   0.417142
+        2               Q3  ...     Resource limit of 0 MW
+        3               Q4  ...                    0.34437
+        4               Q5  ...                   0.326029
         <BLANKLINE>
         [5 rows x 17 columns]
 

@@ -1,8 +1,8 @@
-Committed generator,Technology type,Region,Sub-region,REZ location,Status,Regional build cost zone,Fuel type,Fuel cost mapping,Summer rating (MW),Winter rating (MW),"Forced outage rate - Full outage
-(% of time) - Until 2022","Forced outage rate - Full outage
-(% of time) - Post 2022","Forced outage rate - Partial outage
-(% of time) - Until 2022","Forced outage rate - Partial outage
-(% of time) - Post 2022",Mean time to repair - Full outage - Until 2022,Mean time to repair - Full outage - Post 2022,Mean time to repair - Partial outage - Until 2022,Mean time to repair - Partial outage - Post 2022,Maintenance duration (%) - Partial outage,Minimum load (MW) - Partial outage,Maximum capacity factor (%) - Partial outage,FOM ($/kW/annum) - Partial outage,VOM ($/MWh sent-out) - Partial outage,Heat rate - Partial outage,MLF - Partial outage,Auxiliary load (%) - Partial outage
+Committed generator,Technology type,Region,Sub-region,REZ location,Status,Regional build cost zone,Fuel type,Fuel cost mapping,Summer rating (MW),Winter rating (MW),"Forced outage rate_Full outage
+(% of time)_Until 2022","Forced outage rate_Full outage
+(% of time)_Post 2022","Forced outage rate_Partial outage
+(% of time)_Until 2022","Forced outage rate_Partial outage
+(% of time)_Post 2022",Mean time to repair_Full outage_Until 2022,Mean time to repair_Full outage_Post 2022,Mean time to repair_Partial outage_Until 2022,Mean time to repair_Partial outage_Post 2022,Maintenance duration (%)_Partial outage,Minimum load (MW)_Partial outage,Maximum capacity factor (%)_Partial outage,FOM ($/kW/annum)_Partial outage,VOM ($/MWh sent-out)_Partial outage,Heat rate_Partial outage,MLF_Partial outage,Auxiliary load (%)_Partial outage
 Kurri Kurri OCGT,OCGT,NSW,SNW,SNW,Committed,Committed,Gas,Kurri Kurri,Kurri Kurri OCGT,Kurri Kurri OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,Kurri Kurri OCGT,Kurri Kurri OCGT,Kurri Kurri OCGT2,Kurri Kurri OCGT,OCGT
 Tallawarra B*,OCGT,NSW,SNW,SNW,Committed,Committed,Gas,Tallawarra B,Tallawarra B*,Tallawarra B*,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,OCGT,Tallawarra B,Tallawarra B,Tallawarra B,Tallawarra B*,OCGT
 Kidston ,Pumped Hydro,QLD,NQ,NQ,Committed,Committed,Water,Hydro,Kidston ,Kidston ,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,Hydro,All Hydro,All Hydro,All Hydro,Kidston ,Hydro
