@@ -127,8 +127,10 @@ class Parser:
         value_in_second_column_after_last_row = (
             self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
         )
-        if (value_in_second_column_after_last_row is not None
-                and value_in_second_column_after_last_row == ''):
+        if (
+            value_in_second_column_after_last_row is not None
+            and value_in_second_column_after_last_row == ""
+        ):
             error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
 
@@ -202,7 +204,7 @@ class Parser:
                 usecols=column_next_to_last_column,
                 nrows=(end_row - start_row),
             )
-            data = data[~data.isin(['`'])]  # explicit exceptions for messy data
+            data = data[~data.isin(["`"])]  # explicit exceptions for messy data
             if not data[data.columns[0]].isna().all():
                 range_error = True
         except pd.errors.ParserError:
@@ -252,15 +254,13 @@ class Parser:
             raise TableConfigError(error_message)
 
     def _check_if_end_row_is_on_sheet(self, table_config):
-        """Checks if end_row for the config is within the sheet.
-        """
+        """Checks if end_row for the config is within the sheet."""
         if table_config.end_row > self.openpyxl_file[table_config.sheet_name].max_row:
             error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
     def _check_if_end_column_is_on_sheet(self, table_config):
-        """Checks if end_row for the config is within the sheet.
-        """
+        """Checks if end_row for the config is within the sheet."""
         last_column = table_config.column_range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
         if last_col_index > self.openpyxl_file[table_config.sheet_name].max_column:

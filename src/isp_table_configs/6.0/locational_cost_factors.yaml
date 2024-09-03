@@ -9,4 +9,3 @@ technology_cost_breakdown_ratios:
   header_rows: 33
   end_row: 48
   column_range: "B:F"
-
