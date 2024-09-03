@@ -22,13 +22,41 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         7. New headers are applied, NAs in the DataFrame are forward filled and the
         header rows in the table are dropped
 
+    Examples:
+
+    The example below reads the "Existing Generators Summary" table from the 2024
+    version 6 workbook.
+
+    >>> from isp_workbook_parser import TableConfig, read_table
+
+    >>> config = TableConfig(
+    ... name='existing_generators_summary',
+    ... sheet_name='Summary Mapping',
+    ... header_rows=[4, 5, 6],
+    ... end_row=258,
+    ... column_range="B:AC",
+    ... )
+
+    >>> existing_gen_summary = read_table(
+    ... workbook_file='workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx',
+    ... table=config,
+    ... )
+    >>> existing_gen_summary.head()
+      Existing generator  ... Connection cost - Partial outage - Technology
+    0          Bayswater  ...                                Black Coal NSW
+    1            Eraring  ...                                Black Coal NSW
+    2           Mt Piper  ...                                Black Coal NSW
+    3      Vales Point B  ...                                Black Coal NSW
+    4          Callide B  ...                                Black Coal QLD
+    <BLANKLINE>
+    [5 rows x 28 columns]
+
     Args:
         workbook_file: pandas ExcelFile object
         table: Parsed table config
 
     Returns:
         Table as a pandas DataFrame
-
     """
 
     def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:

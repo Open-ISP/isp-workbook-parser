@@ -288,13 +288,13 @@ class Parser:
 
         >>> names = workbook.get_table_names()
 
-        >>> sorted(names)
-        ['existing_generator_outages_2023-2024', 'retirement_costs', 'wind_high_capacity_factors']
+        >>> names[0:3]
+        ['additional_projects_summary', 'anticipated_projects_summary', 'batteries_summary']
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
         """
-        return self.table_names
+        return sorted(self.table_names)
 
     def get_table_from_config(
         self, table_config, config_checks: bool = True
@@ -317,11 +317,11 @@ class Parser:
 
         >>> workbook.get_table_from_config(config).head()
           Existing generator  ... Connection cost - Partial outage - Technology
-        2          Bayswater  ...                                Black Coal NSW
-        3            Eraring  ...                                Black Coal NSW
-        4           Mt Piper  ...                                Black Coal NSW
-        5      Vales Point B  ...                                Black Coal NSW
-        6          Callide B  ...                                Black Coal QLD
+        0          Bayswater  ...                                Black Coal NSW
+        1            Eraring  ...                                Black Coal NSW
+        2           Mt Piper  ...                                Black Coal NSW
+        3      Vales Point B  ...                                Black Coal NSW
+        4          Callide B  ...                                Black Coal QLD
         <BLANKLINE>
         [5 rows x 28 columns]
 
@@ -344,11 +344,11 @@ class Parser:
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
           Wind High - REZ ID  ... Wind High - Avg of ref years
-        2                 Q1  ...                     0.456914
-        3                 Q2  ...                     0.417142
-        4                 Q3  ...       Resource limit of 0 MW
-        5                 Q4  ...                      0.34437
-        6                 Q5  ...                     0.326029
+        0                 Q1  ...                     0.456914
+        1                 Q2  ...                     0.417142
+        2                 Q3  ...       Resource limit of 0 MW
+        3                 Q4  ...                      0.34437
+        4                 Q5  ...                     0.326029
         <BLANKLINE>
         [5 rows x 17 columns]
 

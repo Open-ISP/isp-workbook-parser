@@ -32,7 +32,7 @@ dev-dependencies = [
 
 [tool.pytest.ini_options]
 # path to tests for pytest
-testpaths = ["tests"]
+testpaths = ["src", "tests"]
 # addopts = add options
 # --cov points pytest-cov to the src/ dir
 # --cov-branch runs branch coverage
