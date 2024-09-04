@@ -10,7 +10,9 @@ inter_regional_loss_equations_committed_and_anticipated:
   end_row: 31
   column_range: "B:I"
 
+
 # Commented out because version does not support merged cells across rows.
+
 #inter_regional_loss_equations_development_options:
 #  sheet_name: "Network losses"
 #  header_rows: 38
