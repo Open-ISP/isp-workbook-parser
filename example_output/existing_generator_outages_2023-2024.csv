@@ -1,4 +1,4 @@
-Fuel type,Forced Outage Rate (%)_Full outage (% of time),Forced Outage Rate (%)_Partial outage (% of time),Mean time to repair (hrs) _Full outage,Mean time to repair (hrs) _Partial outage,Partial Outage Derating Factor (%)
+Fuel type,Forced Outage Rate (%)_Full outage (% of time),Forced Outage Rate (%)_Partial outage (% of time),Mean time to repair (hrs) _Full outage,Mean time to repair (hrs) _Partial outage,Partial Outage Derating Factor (%) 
 Brown Coal,0.0775,0.1156,90.05,12.2,0.1791
 Black Coal NSW,0.0631,0.3146,157.62,33.97,0.166
 Black Coal QLD,0.0675,0.1286,185.0,56.42,0.2516

@@ -13,7 +13,7 @@ build_costs_current_policies:
 build_costs_global_nze_post_2050:
   sheet_name: "Build costs"
   header_rows: 34
-  end_row: 39
+  end_row: 49
   column_range: "B:AI"
 
 build_costs_global_nze_by_2050:

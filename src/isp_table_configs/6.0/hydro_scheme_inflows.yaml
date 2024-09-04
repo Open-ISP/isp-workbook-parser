@@ -7,7 +7,7 @@ hydro_inflows_qld_and_vic:
 hydro_inflows_snowy:
   sheet_name: "Hydro Scheme Inflows"
   header_rows: 34
-  end_row: 37
+  end_row: 47
   column_range: "B:O"
 
 hydro_inflows_tas:

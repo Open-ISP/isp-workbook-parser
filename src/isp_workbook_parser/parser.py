@@ -129,7 +129,7 @@ class Parser:
         )
         if (
             value_in_second_column_after_last_row is not None
-            and value_in_second_column_after_last_row == ""
+            and value_in_second_column_after_last_row not in ["", " ", '\u00A0']
         ):
             error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
@@ -306,7 +306,7 @@ class Parser:
         >>> names = workbook.get_table_names()
 
         >>> names[0:3]
-        ['additional_projects_summary', 'anticipated_projects_summary', 'batteries_summary']
+        ['additional_projects_summary', 'affine_heat_rates_committed_anticipated_generators', 'affine_heat_rates_existing_generators']
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.

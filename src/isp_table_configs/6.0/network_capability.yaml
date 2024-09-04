@@ -1,4 +1,4 @@
-flow_patht_transfer_capability:
+flow_path_transfer_capability:
   sheet_name: "Network Capability"
   header_rows: [6, 7]
   end_row: 21

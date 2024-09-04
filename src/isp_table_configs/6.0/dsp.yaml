@@ -6,7 +6,7 @@ dsp_nsw_summer_green_energy_exports:
 
 dsp_nsw_winter_green_energy_exports:
   sheet_name: "DSP"
-  header_rows: 22
+  header_rows: 20
   end_row: 27
   column_range: "B:AG"
 
