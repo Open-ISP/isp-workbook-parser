@@ -135,6 +135,37 @@ class Parser:
             error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
 
+    def _check_no_data_above_first_header_row(
+        self, tab: str, header_rows: int, range: str, name: str
+    ) -> None:
+        """Check that the cell before the first header row of the table in the second column is blank.
+
+        While there are often notes on the data in the first cell above the first column, the first cell above the
+        second column appears to be always blank. Therefore, checking that this cell is blank can be used to verify
+        that the config has not specified a table header row that is after the first header row of the table.
+        """
+        first_column = range.split(":")[0]
+        first_col_index = openpyxl.utils.column_index_from_string(first_column)
+        second_col_index = first_col_index + 1
+
+        if isinstance(header_rows, int):
+            first_header_row = header_rows
+        else:
+            first_header_row = header_rows[0]
+
+        # We check that value in the second column is blank because sometime the row after the first column will
+        # contain notes on the data.
+        value_in_second_column_after_last_row = (
+            self.openpyxl_file[tab].cell(row=first_header_row - 1, column=second_col_index).value
+        )
+        if (
+            value_in_second_column_after_last_row is not None
+            and value_in_second_column_after_last_row not in ["", " ", '\u00A0']
+
+        ):
+            error_message = f"There is data or a header above the first header row for table {name}."
+            raise TableConfigError(error_message)
+
     @staticmethod
     def _check_for_over_run_into_another_table(data: pd.DataFrame, name: str) -> None:
         """Check that the first column of the table does not contain NA values.
@@ -254,18 +285,32 @@ class Parser:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
             raise TableConfigError(error_message)
 
-    def _check_if_end_row_is_on_sheet(self, table_config):
-        """Checks if end_row for the config is within the sheet."""
+    def _check_if_header_row_and_end_row_are_on_sheet(self, table_config) -> None:
+        """Checks if first row of header and end_row are within the sheet."""
+        if isinstance(table_config.header_rows, int):
+            first_header_row = table_config.header_rows
+        else:
+            first_header_row = table_config.header_rows[0]
+
+        if first_header_row > self.openpyxl_file[table_config.sheet_name].max_row:
+            error_message = f"The first header row for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
         if table_config.end_row > self.openpyxl_file[table_config.sheet_name].max_row:
             error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _check_if_end_column_is_on_sheet(self, table_config):
-        """Checks if end_row for the config is within the sheet."""
+    def _check_if_start_and_end_column_are_on_sheet(self, table_config) -> None:
+        """Checks if first column and last column in config are within the sheet."""
+        first_column = table_config.column_range.split(":")[0]
+        first_col_index = openpyxl.utils.column_index_from_string(first_column)
+        if first_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
+            error_message = f"The first column for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+
         last_column = table_config.column_range.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
         if last_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
-            error_message = f"The end of the column range for table {table_config.name} is not within the excel sheet."
+            error_message = f"The last column for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
     def _check_table(self, data, table_config) -> None:
@@ -273,7 +318,12 @@ class Parser:
             start_row = table_config.header_rows[-1]
         else:
             start_row = table_config.header_rows
-
+        self._check_no_data_above_first_header_row(
+            table_config.sheet_name,
+            table_config.header_rows,
+            table_config.column_range,
+            table_config.name
+        )
         self._check_data_ends_where_expected(
             table_config.sheet_name,
             table_config.end_row,
@@ -350,8 +400,8 @@ class Parser:
 
         """
         if config_checks:
-            self._check_if_end_row_is_on_sheet(table_config)
-            self._check_if_end_column_is_on_sheet(table_config)
+            self._check_if_header_row_and_end_row_are_on_sheet(table_config)
+            self._check_if_start_and_end_column_are_on_sheet(table_config)
         data = read_table(self.file, table_config)
         if config_checks:
             self._check_table(data, table_config)

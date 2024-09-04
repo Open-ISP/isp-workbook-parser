@@ -6,7 +6,7 @@ initial_build_limits:
 
 rez_transmission_modifiers:
   sheet_name: "Build limits"
-  header_rows: 71
+  header_rows: [70, 71]
   end_row: 79
   column_range: "B:I"
 
