@@ -155,12 +155,13 @@ class Parser:
         # We check that value in the second column is blank because sometime the row after the first column will
         # contain notes on the data.
         value_in_second_column_after_last_row = (
-            self.openpyxl_file[tab].cell(row=first_header_row - 1, column=second_col_index).value
+            self.openpyxl_file[tab]
+            .cell(row=first_header_row - 1, column=second_col_index)
+            .value
         )
         if (
             value_in_second_column_after_last_row is not None
-            and value_in_second_column_after_last_row not in ["", " ", '\u00A0']
-
+            and value_in_second_column_after_last_row not in ["", " ", "\u00a0"]
         ):
             error_message = f"There is data or a header above the first header row for table {name}."
             raise TableConfigError(error_message)
@@ -321,7 +322,7 @@ class Parser:
             table_config.sheet_name,
             table_config.header_rows,
             table_config.column_range,
-            table_config.name
+            table_config.name,
         )
         self._check_data_ends_where_expected(
             table_config.sheet_name,

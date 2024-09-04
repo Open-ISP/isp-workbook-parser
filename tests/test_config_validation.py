@@ -27,9 +27,7 @@ def test_first_header_row_not_on_sheet_throws_error(workbook_v6):
         end_row=95,
         column_range="B:AF",
     )
-    error_message = (
-        f"The first header row for table {table_config.name} is not within the excel sheet."
-    )
+    error_message = f"The first header row for table {table_config.name} is not within the excel sheet."
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
 
@@ -43,7 +41,7 @@ def test_first_column_not_on_sheet_throws_error(workbook_v6):
         column_range="AI:AF",
     )
     error_message = (
-         f"The first column for table {table_config.name} is not within the excel sheet."
+        f"The first column for table {table_config.name} is not within the excel sheet."
     )
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
@@ -58,7 +56,7 @@ def test_last_column_not_on_sheet_throws_error(workbook_v6):
         column_range="B:AI",
     )
     error_message = (
-         f"The last column for table {table_config.name} is not within the excel sheet."
+        f"The last column for table {table_config.name} is not within the excel sheet."
     )
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
@@ -103,9 +101,7 @@ def test_first_header_row_too_late_throws_error(workbook_v6):
         end_row=20,
         column_range="B:J",
     )
-    error_message = (
-        f"There is data or a header above the first header row for table {table_config.name}."
-    )
+    error_message = f"There is data or a header above the first header row for table {table_config.name}."
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
 
