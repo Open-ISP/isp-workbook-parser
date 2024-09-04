@@ -129,8 +129,7 @@ class Parser:
         )
         if (
             value_in_second_column_after_last_row is not None
-            and value_in_second_column_after_last_row not in ["", " ", '\u00A0']
-
+            and value_in_second_column_after_last_row not in ["", " ", "\u00a0"]
         ):
             error_message = f"There is data in the row after the defined table end for table {name}."
             raise TableConfigError(error_message)
