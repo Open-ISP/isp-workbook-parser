@@ -24,8 +24,14 @@ capacity_investment_scheme_storage_trajectory:
 
 nsw_roadmap_renewable_trajectory:
   sheet_name: "Energy Policy Targets"
-  header_rows: 57
-  end_row: 58
+  header_rows: 98
+  end_row: 99
+  column_range: "B:I"
+
+nsw_roadmap_storage_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 109
+  end_row: 110
   column_range: "B:I"
 
 qld_renewable_target:
@@ -51,3 +57,39 @@ tas_renewable_target_trajectory:
   header_rows: 184
   end_row: 186
   column_range: "B:T"
+
+vic_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 198
+  end_row: 201
+  column_range: "B:C"
+
+vic_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 212
+  end_row: 214
+  column_range: "B:M"
+
+vic_storage_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 227
+  end_row: 229
+  column_range: "B:C"
+
+vic_storage_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 237
+  end_row: 239
+  column_range: "B:M"
+
+vic_offshore_wind_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 246
+  end_row: 249
+  column_range: "B:C"
+
+vic_offshore_wind_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 257
+  end_row: 259
+  column_range: "B:R"

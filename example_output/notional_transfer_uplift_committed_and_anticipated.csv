@@ -1,0 +1,13 @@
+"Flow paths
+(Forward power flow direction)
+(Note 1)",Project EnergyConnect - Forward direction,Project EnergyConnect - Reverse direction,WSB + SIPS + Minor network augmentation(Note 3) - Forward direction,WSB + SIPS + Minor network augmentation(Note 3) - Reverse direction,Minor network augmentation - Forward direction,Minor network augmentation - Reverse direction
+SNSW-CSA,800,800,800,800,800,800
+VIC-SESA,100,100,100,100,100,100
+SESA-CSA,100,100,100,100,100,100
+SNSW-CSA and VIC-SESA combined,650 (Note 4),800 (Note 4),800 (Note 4),800 (Note 4),800 (Note 4),800 (Note 4)
+CNSW - SNW,CNSW - SNW,CNSW - SNW,"910
+(Note 6)"," - 
+(Note 5)",250," - 
+(Note 5)"
+SNSW-CNSW,SNSW-CNSW,SNSW-CNSW,250,0,0,0
+CNSW-NNSW,CNSW-NNSW,CNSW-NNSW,0,300,0,0

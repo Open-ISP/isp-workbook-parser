@@ -1,0 +1,67 @@
+ - Generator, - Technology, - Scope 1 emissions intensity (kg/MWh as-gen)
+Bayswater,Steam Sub Critical,889.2019557080466
+Eraring,Steam Sub Critical,878.937979925076
+Mt Piper,Steam Sub Critical,801.1644115332886
+Vales Point B,Steam Sub Critical,944.7032806579716
+Callide B,Steam Sub Critical,942.8409057825446
+Callide C,Steam Super Critical,873.952738112746
+Gladstone,Steam Sub Critical,985.8045036566772
+Kogan Creek,Steam Super Critical,861.9335194223072
+Millmerran,Steam Super Critical,825.2498618115156
+Stanwell,Steam Sub Critical,863.4612605952427
+Tarong,Steam Sub Critical,886.5997945655309
+Tarong North,Steam Super Critical,886.5997945655309
+Loy Yang A Power Station,Steam Sub Critical,1168.8606403491956
+Loy Yang B,Steam Sub Critical,1111.1527514656036
+Yallourn W,Steam Sub Critical,1286.6018670776189
+Tallawarra,CCGT,370.9712367628364
+Condamine A,CCGT,448.7800299499554
+Darling Downs,CCGT,420.66783129225746
+Swanbank E GT,CCGT,393.9766739422801
+Townsville Power Station,CCGT,571.8091915765218
+Yarwun Cogen,CCGT,458.80843169025366
+Osborne,CCGT,414.66923714231086
+Pelican Point,CCGT,400.2490660024907
+Tamar Valley Combined Cycle,CCGT,618.7694024904949
+Colongra,OCGT,625.4489256220705
+Smithfield Energy Facility,OCGT,704.9692847740237
+Uranquinty,OCGT,564.2196299275946
+Barcaldine Power Station,OCGT,793.2628797886395
+Braemar,OCGT,616.5275751175529
+Braemar 2 Power Station,OCGT,616.5275751175529
+Mt Stuart,OCGT,1001.6305644669512
+Oakey Power Station,OCGT,663.6831986261736
+Roma,OCGT,649.8984196616386
+Dry Creek GT,OCGT,892.1893404004711
+Hallett GT,OCGT,642.6559234241056
+Ladbroke Grove,OCGT,516.2363713597961
+Mintaro GT,OCGT,693.5415787252005
+Port Lincoln GT,OCGT,1334.5888261142497
+Quarantine,OCGT,603.9766983816005
+Snapper Point Power Station,OCGT,541.6007456765004
+Snuggery,OCGT,1106.8763326226012
+Bell Bay Three,OCGT,618.7694024904949
+Tamar Valley Peaking,OCGT,618.7694024904949
+Bairnsdale,OCGT,537.0489213605174
+Jeeralang A,OCGT,757.9580538699031
+Jeeralang B,OCGT,757.9580538699031
+Laverton North,OCGT,638.1800848520663
+Mortlake,OCGT,467.1117705242334
+Somerton,OCGT,732.5947355035606
+Valley Power,OCGT,805.7837406329668
+Torrens Island B,Gas-powered steam turbine,593.041085228738
+Newport,Gas-powered steam turbine,532.5428952496833
+Angaston,Reciprocating Engine,685.7579572019421
+Barker Inlet Power Station,Reciprocating Engine,567.507343915481
+Lonsdale,Reciprocating Engine,657.9846285226301
+Port Stanvac 1,Reciprocating Engine,657.9846285226301
+Kurri Kurri OCGT,OCGT,580.9846703741154
+Tallawarra B,OCGT,580.9846703741154
+Bolivar Power Station,OCGT,541.6007456765004
+Kogan Gas,Hydrogen-based gas turbines,580.9846703741154
+SA Hydrogen Turbine,Hydrogen-based gas turbines,580.9846703741154
+All Pumped Hydro,Pumped Hydro,0.0
+All Large scale solar PV,Large scale solar PV,0.0
+All Wind,Wind,0.0
+All Hydro,Hydro,0.0
+All Battery Storage,Battery Storage,0.0

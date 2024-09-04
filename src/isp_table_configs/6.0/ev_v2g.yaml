@@ -2,7 +2,7 @@ v2g_consultant_scenario_mapping:
   sheet_name: "EV V2G"
   header_rows: 12
   end_row: 13
-  column_range: "B:F"
+  column_range: "B:E"
 
 v2g:
   sheet_name: "EV V2G"
