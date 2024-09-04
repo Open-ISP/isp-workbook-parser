@@ -34,7 +34,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     ... sheet_name='Summary Mapping',
     ... header_rows=[4, 5, 6],
     ... end_row=258,
-    ... column_range="B:AC",
+    ... column_range="B:AB",
     ... )
 
     >>> existing_gen_summary = read_table(
@@ -42,14 +42,14 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     ... table=config,
     ... )
     >>> existing_gen_summary.head()
-      Existing generator  ... Connection cost_Partial outage_Technology
-    0          Bayswater  ...                            Black Coal NSW
-    1            Eraring  ...                            Black Coal NSW
-    2           Mt Piper  ...                            Black Coal NSW
-    3      Vales Point B  ...                            Black Coal NSW
-    4          Callide B  ...                            Black Coal QLD
+      Existing generator     Technology type  ...            MLF Auxiliary load (%)
+    0          Bayswater  Steam Sub Critical  ...      Bayswater     Black Coal NSW
+    1            Eraring  Steam Sub Critical  ...        Eraring     Black Coal NSW
+    2           Mt Piper  Steam Sub Critical  ...       Mt Piper     Black Coal NSW
+    3      Vales Point B  Steam Sub Critical  ...  Vales Point B     Black Coal NSW
+    4          Callide B  Steam Sub Critical  ...      Callide B     Black Coal QLD
     <BLANKLINE>
-    [5 rows x 28 columns]
+    [5 rows x 27 columns]
 
     Args:
         workbook_file: pandas ExcelFile object
@@ -61,20 +61,31 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
 
     def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
         """
-        Forward fills the highest header row (parsed as columns) for processing
+        Forward fills the highest header row (parsed as DataFrame columns) for processing
         a multi-header table
         """
         initial_header[initial_header.str.contains("Unnamed")] = pd.NA
         ffill_initial_header = initial_header.ffill().reset_index(drop=True).fillna("")
         return ffill_initial_header
 
-    def _ffill_intermediate_header_row(intermediate_header: pd.Series) -> pd.Series:
+    def _ffill_intermediate_header_row(
+        intermediate_header: pd.Series, preceding_header: pd.Series
+    ) -> pd.Series:
         """
-        Forward fills intermediate header rows (parsed as rows) for processing
-        a multi-header table
+        Forward fills intermediate header row (parsed as a DataFrame row), with a
+        strategy to only make the nth element equal to the previous value in the
+        intermediate header row if nth element in the preceding header is NaN.
+
+        N.B. "Unnamed" columns in pandas are actually NaNs
         """
+        int_header = intermediate_header.copy(deep=True)
+        for n, value in zip(range(1, len(int_header)), int_header.iloc[1:]):
+            if pd.isna(value):
+                if pd.isna(preceding_header.iloc[n]):
+                    int_header.iloc[n] = int_header.iloc[n - 1]
+
         _ffill_intermediate_header = (
-            intermediate_header.ffill().reset_index(drop=True).fillna("").astype(str)
+            int_header.reset_index(drop=True).fillna("").astype(str)
         )
         return _ffill_intermediate_header
 
@@ -140,7 +151,12 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         filled_headers = []
         # ffill intermediate header rows
         for i in range(0, header_rows_in_table - 1):
-            filled_headers.append(_ffill_intermediate_header_row(df_initial.iloc[i, :]))
+            if i == 0:
+                preceding_header = initial_header
+            filled_headers.append(
+                _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
+            )
+            preceding_header = df_initial.iloc[i, :]
         # do not ffill last header row
         filled_headers.append(
             df_initial.iloc[header_rows_in_table - 1, :]
