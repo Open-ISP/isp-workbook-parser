@@ -96,6 +96,8 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         _ffill_intermediate_header = (
             int_header.reset_index(drop=True).fillna("").astype(str)
         )
+        # strip leading and trailing whitespaces
+        _ffill_intermediate_header = _ffill_intermediate_header.str.strip()
         return _ffill_intermediate_header
 
     def _process_last_header_row(
@@ -109,9 +111,12 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         4. Removing duplicated table names if the nth element value is equal to the
         nth value of the preceding header, (e.g. "Name" in row 1 and "Name" in row 2).
         This is done by making the nth element value an empty string
+        5. Strips leading and trailing whitespaces
         """
         last_header = last_header.reset_index(drop=True).fillna("").astype(str)
         last_header = last_header.where(last_header != preceding_header, "")
+        # strip leading and trailing whitespaces
+        last_header = last_header.str.strip()
         return last_header
 
     def _build_cleaned_dataframe(
@@ -152,10 +157,13 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             usecols=table.column_range,
             nrows=(table.end_row - table.header_rows),
         )
+        df.columns = df.columns.astype(str)
         # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
         # e.g. Generator.1 is changed to Generator
-        df.columns = df.columns.astype(str)
         df.columns = df.columns.str.replace(r"\.[\.\d]+$", "", regex=True)
+        # strip leading and trailing whitespaces
+        df.columns = df.columns.str.strip()
+        # skip rows handling
         if table.skip_rows:
             df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
         return df
@@ -169,12 +177,14 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             # do not parse dtypes
             dtype="object",
         )
+        df_initial.columns = df_initial.columns.astype(str)
         # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
         # e.g. Generator.1 is changed to Generator
-        df_initial.columns = df_initial.columns.astype(str)
         df_initial.columns = df_initial.columns.str.replace(
             r"\.[\.\d]+$", "", regex=True
         )
+        # strip leading and trailing whitespaces
+        df_initial.columns = df_initial.columns.str.strip()
         # check that header_rows list is sorted
         assert sorted(table.header_rows) == table.header_rows
         # check that the header_rows are adjacent
