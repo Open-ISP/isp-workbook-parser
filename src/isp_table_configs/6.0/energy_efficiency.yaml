@@ -1,8 +1,8 @@
-rooftop_pv_consultant_scenario_mapping:
+energy_efficiency_consultant_scenario_mapping:
   sheet_name: "Energy Efficiency"
   header_rows: 7
   end_row: 8
-  column_range: "B:E"
+  column_range: "B:F"
 
 energy_efficiency_residential_progressive_change:
   sheet_name: "Energy Efficiency"

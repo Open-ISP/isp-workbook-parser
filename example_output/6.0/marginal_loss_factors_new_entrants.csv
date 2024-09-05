@@ -22,7 +22,7 @@ REZ_Q7_Solar,0.9601,Bungala One Solar Farm
 REZ_Q8_Solar,0.9762,Darling Downs Solar Farm
 REZ_Q9_Solar,0.9222,Hughenden Solar Farm
 REZ_N1_Solar,0.7977,Moree Solar Farm
-REZ_N2_Solar,0.8697,White Rock Solar Farm
+REZ_N2_Solar,0.8697,White Rock Solar Farm 
 REZ_N3_Solar,0.9897,Burrendong Hydro PS
 REZ_N4_Solar,0.8324,Broken Hill Solar Farm
 REZ_N5_Solar,0.8894,Coleambally Solar Farm
@@ -59,10 +59,10 @@ REZ_Q6_Wind,0.9329,Gladstone PS (275 kV) Unit 1
 REZ_Q7_Wind,0.9259,Mt Millar Wind Farm
 REZ_Q8_Wind,0.9762,Darling Downs Solar Farm
 REZ_Q9_Wind,0.9472,Mount Emerald Wind farm
-REZ_N1_Wind,0.8697,White Rock Solar Farm
-REZ_N2_Wind,0.8697,White Rock Solar Farm
+REZ_N1_Wind,0.8697,White Rock Solar Farm 
+REZ_N2_Wind,0.8697,White Rock Solar Farm 
 REZ_N3_Wind,0.9622,Bodangora Wind Farm
-REZ_N4_Wind,0.8101,Silverton Wind Farm
+REZ_N4_Wind,0.8101,Silverton Wind Farm 
 REZ_N5_Wind,1.0,Default
 REZ_N6_Wind,1.0,Default
 REZ_N7_Wind,1.0,Default

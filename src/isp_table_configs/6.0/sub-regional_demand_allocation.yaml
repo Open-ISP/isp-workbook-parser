@@ -52,22 +52,22 @@ sub_regional_allocation_ev_uptake_green_energy_exports:
   end_row: 182
   column_range: "B:AG"
 
-sub_regional_allocation_fcev_uptake_green_progressive_change:
+sub_regional_allocation_fcev_uptake_progressive_change:
   sheet_name: "Sub-regional demand allocation"
   header_rows: 188
   end_row: 203
   column_range: "B:AG"
 
-sub_regional_allocation_fcev_uptake_green_step_change:
+sub_regional_allocation_fcev_uptake_step_change:
   sheet_name: "Sub-regional demand allocation"
   header_rows: 206
   end_row: 221
   column_range: "B:AG"
 
-sub_regional_allocation_fcev_uptake_green_green_energy_exports:
+sub_regional_allocation_fcev_uptake_green_energy_exports:
   sheet_name: "Sub-regional demand allocation"
-  header_rows: 206
-  end_row: 221
+  header_rows: 224
+  end_row: 239
   column_range: "B:AG"
 
 sub_regional_allocation_embedded_uptake_progressive_change:
@@ -84,8 +84,8 @@ sub_regional_allocation_embedded_storage_uptake_step_change:
 
 sub_regional_allocation_embedded_storage_uptake_green_energy_exports:
   sheet_name: "Sub-regional demand allocation"
-  header_rows: 263
-  end_row: 278
+  header_rows: 281
+  end_row: 296
   column_range: "B:AG"
 
 sub_regional_allocation_aggregated_storage_uptake_progressive_change:

@@ -33,11 +33,11 @@ class Parser:
 
     Create a Parser instance for a particular workbook. Will also check config is available for workbook version.
 
-    >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
+    >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
 
     Save all the tables with available config to the directory example_output as csv files.
 
-    >>> workbook.save_tables('example_output')
+    >>> workbook.save_tables('example_output') # doctest: +SKIP
     """
 
     def __init__(
@@ -449,9 +449,9 @@ class Parser:
         """Saves tables from the provided workbook to the specified directory as CSV files.
 
         Examples:
-        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
 
-        >>> workbook.save_tables(directory="example_output")
+        >>> workbook.save_tables(directory="example_output") # doctest: +SKIP
 
         Args:
             tables: Which tables to extract from the workbook and save, or the str 'all',
