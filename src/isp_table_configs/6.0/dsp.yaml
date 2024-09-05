@@ -1,0 +1,179 @@
+dsp_nsw_summer_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 10
+  end_row: 16
+  column_range: "B:AG"
+
+dsp_nsw_winter_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 20
+  end_row: 27
+  column_range: "B:AG"
+
+dsp_qld_summer_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 30
+  end_row: 36
+  column_range: "B:AG"
+
+dsp_qld_winter_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 39
+  end_row: 45
+  column_range: "B:AG"
+
+dsp_sa_summer_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 49
+  end_row: 55
+  column_range: "B:AG"
+
+dsp_sa_winter_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 58
+  end_row: 64
+  column_range: "B:AG"
+
+dsp_tas_summer_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 68
+  end_row: 74
+  column_range: "B:AG"
+
+dsp_tas_winter_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 77
+  end_row: 83
+  column_range: "B:AG"
+
+dsp_vic_summer_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 87
+  end_row: 93
+  column_range: "B:AG"
+
+dsp_vic_winter_green_energy_exports:
+  sheet_name: "DSP"
+  header_rows: 96
+  end_row: 102
+  column_range: "B:AG"
+
+dsp_nsw_summer_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 108
+  end_row: 114
+  column_range: "B:AG"
+
+dsp_nsw_winter_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 118
+  end_row: 124
+  column_range: "B:AG"
+
+dsp_qld_summer_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 128
+  end_row: 134
+  column_range: "B:AG"
+
+dsp_qld_winter_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 137
+  end_row: 143
+  column_range: "B:AG"
+
+dsp_sa_summer_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 147
+  end_row: 153
+  column_range: "B:AG"
+
+dsp_sa_winter_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 156
+  end_row: 162
+  column_range: "B:AG"
+
+dsp_tas_summer_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 166
+  end_row: 172
+  column_range: "B:AG"
+
+dsp_tas_winter_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 175
+  end_row: 181
+  column_range: "B:AG"
+
+dsp_vic_summer_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 185
+  end_row: 191
+  column_range: "B:AG"
+
+dsp_vic_winter_progressive_change:
+  sheet_name: "DSP"
+  header_rows: 194
+  end_row: 200
+  column_range: "B:AG"
+
+dsp_nsw_summer_step_change:
+  sheet_name: "DSP"
+  header_rows: 206
+  end_row: 212
+  column_range: "B:AG"
+
+dsp_nsw_winter_step_change:
+  sheet_name: "DSP"
+  header_rows: 216
+  end_row: 222
+  column_range: "B:AG"
+
+dsp_qld_summer_step_change:
+  sheet_name: "DSP"
+  header_rows: 226
+  end_row: 232
+  column_range: "B:AG"
+
+dsp_qld_winter_step_change:
+  sheet_name: "DSP"
+  header_rows: 235
+  end_row: 241
+  column_range: "B:AG"
+
+dsp_sa_summer_step_change:
+  sheet_name: "DSP"
+  header_rows: 245
+  end_row: 251
+  column_range: "B:AG"
+
+dsp_sa_winter_step_change:
+  sheet_name: "DSP"
+  header_rows: 254
+  end_row: 260
+  column_range: "B:AG"
+
+dsp_tas_summer_step_change:
+  sheet_name: "DSP"
+  header_rows: 264
+  end_row: 270
+  column_range: "B:AG"
+
+dsp_tas_winter_step_change:
+  sheet_name: "DSP"
+  header_rows: 273
+  end_row: 279
+  column_range: "B:AG"
+
+dsp_vic_summer_step_change:
+  sheet_name: "DSP"
+  header_rows: 283
+  end_row: 289
+  column_range: "B:AG"
+
+dsp_vic_winter_step_change:
+  sheet_name: "DSP"
+  header_rows: 292
+  end_row: 298
+  column_range: "B:AG"

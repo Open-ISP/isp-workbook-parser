@@ -1,0 +1,29 @@
+initial_build_limits:
+  sheet_name: "Build limits"
+  header_rows: [6, 7]
+  end_row: 50
+  column_range: "B:Y"
+
+rez_transmission_modifiers:
+  sheet_name: "Build limits"
+  header_rows: [70, 71]
+  end_row: 79
+  column_range: "B:I"
+
+#rez_group_constraint_summary:
+#  sheet_name: "Build limits"
+#  header_rows: [86, 87]
+#  end_row: 126
+#  column_range: "B:I"
+#
+#rez_transmission_limit_summary:
+#  sheet_name: "Build limits"
+#  header_rows: [133, 134]
+#  end_row: 146
+#  column_range: "B:I"
+#
+#rez_secondary_transmission_limit_summary:
+#  sheet_name: "Build limits"
+#  header_rows: [154, 155]
+#  end_row: 179
+#  column_range: "B:I"

@@ -1,0 +1,20 @@
+Generator.1,Scope 1 emissions intensity (kg/MWh as-gen).1
+OCGT (small GT),541.6007456765004
+OCGT (large GT),580.9846703741154
+CCGT,377.6704246153846
+CCGT with CCS,57.44696035242291
+Biomass,20.84401294
+Large scale Solar PV,0.0
+Solar Thermal (15hrs storage),0.0
+Battery Storage (1hr storage),0.0
+Battery storage (2hrs storage),0.0
+Battery storage (4hrs storage),0.0
+Battery storage (8hrs storage),0.0
+Wind,0.0
+Wind - offshore (fixed),0.0
+Wind - offshore (floating),0.0
+Pumped Hydro (8hrs storage),0.0
+Pumped Hydro (24hrs storage),0.0
+Pumped Hydro (48hrs storage),0.0
+BOTN - Cethana,0.0
+Hydrogen reciprocating engines,0.0

@@ -1,0 +1,11 @@
+gpg_min_stable_level_existing_generators:
+  sheet_name: "GPG Min Stable Level"
+  header_rows: 9
+  end_row: 34
+  column_range: "B:E"
+
+gpg_min_stable_level_new_entrants:
+  sheet_name: "GPG Min Stable Level"
+  header_rows: 9
+  end_row: 12
+  column_range: "G:H"

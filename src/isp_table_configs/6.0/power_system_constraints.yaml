@@ -1,0 +1,11 @@
+synchronous_unit_commitment_requirement:
+  sheet_name: "Power System Constraints"
+  header_rows: [7, 8]
+  end_row: 20
+  column_range: "B:G"
+
+synchronous_unit_commitment_requirement_green_energy_exports:
+  sheet_name: "Power System Constraints"
+  header_rows: [23, 24]
+  end_row: 36
+  column_range: "B:G"

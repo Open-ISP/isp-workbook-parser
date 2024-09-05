@@ -1,0 +1,11 @@
+pem_gencost_scenario_mapping:
+  sheet_name: "Build Costs - PEM"
+  header_rows: 3
+  end_row: 4
+  column_range: "N:Q"
+
+build_costs_pem:
+  sheet_name: "Build Costs - PEM"
+  header_rows: 7
+  end_row: 10
+  column_range: "B:AJ"

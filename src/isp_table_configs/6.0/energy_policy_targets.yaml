@@ -1,0 +1,95 @@
+powering_australia_plan:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 22
+  end_row: 23
+  column_range: "B:C"
+
+powering_australia_plan_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 35
+  end_row: 39
+  column_range: "B:E"
+
+capacity_investment_scheme_renewable_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 57
+  end_row: 58
+  column_range: "B:H"
+
+capacity_investment_scheme_storage_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 76
+  end_row: 77
+  column_range: "B:H"
+
+nsw_roadmap_renewable_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 98
+  end_row: 99
+  column_range: "B:I"
+
+nsw_roadmap_storage_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 109
+  end_row: 110
+  column_range: "B:I"
+
+qld_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 141
+  end_row: 144
+  column_range: "B:C"
+
+qld_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 154
+  end_row: 156
+  column_range: "B:O"
+
+tas_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 173
+  end_row: 176
+  column_range: "B:C"
+
+tas_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 184
+  end_row: 186
+  column_range: "B:T"
+
+vic_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 198
+  end_row: 201
+  column_range: "B:C"
+
+vic_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 212
+  end_row: 214
+  column_range: "B:M"
+
+vic_storage_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 227
+  end_row: 229
+  column_range: "B:C"
+
+vic_storage_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 237
+  end_row: 239
+  column_range: "B:M"
+
+vic_offshore_wind_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 246
+  end_row: 249
+  column_range: "B:C"
+
+vic_offshore_wind_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 257
+  end_row: 259
+  column_range: "B:R"

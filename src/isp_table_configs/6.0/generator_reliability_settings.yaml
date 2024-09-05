@@ -15,3 +15,15 @@ new_entrant_outages:
   header_rows: [19, 20]
   end_row: 40
   column_range: "I:N"
+
+existing_generator_full_outages_forecast:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 51
+  end_row: 56
+  column_range: "B:L"
+
+existing_generator_partial_outages_forecast:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 59
+  end_row: 64
+  column_range: "B:L"

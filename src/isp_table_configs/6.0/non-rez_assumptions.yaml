@@ -1,0 +1,11 @@
+vre_candidates_outside_rez:
+  sheet_name: "Non-REZ Assumptions"
+  header_rows: [8, 9]
+  end_row: 11
+  column_range: "B:H"
+
+connection_costs_outside_rez:
+  sheet_name: "Non-REZ Assumptions"
+  header_rows: 15
+  end_row: 17
+  column_range: "B:I"

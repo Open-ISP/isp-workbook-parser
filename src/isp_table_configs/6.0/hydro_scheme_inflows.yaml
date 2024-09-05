@@ -1,0 +1,17 @@
+hydro_inflows_qld_and_vic:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 6
+  end_row: 11
+  column_range: "B:O"
+
+hydro_inflows_snowy:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 34
+  end_row: 47
+  column_range: "B:O"
+
+hydro_inflows_tas:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 69
+  end_row: 82
+  column_range: "B:O"

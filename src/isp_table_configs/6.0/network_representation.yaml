@@ -1,0 +1,31 @@
+# Commented out because version does not support merged cells across rows.
+
+#existing_sub_regional_topology_representation_capacity_outlook_model:
+#  sheet_name: "Network representation"
+#  header_rows: 3
+#  end_row: 17
+#  column_range: "B:C"
+#
+#sub_regional_reference_nodes:
+#  sheet_name: "Network representation"
+#  header_rows: 21
+#  end_row: 33
+#  column_range: "B:D"
+#
+#regional_topology_representation:
+#  sheet_name: "Network representation"
+#  header_rows: 39
+#  end_row: 49
+#  column_range: "B:D"
+#
+#regional_reference_nodes:
+#  sheet_name: "Network representation"
+#  header_rows: 53
+#  end_row: 58
+#  column_range: "B:D"
+#
+#sub_regional_load_and_generation_representation:
+#  sheet_name: "Network representation"
+#  header_rows: 63
+#  end_row: 75
+#  column_range: "B:D"

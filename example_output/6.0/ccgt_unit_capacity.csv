@@ -1,0 +1,17 @@
+Generator Station,Generating Unit,Technology Type,Max Capacity (MW)
+Condamine,CPSA_GT1,CCGT - Gas Turbine,43.7
+Condamine,CPSA_GT2,CCGT - Gas Turbine,43.7
+Condamine,CPSA_ST,CCGT - Steam Turbine,57.0
+Darling Downs,DDPS1_GT1,CCGT - Gas Turbine,121.5
+Darling Downs,DDPS1_GT2,CCGT - Gas Turbine,121.5
+Darling Downs,DDPS1_GT3,CCGT - Gas Turbine,121.5
+Darling Downs,DDPS1_ST,CCGT - Steam Turbine,280.0
+Osborne,OsborneGT,CCGT - Gas Turbine,118.0
+Osborne,OsborneST,CCGT - Steam Turbine,62.0
+Pelican Point,PPCCGTGT1,CCGT - Gas Turbine,179.0
+Pelican Point,PPCCGTGT2,CCGT - Gas Turbine,179.0
+Pelican Point,PPCCGTST,CCGT - Steam Turbine,171.0
+Tamar Valley,TVCC201_GT,CCGT - Gas Turbine,140.0
+Tamar Valley,TVCC201_ST,CCGT - Steam Turbine,68.0
+Townsville Power Station,YABULU,CCGT - Gas Turbine,160.0
+Townsville Power Station,YABULU2,CCGT - Steam Turbine,84.0

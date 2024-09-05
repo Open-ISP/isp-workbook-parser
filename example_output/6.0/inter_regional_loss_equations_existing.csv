@@ -1,0 +1,17 @@
+Flow Path,Interconnector/Flow path Name,Interconnector,From region/sub-region,Loss Equation,MLF Equation,From region loss proportion,To region loss proportion
+NNSW – SQ (“QNI”),Queensland - New South Wales (QNI),NSW1-QLD1,NSW1,= (-0.1464 + 1.4428e-05*Qd + 9.7051e-06*Nd)*NQt + 9.4250e-05*NQt^2,= 0.8536 + 1.8850e-04*NQt + 1.4428e-05*Qd + 9.7051e-06*Nd,0.62,0.38
+NNSW – SQ (“Terranora”),Queensland - New South Wales (Terranora),N-Q-MNSP1,NSW1,"Losses between Mullumbimby 132 kV and Terranora 132 kV:
+= (-0.0013 * Flow + 2.7372 * 10-4 * Flow²) ",= 1.0538 + 3.0511E-03*Flow,0.5959,0.4041
+VIC – NSW,Victoria - New South Wales (VNI),VIC1-NSW1,VIC1,= ( 0.0793 + -8.7111E-06*Vd + 8.6242E-06*Nd + -4.9347E-05*Sd)*VNt + 8.3797E-05*(VNt)2,= 1.0793 + 1.6759e-04*VNt + -8.7111e-06*Vd + 8.6242e-06*Nd + -4.9347e-05*Sd,0.54,0.45999999999999996
+"VIC – SESA (""Heywood"")",Victoria - South Australia (Heywood),V-SA,VIC1,= (0.0166 + -1.2753e-06*Vd + -1.5712e-06*Sd)*VSAt + 1.7132e-04*VSAt^2,= 1.0166 + 3.4264e-04*VSAt + -1.2753e-06*Vd + -1.5712e-06*Sd,0.68,0.31999999999999995
+"VIC – CSA (""Murraylink"")",Victoria - South Australia (Murraylink),V-S-MNSP1,VIC1,"Losses between Red Cliffs 220 kV and Monash 132 kV
+=  (0.0039 * Flow + 2.8177 * 10-4 * Flow²)",= 0.9449 + 2.0094E-03*Flow,0.6593,0.3407
+TAS – VIC ,Tasmania - Victoria (Basslink),T-V-MNSP1,TAS1,P(send) = P(receive) + [ (-3.92x10-3) * P(receive) + (1.0393x10-4) * P(receive)2 + 4],"George Town 220 kV MLF referred to Tasmania RRN = 1.0000
+Basslink (Loy Yang Power Station [PS] Switchyard) 500 kV MLF referred to Victorian RRN is 0.9826 when exporting power to Tasmania and 0.9755 when importing power from Tasmania",0.5,0.5
+CQ-NQ,Central - North Queensland,-,CQ,=0.0088*(CQ-NQt) + 1.0052e-04*(CQ-NQt)^2,=1.0088 + 2.0104e-04*(CQ-NQt),0.43,0.57
+SQ – CQ,South - Central Queensland,-,SQ,= -0.0418*(SQ-CQt) + 5.0411e-05*(SQ-CQt)^2,= 0.9582 + 1.0082e-04*(SQ-CQt),0.43,0.57
+CQ-GG,,,These flow paths do not cross regional boundaries and have been assigned no loss equation and no loss factors. ,,,,
+CNSW – NNSW,-,-,,,,,
+CNSW ­– SNW,-,-,,,,,
+SNSW – CNSW,-,-,,,,,
+SESA-CSA,-,-,,,,,
