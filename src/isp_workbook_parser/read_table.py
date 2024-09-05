@@ -66,11 +66,13 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         pandas parser, e.g. 'Generator.1' is sanitised to 'Generator'
         2. Stripping leading and trailing whitespaces
         3. Remove any newlines
+        4. Removes trailing numbers that are footnotes
         """
         columns = columns.astype(str)
         columns = columns.str.replace(r"\.[\.\d]+$", "", regex=True)
         columns = columns.str.strip()
         columns = columns.str.replace(r"\n", r" ", regex=True)
+        columns = columns.str.replace(r"(?<=[^\s\d])\d$", "", regex=True)
         return columns
 
     def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
