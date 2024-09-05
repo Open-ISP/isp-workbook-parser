@@ -1,6 +1,4 @@
-Technology,"Max Ramp Up
-(MW/min).1","Max Ramp Down
-(MW/min).1"
+Technology,Max Ramp Up (MW/min),Max Ramp Down (MW/min)
 OCGT (small GT),22.0,22.0
 OCGT (large GT),22.0,22.0
 CCGT,22.0,22.0

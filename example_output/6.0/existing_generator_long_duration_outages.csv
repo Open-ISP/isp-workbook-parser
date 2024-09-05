@@ -1,5 +1,4 @@
-Fuel Type,"Full outage
-(% of time)",Mean time to repair (hrs)
+Fuel Type,Full outage (% of time),Mean time to repair (hrs)
 All Coal Average,0.009001590861024021,5621.528766731918
 OCGT,0.00774428665878886,2561.7305333333334
 Hydro,0.0009648237633182907,2870.056

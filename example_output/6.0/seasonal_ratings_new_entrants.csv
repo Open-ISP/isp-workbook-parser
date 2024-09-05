@@ -1,7 +1,4 @@
-Generator type,"Summer Peak
-(% of nameplate)","Summer Typical
-(% of nameplate)","Winter
-(% of nameplate)"
+Generator type,Summer Peak (% of nameplate),Summer Typical (% of nameplate),Winter (% of nameplate)
 OCGT (small GT),97.70174600867814,100.0,100.0
 OCGT (large GT),86.38418833584525,92.18867924528301,98.51765648549136
 CCGT,87.26725597141245,92.90953545232274,97.54874302551565

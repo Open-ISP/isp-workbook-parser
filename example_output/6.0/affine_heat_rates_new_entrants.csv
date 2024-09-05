@@ -1,4 +1,4 @@
-Technology,Unit nominal capacity (MW),No load heat input (GJ/h).1,Marginal heat rate (GJ/MWh).1
+Technology,Unit nominal capacity (MW),No load heat input (GJ/h),Marginal heat rate (GJ/MWh)
 OCGT (small GT),49.0,133.26693333333316,7.470500644286201
 OCGT (large GT),265.0,720.7293333333324,8.211510347152009
 CCGT,409.0,390.12757142857146,6.2953736263736255

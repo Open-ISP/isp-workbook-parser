@@ -1,4 +1,4 @@
-Generator.1,Region.1,Installed capacity (MW).1,Commissioning date
+Generator,Region,Installed capacity (MW),Commissioning date
 Kurri Kurri OCGT,NSW,750.0,2024-12-01
 Tallawarra B*,NSW,320.0,2024-02-01
 Kidston ,QLD,250.0,2025-02-01

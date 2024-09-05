@@ -1,4 +1,4 @@
-Policy,Project,Region.4,Installed capacity (MW).3,Energy (MWh).1,Indicative commissioning date.2
+Policy,Project,Region,Installed capacity (MW),Energy (MWh),Indicative commissioning date
 LTESA Round 1,Coppabella Wind Farm,NSW,289.8,,2025-07-01
 VRET2,Derby Solar Project BESS,VIC,85.0,100.0,2025-07-01
 VRET2,Fulham Solar Farm BESS,VIC,64.8,116.0,2025-07-01
