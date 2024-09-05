@@ -14,7 +14,7 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
     workbook_name = xl_file.pop()
     workbook = Parser(workbook_name)
 
-    # Check that configs
+    # Check that configs don't look at the same tables.
     configs = workbook.table_configs
     sheet_and_header_combos = [
         c.sheet_name + str(c.header_rows) + c.column_range for c in configs.values()

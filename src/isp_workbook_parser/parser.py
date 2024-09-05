@@ -52,7 +52,7 @@ class Parser:
         )
         self.config_path = self._determine_config_path(user_config_directory_path)
         self.table_configs = self._load_config()
-        self.table_names = list(self.table_configs.keys())
+        self.table_names_by_sheet = self._get_table_names_by_sheet()
 
     @staticmethod
     def _make_path_object(path: str | Path) -> Path:
@@ -102,13 +102,24 @@ class Parser:
             )
 
     def _load_config(self) -> dict[str, dict[str, Any]]:
-        """Load all the YAML files stored in the config directory into a dictionary with table names as keys."""
+        """Load all the YAML files stored in the config directory into a nested dictionary with sheet names as keys
+        and table names as second level keys."""
         pattern = os.path.join(self.config_path, "*.yaml")
         config_files = glob.glob(pattern)
         config = {}
         for file in config_files:
             config.update(load_yaml(Path(file)))
         return config
+
+    def _get_table_names_by_sheet(self):
+        table_names_by_sheet = {}
+        for table_name, config in self.table_configs.items():
+            if config.sheet_name not in table_names_by_sheet:
+                table_names_by_sheet[config.sheet_name] = []
+            table_names_by_sheet[config.sheet_name].append(table_name)
+        for sheet_name, configs in table_names_by_sheet.items():
+            table_names_by_sheet[sheet_name] = sorted(table_names_by_sheet[sheet_name])
+        return table_names_by_sheet
 
     def _check_data_ends_where_expected(
         self, tab: str, end_row: int, range: str, name: str
@@ -349,20 +360,21 @@ class Parser:
         self._check_last_column_isnt_empty(data, table_config.name)
 
     def get_table_names(self) -> list[str]:
-        """Returns the list of tables that there is config for, based on the workbook version extracted from the workbook file provided.
+        """Returns a dict of tabke names by sheet name that there is config for.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> names = workbook.get_table_names()
 
-        >>> names[0:3]
-        ['additional_projects_summary', 'affine_heat_rates_committed_anticipated_generators', 'affine_heat_rates_existing_generators']
+        >>> names['Build limits']
+        ['initial_build_limits', 'rez_transmission_modifiers']
+
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
         """
-        return sorted(self.table_names)
+        return self.table_names_by_sheet
 
     def get_table_from_config(
         self, table_config, config_checks: bool = True
@@ -431,7 +443,7 @@ class Parser:
         if not isinstance(table_name, str):
             ValueError("The parameter table_name must be provided as a string.")
 
-        if table_name not in self.table_names:
+        if table_name not in self.table_configs.keys():
             ValueError(
                 "The table_name provided is not in the config for this workbook version."
             )
@@ -481,7 +493,7 @@ class Parser:
             )
 
         if tables == "all":
-            tables = self.get_table_names()
+            tables = self.table_configs.keys()
 
         for table_name in tables:
             table = self.get_table(table_name, config_checks=config_checks)

@@ -69,14 +69,17 @@ workbook.save_tables('<path/to/output directory>')
 
 ### List tables with configuration files
 
-List all the tables the package has a configuration file for (for the given workbook version).
+Return a dict of table names, lists of tables names stored under a key which is their sheet name in the workbook Only
+tables the package has a configuration file for (for the given workbook version).
 
 ```python
 from isp_workbook_parser import Parser
 
 workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
-workbook.get_table_names()
+names = workbook.get_table_names()
+
+names['Build limits']
 ```
 
 ### Get table as DataFrame
