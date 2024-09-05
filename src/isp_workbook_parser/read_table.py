@@ -59,7 +59,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         Table as a pandas DataFrame
     """
 
-    def _column_name_sanitiser(columns: pd.Index) -> pd.Index:
+    def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Series:
         """
         Sanitises column names by:
         1. Removing 'versioning' from column names introduced by `mangle_dupe_cols` in
@@ -107,30 +107,22 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             elif not pd.isna(preceding_value) and value == preceding_value:
                 int_header.iloc[n] = pd.NA
 
-        _ffill_intermediate_header = (
-            int_header.reset_index(drop=True).fillna("").astype(str)
-        )
-        # strip leading and trailing whitespaces
-        _ffill_intermediate_header = _ffill_intermediate_header.str.strip()
+        _ffill_intermediate_header = int_header.reset_index(drop=True).fillna("")
+        _ffill_intermediate_header = _column_name_sanitiser(_ffill_intermediate_header)
         return _ffill_intermediate_header
 
     def _process_last_header_row(
         last_header: pd.Series, preceding_header: pd.Series
     ) -> pd.Series:
         """
-        Processes last header row by:
-        1. Resetting the index
-        2. Filling NaNs with blank strings
-        3. Recasting to strings
-        4. Removing duplicated table names if the nth element value is equal to the
-        nth value of the preceding header, (e.g. "Name" in row 1 and "Name" in row 2).
+        Processes last header row by removing duplicated table names if the nth element
+        value is equal to the nth value of the preceding header,
+        (e.g. "Name" in row 1 and "Name" in row 2).
         This is done by making the nth element value an empty string
-        5. Strips leading and trailing whitespaces
         """
-        last_header = last_header.reset_index(drop=True).fillna("").astype(str)
+        last_header = last_header.reset_index(drop=True).fillna("")
+        last_header = _column_name_sanitiser(last_header)
         last_header = last_header.where(last_header != preceding_header, "")
-        # strip leading and trailing whitespaces
-        last_header = last_header.str.strip()
         return last_header
 
     def _build_cleaned_dataframe(
