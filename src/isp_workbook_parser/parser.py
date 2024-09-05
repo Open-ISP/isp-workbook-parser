@@ -368,6 +368,7 @@ class Parser:
         >>> names = workbook.get_table_names()
 
         >>> names['Build limits']
+        ['initial_build_limits', 'rez_transmission_modifiers']
 
 
         Returns:
