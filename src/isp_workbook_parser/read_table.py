@@ -59,6 +59,20 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         Table as a pandas DataFrame
     """
 
+    def _column_name_sanitiser(columns: pd.Index) -> pd.Index:
+        """
+        Sanitises column names by:
+        1. Removing 'versioning' from column names introduced by `mangle_dupe_cols` in
+        pandas parser, e.g. 'Generator.1' is sanitised to 'Generator'
+        2. Stripping leading and trailing whitespaces
+        3. Remove any newlines
+        """
+        columns = columns.astype(str)
+        columns = columns.str.replace(r"\.[\.\d]+$", "", regex=True)
+        columns = columns.str.strip()
+        columns = columns.str.replace(r"\n", r" ", regex=True)
+        return columns
+
     def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
         """
         Forward fills the highest header row (parsed as DataFrame columns) for processing
@@ -157,13 +171,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             usecols=table.column_range,
             nrows=(table.end_row - table.header_rows),
         )
-        df.columns = df.columns.astype(str)
-        # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
-        # e.g. Generator.1 is changed to Generator
-        df.columns = df.columns.str.replace(r"\.[\.\d]+$", "", regex=True)
-        # strip leading and trailing whitespaces
-        df.columns = df.columns.str.strip()
-        # skip rows handling
+        df.columns = _column_name_sanitiser(df.columns)
         if table.skip_rows:
             df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
         return df
@@ -177,14 +185,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             # do not parse dtypes
             dtype="object",
         )
-        df_initial.columns = df_initial.columns.astype(str)
-        # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
-        # e.g. Generator.1 is changed to Generator
-        df_initial.columns = df_initial.columns.str.replace(
-            r"\.[\.\d]+$", "", regex=True
-        )
-        # strip leading and trailing whitespaces
-        df_initial.columns = df_initial.columns.str.strip()
+        df_initial.columns = _column_name_sanitiser(df_initial.columns)
         # check that header_rows list is sorted
         assert sorted(table.header_rows) == table.header_rows
         # check that the header_rows are adjacent
