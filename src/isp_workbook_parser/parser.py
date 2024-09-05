@@ -199,8 +199,8 @@ class Parser:
                 raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_no_columns_are_empty(data: pd.DataFrame, name: str) -> None:
-        """Check that no columns in the table are empty.
+    def _check_last_column_isnt_empty(data: pd.DataFrame, name: str) -> None:
+        """Check the column in the table isnt empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
         table then empty columns of data could be read into the table. Checking if the last column in the table is
@@ -346,7 +346,7 @@ class Parser:
         )
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
-        self._check_no_columns_are_empty(data, table_config.name)
+        self._check_last_column_isnt_empty(data, table_config.name)
 
     def get_table_names(self) -> list[str]:
         """Returns the list of tables that there is config for, based on the workbook version extracted from the workbook file provided.
