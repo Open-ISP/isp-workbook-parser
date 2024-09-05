@@ -33,11 +33,11 @@ class Parser:
 
     Create a Parser instance for a particular workbook. Will also check config is available for workbook version.
 
-    >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
+    >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
 
     Save all the tables with available config to the directory example_output as csv files.
 
-    >>> workbook.save_tables('example_output')
+    >>> workbook.save_tables('example_output') # doctest: +SKIP
     """
 
     def __init__(
@@ -138,8 +138,43 @@ class Parser:
         value_in_second_column_after_last_row = (
             self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
         )
-        if value_in_second_column_after_last_row is not None:
+        if (
+            value_in_second_column_after_last_row is not None
+            and value_in_second_column_after_last_row not in ["", " ", "\u00a0"]
+        ):
             error_message = f"There is data in the row after the defined table end for table {name}."
+            raise TableConfigError(error_message)
+
+    def _check_no_data_above_first_header_row(
+        self, tab: str, header_rows: int, range: str, name: str
+    ) -> None:
+        """Check that the cell before the first header row of the table in the second column is blank.
+
+        While there are often notes on the data in the first cell above the first column, the first cell above the
+        second column appears to be always blank. Therefore, checking that this cell is blank can be used to verify
+        that the config has not specified a table header row that is after the first header row of the table.
+        """
+        first_column = range.split(":")[0]
+        first_col_index = openpyxl.utils.column_index_from_string(first_column)
+        second_col_index = first_col_index + 1
+
+        if isinstance(header_rows, int):
+            first_header_row = header_rows
+        else:
+            first_header_row = header_rows[0]
+
+        # We check that value in the second column is blank because sometime the row after the first column will
+        # contain notes on the data.
+        value_in_second_column_after_last_row = (
+            self.openpyxl_file[tab]
+            .cell(row=first_header_row - 1, column=second_col_index)
+            .value
+        )
+        if (
+            value_in_second_column_after_last_row is not None
+            and value_in_second_column_after_last_row not in ["", " ", "\u00a0"]
+        ):
+            error_message = f"There is data or a header above the first header row for table {name}."
             raise TableConfigError(error_message)
 
     @staticmethod
@@ -170,22 +205,21 @@ class Parser:
         """
         notes_sub_strings = ["Notes:", "Note:", "Source:", "Sources:"]
         for sub_string in notes_sub_strings:
-            if data[data.columns[0]].str.contains(sub_string).any():
+            if data[data.columns[0]].astype(str).str.contains(sub_string).any():
                 error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
                 raise TableConfigError(error_message)
 
     @staticmethod
-    def _check_no_columns_are_empty(data: pd.DataFrame, name: str) -> None:
-        """Check that no columns in the table are empty.
+    def _check_last_column_isnt_empty(data: pd.DataFrame, name: str) -> None:
+        """Check the column in the table isnt empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
-        table then empty columns of data could be read into the table. Checking that no columns in the table are
+        table then empty columns of data could be read into the table. Checking if the last column in the table is
         empty helps detect if the config is incorrect.
         """
-        for column in data.columns:
-            if data[column].isna().all():
-                error_message = f"The last column of the table {name} is empty."
-                raise TableConfigError(error_message)
+        if data[data.columns[-1]].isna().all():
+            error_message = f"The last column of the table {name} is empty."
+            raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
@@ -213,6 +247,7 @@ class Parser:
                 usecols=column_next_to_last_column,
                 nrows=(end_row - start_row),
             )
+            data = data[~data.isin(["`"])]  # explicit exceptions for messy data
             if not data[data.columns[0]].isna().all():
                 range_error = True
         except pd.errors.ParserError:
@@ -250,7 +285,7 @@ class Parser:
             )
             if data[data.columns[0]].isna().all():
                 range_error = False
-            elif "DO NOT DELETE THIS COLUMN" in data.columns[0]:
+            elif "DO NOT DELETE THIS COLUMN" in data.columns[0] or first_column == "B":
                 range_error = False
             else:
                 range_error = True
@@ -261,12 +296,45 @@ class Parser:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
             raise TableConfigError(error_message)
 
+    def _check_if_header_row_and_end_row_are_on_sheet(self, table_config) -> None:
+        """Checks if first row of header and end_row are within the sheet."""
+        if isinstance(table_config.header_rows, int):
+            first_header_row = table_config.header_rows
+        else:
+            first_header_row = table_config.header_rows[0]
+
+        if first_header_row > self.openpyxl_file[table_config.sheet_name].max_row:
+            error_message = f"The first header row for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+        if table_config.end_row > self.openpyxl_file[table_config.sheet_name].max_row:
+            error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+
+    def _check_if_start_and_end_column_are_on_sheet(self, table_config) -> None:
+        """Checks if first column and last column in config are within the sheet."""
+        first_column = table_config.column_range.split(":")[0]
+        first_col_index = openpyxl.utils.column_index_from_string(first_column)
+        if first_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
+            error_message = f"The first column for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+
+        last_column = table_config.column_range.split(":")[1]
+        last_col_index = openpyxl.utils.column_index_from_string(last_column)
+        if last_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
+            error_message = f"The last column for table {table_config.name} is not within the excel sheet."
+            raise TableConfigError(error_message)
+
     def _check_table(self, data, table_config) -> None:
         if isinstance(table_config.header_rows, list):
             start_row = table_config.header_rows[-1]
         else:
             start_row = table_config.header_rows
-
+        self._check_no_data_above_first_header_row(
+            table_config.sheet_name,
+            table_config.header_rows,
+            table_config.column_range,
+            table_config.name,
+        )
         self._check_data_ends_where_expected(
             table_config.sheet_name,
             table_config.end_row,
@@ -289,7 +357,7 @@ class Parser:
         )
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
-        self._check_no_columns_are_empty(data, table_config.name)
+        self._check_last_column_isnt_empty(data, table_config.name)
 
     def get_table_names(self) -> list[str]:
         """Returns a dict of tabke names by sheet name that there is config for.
@@ -300,6 +368,7 @@ class Parser:
         >>> names = workbook.get_table_names()
 
         >>> names['Build limits']
+
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
@@ -320,20 +389,20 @@ class Parser:
         ... sheet_name='Summary Mapping',
         ... header_rows=[4, 5, 6],
         ... end_row=258,
-        ... column_range="B:AC",
+        ... column_range="B:AB",
         ... )
 
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table_from_config(config).head()
-          Existing generator  ... Connection cost - Partial outage - Technology
-        2          Bayswater  ...                                Black Coal NSW
-        3            Eraring  ...                                Black Coal NSW
-        4           Mt Piper  ...                                Black Coal NSW
-        5      Vales Point B  ...                                Black Coal NSW
-        6          Callide B  ...                                Black Coal QLD
+          Existing generator     Technology type  ...            MLF Auxiliary load (%)
+        0          Bayswater  Steam Sub Critical  ...      Bayswater     Black Coal NSW
+        1            Eraring  Steam Sub Critical  ...        Eraring     Black Coal NSW
+        2           Mt Piper  Steam Sub Critical  ...       Mt Piper     Black Coal NSW
+        3      Vales Point B  Steam Sub Critical  ...  Vales Point B     Black Coal NSW
+        4          Callide B  Steam Sub Critical  ...      Callide B     Black Coal QLD
         <BLANKLINE>
-        [5 rows x 28 columns]
+        [5 rows x 27 columns]
 
         Args:
             table_config: A table configuration.
@@ -341,6 +410,9 @@ class Parser:
                 starts and ends where expected and the workbook header matches the config header.
 
         """
+        if config_checks:
+            self._check_if_header_row_and_end_row_are_on_sheet(table_config)
+            self._check_if_start_and_end_column_are_on_sheet(table_config)
         data = read_table(self.file, table_config)
         if config_checks:
             self._check_table(data, table_config)
@@ -353,12 +425,12 @@ class Parser:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
-          Wind High - REZ ID  ... Wind High - Avg of ref years
-        2                 Q1  ...                     0.456914
-        3                 Q2  ...                     0.417142
-        4                 Q3  ...       Resource limit of 0 MW
-        5                 Q4  ...                      0.34437
-        6                 Q5  ...                     0.326029
+          Wind High_REZ ID  ... Wind High_Avg of ref years
+        0               Q1  ...                   0.456914
+        1               Q2  ...                   0.417142
+        2               Q3  ...     Resource limit of 0 MW
+        3               Q4  ...                    0.34437
+        4               Q5  ...                   0.326029
         <BLANKLINE>
         [5 rows x 17 columns]
 
@@ -388,9 +460,9 @@ class Parser:
         """Saves tables from the provided workbook to the specified directory as CSV files.
 
         Examples:
-        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
+        >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
 
-        >>> workbook.save_tables(directory="example_output")
+        >>> workbook.save_tables(directory="example_output") # doctest: +SKIP
 
         Args:
             tables: Which tables to extract from the workbook and save, or the str 'all',
@@ -425,7 +497,7 @@ class Parser:
         for table_name in tables:
             table = self.get_table(table_name, config_checks=config_checks)
             save_path = directory / Path(f"{table_name}.csv")
-            table.to_csv(save_path)
+            table.to_csv(save_path, index=False)
 
 
 class TableConfigError(Exception):

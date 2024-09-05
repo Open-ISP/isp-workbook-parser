@@ -1,0 +1,21 @@
+Fuel type,Forced Outage Rate (%)_Full outage (% of time),Forced Outage Rate (%)_Partial outage (% of time),Mean time to repair (hrs)_Full outage,Mean time to repair (hrs)_Partial outage,Partial Outage Derating Factor (%)
+OCGT (small GT),2,2,75,75,75
+OCGT (large GT),2,2,22,22,22
+CCGT,3.5000000000000004,3.5000000000000004,54,54,54
+CCGT with CCS,3.5000000000000004,3.5000000000000004,54,54,54
+Biomass,4,4,22,22,22
+Large scale Solar PV,Large scale Solar PV,Large scale Solar PV,Large scale Solar PV,Large scale Solar PV,Large scale Solar PV
+Solar Thermal (15hrs Storage),3,3,3,3,3
+Battery storage (1hr storage),2.25,2.25,48,48,48
+Battery storage (2hrs storage),2.25,2.25,48,48,48
+Battery storage (4hrs storage),2.25,2.25,48,48,48
+Battery Storage (8hrs storage),2.25,2.25,48,48,48
+Wind,Wind,Wind,Wind,Wind,Wind
+Wind - offshore (fixed),Wind - offshore (fixed),Wind - offshore (fixed),Wind - offshore (fixed),Wind - offshore (fixed),Wind - offshore (fixed)
+Wind - offshore (floating),Wind - offshore (floating),Wind - offshore (floating),Wind - offshore (floating),Wind - offshore (floating),Wind - offshore (floating)
+Pumped Hydro (8hrs storage),1,1,27,27,27
+Pumped Hydro (24hrs storage),1,1,27,27,27
+Pumped Hydro (48hrs storage),1,1,27,27,27
+BOTN - Cethana,1,1,27,27,27
+Hydrogen-based gas turbines,2,2,22,22,22
+Hydrogen reciprocating engines,2,2,22,22,22

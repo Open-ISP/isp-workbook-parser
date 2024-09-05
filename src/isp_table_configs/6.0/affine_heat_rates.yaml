@@ -1,0 +1,17 @@
+affine_heat_rates_existing_generators:
+  sheet_name: "Affine Heat rates"
+  header_rows: 7
+  end_row: 184
+  column_range: "B:F"
+
+affine_heat_rates_committed_anticipated_generators:
+  sheet_name: "Affine Heat rates"
+  header_rows: 188
+  end_row: 193
+  column_range: "B:F"
+
+affine_heat_rates_new_entrants:
+  sheet_name: "Affine Heat rates"
+  header_rows: 7
+  end_row: 13
+  column_range: "H:K"

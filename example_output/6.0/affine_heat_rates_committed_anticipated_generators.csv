@@ -1,0 +1,6 @@
+Station,Generating Unit,Technology Type,No load heat input (GJ/h),Marginal heat rate (GJ/MWh)
+Tallawarra B,Tallawarra B,OCGT,870.3146666666656,8.211510347152009
+Kurri Kurri,Kurri Kurri 1,OCGT,1019.8999999999987,8.211510347152009
+Kurri Kurri,Kurri Kurri 2,OCGT,1019.8999999999987,8.211510347152009
+Kogan Gas,Kogan Gas,Hydrogen-based gas turbines,543.946666666666,10.00026666666667
+SA Hydrogen Turbine,SA Hydrogen Turbine,Hydrogen-based gas turbines,543.946666666666,10.00026666666667

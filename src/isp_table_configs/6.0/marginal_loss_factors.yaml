@@ -1,0 +1,35 @@
+marginal_loss_factors_existing_generators:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 260
+  column_range: "B:C"
+
+marginal_loss_factors_committed_projects:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 35
+  column_range: "E:G"
+
+marginal_loss_factors_new_entrants:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 103
+  column_range: "I:K"
+
+marginal_loss_factors_anticipated_projects:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 24
+  column_range: "M:O"
+
+marginal_loss_factors_existing_committed_and_anticipated_batteries:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 62
+  column_range: "Q:S"
+
+marginal_loss_factors_additional_projects:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 8
+  end_row: 21
+  column_range: "U:X"

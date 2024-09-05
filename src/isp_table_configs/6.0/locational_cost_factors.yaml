@@ -1,0 +1,11 @@
+locational_cost_factors:
+  sheet_name: "Locational Cost Factors"
+  header_rows: 11
+  end_row: 26
+  column_range: "B:G"
+
+technology_cost_breakdown_ratios:
+  sheet_name: "Locational Cost Factors"
+  header_rows: 33
+  end_row: 48
+  column_range: "B:F"

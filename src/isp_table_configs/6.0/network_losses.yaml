@@ -1,0 +1,20 @@
+inter_regional_loss_equations_existing:
+  sheet_name: "Network losses"
+  header_rows: 7
+  end_row: 20
+  column_range: "B:I"
+
+inter_regional_loss_equations_committed_and_anticipated:
+  sheet_name: "Network losses"
+  header_rows: 27
+  end_row: 31
+  column_range: "B:I"
+
+
+# Commented out because version does not support merged cells across rows.
+
+#inter_regional_loss_equations_development_options:
+#  sheet_name: "Network losses"
+#  header_rows: 38
+#  end_row: 105
+#  column_range: "B:I"

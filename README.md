@@ -1,4 +1,9 @@
 # AEMO Integrated System Plan Assumptions Workbook Parser
+[![PyPI version](https://badge.fury.io/py/isp-workbook-parser.svg)](https://badge.fury.io/py/isp-workbook-parser)
+[![Continuous Integration and Deployment](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml/badge.svg)](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml)
+[![codecov](https://codecov.io/github/Open-ISP/isp-workbook-parser/graph/badge.svg?token=BUGWITKZV1)](https://codecov.io/github/Open-ISP/isp-workbook-parser)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Open-ISP/isp-workbook-parser/main.svg)](https://results.pre-commit.ci/latest/github/Open-ISP/isp-workbook-parser/main)
+[![Rye](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/rye/main/artwork/badge.json)](https://rye.astral.sh)
 
 A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook
 published by the Australian Energy Market Operator for use in their Integrated System Plan modelling.
@@ -12,6 +17,8 @@ published by the Australian Energy Market Operator for use in their Integrated S
     - [List tables with configuration files](#list-tables-with-configuration-files)
     - [Get table as DataFrame](#get-table-as-dataframe)
     - [Get table with custom configuration](#get-table-with-custom-configuration)
+- [Contributing](#contributing)
+- [License](#license)
 
 
 ## How the package works
@@ -19,7 +26,8 @@ published by the Australian Energy Market Operator for use in their Integrated S
 1. Load a workbook using `Parser` (see examples below).
    - While we do not include workbooks with the package distribution, you can find the versions for which table configurations are written within `workbooks/<version>`.
 2. Table configuration files for data tables are located in `src/config/<version>`
-   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version.
+   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not
+     read in can also be provided, e.g. where AEMO has formatted a row with a strike through to indicate that the data is no longer being used.
    - These are included with the package distributions.
 3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version.
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
@@ -39,6 +47,11 @@ Tables are defined in the configuration files using the following attributes:
    - If the table header is defined over multiple rows, then provide a list of row numbers sorted in ascending order (e.g. `[6, 7, 8]`)
 - `end_row`: the last row of table data
 - `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
+- `skip_rows`: optional, a list of excel rows in the table that should not be read in (e.g. `[15]`)
+
+### Adding table configuration files to this package
+
+Refer to the [contributing instructions](./CONTRIBUTING.md) for details on how to contribute table configuration (YAML) files to this repository and package.
 
 ## Examples
 
@@ -101,5 +114,12 @@ table_config = TableConfig(
 workbook.get_table_from_config(table_config)
 ```
 
+## Contributing
+
+Interested in contributing to the source code or adding table configurations? Check out the [contributing instructions](./CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
+
+Please note that this project is released with a [Code of Conduct](./CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+
 ## License
+
 `isp-workbook-parser` was created as a part of the [OpenISP project](https://github.com/Open-ISP). It is licensed under the terms of [GNU GPL-3.0-or-later](LICENSE) licences.

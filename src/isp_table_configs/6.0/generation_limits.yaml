@@ -1,0 +1,5 @@
+coal_minimum_stable_level:
+  sheet_name: "Generation limits"
+  header_rows: 8
+  end_row: 52
+  column_range: "B:D"

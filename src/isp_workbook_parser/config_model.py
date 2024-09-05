@@ -1,7 +1,7 @@
 import yaml
 
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from pathlib import Path
 
 
@@ -27,7 +27,7 @@ class TableConfig(BaseModel):
     >>> table_configs = load_yaml(Path("src/isp_table_configs/6.0/capacity_factors.yaml"))
 
     >>> print(table_configs)
-    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102)}
 
     Attributes:
         name: the table name
@@ -36,6 +36,8 @@ class TableConfig(BaseModel):
             defined over multiple rows, then a list of the row numbers sorted in ascending order.
         end_row: the last row of table data.
         column_range: the columns over which the table is defined in the alphabetical format, i.e. 'B:F'
+        skip_rows: an `int` specifying a row to skip, or a list of `int` corresponding to
+            row numbers to skip.
     """
 
     name: str
@@ -43,6 +45,7 @@ class TableConfig(BaseModel):
     header_rows: int | List[int]
     end_row: int
     column_range: str
+    skip_rows: Optional[int | List[int]] = None
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
@@ -64,11 +67,43 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
       end_row: 48
       column_range: "B:R"
     <BLANKLINE>
+    wind_medium_capacity_factors:
+      sheet_name: "Capacity Factors "
+      header_rows: [7, 8, 9]
+      end_row: 48
+      column_range: "T:AJ"
+    <BLANKLINE>
+    solar_pv_capacity_factors:
+      sheet_name: "Capacity Factors "
+      header_rows: [50, 51, 52]
+      end_row: 91
+      column_range: "B:R"
+    <BLANKLINE>
+    solar_thermal_15hrstorage_capacity_factors:
+      sheet_name: "Capacity Factors "
+      header_rows: [50, 51, 52]
+      end_row: 91
+      column_range: "T:AJ"
+    <BLANKLINE>
+    offshore_wind_fixed_capacity_factors:
+      sheet_name: "Capacity Factors "
+      header_rows: [93, 94, 95]
+      end_row: 102
+      column_range: "B:R"
+      skip_rows: 102
+    <BLANKLINE>
+    offshore_wind_floating_capacity_factors:
+      sheet_name: "Capacity Factors "
+      header_rows: [93, 94, 95]
+      end_row: 102
+      column_range: "T:AJ"
+      skip_rows: 102
+    <BLANKLINE>
 
     When read using `load_yaml` it will be converted to a dictionary contain `TableConfig` instances:
 
     >>> print(load_yaml(path_to_yaml))
-    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R')}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102)}
 
     Args:
         path: pathlib Path instance specifying the location of the YAML file.
@@ -77,5 +112,8 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
     with open(path, "r") as f:
         config = yaml.safe_load(f)
         f.close()
-    tables = {name: TableConfig(name=name, **config[name]) for name in config}
+    if config is not None:
+        tables = {name: TableConfig(name=name, **config[name]) for name in config}
+    else:
+        tables = {}
     return tables

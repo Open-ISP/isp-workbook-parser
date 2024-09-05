@@ -1,0 +1,29 @@
+hydrogen_demand_domestic_consultant_forecast_mapping:
+  sheet_name: "Hydrogen demand - Domestic"
+  header_rows: 9
+  end_row: 10
+  column_range: "B:E"
+
+hydrogen_demand_domestic_progressive_change:
+  sheet_name: "Hydrogen demand - Domestic"
+  header_rows: 13
+  end_row: 22
+  column_range: "B:AI"
+
+hydrogen_demand_domestic_step_change:
+  sheet_name: "Hydrogen demand - Domestic"
+  header_rows: 26
+  end_row: 35
+  column_range: "B:AI"
+
+hydrogen_demand_domestic_green_energy_exports:
+  sheet_name: "Hydrogen demand - Domestic"
+  header_rows: 39
+  end_row: 48
+  column_range: "B:AI"
+
+hydrogen_demand_domestic_electrification_alternatives_sensitivity:
+  sheet_name: "Hydrogen demand - Domestic"
+  header_rows: 52
+  end_row: 61
+  column_range: "B:AI"
