@@ -1,4 +1,4 @@
-REZ names,Region,REZ network voltage (kV),Connection capacity (MVA),Feeder length (km),Total cost ($M)2,$/kW,System Strength connection cost ($/kW)3
+REZ names,Region,REZ network voltage (kV),Connection capacity (MVA),Feeder length (km),Total cost ($M),$/kW,System Strength connection cost ($/kW)
 Far North Queensland,QLD,275,300.0,5.0,35.0,116.67,137.0
 North Queensland Clean Energy Hub,QLD,275,300.0,10.0,48.0,160.0,137.0
 Northern Queensland,QLD,275,300.0,5.0,35.0,116.67,137.0

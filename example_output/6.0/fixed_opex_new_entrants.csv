@@ -1,19 +1,4 @@
-Generator.1,"Fixed OPEX
-($/kW sent out/year)_NSW Low","Fixed OPEX
-($/kW sent out/year)_NSW Medium","Fixed OPEX
-($/kW sent out/year)_NSW High","Fixed OPEX
-($/kW sent out/year)_QLD Low","Fixed OPEX
-($/kW sent out/year)_QLD Medium","Fixed OPEX
-($/kW sent out/year)_QLD High","Fixed OPEX
-($/kW sent out/year)_SA Low","Fixed OPEX
-($/kW sent out/year)_SA Medium","Fixed OPEX
-($/kW sent out/year)_SA High","Fixed OPEX
-($/kW sent out/year)_TAS Low","Fixed OPEX
-($/kW sent out/year)_TAS Medium","Fixed OPEX
-($/kW sent out/year)_TAS High","Fixed OPEX
-($/kW sent out/year)_VIC Low","Fixed OPEX
-($/kW sent out/year)_VIC Medium","Fixed OPEX
-($/kW sent out/year)_VIC High"
+Generator,Fixed OPEX ($/kW sent out/year)_NSW Low,Fixed OPEX ($/kW sent out/year)_NSW Medium,Fixed OPEX ($/kW sent out/year)_NSW High,Fixed OPEX ($/kW sent out/year)_QLD Low,Fixed OPEX ($/kW sent out/year)_QLD Medium,Fixed OPEX ($/kW sent out/year)_QLD High,Fixed OPEX ($/kW sent out/year)_SA Low,Fixed OPEX ($/kW sent out/year)_SA Medium,Fixed OPEX ($/kW sent out/year)_SA High,Fixed OPEX ($/kW sent out/year)_TAS Low,Fixed OPEX ($/kW sent out/year)_TAS Medium,Fixed OPEX ($/kW sent out/year)_TAS High,Fixed OPEX ($/kW sent out/year)_VIC Low,Fixed OPEX ($/kW sent out/year)_VIC Medium,Fixed OPEX ($/kW sent out/year)_VIC High
 OCGT (small GT),13.47318,14.5510344,15.763620599999998,13.47318,15.0899616,16.841475,13.47318,15.0899616,16.7067432,13.47318,14.6857662,15.763620599999998,13.47318,13.8773754,14.146839
 OCGT (large GT),10.906859999999998,11.779408799999999,12.761026199999996,10.906859999999998,12.215683199999999,13.633574999999997,10.906859999999998,12.215683199999999,13.524506399999998,10.906859999999998,11.8884774,12.761026199999996,10.906859999999998,11.234065799999998,11.452202999999999
 CCGT,11.65537,12.5877996,13.636782899999998,11.65537,13.054014400000002,14.569212499999999,11.65537,13.054014400000002,14.4526588,11.65537,12.704353300000001,13.636782899999998,11.65537,12.0050311,12.2381385

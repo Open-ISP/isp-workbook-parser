@@ -1,4 +1,4 @@
-Storage,Region.3,Installed capacity (MW).2,Energy (MWh),Indicative commissioning date.1,Project status
+Storage,Region,Installed capacity (MW),Energy (MWh),Indicative commissioning date,Project status
 Adelaide Desalination Plant BESS,SA,6.27,12.6,,Existing
 Aldoga BESS Stage 1,QLD,400.0,400.0,2025-11-01,Anticipated
 Ballarat Energy Storage System,VIC,30.0,30.0,,Existing

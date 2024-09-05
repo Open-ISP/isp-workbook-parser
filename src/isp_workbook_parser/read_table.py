@@ -59,6 +59,22 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         Table as a pandas DataFrame
     """
 
+    def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Series:
+        """
+        Sanitises column names by:
+        1. Removing 'versioning' from column names introduced by `mangle_dupe_cols` in
+        pandas parser, e.g. 'Generator.1' is sanitised to 'Generator'
+        2. Stripping leading and trailing whitespaces
+        3. Remove any newlines
+        4. Removes trailing numbers that are footnotes
+        """
+        columns = columns.astype(str)
+        columns = columns.str.replace(r"\.[\.\d]+$", "", regex=True)
+        columns = columns.str.strip()
+        columns = columns.str.replace(r"\n", r" ", regex=True)
+        columns = columns.str.replace(r"(?<=[^\s\d])\d$", "", regex=True)
+        return columns
+
     def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
         """
         Forward fills the highest header row (parsed as DataFrame columns) for processing
@@ -72,22 +88,44 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         intermediate_header: pd.Series, preceding_header: pd.Series
     ) -> pd.Series:
         """
-        Forward fills intermediate header row (parsed as a DataFrame row), with a
-        strategy to only make the nth element equal to the previous value in the
-        intermediate header row if nth element in the preceding header is NaN.
+        Forward fills intermediate header row (parsed as a DataFrame row), with the
+        following strategy:
+
+        1. If the nth element value of the intermediate header is NaN, make the
+        nth element equal to the (n-1)th value in the intermediate header row if the
+        nth element in the preceding header is NaN.
+        2. If the nth element value is equal to the nth value of the preceding header,
+        (e.g. "Name" in row 1 and "Name" in row 2), then make the nth element value
+        NaN
 
         N.B. "Unnamed" columns in pandas are actually NaNs
         """
         int_header = intermediate_header.copy(deep=True)
         for n, value in zip(range(1, len(int_header)), int_header.iloc[1:]):
+            preceding_value = preceding_header.iloc[n]
             if pd.isna(value):
-                if pd.isna(preceding_header.iloc[n]):
+                if pd.isna(preceding_value):
                     int_header.iloc[n] = int_header.iloc[n - 1]
+            elif not pd.isna(preceding_value) and value == preceding_value:
+                int_header.iloc[n] = pd.NA
 
-        _ffill_intermediate_header = (
-            int_header.reset_index(drop=True).fillna("").astype(str)
-        )
+        _ffill_intermediate_header = int_header.reset_index(drop=True).fillna("")
+        _ffill_intermediate_header = _column_name_sanitiser(_ffill_intermediate_header)
         return _ffill_intermediate_header
+
+    def _process_last_header_row(
+        last_header: pd.Series, preceding_header: pd.Series
+    ) -> pd.Series:
+        """
+        Processes last header row by removing duplicated table names if the nth element
+        value is equal to the nth value of the preceding header,
+        (e.g. "Name" in row 1 and "Name" in row 2).
+        This is done by making the nth element value an empty string
+        """
+        last_header = last_header.reset_index(drop=True).fillna("")
+        last_header = _column_name_sanitiser(last_header)
+        last_header = last_header.where(last_header != preceding_header, "")
+        return last_header
 
     def _build_cleaned_dataframe(
         df_initial: pd.DataFrame, header_rows_in_table: int, new_headers: pd.Series
@@ -127,6 +165,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             usecols=table.column_range,
             nrows=(table.end_row - table.header_rows),
         )
+        df.columns = _column_name_sanitiser(df.columns)
         if table.skip_rows:
             df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
         return df
@@ -140,6 +179,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             # do not parse dtypes
             dtype="object",
         )
+        df_initial.columns = _column_name_sanitiser(df_initial.columns)
         # check that header_rows list is sorted
         assert sorted(table.header_rows) == table.header_rows
         # check that the header_rows are adjacent
@@ -157,13 +197,16 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
                 _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
             )
             preceding_header = df_initial.iloc[i, :]
-        # do not ffill last header row
-        filled_headers.append(
-            df_initial.iloc[header_rows_in_table - 1, :]
-            .reset_index(drop=True)
-            .fillna("")
-            .astype(str)
-        )
+        # process last header row
+        if not filled_headers:
+            processed_last_header = _process_last_header_row(
+                df_initial.iloc[header_rows_in_table - 1, :], ffilled_initial_header
+            )
+        else:
+            processed_last_header = _process_last_header_row(
+                df_initial.iloc[header_rows_in_table - 1, :], filled_headers[-1]
+            )
+        filled_headers.append(processed_last_header)
         # add separators manually - ignore any "" entries
         for series in filled_headers:
             series[series != ""] = "_" + series[series != ""]

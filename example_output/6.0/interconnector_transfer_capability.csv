@@ -1,5 +1,4 @@
-"Flow paths
-(Forward power flow direction)","Forward direction capability approximation (MW) - Notes 1,2&3_Peak demand","Forward direction capability approximation (MW) - Notes 1,2&3_Summer Typical","Forward direction capability approximation (MW) - Notes 1,2&3_Winter Reference","Reverse direction capability approximation (MW) - Notes 1,2&3_Peak demand","Reverse direction capability approximation (MW) - Notes 1,2&3_Summer Typical","Reverse direction capability approximation (MW) - Notes 1,2&3_Winter Reference",Dominant constraints_Forward direction ,Dominant constraints_Reverse direction
+Flow paths (Forward power flow direction),"Forward direction capability approximation (MW) - Notes 1,2&_Peak demand","Forward direction capability approximation (MW) - Notes 1,2&_Summer Typical","Forward direction capability approximation (MW) - Notes 1,2&_Winter Reference","Reverse direction capability approximation (MW) - Notes 1,2&_Peak demand","Reverse direction capability approximation (MW) - Notes 1,2&_Summer Typical","Reverse direction capability approximation (MW) - Notes 1,2&_Winter Reference",Dominant constraints_Forward direction,Dominant constraints_Reverse direction
 "NSW – QLD (""QNI"")",685 (with QNI Minor),745 (with QNI Minor),745 (with QNI Minor),"1,205 (with QNI minor)
 (Note 5)","1,165 (with QNI minor)
 (Note 5)","1,170 (with QNI minor)

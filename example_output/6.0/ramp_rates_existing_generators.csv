@@ -1,6 +1,4 @@
-Generator Station,Generating Unit,Technology Type,"Max Ramp Up
-(MW/min)","Max Ramp Down
-(MW/min)"
+Generator Station,Generating Unit,Technology Type,Max Ramp Up (MW/min),Max Ramp Down (MW/min)
 Bayswater,BW01,Black Coal,4.0,4.0
 Bayswater,BW02,Black Coal,4.0,4.0
 Bayswater,BW03,Black Coal,4.0,4.0
