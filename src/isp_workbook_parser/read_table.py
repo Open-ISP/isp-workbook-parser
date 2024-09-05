@@ -152,6 +152,10 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             usecols=table.column_range,
             nrows=(table.end_row - table.header_rows),
         )
+        # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
+        # e.g. Generator.1 is changed to Generator
+        df.columns = df.columns.astype(str)
+        df.columns = df.columns.str.replace(r"\.[\.\d]+$", "", regex=True)
         if table.skip_rows:
             df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
         return df
@@ -164,6 +168,12 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             nrows=(table.end_row - table.header_rows[0]),
             # do not parse dtypes
             dtype="object",
+        )
+        # manual fix to deal with mangle_dupe_cols -> kwarg not exposed in pandas 2.0+
+        # e.g. Generator.1 is changed to Generator
+        df_initial.columns = df_initial.columns.astype(str)
+        df_initial.columns = df_initial.columns.str.replace(
+            r"\.[\.\d]+$", "", regex=True
         )
         # check that header_rows list is sorted
         assert sorted(table.header_rows) == table.header_rows
