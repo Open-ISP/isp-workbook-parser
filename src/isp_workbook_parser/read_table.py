@@ -1,7 +1,11 @@
+import openpyxl
+
+import openpyxl.utils
 import pandas as pd
+import numpy as np
+
 from isp_workbook_parser import TableConfig
 from typing import Union, List
-import numpy as np
 
 
 def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
@@ -157,6 +161,27 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         dropped = df_reset_index.drop(index=skip_rows).reset_index(drop=True)
         return dropped
 
+    def _handle_merged_rows(
+        df: pd.DataFrame,
+        config_cols_with_merged_rows: Union[str, List[str]],
+        column_range: str,
+    ) -> pd.DataFrame:
+        """
+        Forward fill down columns in `columns_with_merged_rows`
+        """
+        if type(config_cols_with_merged_rows) is str:
+            cols = [config_cols_with_merged_rows]
+        else:
+            cols = config_cols_with_merged_rows
+        absolute_col_indices = list(map(openpyxl.utils.column_index_from_string, cols))
+        first_col_index = openpyxl.utils.column_index_from_string(
+            column_range.split(":")[0]
+        )
+        actual_col_indices = [x - first_col_index for x in absolute_col_indices]
+        for index in actual_col_indices:
+            df.iloc[:, index] = df.iloc[:, index].ffill()
+        return df
+
     if type(table.header_rows) is int:
         df = pd.read_excel(
             workbook_file,
@@ -168,6 +193,10 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         df.columns = _column_name_sanitiser(df.columns)
         if table.skip_rows:
             df = _skip_rows_in_dataframe(df, table.skip_rows, table.header_rows)
+        if table.columns_with_merged_rows:
+            df = _handle_merged_rows(
+                df, table.columns_with_merged_rows, table.column_range
+            )
         return df
     else:
         df_initial = pd.read_excel(
@@ -217,5 +246,9 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         if table.skip_rows:
             df_cleaned = _skip_rows_in_dataframe(
                 df_cleaned, table.skip_rows, table.header_rows[-1]
+            )
+        if table.columns_with_merged_rows:
+            df_cleaned = _handle_merged_rows(
+                df_cleaned, table.columns_with_merged_rows, table.column_range
             )
         return df_cleaned
