@@ -117,9 +117,10 @@ class Parser:
             if config.sheet_name not in table_names_by_sheet:
                 table_names_by_sheet[config.sheet_name] = []
             table_names_by_sheet[config.sheet_name].append(table_name)
-        for sheet_name, configs in table_names_by_sheet.items():
-            table_names_by_sheet[sheet_name] = sorted(table_names_by_sheet[sheet_name])
-        return table_names_by_sheet
+        sorted_table_names_by_sheet = dict(sorted(table_names_by_sheet.items()))
+        for sheet_name, tables in sorted_table_names_by_sheet.items():
+            sorted_table_names_by_sheet[sheet_name] = sorted(tables)
+        return sorted_table_names_by_sheet
 
     def _check_data_ends_where_expected(
         self, tab: str, end_row: int, range: str, name: str
