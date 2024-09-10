@@ -36,8 +36,11 @@ class TableConfig(BaseModel):
             defined over multiple rows, then a list of the row numbers sorted in ascending order.
         end_row: the last row of table data.
         column_range: the columns over which the table is defined in the alphabetical format, i.e. 'B:F'
-        skip_rows: an `int` specifying a row to skip, or a list of `int` corresponding to
+        skip_rows: optional, an `int` specifying a row to skip, or a list of `int` corresponding to
             row numbers to skip.
+        columns_with_merged_rows: optional, a `str` specifying a column with merged rows
+         in alphabetical format (e.g. "B") or a list of `str` corresponding to columns
+         in alphabetical format with merged rows (e.g. ["B", "D"]).
     """
 
     name: str
@@ -46,6 +49,7 @@ class TableConfig(BaseModel):
     end_row: int
     column_range: str
     skip_rows: Optional[int | List[int]] = None
+    columns_with_merged_rows: Optional[str | List[str]] = None
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
