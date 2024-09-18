@@ -33,7 +33,7 @@ published by the Australian Energy Market Operator for use in their Integrated S
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
 
 > [!NOTE]
-> This package makes some opinionated decisions when processing tables with multiple header rows, including how tables are reduced to a single header and how data in merged cells is handled. For more detail, refer to the docstring and code in [`read_table.py`](src/isp_workbook_parser/read_table.py).
+> This package makes some opinionated decisions when processing tables with multiple header rows, including how tables are reduced to a single header and how data in merged cells is handled. For more detail, refer to the docstring and code in [`read_table.py`](https://github.com/Open-ISP/isp-workbook-parser/blob/main/src/isp_workbook_parser/read_table.py).
 
 ## Table configurations
 
@@ -51,7 +51,7 @@ Tables are defined in the configuration files using the following attributes:
 
 ### Adding table configuration files to this package
 
-Refer to the [contributing instructions](./CONTRIBUTING.md) for details on how to contribute table configuration (YAML) files to this repository and package.
+Refer to the [contributing instructions](https://github.com/Open-ISP/isp-workbook-parser/blob/main/CONTRIBUTING.md) for details on how to contribute table configuration (YAML) files to this repository and package.
 
 ## Examples
 
@@ -116,10 +116,10 @@ workbook.get_table_from_config(table_config)
 
 ## Contributing
 
-Interested in contributing to the source code or adding table configurations? Check out the [contributing instructions](./CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
+Interested in contributing to the source code or adding table configurations? Check out the [contributing instructions](https://github.com/Open-ISP/isp-workbook-parser/blob/main/CONTRIBUTING.md), which also includes steps to install `isp-workbook-parser` for development.
 
-Please note that this project is released with a [Code of Conduct](./CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that this project is released with a [Code of Conduct](https://github.com/Open-ISP/isp-workbook-parser/blob/main/CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-`isp-workbook-parser` was created as a part of the [OpenISP project](https://github.com/Open-ISP). It is licensed under the terms of [GNU GPL-3.0-or-later](LICENSE) licences.
+`isp-workbook-parser` was created as a part of the [OpenISP project](https://github.com/Open-ISP). It is licensed under the terms of [GNU GPL-3.0-or-later](https://github.com/Open-ISP/isp-workbook-parser/blob/main/LICENSE) licences.
