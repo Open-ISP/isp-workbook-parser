@@ -4,7 +4,7 @@ marginal_loss_factors_existing_generators:
   end_row: 260
   column_range: "B:C"
 
-marginal_loss_factors_committed_projects:
+marginal_loss_factors_committed_generators:
   sheet_name: "Marginal Loss Factors"
   header_rows: 8
   end_row: 35
