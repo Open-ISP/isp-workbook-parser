@@ -42,6 +42,9 @@ pip install isp-workbook-parser
 
 ## Table configurations
 
+<details>
+<summary>Table configuration file attributes</summary>
+<br>
 - `name`: the table name
 - `sheet_name`: the sheet where the table is located
    - N.B. there may be spaces at the end of sheet names in the workbook
@@ -57,6 +60,7 @@ pip install isp-workbook-parser
     - A single column in alphabetical format (e.g. `"B"`),
     - Or a list of columns in alphabetical format (e.g. `["B", "D"]`).
     """
+</details>
 
 ### Adding table configuration files to this package
 
