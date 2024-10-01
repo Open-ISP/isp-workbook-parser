@@ -32,7 +32,7 @@ pip install isp-workbook-parser
 1. Load a workbook using `Parser` (see examples below).
    - While we do not include workbooks with the package distribution, you can find the versions for which table configurations are written within `workbooks/<version>`.
 2. Table configuration files for data tables are located in `src/config/<version>`
-   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not read in (e.g. where AEMO has formatted a row with a strike through to indicate that the data is no longer being used) and columns with merged rows can also be specified and handled. 
+   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not read in (e.g. where AEMO has formatted a row with a strike through to indicate that the data is no longer being used) and columns with merged rows can also be specified and handled.
    - These are included with the package distributions.
 3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version.
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
