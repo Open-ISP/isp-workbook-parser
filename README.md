@@ -10,6 +10,7 @@ published by the Australian Energy Market Operator for use in their Integrated S
 
 ## Table of contents
 
+- [Installation](#installation)
 - [How the package works](#how-the-package-works)
 - [Table configurations](#table-configurations)
 - [Examples](#examples)
@@ -20,6 +21,11 @@ published by the Australian Energy Market Operator for use in their Integrated S
 - [Contributing](#contributing)
 - [License](#license)
 
+## Installation
+
+```bash
+pip install isp-workbook-parser
+```
 
 ## How the package works
 
