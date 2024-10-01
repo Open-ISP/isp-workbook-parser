@@ -32,8 +32,7 @@ pip install isp-workbook-parser
 1. Load a workbook using `Parser` (see examples below).
    - While we do not include workbooks with the package distribution, you can find the versions for which table configurations are written within `workbooks/<version>`.
 2. Table configuration files for data tables are located in `src/config/<version>`
-   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not
-     read in can also be provided, e.g. where AEMO has formatted a row with a strike through to indicate that the data is no longer being used.
+   - These specify the name, location, columns and data range of tables to be extracted from a particular workbook version. Optionally, rows to skip and not read in (e.g. where AEMO has formatted a row with a strike through to indicate that the data is no longer being used) and columns with merged rows can also be specified and handled. 
    - These are included with the package distributions.
 3. `Parser` loads the MS Excel workbook and, by default, will check if the version of the workbook is supported by seeing if configuration files are included in the package for that version.
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
@@ -43,17 +42,21 @@ pip install isp-workbook-parser
 
 ## Table configurations
 
-Tables are defined in the configuration files using the following attributes:
-
 - `name`: the table name
 - `sheet_name`: the sheet where the table is located
    - N.B. there may be spaces at the end of sheet names in the workbook
-- `header_rows`: this specifies the row(s) with table column names
-   - If there is a single row of table column names, then provide a single number (i.e. an `int` like `6`)
-   - If the table header is defined over multiple rows, then provide a list of row numbers sorted in ascending order (e.g. `[6, 7, 8]`)
+- `header_rows`: this specifies the Excel row(s) with table column names
+   - A single row of table column names (e.g. `6`)
+   - Or a list of row numbers for the table header sorted in ascending order (e.g. `[6, 7, 8]`)
 - `end_row`: the last row of table data
-- `column_range`: the column range of the table in alphabetical/Excel format, e.g. `"B:F"`
-- `skip_rows`: optional, a list of excel rows in the table that should not be read in (e.g. `[15]`)
+- `column_range`: the Excel column range of the table in alphabetical/Excel format, e.g. `"B:F"`
+- `skip_rows`: optional, Excel row(s) in the table that should not be read in
+    - A single row (e.g. `15`)
+    - Or a list of rows  (e.g. `[15, 16]`)
+- `columns_with_merged_rows`: optional, Excel column(s) with merged rows
+    - A single column in alphabetical format (e.g. `"B"`),
+    - Or a list of columns in alphabetical format (e.g. `["B", "D"]`).
+    """
 
 ### Adding table configuration files to this package
 
@@ -63,7 +66,7 @@ Refer to the [contributing instructions](https://github.com/Open-ISP/isp-workboo
 
 ### Bulk export
 
-Export all the data tables the parser has a config file for to CSV files.
+Export all the data tables the package has a config file for to CSV files.
 
 ```python
 from isp_workbook_parser import Parser
@@ -75,8 +78,8 @@ workbook.save_tables('<path/to/output directory>')
 
 ### List tables with configuration files
 
-Return a dict of table names, lists of tables names stored under a key which is their sheet name in the workbook Only
-tables the package has a configuration file for (for the given workbook version).
+Return a dictionary of table names, with lists of tables names stored under a key which is their sheet name in the workbook.
+For a given workbook version, this only returns tables the package has a configuration file for.
 
 ```python
 from isp_workbook_parser import Parser
