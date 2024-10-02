@@ -1,6 +1,6 @@
 [project]
 name = "isp-workbook-parser"
-version = "1.2.1"
+version = "1.2.2"
 description = "A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook published by the Australian Energy Market Operator for use in their Integrated System Plan modelling."
 authors = [
     { name = "nick-gorman", email = "n.gorman305@gmail.com" },
