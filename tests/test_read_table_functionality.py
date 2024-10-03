@@ -43,3 +43,22 @@ def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6):
     df = workbook_v6.get_table_from_config(table_config)
     assert len(df) == (table_config.end_row - table_config.header_rows[-1] - 7)
     assert df[df["Wind High_REZ ID"].str.contains("V")].empty
+
+
+def test_no_forward_fill_in_rows(workbook_v6):
+    table_config = TableConfig(
+        name="outages_new_entrants",
+        sheet_name="Generator Reliability Settings",
+        header_rows=[19, 20],
+        end_row=40,
+        column_range="I:N",
+        forward_fill_values=False,
+    )
+    df = workbook_v6.get_table_from_config(table_config)
+    assert all(df.iloc[:, -1].isna())
+    assert all(
+        df.loc[
+            df["Fuel type"] == "Large scale Solar PV",
+            [col for col in df.columns if col != "Fuel type"],
+        ]
+    )

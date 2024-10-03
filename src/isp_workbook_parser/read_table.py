@@ -132,18 +132,23 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         return last_header
 
     def _build_cleaned_dataframe(
-        df_initial: pd.DataFrame, header_rows_in_table: int, new_headers: pd.Series
+        df_initial: pd.DataFrame,
+        header_rows_in_table: int,
+        new_headers: pd.Series,
+        forward_fill_values: bool,
     ) -> pd.DataFrame:
         """
         Builds a cleaned DataFrame with the merged headers by:
         1. Dropping the header rows in the table
         2. Applying the merged headers as the columns of the DataFrame
-        3. Forward fill values across columns (handles merged value cells)
+        3. Forward fill values across columns if `forward_fill_values` is True
         4. Reset the DataFrame index
         """
         df_cleaned = df_initial.iloc[header_rows_in_table:, :]
         df_cleaned.columns = new_headers
-        df_cleaned = df_cleaned.ffill(axis=1).reset_index(drop=True)
+        if forward_fill_values:
+            df_cleaned = df_cleaned.ffill(axis=1)
+        df_cleaned = df_cleaned.reset_index(drop=True)
         return df_cleaned
 
     def _skip_rows_in_dataframe(
@@ -241,7 +246,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             series[series != ""] = "_" + series[series != ""]
         merged_headers = ffilled_initial_header.str.cat(filled_headers)
         df_cleaned = _build_cleaned_dataframe(
-            df_initial, header_rows_in_table, merged_headers
+            df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
         )
         if table.skip_rows:
             df_cleaned = _skip_rows_in_dataframe(

@@ -358,7 +358,8 @@ class Parser:
         )
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
-        self._check_last_column_isnt_empty(data, table_config.name)
+        if table_config.forward_fill_values:
+            self._check_last_column_isnt_empty(data, table_config.name)
 
     def get_table_names(self) -> list[str]:
         """Returns a dict of tabke names by sheet name that there is config for.
