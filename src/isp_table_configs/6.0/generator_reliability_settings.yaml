@@ -15,6 +15,7 @@ outages_new_entrants:
   header_rows: [19, 20]
   end_row: 40
   column_range: "I:N"
+  forward_fill_values: False
 
 full_outages_forecast_existing_generators:
   sheet_name: "Generator Reliability Settings"

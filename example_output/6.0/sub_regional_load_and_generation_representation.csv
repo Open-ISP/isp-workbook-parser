@@ -1,0 +1,16 @@
+NEM Region / Sub-region,Reference Node,Load and generation representation
+North Queensland  (NQ),Chalumbin 275 kV,"All load and generation including and north of Ross, Clare South, and Haughton River."
+Central Queensland (CQ),Broadsound 275 kV,"All load and generation including and north of Calvale, Gin Gin, Teebar Creek substations, except load and generation in NQ and GG sub-regions."
+Gladstone grid (GG),Calliope River 275 kV,"All load and generation at Calliope River, Boyne Island, Larcom Creek and Wurdong substations."
+South Queensland (SQ),South Pine 275 kV,"All Queensland load and generation except load and generation in NQ, CQ and GG sub-regions."
+Northern New South Wales (NNSW),Armidale 330 kV,"Within NSW, all load and generation including and north of Tamworth substation."
+Central New South Wales (CNSW),Wellington 330 kV,"Within NSW, all load and generation including west of Wallerawang and Wollar substations.
+Load and generation at Bayswater, Liddell and Muswellbrook substations.
+Load and generation at Bannaby substation."
+South NSW (SNSW),Canberra 330 kV,"Within NSW, all load and generation including and south of Gullen Range, Marulan and Kangaroo Valley substations.
+All load and generation in South West NSW."
+"Sydney, Newcastle and Wollongong (SNW)",Sydney West 330 kV,"All NSW region load and generation except CNSW, SNSW and NNSW sub-region load and generation."
+Victoria (VIC),Thomastown 66 kV,All load and generation within Victoria
+South Australia (CSA),Torrens Island 66 kV,All load and generation within South Australia except in SESA sub-region.
+South East South Australia (SESA),South East 132 kV,All load and generation south of Tailem Bend within South Australia.
+Tasmania (TAS),George Town 220 kV,All load and generation within Tasmania

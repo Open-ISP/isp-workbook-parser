@@ -48,18 +48,21 @@ pip install isp-workbook-parser
 
 - `name`: the table name
 - `sheet_name`: the sheet where the table is located
-   - N.B. there may be spaces at the end of sheet names in the workbook
+  - N.B. there may be spaces at the end of sheet names in the workbook
 - `header_rows`: this specifies the Excel row(s) with table column names
-   - A single row of table column names (e.g. `6`)
-   - Or a list of row numbers for the table header sorted in ascending order (e.g. `[6, 7, 8]`)
+  - A single row of table column names (e.g. `6`)
+  - Or a list of row numbers for the table header sorted in ascending order (e.g. `[6, 7, 8]`)
 - `end_row`: the last row of table data
 - `column_range`: the Excel column range of the table in alphabetical/Excel format, e.g. `"B:F"`
 - `skip_rows`: optional, Excel row(s) in the table that should not be read in
-    - A single row (e.g. `15`)
-    - Or a list of rows  (e.g. `[15, 16]`)
+  - A single row (e.g. `15`)
+  - Or a list of rows  (e.g. `[15, 16]`)
 - `columns_with_merged_rows`: optional, Excel column(s) with merged rows
-    - A single column in alphabetical format (e.g. `"B"`),
-    - Or a list of columns in alphabetical format (e.g. `["B", "D"]`).
+  - A single column in alphabetical format (e.g. `"B"`),
+  - Or a list of columns in alphabetical format (e.g. `["B", "D"]`)
+- `forward_fill_values`: optional, specifies whether table values should be forward filled
+  - Default `True` to handle merged cells in tables
+  - Should be set to `False` where there are empty columns
 
 </details>
 

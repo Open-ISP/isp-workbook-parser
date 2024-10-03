@@ -1,0 +1,51 @@
+Flow path definition,Definition of interconnector or Flow path boundaries
+CQ - NQ,"Strathmore - Ross 275 kV line (2 circuits)
+Strathmore - Haughton River 275 kV line (1 circuit)
+Strathmore  - Clare South  132 kV (1 circuit)
+King Creek - Clare South 132 kV line (1 circuit)"
+CQ – GG,"Bouldercombe – Calliope River 275 kV (1 circuit)
+Raglan – Larcom Creek  275 kV (1 circuit)
+Calvale – Wurdong 275 kV (1 circuit)
+Gin Gin – Calliope River 275 kV (2 circuits)
+Teebar Creek – Wurdong 275 kV (1 circuit)
+"
+CQ – SQ,"Woolooga – Teebar Creek 275 kV (1 circuit)
+Woolooga – Gin Gin 275 kV (2 circuits)
+Halys – Calvale 275 kV (2 circuits)"
+"NNSW – SQ (Queensland – New South Wales interconnector, or QNI )",Dumaresq – Bulli Creek 330 kV (2 circuits)
+NNSW – SQ (Terranora),Terranora – Mudgeeraba 110 kV (2 circuits)
+CNSW – NNSW,"Muswellbrook – Tamworth 330 kV (1 circuit)
+Liddell – Tamworth 330 kV (1 circuit)
+Haws Nest Tee – Taree 132 kV line (1 circuit)
+Stroud – Taree  132 kV line (1 circuit)"
+SNSW – CNSW,"Crookwell  – Bannaby 330 kV (1 circuit)
+Yass – Marulan  330 kV (1 circuit)
+Collector - Marulan 330 kV (1 circuit)
+Capital – Kangaroo Valley 330 kV (1 circuit)
+Yass – Cowra 132 kV (2 circuits)"
+CNSW – SNW,"Wallerawang – Ingleburn 330 kV (1 circuit)
+Wallerawang – Sydney South 330 kV (1 circuit)
+Bayswater – Sydney West ­330 kV (1 circuit)
+Bayswater – Regentville 330 kV (1 circuit)
+Liddell – Newcastle 330 kV (1 circuit)
+Liddell – Tomago 330 kV (1 circuit)
+Bannaby – Sydney West 330 kV (1 circuit)
+Marulan – Avon 330 kV (1 circuit)
+Marulan – Dapto  330 kV (1 circuit)
+Kangaroo Valley – Dapto 330 kV (1 circuit)
+Stroud – Brandy Hill 132 kV (1 circuit)
+Stroud – Tomago 132 kV (1 circuit)
+Hawks Nest tee – Tomago 132 kV (1 circuit)
+Singleton - Rothbury 132 kV (1 circuit which is normally open)"
+VIC – SNSW,"Murray – Upper Tumut 330 kV (1 circuit)
+Murray – Lower Tumut 330 kV (1 circuit)
+Wodonga – Jindera 330 kV (1 circuit)
+Red Cliffs – Buronga 220 kV line (circuit)
+Jindabyne - Guthega 132 kV line (1 circuit)
+Geehi Dam - Guthega 132 kV line (1 circuit)"
+SNSW – CSA,Buronga  - Bundy 330 kV (2 circuits)
+VIC –  SESA (Heywood),Heywood – South East 275 kV (2 circuits)
+SESA- CSA,"Black Range – Tailem Bend 275 kV (2 circuits)
+Keith – Tailem Bend 132 kV (1 circuit)"
+VIC – CSA (Murraylink),Red Cliffs – Monash HVDC cable
+VIC-TAS,George Town – Loy Yang HVDC cable
