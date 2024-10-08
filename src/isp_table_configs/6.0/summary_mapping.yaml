@@ -1,10 +1,10 @@
-existing_generator_summary:
+existing_generators_summary:
   sheet_name: "Summary Mapping"
   header_rows: [4, 5, 6]
   end_row: 258
   column_range: "B:AB"
 
-committed_generator_summary:
+committed_generators_summary:
   sheet_name: "Summary Mapping"
   header_rows: [261, 262, 263]
   end_row: 290
