@@ -1,13 +1,13 @@
-import os
 import glob
+import os
 from pathlib import Path
+from typing import Any
 
-import pandas as pd
 import openpyxl
+import pandas as pd
 
 from .config_model import load_yaml
 from .read_table import read_table
-from typing import Any
 
 
 class Parser:

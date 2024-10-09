@@ -1,8 +1,8 @@
-import yaml
-
-from pydantic import BaseModel
-from typing import List, Optional
 from pathlib import Path
+from typing import List, Optional
+
+import yaml
+from pydantic import BaseModel
 
 
 class TableConfig(BaseModel):
