@@ -1,4 +1,4 @@
-biomass_prices:
+battery_properties:
   sheet_name: "Storage properties"
   header_rows: 4
   end_row: 13
