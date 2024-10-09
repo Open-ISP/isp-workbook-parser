@@ -1,0 +1,5 @@
+renewable_energy_zones:
+  sheet_name: "Renewable Energy Zones"
+  header_rows: 7
+  end_row: 50
+  column_range: "B:G"
