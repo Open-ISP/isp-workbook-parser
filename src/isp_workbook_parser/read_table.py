@@ -64,7 +64,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     Returns:
         Table as a pandas DataFrame
     """
-    if type(table.header_rows) is int:
+    if isinstance(table.header_rows, int):
         df = pd.read_excel(
             workbook_file,
             sheet_name=table.sheet_name,
@@ -238,7 +238,7 @@ def _handle_merged_rows(
     """
     Forward fill down columns in `columns_with_merged_rows`
     """
-    if type(config_cols_with_merged_rows) is str:
+    if isinstance(config_cols_with_merged_rows, str):
         cols = [config_cols_with_merged_rows]
     else:
         cols = config_cols_with_merged_rows
