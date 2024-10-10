@@ -7,7 +7,7 @@ import pandas as pd
 
 from isp_workbook_parser import TableConfig
 
-from .sanitisers import _column_name_sanitiser
+from .sanitisers import _column_name_sanitiser, _replace_dataframe_hyphens_with_na
 
 
 def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
@@ -79,6 +79,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             df = _handle_merged_rows(
                 df, table.columns_with_merged_rows, table.column_range
             )
+        df = _replace_dataframe_hyphens_with_na(df)
         return df
     else:
         df_initial = pd.read_excel(
@@ -133,6 +134,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
             df_cleaned = _handle_merged_rows(
                 df_cleaned, table.columns_with_merged_rows, table.column_range
             )
+        df_cleaned = _replace_dataframe_hyphens_with_na(df_cleaned)
         return df_cleaned
 
 
