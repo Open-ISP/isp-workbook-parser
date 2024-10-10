@@ -4,10 +4,11 @@ from pathlib import Path
 from typing import Any
 
 import openpyxl
+import openpyxl.utils
 import pandas as pd
 
-from .config_model import load_yaml
-from .read_table import read_table
+from .config_model import TableConfig, load_yaml
+from .read_table import read_table, _find_data_column_index
 
 
 class Parser:
@@ -361,8 +362,78 @@ class Parser:
         if table_config.forward_fill_values:
             self._check_last_column_isnt_empty(data, table_config.name)
 
+    def _postprocess_percentage_columns_between_0_and_100(
+        self, data: pd.DataFrame, table_config: TableConfig
+    ) -> pd.DataFrame:
+        """Multiplies cells with percentrage formaating by 100 to ensure that
+        percentage values are between 0 and 100.
+
+        While some percentage data in the workbook consists of integers,
+        `pandas.read_excel` parses percentage formatted data as values between 0 and 1.
+        This postprocessor ensures that percentage data is parsed consistently, i.e.
+        all percentage data is a value between 0 and 100.
+
+        Args:
+            data: `pandas.DataFrame` produced by `read_table`
+            table_config: `TableConfig` for the data table
+
+        Returns:
+            `pandas.DataFrame` with percentage columns multiplied by 100 (i.e.
+            values should be between 0 and 100)
+        """
+        percentage_columns = []
+        sheet = self.openpyxl_file[table_config.sheet_name]
+        min_col, max_col = [
+            openpyxl.utils.column_index_from_string(col_alphabetical)
+            for col_alphabetical in table_config.column_range.split(":")
+        ]
+        if isinstance(table_config.header_rows, list):
+            min_row = table_config.header_rows[-1] + 1
+        else:
+            min_row = table_config.header_rows + 1
+        for col in sheet.iter_cols(
+            min_row=min_row,
+            max_row=table_config.end_row,
+            min_col=min_col,
+            max_col=max_col,
+        ):
+            percentage_cells = []
+            skipped_rows = 0
+            for cell in col:
+                if sr := table_config.skip_rows:
+                    if isinstance(sr, list) and cell.row in sr:
+                        skipped_rows += 1
+                        continue
+                    elif isinstance(sr, int) and cell.row == sr:
+                        skipped_rows += 1
+                        continue
+                if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
+                    percentage_cells.append(
+                        (
+                            cell.row - min_row - skipped_rows,
+                            _find_data_column_index(
+                                cell.column_letter, table_config.column_range
+                            ),
+                        )
+                    )
+
+            # add the data column index if the entire column consists of percentage values
+            # else, add the individual cells as a list of tuples
+            if len(percentage_cells) == (table_config.end_row - min_row + 1):
+                percentage_columns.append(set(x[1] for x in percentage_cells).pop())
+            else:
+                percentage_columns.append(percentage_cells)
+
+        for col in percentage_columns:
+            if isinstance(col, int):
+                data.iloc[:, col] *= 100
+            elif isinstance(col, list):
+                for cell in col:
+                    data.iloc[cell[0], cell[1]] *= 100
+        return data
+
     def get_table_names(self) -> list[str]:
-        """Returns a dict of tabke names by sheet name that there is config for.
+        """Returns a dict of table names by sheet name that there is config for.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
@@ -417,6 +488,9 @@ class Parser:
             self._check_if_header_row_and_end_row_are_on_sheet(table_config)
             self._check_if_start_and_end_column_are_on_sheet(table_config)
         data = read_table(self.file, table_config)
+        data = self._postprocess_percentage_columns_between_0_and_100(
+            data, table_config
+        )
         if config_checks:
             self._check_table(data, table_config)
         return data
