@@ -64,7 +64,6 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
     Returns:
         Table as a pandas DataFrame
     """
-
     if type(table.header_rows) is int:
         df = pd.read_excel(
             workbook_file,
@@ -241,11 +240,31 @@ def _handle_merged_rows(
         cols = [config_cols_with_merged_rows]
     else:
         cols = config_cols_with_merged_rows
-    absolute_col_indices = list(map(openpyxl.utils.column_index_from_string, cols))
-    first_col_index = openpyxl.utils.column_index_from_string(
-        column_range.split(":")[0]
+    actual_col_indices = list(
+        map(lambda col: _find_data_column_index(col, column_range), cols)
     )
-    actual_col_indices = [x - first_col_index for x in absolute_col_indices]
     for index in actual_col_indices:
         df.iloc[:, index] = df.iloc[:, index].ffill()
     return df
+
+
+def _find_data_column_index(
+    column_alphabetical: str, column_range_from_table_config: str
+) -> int:
+    """Returns the zero-index (integer) index of a column within a table defined by
+    a TableConfig column range.
+
+    Args:
+        column_alphabetical: Alphabetical column index (e.g. "B")
+        column_range_from_table_config: Alphabetical column range, as defined in each
+            TableConfig (e.g. "B:D")
+
+    Returns:
+        Integer index of the column that `column_alphabetical` refers to in the data
+        (zero-indexed)
+    """
+    first_col_index = openpyxl.utils.column_index_from_string(
+        column_range_from_table_config.split(":")[0]
+    )
+    data_col_index = openpyxl.utils.column_index_from_string(column_alphabetical)
+    return data_col_index - first_col_index
