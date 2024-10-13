@@ -30,8 +30,12 @@ pytz==2024.1
     # via pandas
 pyyaml==6.0.1
     # via isp-workbook-parser
+rapidfuzz==3.10.0
+    # via thefuzz
 six==1.16.0
     # via python-dateutil
+thefuzz==0.22.1
+    # via isp-workbook-parser
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core

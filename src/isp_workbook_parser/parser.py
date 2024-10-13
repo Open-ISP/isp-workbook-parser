@@ -6,9 +6,10 @@ from typing import Any
 import openpyxl
 import openpyxl.utils
 import pandas as pd
+from thefuzz import process
 
 from .config_model import TableConfig, load_yaml
-from .read_table import read_table, _find_data_column_index
+from .read_table import _find_data_column_index, read_table
 
 
 class Parser:
@@ -517,11 +518,12 @@ class Parser:
                 starts and ends where expected and the workbook header matches the config header.
         """
         if not isinstance(table_name, str):
-            ValueError("The parameter table_name must be provided as a string.")
-
+            raise ValueError("The parameter table_name must be provided as a string.")
         if table_name not in self.table_configs.keys():
-            ValueError(
+            closest = process.extractOne(table_name, self.table_configs.keys())[0]
+            raise ValueError(
                 "The table_name provided is not in the config for this workbook version."
+                + f" Did you mean '{closest}'?"
             )
 
         table_config = self.table_configs[table_name]
@@ -557,13 +559,15 @@ class Parser:
             directory.mkdir(parents=True)
 
         if not directory.is_dir():
-            ValueError("The path provided is not a directory.")
+            raise ValueError("The path provided is not a directory.")
 
         if not (isinstance(tables, str) or isinstance(tables, list)):
-            ValueError("The parameter tables must be provided as str or list[str].")
+            raise ValueError(
+                "The parameter tables must be provided as str or list[str]."
+            )
 
         if isinstance(tables, str) and tables != "all":
-            ValueError(
+            raise ValueError(
                 "If the parameter tables is provided as a str it must \n",
                 f"have the value 'all' but '{tables}' was provided.",
             )
