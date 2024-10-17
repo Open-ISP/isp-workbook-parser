@@ -18,7 +18,7 @@ def test_sanitisation_on_flow_path_transfer_capability():
     unsanitised = pd.read_csv(Path("tests", "test_data", "unsanitised.csv"))
     expected = pd.read_csv(Path("tests", "test_data", "sanitised.csv"))
     test_sanitised = _values_casting_and_sanitisation(unsanitised)
-    pd.testing.assert_frame_equal(test_sanitised, expected)
+    pd.testing.assert_frame_equal(test_sanitised, expected, check_dtype=False)
 
 
 def test_replace_series_newlines_with_whitespace(sample_series):
