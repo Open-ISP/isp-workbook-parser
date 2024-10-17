@@ -1,13 +1,16 @@
-import os
 import glob
+import os
 from pathlib import Path
-
-import pandas as pd
-import openpyxl
-
-from .config_model import load_yaml
-from .read_table import read_table
 from typing import Any
+
+import openpyxl
+import openpyxl.utils
+import pandas as pd
+from thefuzz import process
+
+from .config_model import TableConfig, load_yaml
+from .read_table import _find_data_column_index, read_table
+from .sanitisers import _values_casting_and_sanitisation
 
 
 class Parser:
@@ -222,6 +225,19 @@ class Parser:
             error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
+    @staticmethod
+    def _check_columns_unique(data: pd.DataFrame, name: str) -> None:
+        """Check that columns in the data are unique
+
+        Unique columns names are required for sanitisation to work without error (i.e. in
+        `isp_workbook_parser.sanitisers._values_casting_and_sanitisation`). If an error
+        is raised, this may indicate that the config is incorrect.
+
+        """
+        if len(data.columns) != len(data.columns.drop_duplicates()):
+            error_message = f"There are duplicate column names in the table {name}."
+            raise TableConfigError(error_message)
+
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ) -> None:
@@ -361,8 +377,79 @@ class Parser:
         if table_config.forward_fill_values:
             self._check_last_column_isnt_empty(data, table_config.name)
 
+    def _postprocess_percentage_columns_between_0_and_100(
+        self, data: pd.DataFrame, table_config: TableConfig
+    ) -> pd.DataFrame:
+        """Multiplies cells with percentage formatting by 100 to ensure that
+        percentage values are between 0 and 100.
+
+        `pandas.read_excel` parses percentage formatted data as values between 0 and 1.
+        This postprocssor uses `openpyxl` to check the number format of each cell, and
+        then multiplies any percentage formatted cells by 100 to ensure that all
+        percentage data is a value between 0 and 100 (N.B. some percentage data are
+        formatted as integers between 0 and 100)
+
+        Args:
+            data: `pandas.DataFrame` produced by `read_table`
+            table_config: `TableConfig` for the data table
+
+        Returns:
+            `pandas.DataFrame` with percentage columns multiplied by 100 (i.e.
+            values should be between 0 and 100)
+        """
+        percentage_columns = []
+        sheet = self.openpyxl_file[table_config.sheet_name]
+        min_col, max_col = [
+            openpyxl.utils.column_index_from_string(col_alphabetical)
+            for col_alphabetical in table_config.column_range.split(":")
+        ]
+        if isinstance(table_config.header_rows, list):
+            min_row = table_config.header_rows[-1] + 1
+        else:
+            min_row = table_config.header_rows + 1
+        for col in sheet.iter_cols(
+            min_row=min_row,
+            max_row=table_config.end_row,
+            min_col=min_col,
+            max_col=max_col,
+        ):
+            percentage_cells = []
+            skipped_rows = 0
+            for cell in col:
+                if sr := table_config.skip_rows:
+                    if isinstance(sr, list) and cell.row in sr:
+                        skipped_rows += 1
+                        continue
+                    elif isinstance(sr, int) and cell.row == sr:
+                        skipped_rows += 1
+                        continue
+                if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
+                    percentage_cells.append(
+                        (
+                            cell.row - min_row - skipped_rows,
+                            _find_data_column_index(
+                                cell.column_letter, table_config.column_range
+                            ),
+                        )
+                    )
+
+            # add the data column index if the entire column consists of percentage values
+            # else, add the individual cells as a list of tuples
+            if len(percentage_cells) == (table_config.end_row - min_row + 1):
+                percentage_columns.append(set(x[1] for x in percentage_cells).pop())
+            else:
+                percentage_columns.append(percentage_cells)
+
+        for col in percentage_columns:
+            if isinstance(col, int):
+                data.iloc[:, col] *= 100
+            elif isinstance(col, list):
+                for cell in col:
+                    data.iloc[cell[0], cell[1]] *= 100
+        return data
+
     def get_table_names(self) -> list[str]:
-        """Returns a dict of tabke names by sheet name that there is config for.
+        """Returns a dict of table names by sheet name that there is config for.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
@@ -379,7 +466,7 @@ class Parser:
         return self.table_names_by_sheet
 
     def get_table_from_config(
-        self, table_config, config_checks: bool = True
+        self, table_config: TableConfig, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -417,6 +504,11 @@ class Parser:
             self._check_if_header_row_and_end_row_are_on_sheet(table_config)
             self._check_if_start_and_end_column_are_on_sheet(table_config)
         data = read_table(self.file, table_config)
+        self._check_columns_unique(data, table_config.name)
+        data = _values_casting_and_sanitisation(data)
+        data = self._postprocess_percentage_columns_between_0_and_100(
+            data, table_config
+        )
         if config_checks:
             self._check_table(data, table_config)
         return data
@@ -443,11 +535,12 @@ class Parser:
                 starts and ends where expected and the workbook header matches the config header.
         """
         if not isinstance(table_name, str):
-            ValueError("The parameter table_name must be provided as a string.")
-
+            raise ValueError("The parameter table_name must be provided as a string.")
         if table_name not in self.table_configs.keys():
-            ValueError(
+            closest = process.extractOne(table_name, self.table_configs.keys())[0]
+            raise ValueError(
                 "The table_name provided is not in the config for this workbook version."
+                + f" Did you mean '{closest}'?"
             )
 
         table_config = self.table_configs[table_name]
@@ -483,13 +576,15 @@ class Parser:
             directory.mkdir(parents=True)
 
         if not directory.is_dir():
-            ValueError("The path provided is not a directory.")
+            raise ValueError("The path provided is not a directory.")
 
         if not (isinstance(tables, str) or isinstance(tables, list)):
-            ValueError("The parameter tables must be provided as str or list[str].")
+            raise ValueError(
+                "The parameter tables must be provided as str or list[str]."
+            )
 
         if isinstance(tables, str) and tables != "all":
-            ValueError(
+            raise ValueError(
                 "If the parameter tables is provided as a str it must \n",
                 f"have the value 'all' but '{tables}' was provided.",
             )

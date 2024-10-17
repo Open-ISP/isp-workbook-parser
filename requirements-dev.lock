@@ -81,11 +81,15 @@ pytz==2024.1
 pyyaml==6.0.1
     # via isp-workbook-parser
     # via pre-commit
+rapidfuzz==3.10.0
+    # via thefuzz
 six==1.16.0
     # via asttokens
     # via python-dateutil
 stack-data==0.6.3
     # via ipython
+thefuzz==0.22.1
+    # via isp-workbook-parser
 traitlets==5.14.3
     # via ipython
     # via matplotlib-inline

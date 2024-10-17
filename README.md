@@ -38,7 +38,11 @@ pip install isp-workbook-parser
 4. If they are, `Parser` can use these configuration files to parse the data tables and save them as CSVs.
 
 > [!NOTE]
-> This package makes some opinionated decisions when processing tables with multiple header rows, including how tables are reduced to a single header and how data in merged cells is handled. For more detail, refer to the docstring and code in [`read_table.py`](https://github.com/Open-ISP/isp-workbook-parser/blob/main/src/isp_workbook_parser/read_table.py).
+> This package makes some opinionated decisions when processing tables. For example,
+> multiple header row tables are reduced to a single header, data in merged cells is inferred from surrounding cells,
+> and notes and footnotes are dropped (amonst other ways in which the data is sanitised).
+> For more detail, refer to the docstring and code in [`read_table.py`](https://github.com/Open-ISP/isp-workbook-parser/blob/main/src/isp_workbook_parser/read_table.py)
+> and [`sanitisers.py`](https://github.com/Open-ISP/isp-workbook-parser/blob/main/src/isp_workbook_parser/sanitisers.py).
 
 ## Table configurations
 

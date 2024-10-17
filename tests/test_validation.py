@@ -96,10 +96,10 @@ def test_end_row_runs_into_notes_throws_error(workbook_v6):
 def test_first_header_row_too_late_throws_error(workbook_v6):
     table_config = TableConfig(
         name="DUMMY",
-        sheet_name="Network Capability",
-        header_rows=[7, 8],
-        end_row=20,
-        column_range="B:J",
+        sheet_name="Generator Reliability Settings",
+        header_rows=[20, 21],
+        end_row=28,
+        column_range="B:G",
     )
     error_message = f"There is data or a header above the first header row for table {table_config.name}."
     with pytest.raises(TableConfigError, match=error_message):
@@ -147,6 +147,19 @@ def test_start_column_too_far_throws_error(workbook_v6):
     error_message = (
         "There is data in the column adjacent to the first column in the table DUMMY."
     )
+    with pytest.raises(TableConfigError, match=error_message):
+        workbook_v6.get_table_from_config(table_config)
+
+
+def test_duplicate_column_names_throws_error(workbook_v6):
+    table_config = TableConfig(
+        name="DUMMY",
+        sheet_name="Network Capability",
+        header_rows=[7, 8],
+        end_row=20,
+        column_range="B:J",
+    )
+    error_message = "There are duplicate column names in the table DUMMY."
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
 

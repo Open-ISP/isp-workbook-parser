@@ -30,4 +30,18 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
 
     save_dir = Path(f"example_output/{workbook.workbook_version}")
     save_dir.mkdir(parents=True, exist_ok=True)
-    workbook.save_tables(save_dir)
+    error_tables = {}
+    for table_name in workbook.table_configs:
+        try:
+            table = workbook.get_table(table_name)
+            save_path = save_dir / Path(f"{table_name}.csv")
+            table.to_csv(save_path, index=False)
+        except Exception as e:
+            error_tables[table_name] = e
+    if error_tables:
+        for key in error_tables:
+            raise TableLoadError(error_tables[key])
+
+
+class TableLoadError(Exception):
+    """Exception to throw if table loading fails"""

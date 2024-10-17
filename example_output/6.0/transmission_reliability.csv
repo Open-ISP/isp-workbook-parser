@@ -1,5 +1,5 @@
 Transmission outage rates_Line/Flowpath,Transmission outage rates_Implementation,Unplanned Outage Rate (%)_single credible contingency,Unplanned Outage Rate (%)_reclassification events,Mean Time to Repair_single credible contingency,Mean Time to Repair_reclassification events
-Mortlake – Heywood – South East (V-SA) ,Static annual FOR,0.0009,0.0001,7.8,4.7
-Murraylink,Static annual FOR,0.0007,0.0007,12.4,12.4
-Basslink,Static annual FOR,0.0539,0.0539,213.9,213.9
-Liddell – Muswellbrook – Tamworth – Armidale – Dumaresq – Bulli Creek (QNI) ,Static annual FOR,0.0019,0.014,14.5,4.3
+Mortlake – Heywood – South East (V-SA),Static annual FOR,0.09,0.01,7.8,4.7
+Murraylink,Static annual FOR,0.06999999999999999,0.0007,12.4,12.4
+Basslink,Static annual FOR,5.390000000000001,0.0539,213.9,213.9
+Liddell – Muswellbrook – Tamworth – Armidale – Dumaresq – Bulli Creek (QNI),Static annual FOR,0.19,1.4000000000000001,14.5,4.3
