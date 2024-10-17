@@ -1,44 +1,44 @@
 ID,Name,NEM Region,NTNDP Zone,ISP Sub-region,Regional Cost Zones
-Q1,Far North QLD,QLD,NQ,NQ,Low1
-Q2,North Qld Clean Energy Hub,QLD,NQ,NQ,Low1
+Q1,Far North QLD,QLD,NQ,NQ,Low
+Q2,North Qld Clean Energy Hub,QLD,NQ,NQ,Low
 Q3,Northern Qld,QLD,NQ,NQ,Low
-Q4,Isaac,QLD,NQ,CQ,Low1
+Q4,Isaac,QLD,NQ,CQ,Low
 Q5,Barcaldine,QLD,CQ,CQ,Medium
 Q6,Fitzroy,QLD,CQ,CQ,Low
-Q7,Wide Bay,QLD,CQ,SQ,Low1
-Q8,Darling Downs,QLD,SWQ,SQ,Low1
+Q7,Wide Bay,QLD,CQ,SQ,Low
+Q8,Darling Downs,QLD,SWQ,SQ,Low
 Q9,Banana,QLD,CQ,CQ,Medium
 N1,North West NSW,NSW,NNS,NNSW,Medium
 N2,New England,NSW,NNS,NNSW,Low
 N3,Central-West Orana,NSW,NCEN,CNSW,Medium
-N4,Broken Hill,NSW,SWNSW,SNSW,High3
+N4,Broken Hill,NSW,SWNSW,SNSW,High
 N5,South West NSW,NSW,SWNSW,SNSW,High
-N6,Wagga Wagga,NSW,SWNSW,SNSW,Medium1
+N6,Wagga Wagga,NSW,SWNSW,SNSW,Medium
 N7,Tumut,NSW,CAN,SNSW,Medium
 N8,Cooma-Monaro,NSW,CAN,SNSW,Medium
-N9,Hunter-Central Coast,NSW,NCEN,CNSW,Low4
+N9,Hunter-Central Coast,NSW,NCEN,CNSW,Low
 N10,Hunter Coast,NSW,NCEN,SNW,Low
 N11,Illawarra Coast,NSW,NCEN,SNW,Low
 N12,Illawarra,NSW,NCEN,SNW,Low
-V1,Ovens Murray,VIC,NVIC,VIC,Medium2
-V2,Murray River,VIC,NVIC,VIC,Medium1
-V3,Western Victoria,VIC,CVIC,VIC,Medium2
-V4,South West Victoria,VIC,MEL,VIC,Medium2
-V5,Gippsland,VIC,LV,VIC,Low1
+V1,Ovens Murray,VIC,NVIC,VIC,Medium
+V2,Murray River,VIC,NVIC,VIC,Medium
+V3,Western Victoria,VIC,CVIC,VIC,Medium
+V4,South West Victoria,VIC,MEL,VIC,Medium
+V5,Gippsland,VIC,LV,VIC,Low
 V6,Central North Vic,VIC,NVIC,VIC,High
-V7,Gippsland Coast,VIC,LV,VIC,Low6
+V7,Gippsland Coast,VIC,LV,VIC,Low
 V8,Southern Ocean,VIC,MEL,VIC,Low
-S1,South East SA,SA,SESA,SESA,Low1
+S1,South East SA,SA,SESA,SESA,Low
 S2,Riverland,SA,NSA,CSA,Low
-S3,Mid-North SA,SA,NSA,CSA,Low1
+S3,Mid-North SA,SA,NSA,CSA,Low
 S4,Yorke Peninsula,SA,NSA,CSA,Low
 S5,Northern SA,SA,NSA,CSA,Medium
-S6,Leigh Creek,SA,NSA,CSA,Medium1
-S7,Roxby Downs,SA,NSA,CSA,Medium1
+S6,Leigh Creek,SA,NSA,CSA,Medium
+S7,Roxby Downs,SA,NSA,CSA,Medium
 S8,Eastern Eyre Peninsula,SA,NSA,CSA,Medium
 S9,Western Eyre Peninsula,SA,NSA,CSA,Medium
 S10,South East SA Coast,SA,SESA,SESA,Low
-T1,North East Tasmania,TAS,TAS,TAS,Low1
-T2,North West Tasmania,TAS,TAS,TAS,Medium2
-T3,Central Highlands,TAS,TAS,TAS,Low1
+T1,North East Tasmania,TAS,TAS,TAS,Low
+T2,North West Tasmania,TAS,TAS,TAS,Medium
+T3,Central Highlands,TAS,TAS,TAS,Low
 T4,North Tasmania Coast,TAS,TAS,TAS,Low
