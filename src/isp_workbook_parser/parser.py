@@ -10,6 +10,7 @@ from thefuzz import process
 
 from .config_model import TableConfig, load_yaml
 from .read_table import _find_data_column_index, read_table
+from .sanitisers import _values_casting_and_sanitisation
 
 
 class Parser:
@@ -224,6 +225,19 @@ class Parser:
             error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
+    @staticmethod
+    def _check_columns_unique(data: pd.DataFrame, name: str) -> None:
+        """Check that columns in the data are unique
+
+        Unique columns names are required for sanitisation to work without error (i.e. in
+        `isp_workbook_parser.sanitisers._values_casting_and_sanitisation`). If an error
+        is raised, this may indicate that the config is incorrect.
+
+        """
+        if len(data.columns) != len(data.columns.drop_duplicates()):
+            error_message = f"There are duplicate column names in the table {name}."
+            raise TableConfigError(error_message)
+
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
     ) -> None:
@@ -366,13 +380,14 @@ class Parser:
     def _postprocess_percentage_columns_between_0_and_100(
         self, data: pd.DataFrame, table_config: TableConfig
     ) -> pd.DataFrame:
-        """Multiplies cells with percentrage formaating by 100 to ensure that
+        """Multiplies cells with percentage formatting by 100 to ensure that
         percentage values are between 0 and 100.
 
-        While some percentage data in the workbook consists of integers,
         `pandas.read_excel` parses percentage formatted data as values between 0 and 1.
-        This postprocessor ensures that percentage data is parsed consistently, i.e.
-        all percentage data is a value between 0 and 100.
+        This postprocssor uses `openpyxl` to check the number format of each cell, and
+        then multiplies any percentage formatted cells by 100 to ensure that all
+        percentage data is a value between 0 and 100 (N.B. some percentage data are
+        formatted as integers between 0 and 100)
 
         Args:
             data: `pandas.DataFrame` produced by `read_table`
@@ -451,7 +466,7 @@ class Parser:
         return self.table_names_by_sheet
 
     def get_table_from_config(
-        self, table_config, config_checks: bool = True
+        self, table_config: TableConfig, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -489,6 +504,8 @@ class Parser:
             self._check_if_header_row_and_end_row_are_on_sheet(table_config)
             self._check_if_start_and_end_column_are_on_sheet(table_config)
         data = read_table(self.file, table_config)
+        self._check_columns_unique(data, table_config.name)
+        data = _values_casting_and_sanitisation(data)
         data = self._postprocess_percentage_columns_between_0_and_100(
             data, table_config
         )
