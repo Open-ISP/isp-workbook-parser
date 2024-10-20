@@ -17,6 +17,12 @@ from isp_workbook_parser.sanitisers import (
 def test_sanitisation_on_flow_path_transfer_capability():
     unsanitised = pd.read_csv(Path("tests", "test_data", "unsanitised.csv"))
     expected = pd.read_csv(Path("tests", "test_data", "sanitised.csv"))
+    # handle carriage return on Windows
+    for col in unsanitised.columns:
+        where_str = unsanitised[col].apply(lambda x: isinstance(x, str))
+        unsanitised.loc[where_str, col] = unsanitised.loc[where_str, col].str.replace(
+            r"\r", "", regex=True
+        )
     test_sanitised = _values_casting_and_sanitisation(unsanitised)
     pd.testing.assert_frame_equal(test_sanitised, expected, check_dtype=False)
 
