@@ -1,16 +1,16 @@
 Technology,Equipment costs,Fuel connection costs,Cost of land and development,Installation costs
-OCGT (small GT),0.61,0.05,0.08,0.26
-OCGT (large GT),0.59,0.09,0.08,0.25
-CCGT,0.62,0.03,0.08,0.27
-CCGT with CCS,0.63,0.02,0.08,0.27
-Hydrogen reciprocating engines,0.55,0.0,0.08,0.37
-Biomass,0.55,0.0,0.08,0.37
-Battery storage (1hr storage),0.82,0.0,0.05,0.13
-Battery storage (2hrs storage),0.83,0.0,0.04,0.13
-Battery storage (4hrs storage),0.85,0.0,0.02,0.13
-Battery Storage (8hrs storage),0.85,0.0,0.01,0.13
-Large scale Solar PV,0.57,0.0,0.06,0.38
-Solar Thermal (15hrs Storage),0.74,0.0,0.01,0.25
-Wind,0.73,0.0,0.02,0.24
-Wind - Offshore (fixed),0.69,0.0,0.02,0.29
-Wind - offshore (floating),0.69,0.0,0.02,0.29
+OCGT (small GT),61.0,5.0,8.0,26.0
+OCGT (large GT),59.0,9.0,8.0,25.0
+CCGT,62.0,3.0,8.0,27.0
+CCGT with CCS,63.0,2.0,8.0,27.0
+Hydrogen reciprocating engines,55.00000000000001,0.0,8.0,37.0
+Biomass,55.00000000000001,0.0,8.0,37.0
+Battery storage (1hr storage),82.0,0.0,5.0,13.0
+Battery storage (2hrs storage),83.0,0.0,4.0,13.0
+Battery storage (4hrs storage),85.0,0.0,2.0,13.0
+Battery Storage (8hrs storage),85.0,0.0,1.0,13.0
+Large scale Solar PV,56.99999999999999,0.0,6.0,38.0
+Solar Thermal (15hrs Storage),74.0,0.0,1.0,25.0
+Wind,73.0,0.0,2.0,24.0
+Wind - Offshore (fixed),69.0,0.0,2.0,28.999999999999996
+Wind - offshore (floating),69.0,0.0,2.0,28.999999999999996

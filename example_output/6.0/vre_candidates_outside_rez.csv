@@ -1,3 +1,3 @@
 Region,Approximate location of connections,Resource Limit (MW),Resource limit violation penalty factor ($M/MW),Land area (km2),Land use limits in MW_Wind,Land use limits in MW_Solar
-New South Wales Non-REZ,Within 10 km of the 500 kV network between Mt Piper and west of Bayswater ,0,1,3357,699.3750005595,1678.5
+New South Wales Non-REZ,Within 10 km of the 500 kV network between Mt Piper and west of Bayswater,0,1,3357,699.3750005595,1678.5
 Victoria Non-REZ,Within 10 km of the 500 kV network between Latrobe Valley and Cranbourne/South Morang,0,1,1398,291.250000233,699.0
