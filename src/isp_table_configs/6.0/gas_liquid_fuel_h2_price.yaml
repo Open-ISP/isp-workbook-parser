@@ -9,18 +9,21 @@ gas_prices_step_change:
   header_rows: 10
   end_row: 59
   column_range: "B:AI"
+  skip_rows: 49
 
 gas_prices_progressive_change:
   sheet_name: "Gas, Liquid fuel, H2 price"
   header_rows: 62
   end_row: 111
   column_range: "B:AI"
+  skip_rows: 101
 
 gas_prices_green_energy_exports:
   sheet_name: "Gas, Liquid fuel, H2 price"
   header_rows: 114
   end_row: 163
   column_range: "B:AI"
+  skip_rows: 153
 
 industrial_fuel_costs_step_change:
   sheet_name: "Gas, Liquid fuel, H2 price"
