@@ -1,6 +1,8 @@
-import pytest
-from isp_workbook_parser import Parser
 from pathlib import Path
+
+import pytest
+
+from isp_workbook_parser import Parser
 
 workbook_path = Path("workbooks")
 

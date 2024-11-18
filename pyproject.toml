@@ -39,6 +39,12 @@ testpaths = ["src", "tests"]
 # --cov-branch runs branch coverage
 addopts = "-ra --doctest-modules --cov=src/ --cov-branch --cov-report xml:tests/coverage.xml --cov-report html:tests/htmlcov"
 
+[tool.ruff.lint]
+select = [
+    # isort
+    "I",
+]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

@@ -1,7 +1,7 @@
 import pytest
 
-from isp_workbook_parser.parser import TableConfigError
 from isp_workbook_parser.config_model import TableConfig
+from isp_workbook_parser.parser import TableConfigError
 
 
 def test_end_row_not_on_sheet_throws_error(workbook_v6):

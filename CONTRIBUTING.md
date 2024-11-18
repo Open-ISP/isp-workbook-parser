@@ -84,7 +84,7 @@ Ready to contribute? Here's how to set up `isp-workbook-parser` for local develo
     - `pre-commit` should run `ruff`, but if you wish to do so manually, run the following code to use `ruff` as a `uv` [tool](https://docs.astral.sh/uv/concepts/tools/):
 
       ```bash
-      uvx ruff check --select I --fix
+      uvx ruff check --fix
       uvx ruff format
       ```
 
