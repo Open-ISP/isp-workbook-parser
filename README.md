@@ -3,7 +3,7 @@
 [![Continuous Integration and Deployment](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml/badge.svg)](https://github.com/Open-ISP/isp-workbook-parser/actions/workflows/cicd.yml)
 [![codecov](https://codecov.io/github/Open-ISP/isp-workbook-parser/graph/badge.svg?token=BUGWITKZV1)](https://codecov.io/github/Open-ISP/isp-workbook-parser)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Open-ISP/isp-workbook-parser/main.svg)](https://results.pre-commit.ci/latest/github/Open-ISP/isp-workbook-parser/main)
-[![Rye](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/rye/main/artwork/badge.json)](https://rye.astral.sh)
+[![UV](https://camo.githubusercontent.com/4ab8b0cb96c66d58f1763826bbaa0002c7e4aea0c91721bdda3395b986fe30f2/68747470733a2f2f696d672e736869656c64732e696f2f656e64706f696e743f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f61737472616c2d73682f75762f6d61696e2f6173736574732f62616467652f76302e6a736f6e)](https://github.com/astral-sh/uv)
 
 A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook
 published by the Australian Energy Market Operator for use in their Integrated System Plan modelling.
