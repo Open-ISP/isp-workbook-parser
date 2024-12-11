@@ -1,0 +1,29 @@
+hydrogen_heat_content:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 5
+  end_row: 6
+  column_range: "B:C"
+
+electrolysers_electricity_consumption_rate:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 10
+  end_row: 11
+  column_range: "B:AH"
+
+electricity_consumption_rate_adjustments_to_include_conversion_to_ammonia:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 15
+  end_row: 16
+  column_range: "B:AH"
+
+electrolysers_baseload:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 21
+  end_row: 23
+  column_range: "B:C"
+
+pem_electrolyser_technical_parameters :
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 27
+  end_row: 28
+  column_range: "B:H"

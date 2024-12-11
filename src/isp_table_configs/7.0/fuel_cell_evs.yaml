@@ -1,0 +1,23 @@
+fcev_consultant_scenario_mapping:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 6
+  end_row: 7
+  column_range: "B:E"
+
+fcev_progressive_change:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 12
+  end_row: 17
+  column_range: "B:AH"
+
+fcev_step_change:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 20
+  end_row: 25
+  column_range: "B:AH"
+
+fcev_green_energy_exports:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 28
+  end_row: 33
+  column_range: "B:AH"

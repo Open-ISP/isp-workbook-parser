@@ -1,0 +1,23 @@
+hydrogen_monthly_profiles_consultant_forecast_mapping:
+  sheet_name: "Hydrogen monthly profiles"
+  header_rows: 8
+  end_row: 9
+  column_range: "B:E"
+
+hydrogen_monthly_profiles_progressive_change:
+  sheet_name: "Hydrogen monthly profiles"
+  header_rows: 12
+  end_row: 24
+  column_range: "B:AH"
+
+hydrogen_monthly_profiles_step_change:
+  sheet_name: "Hydrogen monthly profiles"
+  header_rows: 28
+  end_row: 40
+  column_range: "B:AH"
+
+hydrogen_monthly_profiles_green_energy_exports:
+  sheet_name: "Hydrogen monthly profiles"
+  header_rows: 44
+  end_row: 56
+  column_range: "B:AH"

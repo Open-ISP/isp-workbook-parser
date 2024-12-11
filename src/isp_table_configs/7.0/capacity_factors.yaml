@@ -1,0 +1,37 @@
+wind_high_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [7, 8, 9]
+  end_row: 48
+  column_range: "B:R"
+
+wind_medium_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [7, 8, 9]
+  end_row: 48
+  column_range: "T:AJ"
+
+solar_pv_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [50, 51, 52]
+  end_row: 91
+  column_range: "B:R"
+
+solar_thermal_15hrstorage_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [50, 51, 52]
+  end_row: 91
+  column_range: "T:AJ"
+
+offshore_wind_fixed_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [93, 94, 95]
+  end_row: 102
+  column_range: "B:R"
+  skip_rows: 102
+
+offshore_wind_floating_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: [93, 94, 95]
+  end_row: 102
+  column_range: "T:AJ"
+  skip_rows: 102

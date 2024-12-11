@@ -1,0 +1,35 @@
+seasonal_ratings_new_entrants:
+  sheet_name: "Seasonal ratings"
+  header_rows: 12
+  end_row: 31
+  column_range: "B:E"
+
+seasonal_ratings_existing_generators:
+  sheet_name: "Seasonal ratings"
+  header_rows: [41, 42]
+  end_row: 492
+  column_range: "B:AH"
+
+seasonal_ratings_committed_generators:
+  sheet_name: "Seasonal ratings"
+  header_rows: [495, 496]
+  end_row: 531
+  column_range: "B:AH"
+
+seasonal_ratings_anticipated_projects:
+  sheet_name: "Seasonal ratings"
+  header_rows: [534, 535]
+  end_row: 551
+  column_range: "B:AH"
+
+seasonal_ratings_existing_committed_and_anticipated_batteries:
+  sheet_name: "Seasonal ratings"
+  header_rows: [554, 555]
+  end_row: 609
+  column_range: "B:AH"
+
+seasonal_ratings_additional_projects:
+  sheet_name: "Seasonal ratings"
+  header_rows: [612, 613]
+  end_row: 626
+  column_range: "B:AH"
