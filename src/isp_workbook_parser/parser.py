@@ -106,13 +106,35 @@ class Parser:
 
     def _load_config(self) -> dict[str, dict[str, Any]]:
         """Load all the YAML files stored in the config directory into a nested dictionary with sheet names as keys
-        and table names as second level keys."""
+        and table names as second level keys. For robustness across workbook versions, the config sheet name
+        is matched with a workbook sheet name in case-agnostic manner.
+        """
         pattern = os.path.join(self.config_path, "*.yaml")
         config_files = glob.glob(pattern)
-        config = {}
+        configs = {}
         for file in config_files:
-            config.update(load_yaml(Path(file)))
-        return config
+            config_dict = load_yaml(Path(file))
+            for config_name in config_dict.keys():
+                config = config_dict[config_name]
+                config_sheet_name_lowercase = config.sheet_name.lower()
+                sheet_names = [
+                    sheet_name
+                    for sheet_name in self.file.sheet_names
+                    if sheet_name.lower() == config_sheet_name_lowercase
+                ]
+                if len(sheet_names) > 1:
+                    raise TableConfigError(
+                        f"Workbook sheet '{config.sheet_name}' is not unique"
+                    )
+                elif len(sheet_names) < 1:
+                    raise TableConfigError(
+                        f" Sheet '{config.sheet_name}' cannot be found in the workbook"
+                    )
+                else:
+                    config.sheet_name = sheet_names.pop()
+                config_dict[config_name] = config
+            configs.update(config_dict)
+        return configs
 
     def _get_table_names_by_sheet(self):
         table_names_by_sheet = {}
