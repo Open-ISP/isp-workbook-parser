@@ -24,9 +24,10 @@ def _remove_column_name_trailing_footnotes(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
     """Removes footnotes by replacing a single trailing digit not preceded by
-    a whitespace (e.g. name of a unit) or another digit (i.e. footnotes are assumed
-    to be single digit) with an empty string"""
-    return series.str.replace(r"(?<=[^\s\d])\d$", "", regex=True)
+    a hat (e.g. power to in loss equations), whitespace (e.g. name of a unit),
+    another digit (i.e. footnotes are assumed to be single digit) or
+    a capital letter preceded by an underscore (e.g. REZ names) with an empty string"""
+    return series.str.replace(r"(?<![A-Z]|\^|\s|\d)\d$", "", regex=True)
 
 
 def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
