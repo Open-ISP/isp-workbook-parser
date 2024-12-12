@@ -1,0 +1,19 @@
+Generator type,Summer Peak (% of nameplate),Summer Typical (% of nameplate),Winter (% of nameplate)
+OCGT (small GT),94.5368648539981,97.286432160804,100.0
+OCGT (large GT),86.3841883358452,92.188679245283,98.5176564854913
+CCGT,87.2672559714124,92.9095354523227,97.5487430255156
+CCGT with CCS,81.1854420904106,85.9413202933985,90.0714108764258
+Biomass,98.5257101761956,100.0,100.0
+Large scale Solar PV,100.0,100.0,100.0
+Solar Thermal (16hrs storage),100.0,100.0,100.0
+Battery storage (1hr storage),100.0,100.0,99.94941831057157
+Battery storage (2hrs storage),100.0,100.0,99.84763839512442
+Battery storage (4hrs storage),100.0,100.0,99.89754098360656
+Battery Storage (8hrs storage),100.0,100.0,99.8435054773083
+Wind,100.0,100.0,100.0
+Wind - offshore (fixed),100.0,100.0,100.0
+Wind - offshore (floating),100.0,100.0,100.0
+Pumped Hydro (10hrs storage),100.0,100.0,100.0
+Pumped Hydro (24hrs storage),100.0,100.0,100.0
+Pumped Hydro (48hrs storage),100.0,100.0,100.0
+BOTN - Cethana,100.0,100.0,100.0

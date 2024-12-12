@@ -1,0 +1,6 @@
+Technology,Maximum power_MW,Energy capacity_MWh,Charge efficiency_%,Discharge efficiency_%,Allowable max state of charge_%,Allowable min state of charge_%,Round trip efficiency_%,Annual degradation_%
+Battery storage (1hr storage),1,1.0,92,92,100,0,84,1.8
+Battery storage (2hrs storage),1,2.0,92,92,100,0,84,1.8
+Battery storage (4hrs storage),1,4.0,92.5,92.5,100,0,85,1.8
+Battery storage (8hrs storage),1,8.0,93,93,100,0,85,1.8
+VPP (aggregated ESS),1,2.2,not applicable,not applicable,85,0,85,1.6
