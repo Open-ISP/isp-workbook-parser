@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import openpyxl
 import openpyxl.utils
 import pandas as pd
@@ -287,6 +288,10 @@ class Parser:
                 nrows=(end_row - start_row),
             )
             data = data[~data.isin(["`"])]  # explicit exceptions for messy data
+            # replace non breaking space with empty string
+            data = data.replace("\xa0", "")
+            # replace empty strings with np.nan
+            data = data.replace("", np.nan)
             if not data[data.columns[0]].isna().all():
                 range_error = True
         except pd.errors.ParserError:
