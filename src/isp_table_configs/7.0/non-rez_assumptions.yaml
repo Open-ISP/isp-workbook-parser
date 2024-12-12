@@ -8,4 +8,4 @@ connection_costs_outside_rez:
   sheet_name: "Non-REZ Assumptions"
   header_rows: 15
   end_row: 17
-  column_range: "B:I"
+  column_range: "B:H"

@@ -1,41 +1,41 @@
 rooftop_pv_consultant_scenario_mapping:
   sheet_name: "Rooftop PV"
-  header_rows: 7
-  end_row: 8
+  header_rows: 8
+  end_row: 9
   column_range: "B:E"
 
-rooftop_pv_capacity_progressive_change:
+rooftop_pv_power_capacity_progressive_change:
   sheet_name: "Rooftop PV"
-  header_rows: 14
-  end_row: 19
-  column_range: "B:AG"
+  header_rows: 15
+  end_row: 21
+  column_range: "B:AF"
 
-rooftop_pv_capacity_step_change:
+rooftop_pv_power_capacity_step_change:
   sheet_name: "Rooftop PV"
-  header_rows: 22
-  end_row: 27
-  column_range: "B:AG"
+  header_rows: 24
+  end_row: 30
+  column_range: "B:AF"
 
-rooftop_pv_capacity_green_energy_exports:
+rooftop_pv_power_capacity_green_energy_generation_exports:
   sheet_name: "Rooftop PV"
-  header_rows: 30
-  end_row: 35
-  column_range: "B:AG"
+  header_rows: 33
+  end_row: 39
+  column_range: "B:AF"
 
-rooftop_pv_energy_progressive_change:
+rooftop_pv_energy_generation_progressive_change:
   sheet_name: "Rooftop PV"
-  header_rows: 41
-  end_row: 46
-  column_range: "B:AG"
+  header_rows: 45
+  end_row: 51
+  column_range: "B:AF"
 
-rooftop_pv_energy_step_change:
+rooftop_pv_energy_generation_step_change:
   sheet_name: "Rooftop PV"
-  header_rows: 49
-  end_row: 54
-  column_range: "B:AG"
+  header_rows: 54
+  end_row: 60
+  column_range: "B:AF"
 
-rooftop_pv_energy_green_energy_exports:
+rooftop_pv_energy_generation_green_energy_exports:
   sheet_name: "Rooftop PV"
-  header_rows: 57
-  end_row: 62
-  column_range: "B:AG"
+  header_rows: 63
+  end_row: 69
+  column_range: "B:AF"

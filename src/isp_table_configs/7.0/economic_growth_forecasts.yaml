@@ -1,41 +1,53 @@
 economic_growth_forecasts_consultant_scenario_mapping:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 8
-  end_row: 9
-  column_range: "B:E"
+  header_rows: 6
+  end_row: 7
+  column_range: "B:F"
 
 gross_state_product_progressive_change:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 14
-  end_row: 19
+  header_rows: 12
+  end_row: 17
   column_range: "B:AG"
 
 gross_state_product_step_change:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 22
-  end_row: 27
+  header_rows: 20
+  end_row: 25
   column_range: "B:AG"
 
 gross_state_product_green_energy_exports:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 30
-  end_row: 35
+  header_rows: 28
+  end_row: 33
+  column_range: "B:AG"
+
+gross_state_product_green_energy_industries:
+  sheet_name: "Economic Growth Forecasts"
+  header_rows: 36
+  end_row: 41
   column_range: "B:AG"
 
 household_disposable_income_progressive_change:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 40
-  end_row: 45
+  header_rows: 46
+  end_row: 51
   column_range: "B:AG"
 
 household_disposable_income_step_change:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 48
-  end_row: 53
+  header_rows: 54
+  end_row: 59
   column_range: "B:AG"
 
 household_disposable_income_green_energy_exports:
   sheet_name: "Economic Growth Forecasts"
-  header_rows: 56
-  end_row: 61
+  header_rows: 62
+  end_row: 67
+  column_range: "B:AG"
+
+household_disposable_income_green_energy_industries:
+  sheet_name: "Economic Growth Forecasts"
+  header_rows: 70
+  end_row: 75
   column_range: "B:AG"

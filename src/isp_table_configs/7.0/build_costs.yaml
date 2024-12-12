@@ -6,24 +6,24 @@ build_costs_scenario_mapping:
 
 build_costs_current_policies:
   sheet_name: "Build costs"
-  header_rows: 15
-  end_row: 30
-  column_range: "B:AI"
+  header_rows: 14
+  end_row: 28
+  column_range: "B:AG"
 
 build_costs_global_nze_post_2050:
   sheet_name: "Build costs"
-  header_rows: 34
-  end_row: 49
-  column_range: "B:AI"
+  header_rows: 32
+  end_row: 46
+  column_range: "B:AG"
 
 build_costs_global_nze_by_2050:
   sheet_name: "Build costs"
-  header_rows: 53
-  end_row: 68
-  column_range: "B:AI"
+  header_rows: 50
+  end_row: 64
+  column_range: "B:AG"
 
 build_costs_pumped_hydro:
   sheet_name: "Build costs"
-  header_rows: 72
-  end_row: 76
-  column_range: "B:AI"
+  header_rows: 68
+  end_row: 72
+  column_range: "B:AG"
