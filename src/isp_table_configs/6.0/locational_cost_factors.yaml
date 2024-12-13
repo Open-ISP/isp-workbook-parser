@@ -9,3 +9,10 @@ technology_cost_breakdown_ratios:
   header_rows: 33
   end_row: 48
   column_range: "B:F"
+
+technology_specific_lcfs:
+  sheet_name: "Locational Cost Factors"
+  header_rows: 55
+  end_row: 82
+  column_range: "B:U"
+  forward_fill_values: False
