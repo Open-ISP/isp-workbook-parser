@@ -1,4 +1,4 @@
-Flow paths_(Forward power flow direction)_(Note 1),Existing Network_CNSW-SNW Northern Limit,Existing Network_CNSW-SNW Southern Limit,WSB + SIPS Contract period_CNSW-SNW Northern Limit,WSB + SIPS Contract period_CNSW-SNW Southern Limit,HumeLink_CNSW-SNW Northern Limit,HumeLink_CNSW-SNW Southern Limit
+Flow paths_(Forward power flow direction),Existing Network_CNSW-SNW Northern Limit,Existing Network_CNSW-SNW Southern Limit,WSB + SIPS Contract period_CNSW-SNW Northern Limit,WSB + SIPS Contract period_CNSW-SNW Southern Limit,HumeLink_CNSW-SNW Northern Limit,HumeLink_CNSW-SNW Southern Limit
 NNSW generators,0.8,0.2,0.8,0.2,0.8,0.2
 CNSW generators,0.67,0.33,0.67,0.33,0.66,0.34
 SNSW generators (330 kV),0.3,0.7,0.3,0.7,0.3,0.7
