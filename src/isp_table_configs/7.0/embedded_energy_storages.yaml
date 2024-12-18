@@ -1,0 +1,41 @@
+embedded_storage_consultant_scenario_mapping:
+  sheet_name: "Embedded energy storages"
+  header_rows: 6
+  end_row: 7
+  column_range: "B:E"
+
+embedded_storage_regional_power_capacity_progressive_change:
+  sheet_name: "Embedded energy storages"
+  header_rows: 16
+  end_row: 22
+  column_range: "B:AF"
+
+embedded_storage_regional_power_capacity_step_change:
+  sheet_name: "Embedded energy storages"
+  header_rows: 25
+  end_row: 31
+  column_range: "B:AF"
+
+embedded_storage_regional_power_capacity_green_energy_exports:
+  sheet_name: "Embedded energy storages"
+  header_rows: 34
+  end_row: 40
+  column_range: "B:AF"
+
+embedded_storage_regional_energy_capacity_progressive_change:
+  sheet_name: "Embedded energy storages"
+  header_rows: 60
+  end_row: 66
+  column_range: "B:AF"
+
+embedded_storage_regional_energy_capacity_step_change:
+  sheet_name: "Embedded energy storages"
+  header_rows: 69
+  end_row: 75
+  column_range: "B:AF"
+
+embedded_storage_regional_energy_capacity_green_energy_exports:
+  sheet_name: "Embedded energy storages"
+  header_rows: 78
+  end_row: 84
+  column_range: "B:AF"

@@ -1,0 +1,9 @@
+Flow paths_(Forward power flow direction)_(Note 1),Existing Network_CNSW-SNW Northern Limit,Existing Network_CNSW-SNW Southern Limit,WSB + SIPS Contract period_CNSW-SNW Northern Limit,WSB + SIPS Contract period_CNSW-SNW Southern Limit,HumeLink_CNSW-SNW Northern Limit,HumeLink_CNSW-SNW Southern Limit
+NNSW generators,0.8,0.2,0.8,0.2,0.8,0.2
+CNSW generators,0.67,0.33,0.67,0.33,0.66,0.34
+SNSW generators (330 kV),0.3,0.7,0.3,0.7,0.3,0.7
+Bayswater,0.8,0.2,0.8,0.2,0.8,0.2
+Mount Piper,0.67,0.33,0.67,0.33,0.66,0.34
+Goulburn River Solar Farm,0.67,0.33,0.67,0.33,0.66,0.34
+SNSW generators (500 kV),,,,,0.48,0.52
+Tallawarra (TALWA1 + B),,0.51,,0.51,,0.51

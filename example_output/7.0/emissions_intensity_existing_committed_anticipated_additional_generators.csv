@@ -1,0 +1,70 @@
+Generator,Technology,Scope 1 emissions intensity (kg/MWh as-gen)
+Bayswater,Steam Sub Critical,891.916704618042
+Callide B,Steam Sub Critical,955.56173523494
+Callide C,Steam Super Critical,886.950495907141
+Eraring,Steam Sub Critical,891.970620948009
+Gladstone,Steam Sub Critical,975.755999268932
+Kogan Creek,Steam Super Critical,843.615135943859
+Millmerran,Steam Super Critical,837.347841979793
+Mt Piper,Steam Sub Critical,869.150021411642
+Stanwell,Steam Sub Critical,857.056660055885
+Tarong,Steam Sub Critical,883.72455752994
+Tarong North,Steam Super Critical,883.72455752994
+Vales Point B,Steam Sub Critical,987.673518811968
+Loy Yang A Power Station,Steam Sub Critical,1160.88484586908
+Loy Yang B,Steam Sub Critical,1122.31678644937
+Yallourn W,Steam Sub Critical,1299.8659169795
+Angaston,Reciprocating engine,660.650357995226
+Bairnsdale,OCGT,538.153735967739
+Barcaldine Power Station,OCGT,1215.27524608093
+Barker Inlet Power Station,Reciprocating engine,589.719158667016
+Bell Bay Three,OCGT,548.7291065989848
+Bolivar Power Station,OCGT,797.3782165398932
+Braemar,OCGT,580.595934465514
+Braemar 2 Power Station,OCGT,580.595934465514
+Colongra,OCGT,615.769676744251
+Condamine A,CCGT,454.322321411648
+Darling Downs,CCGT,434.894243734805
+Dry Creek GT,OCGT,859.164854017952
+Hallett GT,OCGT,728.959519560352
+Hunter Economic Zone,Reciprocating engine,413.28101010101017
+Jeeralang A,OCGT,809.089858199753
+Jeeralang B,OCGT,809.089858199753
+Ladbroke Grove,OCGT,507.754308384688
+Laverton North,OCGT,658.128903604485
+Lonsdale,Reciprocating engine,674.881836596893
+Mintaro GT,OCGT,858.846522016592
+Mortlake,OCGT,551.773740485683
+Mt Stuart,OCGT,1049.82517482517
+Newport,Steam Sub Critical,543.032375056306
+Oakey Power Station,OCGT,635.561004436526
+Osborne,CCGT,414.442240569356
+Pelican Point,CCGT,401.788470533208
+Port Lincoln GT,OCGT,1388.78347037739
+Port Stanvac 1,Reciprocating engine,674.881836596893
+Quarantine,OCGT,633.578369414643
+Roma,OCGT,766.370546753365
+Smithfield Energy Facility,OCGT,715.599189652485
+Snapper Point Power Station,OCGT,736.411
+Snuggery,OCGT,1066.00594648166
+Somerton,OCGT,738.586229118128
+Swanbank E GT,CCGT,401.006721401882
+Tallawarra,CCGT,371.763782985053
+Tallawarra B,OCGT,563.2869868554095
+Tamar Valley Combined Cycle,CCGT,611.7377032996866
+Tamar Valley Peaking,OCGT,611.7377032996866
+Torrens Island B,Steam Sub Critical,575.753702483973
+Townsville Power Station,CCGT,604.569800719405
+Uranquinty,OCGT,564.089325743564
+Valley Power,OCGT,940.954052867897
+Yarwun Cogen,CCGT,473.69827181693495
+Tully Sugar Mill Biomass,Biomass,21.042071197411
+Hunter Power Station,OCGT (large GT),563.2869868554095
+Hydrogen Jobs Plan,OCGT (small GT),548.7291065989848
+Mugga Lane Renewable Hybrid,Biomass,21.042071197411
+Brigalow GT,OCGT (large GT),563.2869868554095
+All Pumped Hydro,Pumped Hydro,0.0
+All Large scale solar PV,Large scale solar PV,0.0
+All Wind,Wind,0.0
+All Hydro,Hydro,0.0
+All Battery Storage,Battery Storage,0.0

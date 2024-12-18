@@ -1,0 +1,8 @@
+Technology,Max Ramp Up (MW/min),Max Ramp Down (MW/min)
+OCGT (small GT),87,87
+OCGT (large GT),22,22
+CCGT,22,22
+CCGT with CCS,22,22
+Biomass,1,1
+Reciprocating engine,36,36
+Solar Thermal (16hrs storage),6,6

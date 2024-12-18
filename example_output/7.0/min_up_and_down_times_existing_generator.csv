@@ -1,0 +1,49 @@
+Generator Station,Generating Unit,Technology Type,Min Up/Down Time (h)
+Condamine,CPSA_GT1,CCGT - Gas Turbine,2.0
+Condamine,CPSA_GT2,CCGT - Gas Turbine,2.0
+Darling Downs,DDPS1_GT1,CCGT - Gas Turbine,5.0
+Darling Downs,DDPS1_GT2,CCGT - Gas Turbine,5.0
+Darling Downs,DDPS1_GT3,CCGT - Gas Turbine,5.0
+Newport,NPS,Gas-powered steam turbine,6.0
+Pelican Point,PPCCGTGT1,CCGT - Gas Turbine,5.0
+Pelican Point,PPCCGTGT2,CCGT - Gas Turbine,5.0
+Tallawarra,TALWA1,CCGT,5.0
+Torrens Island B,TORRB1,Gas-powered steam turbine,5.0
+Torrens Island B,TORRB2,Gas-powered steam turbine,5.0
+Torrens Island B,TORRB3,Gas-powered steam turbine,5.0
+Torrens Island B,TORRB4,Gas-powered steam turbine,5.0
+Tamar Valley,TVCC201_GT,CCGT - Gas Turbine,9.5
+Yabulu,YABULU,CCGT,2.0
+Bayswater,BW01,Steam Sub-Critical,4.0
+Bayswater,BW02,Steam Sub-Critical,4.0
+Bayswater,BW03,Steam Sub-Critical,4.0
+Bayswater,BW04,Steam Sub-Critical,4.0
+Callide B,CALL_B_1,Steam Sub-Critical,2.0
+Callide B,CALL_B_2,Steam Sub-Critical,2.0
+Eraring,ER01,Steam Sub-Critical,1.0
+Eraring,ER02,Steam Sub-Critical,1.0
+Eraring,ER03,Steam Sub-Critical,1.0
+Eraring,ER04,Steam Sub-Critical,1.0
+Gladstone,GSTONE1,Steam Sub-Critical,1.0
+Gladstone,GSTONE2,Steam Sub-Critical,1.0
+Loy Yang A Power Station,LYA1,Steam Sub-Critical,1.0
+Loy Yang A Power Station,LYA2,Steam Sub-Critical,1.0
+Loy Yang A Power Station,LYA3,Steam Sub-Critical,1.0
+Loy Yang A Power Station,LYA4,Steam Sub-Critical,1.0
+Loy Yang B,LOYYB1,Steam Sub-Critical,8.0
+Loy Yang B,LOYYB2,Steam Sub-Critical,8.0
+Mt Piper,MP1,Steam Sub-Critical,2.0
+Mt Piper,MP2,Steam Sub-Critical,2.0
+Stanwell,STAN-2,Steam Sub-Critical,1.0
+Stanwell,STAN-3,Steam Sub-Critical,1.0
+Stanwell,STAN-4,Steam Sub-Critical,1.0
+Tarong,TARONG#1,Steam Sub-Critical,45.0
+Tarong,TARONG#4,Steam Sub-Critical,45.0
+Vales Point B,VP5,Steam Sub-Critical,68.0
+Yallourn W,YWPS1,Steam Sub-Critical,1.0
+Yallourn W,YWPS4,Steam Sub-Critical,1.0
+Callide C,CPP_3,Steam Super Critical,3.0
+Callide C,CPP_4,Steam Super Critical,3.0
+Kogan Creek,KPP_1,Steam Super Critical,9.0
+Millmerran,MPP_1,Steam Super Critical,6.0
+Millmerran,MPP_2,Steam Super Critical,6.0

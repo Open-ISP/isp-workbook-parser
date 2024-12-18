@@ -1,0 +1,5 @@
+marginal_loss_factors:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 12
+  end_row: 496
+  column_range: "B:E"

@@ -1,0 +1,23 @@
+coal_retirement_fault_level_replacement_cost:
+  sheet_name: "Power System Security"
+  header_rows: 5
+  end_row: 48
+  column_range: "B:D"
+
+efficient_level_of_system_strength_cost:
+  sheet_name: "Power System Security"
+  header_rows: 51
+  end_row: 52
+  column_range: "B:AE"
+
+synchronous_unit_commitment_requirement_step_change&progressive_change:
+  sheet_name: "Power System Security"
+  header_rows: [59, 60]
+  end_row: 72
+  column_range: "B:G"
+
+synchronous_unit_commitment_requirement_green_energy_exports:
+  sheet_name: "Power System Security"
+  header_rows: [75, 76]
+  end_row: 88
+  column_range: "B:G"

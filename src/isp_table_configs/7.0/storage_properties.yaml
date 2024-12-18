@@ -1,0 +1,12 @@
+battery_properties:
+  sheet_name: "Storage properties"
+  header_rows: [4, 5]
+  end_row: 10
+  column_range: "B:J"
+
+pumped_hydro_properties:
+  sheet_name: "Storage properties"
+  header_rows: 19
+  end_row: 29
+  column_range: "B:E"
+  skip_rows: [20, 26]

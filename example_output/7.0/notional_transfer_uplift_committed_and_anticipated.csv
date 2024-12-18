@@ -1,0 +1,10 @@
+Flow paths (Forward power flow direction),Project EnergyConnect_Forward direction,Project EnergyConnect_Reverse direction,Waratah Super Battery (WSB) network augmentations and System Integrity Protection Scheme (SIPS) control_Forward direction,Waratah Super Battery (WSB) network augmentations and System Integrity Protection Scheme (SIPS) control_Reverse direction,Waratah Super Battery network augmentations only (without WSB SIPS control)_Forward direction,Waratah Super Battery network augmentations only (without WSB SIPS control)_Reverse direction,Humelink_Forward direction,Humelink_Reverse direction,Western Renewables Link_Forward direction,Western Renewables Link_Reverse direction,Latrobe Valley reconfiguration (post Yallourn Power Station retirement)_Forward direction,Latrobe Valley reconfiguration (post Yallourn Power Station retirement)_Reverse direction
+SNSW – CSA (Project EnergyConnect Stage 2),650,650,650,650,650,650,650,650,650,650,650.0,650.0
+WNV – SESA (after completion of Project EnergyConnect Stage 2),100,100,100,100,100,100,100,100,100,100,100.0,100.0
+SNSW – CSA and WNV – SESA combined,550,750,750,750,750,750,750,750,750,750,750.0,750.0
+CNSW – SNW Northern limit,CNSW – SNW Northern limit,CNSW – SNW Northern limit,660,,,,,,,,,
+CNSW – SNW Southern limit,CNSW – SNW Southern limit,CNSW – SNW Southern limit,250,,250,250,250,250,250,250,250.0,250.0
+SNSW – CNSW,SNSW – CNSW,SNSW – CNSW,250,0,0,0,2200,2200,2200,2200,2200.0,2200.0
+CNSW – NNSW,CNSW – NNSW,CNSW – NNSW,0,300,0,0,0,0,0,0,0.0,0.0
+MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,MEL – WNV,695,695,695.0,695.0
+SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,SEV – MEL,-1775.0,-1775.0

@@ -1,0 +1,16 @@
+NEM Region / Sub-region,Reference Node,Load and generation representation
+North Queensland (NQ),Ross 275 kV,"All load and generation including and north of Nebo, Eagle Downs, Peak Downs and Moranbah."
+Central Queensland (CQ),Broadsound 275 kV,"All load and generation including and north of Calvale, Gin Gin, Teebar Creek substations, except load and generation in NQ and GG sub-regions."
+Gladstone grid (GG),Calliope River 275 kV,"All load and generation at Calliope River, Boyne Island, Larcom Creek and Wurdong substations."
+South Queensland (SQ),South Pine 275 kV,"All Queensland load and generation except load and generation in NQ, CQ and GG sub-regions. This includes the Brisbane area."
+Northern New South Wales (NNSW),Armidale 330 kV,"Load and generation in northern New South Wales, including and north of Tamworth substation."
+Central New South Wales (CNSW),Wellington 330 kV,"Load and generation in central New South Wales, including and west of Wallerawang, Wollar, Bayswater, Liddell, Muswellbrook and Bannaby substations."
+Southern NSW (SNSW),Canberra 330 kV,"Load and generation in southern New South Wales including and south of Gullen Range, Marulan and Kangaroo Valley substations. All load and generation in South West NSW."
+"Sydney, Newcastle and Wollongong (SNW)",Sydney West 330 kV,"All New South Wales region load and generation except CNSW, SNSW, NNSW sub-region load and generation. This includes Sydney, Newcastle and Wollongong areas."
+West and North Victoria (WNV),Moorabool 220 kV,"Load and generation in the north and west of Victoria, including and north and west of Moorabool, Eildon, Dederang, Winchelsea and Bacchus Marsh substations."
+South East Victoria (SEV),Hazelwood 500 kV,"Load and generation in south east Victoria and Gippsland region including at Hazelwood, Loy Yang, Yallourn, Jeeralang and Morwell substations."
+Greater Melbourne and Geelong (MEL),Thomastown 66 kV,All Victorian region load and generation except WNV and SEV sub-region load and generation. This includes Greater Melbourne and Geelong areas.
+Northern South Australia (NSA),Davenport 275 kV,"Load and generation in northern South Australia, including and north of Davenport and Eyre Region."
+Central South Australia (CSA),Torrens Island 66 kV,All South Australian region load and generation except NSA and SESA sub-region load and generation. This includes the Adelaide area.
+South East South Australia (SESA),South East 132 kV,"Load and generation in south east South Australia, including and south of Tailem Bend."
+Tasmania (TAS),George Town 220 kV,All load and generation within Tasmania.

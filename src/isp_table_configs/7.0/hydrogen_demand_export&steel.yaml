@@ -1,0 +1,37 @@
+hydrogen_demand_export&steel_consultant_forecast_mapping:
+  sheet_name: "Hydrogen demand_Export&Steel"
+  header_rows: 7
+  end_row: 8
+  column_range: "B:E"
+
+# tables below will be made available in Stage 2 of consultation
+#hydrogen_demand_export&steel_progressive_change:
+#  sheet_name: "Hydrogen demand_Export&Steel"
+#  header_rows: 11
+#  end_row: 12
+#  column_range: "B:AF"
+#
+#hydrogen_demand_export&steel_step_change:
+#  sheet_name: "Hydrogen demand_Export&Steel"
+#  header_rows: 15
+#  end_row: 16
+#  column_range: "B:AF"
+#
+#hydrogen_demand_export&steel_green_energy_exports:
+#  sheet_name: "Hydrogen demand_Export&Steel"
+#  header_rows: 19
+#  end_row: 20
+#  column_range: "B:AF"
+#
+#hydrogen_demand_for_green_steel_production:
+#  sheet_name: "Hydrogen demand_Export&Steel"
+#  header_rows: 26
+#  end_row: 27
+#  column_range: "B:AF"
+#
+#electricity_demand_for_green_steel_production:
+#  sheet_name: "Hydrogen demand_Export&Steel"
+#  header_rows: 35
+#  end_row: 36
+#  column_range: "B:AF"
+#

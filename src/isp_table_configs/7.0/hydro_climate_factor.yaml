@@ -1,0 +1,17 @@
+hydro_climate_factors_nqld:
+  sheet_name: "Hydro Climate Factor"
+  header_rows: 8
+  end_row: 11
+  column_range: "B:AH"
+
+hydro_climate_factors_sqld_nsw_vic:
+  sheet_name: "Hydro Climate Factor"
+  header_rows: 13
+  end_row: 16
+  column_range: "B:AH"
+
+hydro_climate_factors_tas:
+  sheet_name: "Hydro Climate Factor"
+  header_rows: 18
+  end_row: 21
+  column_range: "B:AH"

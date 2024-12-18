@@ -1,0 +1,7 @@
+Station,Generating Unit,Technology Type,No load heat input (GJ/h),Marginal heat rate (GJ/MWh)
+Brigalow GT,Kogan Gas,Hydrogen GT,720.0,9.131243680485339
+Hunter Power Station 1,Kurri Kurri 1,OCGT,675.0,9.131243680485339
+Hunter Power Station 2,Kurri Kurri 2,OCGT,675.0,9.131243680485339
+Hydrogen Jobs Plan,SA Hydrogen Turbine,Hydrogen GT,91.8,8.848730964467006
+Mugga Lane Renewable Hybrid,Mugga Lane Renewable Hybrid,Biomass,1.5336,16.095059331175833
+Tully Sugar Mill Biomass,Tully Sugar Mill Biomass,Biomass,46.080000000000005,16.095059331175833

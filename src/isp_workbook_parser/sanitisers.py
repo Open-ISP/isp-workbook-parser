@@ -1,5 +1,7 @@
 import pandas as pd
 
+from isp_workbook_parser.custom_string_replacements import typos_and_notes
+
 
 def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Series:
     """
@@ -13,6 +15,7 @@ def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Serie
     """
     columns = columns.astype(str)
     columns = columns.str.replace(r"\.[\.\d]+$", "", regex=True)
+    columns = _custom_string_replacements(columns)
     columns = columns.str.strip()
     columns = _replace_series_newlines_with_whitespace(columns)
     columns = _remove_series_double_whitespaces(columns)
@@ -20,13 +23,23 @@ def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Serie
     return columns
 
 
+def _custom_string_replacements(
+    series: pd.Index | pd.Series,
+) -> pd.Index | pd.Series:
+    """If a known typo or unwanted note exits replace it with a known correction"""
+    for known_bad_string, correction in typos_and_notes.items():
+        series = series.str.replace(known_bad_string, correction, regex=True)
+    return series
+
+
 def _remove_column_name_trailing_footnotes(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
     """Removes footnotes by replacing a single trailing digit not preceded by
-    a whitespace (e.g. name of a unit) or another digit (i.e. footnotes are assumed
-    to be single digit) with an empty string"""
-    return series.str.replace(r"(?<=[^\s\d])\d$", "", regex=True)
+    a hat (e.g. power to in loss equations), whitespace (e.g. name of a unit),
+    another digit (i.e. footnotes are assumed to be single digit) or
+    a capital letter preceded by an underscore (e.g. REZ names) with an empty string"""
+    return series.str.replace(r"(?<![A-Z]|\^|\s|\d)\d$", "", regex=True)
 
 
 def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
@@ -47,11 +60,12 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                 for series_func in (
                     _replace_series_newlines_with_whitespace,
                     _remove_series_double_whitespaces,
+                    _custom_string_replacements,
                     _strip_series_whitespaces,
                     _remove_series_trailing_asterisks,
-                    _remove_series_trailing_footnotes,
                     _remove_series_thousands_commas,
                     _remove_series_notes_after_values,
+                    _remove_series_trailing_footnotes,
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
             # re-attempt conversion following sanitisation

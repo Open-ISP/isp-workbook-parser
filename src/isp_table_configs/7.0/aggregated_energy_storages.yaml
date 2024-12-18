@@ -1,0 +1,35 @@
+aggregated_storage_regional_power_capacity_progressive_change:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 14
+  end_row: 20
+  column_range: "B:AF"
+
+aggregated_storage_regional_power_capacity_step_change:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 23
+  end_row: 29
+  column_range: "B:AF"
+
+aggregated_storage_regional_power_capacity_green_energy_exports:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 32
+  end_row: 38
+  column_range: "B:AF"
+
+aggregated_storage_regional_energy_capacity_progressive_change:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 57
+  end_row: 63
+  column_range: "B:AF"
+
+aggregated_storage_regional_energy_capacity_step_change:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 66
+  end_row: 72
+  column_range: "B:AF"
+
+aggregated_storage_regional_energy_capacity_green_energy_exports:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 75
+  end_row: 81
+  column_range: "B:AF"

@@ -1,0 +1,5 @@
+new_large_scale_renewables_capacity_factors:
+  sheet_name: "Capacity Factors "
+  header_rows: 7
+  end_row: 185
+  column_range: "B:U"

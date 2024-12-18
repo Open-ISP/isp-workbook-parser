@@ -1,0 +1,23 @@
+gpg_emissions_reduction_h2_brigalow_kogan:
+  sheet_name: "GPG_emissions reduction - H2"
+  header_rows: 9
+  end_row: 12
+  column_range: "B:AF"
+
+gpg_emissions_reduction_h2_jobs_whyalla_hydrogen_plant:
+  sheet_name: "GPG_emissions reduction - H2"
+  header_rows: 14
+  end_row: 17
+  column_range: "B:AF"
+
+gpg_emissions_reduction_h2_tallawarra_b:
+  sheet_name: "GPG_emissions reduction - H2"
+  header_rows: 19
+  end_row: 22
+  column_range: "B:AF"
+
+gpg_emissions_reduction_h2_hunter_kurri_kurri:
+  sheet_name: "GPG_emissions reduction - H2"
+  header_rows: 24
+  end_row: 27
+  column_range: "B:AF"

@@ -1,0 +1,44 @@
+REZ ID,REZ Name,Additional constraint information,REZ Transmission Network limit (additional table note 1)_Peak demand,REZ Transmission Network limit (additional table note 1)_Summer Typical,REZ Transmission Network limit (additional table note 1)_Winter Reference,Indicative transmission expansion cost ($M/MW) (additional table note 2)_Tranche 1,Indicative transmission expansion cost ($M/MW) (additional table note 2)_Tranche 2,Indicative transmission expansion cost ($M/MW) (additional table note 2)_Tranche 2 conditions,Indicative transmission expansion cost ($M/MW) (additional table note 2)_Tranche 3,Indicative transmission expansion cost ($M/MW) (additional table note 2)_Tranche 3 conditions,Distance to nearest load centre (km) - Green Energy Exports scenario,Indicative transmission expansion cost - Green Energy Export scenario ($M/MW) (additional table note 3),Notes
+Q1,Far North QLD,Far North QLD,750,750,750,1.42,1.42,1.42,1.42,1.42,370,0.6647666666666666,0.6647666666666666
+Q2,North Qld Clean Energy Hub,North Qld Clean Energy Hub,700,700,700,0.43,0.43,0.43,0.43,0.43,292,0.5246266666666667,0.5246266666666667
+Q3,Northern Qld,Modelled as part of Group Constraint NQ1,Modelled as part of Group Constraint NQ1,Modelled as part of Group Constraint NQ1,Modelled as part of Group Constraint NQ1,,,,,,49,0.08803666666666667,0.08803666666666667
+Q4,Isaac,Modelled as part of the Group Constraint CQ1,,,,,,,,,160,0.28746666666666665,0.28746666666666665
+Q5,Barcaldine,Barcaldine,85,85,85,0.79,0.79,0.79,0.79,0.79,415,0.7456166666666667,0.7456166666666667
+Q6,Fitzroy,Modelled as part of CQ-SQ sub-regional limit,Modelled as part of CQ-SQ sub-regional limit,Modelled as part of CQ-SQ sub-regional limit,Modelled as part of CQ-SQ sub-regional limit,0.0,0.0,0,0,0,181,0.3251966666666667,A REZ network limit of 3000 MW has also been modelled for the Green Energy Exports scenario for Q6 to reflect changes in power flow direction associated with significant Hydrogen demand in the CQ sub-region
+Q7,Wide Bay,Modelled as part of Group Constraint SQ1,Modelled as part of Group Constraint SQ1,Modelled as part of Group Constraint SQ1,Modelled as part of Group Constraint SQ1,0.0,0.0,0,0,0,66,0.11858,0.11858
+Q8,Darling Downs,See Transmission Limit SWQLD1,,,,0.0,0.0,0,0,0,147,0.26411,0.26411
+Q9,Banana,Banana,150,150,150,0.0,0.0,0,0,0,238,0.4276066666666667,0.4276066666666667
+Q10,Collinsville,Modelled as part of CQ-NQ sub-regional limit,,,,,,,,,450,0.8085,High generation in Q10 may also result in northerly flow.
+N1,North West NSW,North West NSW,171,171,171,2.82,2.82,2.82,2.82,2.82,205,0.3683166666666667,"For REZs in NNSW, distance to Armidale used, for REZs in CNSW distance to Bayswater used, and REZs in SNSW distance to Bannaby used. This is to allow for the NSW sub-regional modelling"
+N2,New England,New England,577,577,577,0.37,0.37,0.37,0.37,0.37,298,0.5354066666666667,0.5354066666666667
+N3,Central-West Orana,Central-West Orana,900,900,900,0.0,0.16,Apply from 5400 MW,0.55,apply from 6900 MW,143,0.25692333333333334,Build limit does not initially include the capacity gained by the development of the Central-West Orana REZ Pilot project supported by NSW Government.
+N4,Broken Hill,Broken Hill,250,250,250,2.61,2.61,2.61,2.61,2.61,1032,1.85416,1.85416
+N5,South West NSW,Also see Secondary Transmission Limit SWNSW1,450,450,450,0.57,0.21,Apply from 4315 MW,Apply from 4315 MW,Apply from 4315 MW,532,0.9558266666666667,0.9558266666666667
+N6,Wagga Wagga,Wagga Wagga,1100,1100,1100,,,,,,265,0.4761166666666667,Network upgrades modelled with SNSW-CNSW cutset options 3 and 4
+N7,Tumut,Tumut,0,0,0,0.0,0.0,0,0,0,260,0.46713333333333334,Indicative transmission expansion cost is N/A as available wind and solar resource capacity is less than the existing transmission capacity.
+N8,Cooma-Monaro,Cooma-Monaro,350,350,350,1.02,1.02,1.02,1.02,1.02,260,0.46713333333333334,0.46713333333333334
+N9,Hunter-Central Coast,Hunter-Central Coast,400,400,400,0.12,0.12,0.12,0.12,0.12,26,0.046713333333333336,0.046713333333333336
+N10,Hunter Coast,Hunter Coast,5650,5650,5650,0.46,0.46,0.46,0.46,0.46,26,0.046713333333333336,Expansion cost based on CNSW to SNW Option 1.
+N11,Illawarra Coast,Illawarra Coast,1000,1000,1000,0.41,0.41,0.41,0.41,0.41,24,0.04312,0.04312
+N12,Illawarra,Illawarra,1000,1000,1000,0.41,0.41,0.41,0.41,0.41,24,0.04312,0.04312
+N13,South Cobar,South Cobar,106,106,119,,,,,,343,0.6162566666666667,Indicative transmission expansion cost will be modelled as part of the 2025 Network Expansion Options Report.
+V1,Ovens Murray,Ovens Murray,350,350,350,0.0,0.0,0,0,0,189,0.33957,0.33957
+V2,Murray River,Murray River,440,440,640,1.14,1.14,1.14,1.14,1.14,297,0.53361,0.53361
+V3,Western Victoria,See Transmission Limit V3-EAST and V3-WEST,See Transmission Limit V3-EAST and V3-WEST,See Transmission Limit V3-EAST and V3-WEST,See Transmission Limit V3-EAST and V3-WEST,0.0,0.0,0,0,0,191,0.3431633333333333,0.3431633333333333
+V4,South West Victoria,See Transmission Limit SWV1,See Transmission Limit SWV1,See Transmission Limit SWV1,See Transmission Limit SWV1,0.0,0.0,0,0,0,89,0.15990333333333334,0.15990333333333334
+V5,Gippsland,Modelled as part of SEV-MEL subregional limit,Modelled as part of SEV-MEL subregional limit,Modelled as part of SEV-MEL subregional limit,Modelled as part of SEV-MEL subregional limit,0.0,0.0,0,0,0,183,0.32879,0.32879
+V6,Central North Vic,Central North Vic,650,650,1300,2.22,2.22,2.22,2.22,2.22,131,0.23536333333333334,0.23536333333333334
+V7,Gippsland Coast,Modelled as part of SEV-MEL subregional limit,0,0,0,,,,,,222,0.39886,0.39886
+V8,Southern Ocean,See Transmission Limit SWV1,See Transmission Limit SWV1,See Transmission Limit SWV1,See Transmission Limit SWV1,0.0,0.0,0,0,0,242,0.4347933333333333,0.4347933333333333
+S1,South East SA,Modelled as part of SESA-CSA subregional limit,Modelled as part of SESA-CSA subregional limit,Modelled as part of SESA-CSA subregional limit,Modelled as part of SESA-CSA subregional limit,0.0,0.0,0,0,0,230,0.41323333333333334,0.41323333333333334
+S2,Riverland,Riverland,130,130,130,0.14,0.14,0.14,0.14,0.14,165,0.29645,0.29645
+S3,Mid-North SA,See Group Constraint MN1,See Group Constraint MN1,See Group Constraint MN1,See Group Constraint MN1,0.0,0.0,0,0,0,116,0.20841333333333334,0.20841333333333334
+S4,Yorke Peninsula,Yorke Peninsula,100,100,100,1.26,1.26,1.26,1.26,1.26,81,0.14553,0.14553
+S5,Northern SA,See Group Constraint NSA1,See Group Constraint NSA1,See Group Constraint NSA1,See Group Constraint NSA1,0.0,0.0,0,0,0,55,0.09881666666666666,0.09881666666666666
+S6,Roxby Downs,Roxby Downs,500,500,500,0.57,0.57,0.57,0.57,0.57,288,0.51744,0.51744
+S7,Eastern Eyre Peninsula,Eastern Eyre Peninsula,190,190,190,0.33,0.33,0.33,0.33,0.33,46,0.08264666666666667,The REZ transmission limit capacity assumes the completed Eyre Peninsula Reinforcement Project.
+S8,Western Eyre Peninsula,Western Eyre Peninsula,,,,0.91,0.91,0.91,0.91,0.91,180,0.3234,0.3234
+T1,North East Tasmania,North East Tasmania,400,400,400,0.5,0.5,0.5,0.5,0.5,62,0.11139333333333333,0.11139333333333333
+T2,North West Tasmania,North West Tasmania,277,277,112,0.38,0.035,0.035,0.035,0.035,124,0.22278666666666666,0.22278666666666666
+T3,Central Highlands,Central Highlands,527,527,668,0.63,0.32,after MarinusLink,after MarinusLink,after MarinusLink,111,0.19943,0.19943
+T4,North Tasmania Coast,Included in T2 limit for Option 1 and in Group Constraint NET1 for Option 2,Included in T2 limit for Option 1 and in Group Constraint NET1 for Option 2,Included in T2 limit for Option 1 and in Group Constraint NET1 for Option 2,Included in T2 limit for Option 1 and in Group Constraint NET1 for Option 2,0.15,0.15,0.15,0.15,0.15,112,0.20122666666666666,0.20122666666666666

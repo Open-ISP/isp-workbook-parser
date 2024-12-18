@@ -1,0 +1,12 @@
+v2g_consultant_scenario_mapping:
+  sheet_name: "EV V2G"
+  header_rows: 11
+  end_row: 12
+  column_range: "B:E"
+
+# tables below will be made available in Stage 2 of consultation
+#v2g:
+#  sheet_name: "EV V2G"
+#  header_rows: 18
+#  end_row: 468
+#  column_range: "B:F"
