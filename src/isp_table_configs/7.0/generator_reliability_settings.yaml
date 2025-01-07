@@ -1,0 +1,30 @@
+long_duration_outages_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 10
+  end_row: 14
+  column_range: "B:D"
+
+outages_2024-2025_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: [19, 20]
+  end_row: 29
+  column_range: "B:G"
+
+outages_new_entrants:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: [19, 20]
+  end_row: 38
+  column_range: "I:N"
+  forward_fill_values: False
+
+full_outages_forecast_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 48
+  end_row: 53
+  column_range: "B:L"
+
+partial_outages_forecast_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 56
+  end_row: 61
+  column_range: "B:L"

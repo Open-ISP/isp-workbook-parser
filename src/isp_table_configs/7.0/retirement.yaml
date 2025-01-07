@@ -1,0 +1,11 @@
+retirement_costs:
+  sheet_name: "Retirement"
+  header_rows: 13
+  end_row: 20
+  column_range: "H:I"
+
+expected_closure_years:
+  sheet_name: "Retirement"
+  header_rows: 13
+  end_row: 492
+  column_range: "B:F"

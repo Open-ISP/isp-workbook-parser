@@ -1,0 +1,73 @@
+Generator,Technology,Fixed OPEX ($/kW/year)
+Bayswater,Steam Sub Critical,66.95
+Callide B,Steam Sub Critical,65.35
+Callide C,Steam Super Critical,65.35
+Eraring,Steam Sub Critical,66.95
+Gladstone,Steam Sub Critical,65.35
+Kogan Creek,Steam Super Critical,65.35
+Millmerran,Steam Super Critical,65.35
+Mt Piper,Steam Sub Critical,66.95
+Stanwell,Steam Sub Critical,65.35
+Tarong,Steam Sub Critical,65.35
+Tarong North,Steam Super Critical,65.35
+Vales Point B,Steam Sub Critical,66.95
+Loy Yang A Power Station,Steam Sub Critical,169.87305574077962
+Loy Yang B,Steam Sub Critical,169.87305574077962
+Yallourn W,Steam Sub Critical,169.87305574077962
+Angaston,Reciprocating engine,18.57
+Bairnsdale,OCGT (small GT),18.61
+Barcaldine Power Station,OCGT (small GT),18.61
+Barker Inlet Power Station,Reciprocating engine,18.57
+Bell Bay Three,OCGT (large GT),18.61
+Bolivar Power Station,OCGT (small GT),17.37
+Braemar,OCGT (large GT),18.61
+Braemar 2 Power Station,OCGT (large GT),18.61
+Colongra,OCGT (small GT),18.61
+Condamine A,CCGT,12.9
+Darling Downs,CCGT,12.9
+Dry Creek GT,OCGT (small GT),18.61
+Hallett GT,OCGT (small GT),18.61
+Hunter Economic Zone,Reciprocating engine,29.383
+Jeeralang A,OCGT (small GT),18.61
+Jeeralang B,OCGT (small GT),18.61
+Ladbroke Grove,OCGT (small GT),18.61
+Laverton North,OCGT (large GT),18.61
+Lonsdale,Reciprocating engine,18.57
+Mintaro GT,OCGT (small GT),18.61
+Mortlake,OCGT (large GT),18.61
+Mt Stuart,OCGT (small GT),18.61
+Newport,CCGT,57.89
+Oakey Power Station,OCGT (large GT),18.61
+Osborne,CCGT,12.9
+Pelican Point,CCGT,12.9
+Port Lincoln GT,OCGT (small GT),18.61
+Port Stanvac 1,Reciprocating engine,18.57
+Quarantine,OCGT (small GT),18.61
+Roma,OCGT (small GT),18.61
+Smithfield Energy Facility,OCGT (small GT),18.61
+Snapper Point Power Station,OCGT (small GT),17.37
+Snuggery,OCGT (small GT),18.61
+Somerton,OCGT (small GT),18.61
+Swanbank E GT,CCGT,12.9
+Tallawarra,CCGT,12.9
+Tallawarra B,OCGT (large GT),14.07
+Tamar Valley Combined Cycle,CCGT,130.72774102591927
+Tamar Valley Peaking,OCGT (large GT),18.61
+Torrens Island B,CCGT,57.89
+Townsville Power Station,CCGT,12.9
+Uranquinty,OCGT (large GT),18.61
+Valley Power,OCGT (small GT),18.61
+Yarwun Cogen,CCGT,12.9
+Tully Sugar Mill Biomass,Biomass,184.09
+Hunter Power Station,OCGT (large GT),14.07
+Hydrogen Jobs Plan,OCGT (small GT),17.37
+Mugga Lane Renewable Hybrid,Biomass,184.09
+Brigalow GT,OCGT (large GT),14.07
+All Battery storage (1hr storage),Battery storage (1hr storage),9.0
+All Battery storage (2hrs storage),Battery storage (2hrs storage),13.3
+All Battery storage (4hrs storage),Battery storage (4hrs storage),21.2
+All Battery storage (8hrs storage),Battery storage (8hrs storage),37.3
+All Hydro,Hydro,84.0
+All Pumped Hydro,Pumped Hydro,84.0
+All Large scale solar PV,Large scale Solar PV,12.0
+All Wind,Wind,28.0

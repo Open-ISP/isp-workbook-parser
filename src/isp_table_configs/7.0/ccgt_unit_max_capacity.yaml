@@ -1,0 +1,5 @@
+ccgt_unit_capacity:
+  sheet_name: "CCGT Unit Max Capacity"
+  header_rows: 7
+  end_row: 23
+  column_range: "B:E"

@@ -1,0 +1,22 @@
+Technology type,Lower bound,Central assumption,Upper bound
+OCGT (small gas turbine),7.000000000000001,9.0,12.0
+OCGT (large gas turbine),7.000000000000001,9.0,12.0
+CCGTA,8.5,10.5,13.5
+CCGT with CCSA,8.5,10.5,13.5
+BiomassA,8.5,10.5,13.5
+Large scale Solar PV,5.0,7.000000000000001,10.0
+Solar Thermal (16hrs storage)A,8.5,10.5,13.5
+Battery storage (1hr storage),6.5,8.0,11.5
+Battery storage (2hrs storage),6.5,8.0,11.5
+Battery storage (4hrs storage),6.5,8.0,11.5
+Battery storage (8hrs storage),6.5,8.0,11.5
+Pumped Hydro Energy Storage (10 hrs),6.5,8.5,11.5
+Pumped Hydro Energy Storage (24 hrs),6.5,8.5,11.5
+Pumped Hydro Energy Storage (48 hrs),6.5,8.5,11.5
+Wind - onshore,5.5,7.5,10.5
+Wind - offshore (fixed),5.5,7.5,10.5
+Hydrogen Electrolysers,6.0,8.0,11.0
+Electricity - Transmission and Distribution (Regulated),3.0,3.0,4.5
+Electricity - Transmission and Distribution (Unregulated) ,4.5,6.5,9.5
+Gas - Transmission and Distribution (Regulated) ,3.0,3.0,4.5
+Gas - Transmission and Distribution (Unregulated),5.5,7.5,10.5

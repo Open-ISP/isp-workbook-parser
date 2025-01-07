@@ -1,0 +1,111 @@
+#gas_and_liquid_fuel_prices_consultant_scenario_mapping:
+#  sheet_name: "Gas, Liquid fuel, H2 price"
+#  header_rows: 4
+#  end_row: 7
+#  column_range: "G:L"
+
+gas_prices_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 10
+  end_row: 59
+  column_range: "B:AG"
+  skip_rows: 49
+
+gas_prices_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 62
+  end_row: 111
+  column_range: "B:AG"
+  skip_rows: 101
+
+gas_prices_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 114
+  end_row: 163
+  column_range: "B:AG"
+  skip_rows: 153
+
+industrial_fuel_costs_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 171
+  end_row: 177
+  column_range: "B:AG"
+
+industrial_fuel_costs_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 180
+  end_row: 186
+  column_range: "B:AG"
+
+industrial_fuel_costs_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 189
+  end_row: 195
+  column_range: "B:AG"
+
+residential_commercial_fuel_costs_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 203
+  end_row: 209
+  column_range: "B:AG"
+
+residential_commercial_fuel_costs_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 212
+  end_row: 218
+  column_range: "B:AG"
+
+residential_commercial_fuel_costs_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 221
+  end_row: 227
+  column_range: "B:AG"
+
+liquid_fuel_prices_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 235
+  end_row: 242
+  column_range: "B:AG"
+
+liquid_fuel_prices_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 245
+  end_row: 252
+  column_range: "B:AG"
+
+liquid_fuel_prices_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 255
+  end_row: 262
+  column_range: "B:AG"
+
+gpg_secondary_fuel_prices_step_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 270
+  end_row: 308
+  column_range: "B:AG"
+
+gpg_secondary_fuel_prices_progressive_change:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 311
+  end_row: 349
+  column_range: "B:AG"
+
+gpg_secondary_fuel_prices_green_energy_exports:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 352
+  end_row: 390
+  column_range: "B:AG"
+
+# tables below will be made available in Stage 2 of consultation
+#hydrogen_prices:
+#  sheet_name: "Gas, Liquid fuel, H2 price"
+#  header_rows: 214
+#  end_row: 218
+#  column_range: "B:AG"
+
+biomethane_prices:
+  sheet_name: "Gas, Liquid fuel, H2 price"
+  header_rows: 407
+  end_row: 416
+  column_range: "B:AG"

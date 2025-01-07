@@ -1,0 +1,16 @@
+Name,ISP Sub-region,Region,Pumped Hydro Energy Storage (PHES) limits (MW)_10hrs storage,Pumped Hydro Energy Storage (PHES) limits (MW)_24hrs storage,Pumped Hydro Energy Storage (PHES) limits (MW)_48hrs storage,Pumped Hydro Energy Storage (PHES) limits (MW)_BOTN - Cethana
+Northern New South Wales,NNSW,NSW,1020,500,500,0
+Central New South Wales,CNSW,NSW,2006,167,83,0
+South New South Wales,SNSW,NSW,2000,583,167,0
+"Sydney, Newcastle, Wollongong",SNW,NSW,0,0,0,0
+Northern Queensland,NQ,QLD,1000,5000,111,0
+Central Queensland,CQ,QLD,960,1250,89,0
+Gladstone Grid,GG,QLD,0,0,0,0
+South Queensland,SQ,QLD,2400,0,300,0
+Northern South Australia,NSA,SA,540,200,0,0
+Central South Australia,CSA,SA,135,0,0,0
+South East South Australia,SESA,SA,0,0,0,0
+Tasmania,TAS,TAS,1300,1200,371,750
+West and North Victoria,WNV,VIC,2160,700,400,0
+Greater Melbourne and Geelong,MEL,VIC,0,0,0,0
+South East Victoria,SEV,VIC,0,0,0,0

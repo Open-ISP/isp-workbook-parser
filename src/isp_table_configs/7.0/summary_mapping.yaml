@@ -1,0 +1,6 @@
+generator_storage_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  end_row: 866
+  column_range: "B:AB"
+  forward_fill_values: False

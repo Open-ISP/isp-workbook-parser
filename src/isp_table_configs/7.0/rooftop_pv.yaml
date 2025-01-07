@@ -1,0 +1,41 @@
+rooftop_pv_consultant_scenario_mapping:
+  sheet_name: "Rooftop PV"
+  header_rows: 8
+  end_row: 9
+  column_range: "B:E"
+
+rooftop_pv_power_capacity_progressive_change:
+  sheet_name: "Rooftop PV"
+  header_rows: 15
+  end_row: 21
+  column_range: "B:AF"
+
+rooftop_pv_power_capacity_step_change:
+  sheet_name: "Rooftop PV"
+  header_rows: 24
+  end_row: 30
+  column_range: "B:AF"
+
+rooftop_pv_power_capacity_green_energy_generation_exports:
+  sheet_name: "Rooftop PV"
+  header_rows: 33
+  end_row: 39
+  column_range: "B:AF"
+
+rooftop_pv_energy_generation_progressive_change:
+  sheet_name: "Rooftop PV"
+  header_rows: 45
+  end_row: 51
+  column_range: "B:AF"
+
+rooftop_pv_energy_generation_step_change:
+  sheet_name: "Rooftop PV"
+  header_rows: 54
+  end_row: 60
+  column_range: "B:AF"
+
+rooftop_pv_energy_generation_green_energy_exports:
+  sheet_name: "Rooftop PV"
+  header_rows: 63
+  end_row: 69
+  column_range: "B:AF"

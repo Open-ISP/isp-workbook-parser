@@ -24,8 +24,8 @@ retirement_costs:
 
 While we have no strict rules on how table configurations should be named and organised, we encourage the following:
 
-- Group tables of a common theme in one `.yaml` file.
-  - For example, all tables that contain generation capacity factor data should ideally be defined within a single YAML file, e.g. `capacity_factors.yaml`
+- Tables that are on the same workbook sheet should be in the same `.yaml` file.
+  - For example, all tables that are in the `Capacity factors` sheet should be defined within a single YAML file, e.g. `capacity_factors.yaml`
 - Name individual tables (e.g. `retirement_cost` as above) with sufficient detail such that another user using `Parser.get_tables()` can infer what data the table contains
 
 ### Report Bugs

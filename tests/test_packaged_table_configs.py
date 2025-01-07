@@ -41,8 +41,10 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
         except Exception as e:
             error_tables[table_name] = e
     if error_tables:
+        error_str = ""
         for key in error_tables:
-            raise TableLoadError(error_tables[key])
+            error_str += str(error_tables[key]) + "\n"
+        raise TableLoadError(error_str)
 
 
 class TableLoadError(Exception):

@@ -1,0 +1,118 @@
+Generator Station,Generating Unit,Technology Type,Min Stable Level (MW)
+Condamine,CPSA_GT1,CCGT - Gas Turbine,20.0
+Condamine,CPSA_GT2,CCGT - Gas Turbine,20.0
+Condamine,CPSA_ST,CCGT - Steam Turbine,13.1
+Darling Downs,DDPS1_GT1,CCGT - Gas Turbine,58.3
+Darling Downs,DDPS1_GT2,CCGT - Gas Turbine,58.3
+Darling Downs,DDPS1_GT3,CCGT - Gas Turbine,58.3
+Darling Downs,DDPS1_ST,CCGT - Steam Turbine,38.9
+Newport,NPS,Gas-powered steam turbine,100.0
+Osborne,OsborneGT,CCGT - Gas Turbine,90.0
+Osborne,OsborneST,CCGT - Steam Turbine,20.0
+Pelican Point,PPCCGTGT1,CCGT - Gas Turbine,60.0
+Pelican Point,PPCCGTGT2,CCGT - Gas Turbine,60.0
+Pelican Point,PPCCGTST,CCGT - Steam Turbine,42.0
+Swanbank E GT,SWAN_E,CCGT,95.0
+Tallawarra,TALWA1,CCGT,190.0
+Torrens Island B,TORRB1,Gas-powered steam turbine,40.0
+Torrens Island B,TORRB2,Gas-powered steam turbine,40.0
+Torrens Island B,TORRB3,Gas-powered steam turbine,40.0
+Torrens Island B,TORRB4,Gas-powered steam turbine,40.0
+Tamar Valley,TVCC201_GT,CCGT - Gas Turbine,70.8
+Tamar Valley,TVCC201_ST,CCGT - Steam Turbine,41.4
+Townsville Power Station,YABULU,CCGT - Gas Turbine,75.0
+Townsville Power Station,YABULU2,CCGT - Steam Turbine,55.0
+Yarwun Cogen,YARWUN_1,CCGT,106.0
+Smithfield Energy Facility,SITHE01,CCGT - Gas Turbine,20.0
+Smithfield Energy Facility,SITHE02,CCGT - Gas Turbine,20.0
+Smithfield Energy Facility,SITHE03,CCGT - Gas Turbine,20.0
+Smithfield Energy Facility,SITHE04,CCGT - Steam Turbine,16.0
+Somerton,AGLSOM01,OCGT,10.0
+Somerton,AGLSOM02,OCGT,10.0
+Somerton,AGLSOM03,OCGT,10.0
+Somerton,AGLSOM04,OCGT,10.0
+Bairnsdale,BDL01,OCGT,20.0
+Bairnsdale,BDL02,OCGT,20.0
+Barcaldine Power Station,BARCALDN,OCGT,20.0
+Bell Bay Three,BBTHREE1,OCGT,20.0
+Bell Bay Three,BBTHREE2,OCGT,20.0
+Bell Bay Three,BBTHREE3,OCGT,20.0
+Braemar,BRAEMAR1,OCGT,110.0
+Braemar,BRAEMAR2,OCGT,110.0
+Braemar,BRAEMAR3,OCGT,110.0
+Braemar 2 Power Station,BRAEMAR5,OCGT,80.0
+Braemar 2 Power Station,BRAEMAR6,OCGT,80.0
+Braemar 2 Power Station,BRAEMAR7,OCGT,80.0
+Bolivar Power Station,BOLIVPS1_1,OCGT,4.0
+Bolivar Power Station,BOLIVPS1_2,OCGT,4.0
+Bolivar Power Station,BOLIVPS1_3,OCGT,4.0
+Bolivar Power Station,BOLIVPS1_4,OCGT,4.0
+Colongra,CG1,OCGT,125.0
+Colongra,CG2,OCGT,125.0
+Colongra,CG3,OCGT,125.0
+Colongra,CG4,OCGT,125.0
+Dry Creek GT,DRYCGT1,OCGT,20.0
+Dry Creek GT,DRYCGT2,OCGT,20.0
+Dry Creek GT,DRYCGT3,OCGT,20.0
+Hallett GT,AGLHAL01,OCGT,9.0
+Hallett GT,AGLHAL02,OCGT,8.0
+Hallett GT,AGLHAL03,OCGT,10.0
+Hallett GT,AGLHAL04,OCGT,10.0
+Hallett GT,AGLHAL05,OCGT,9.0
+Hallett GT,AGLHAL06,OCGT,8.5
+Hallett GT,AGLHAL07,OCGT,10.5
+Hallett GT,AGLHAL08,OCGT,13.0
+Hallett GT,AGLHAL09,OCGT,12.0
+Hallett GT,AGLHAL10,OCGT,8.0
+Hallett GT,AGLHAL11,OCGT,8.0
+Hallett GT,AGLHAL12,OCGT,8.0
+Hallett GT,AGLHALRE,OCGT,18.0
+Jeeralang A,JLA01,OCGT,20.0
+Jeeralang A,JLA02,OCGT,20.0
+Jeeralang A,JLA03,OCGT,20.0
+Jeeralang A,JLA04,OCGT,20.0
+Jeeralang B,JLB01,OCGT,30.0
+Jeeralang B,JLB02,OCGT,30.0
+Jeeralang B,JLB03,OCGT,30.0
+Ladbroke Grove,LADBROK1,OCGT,20.0
+Ladbroke Grove,LADBROK2,OCGT,20.0
+Laverton North,LNGS1,OCGT,65.0
+Laverton North,LNGS2,OCGT,65.0
+Mintaro GT,MINTARO,OCGT,30.0
+Mortlake,MORTLK11,OCGT,125.0
+Mortlake,MORTLK12,OCGT,125.0
+Mt Stuart,MSTUART1,OCGT,30.0
+Mt Stuart,MSTUART2,OCGT,30.0
+Mt Stuart,MSTUART3,OCGT,30.0
+Oakey Power Station,OAKEY1,OCGT,45.0
+Oakey Power Station,OAKEY2,OCGT,45.0
+Port Lincoln GT,POR01-1,OCGT,7.0
+Port Lincoln GT,POR01-2,OCGT,7.0
+Port Lincoln GT,POR01-3,OCGT,7.0
+Quarantine,QPS1,OCGT,5.0
+Quarantine,QPS2,OCGT,3.0
+Quarantine,QPS3,OCGT,5.0
+Quarantine,QPS4,OCGT,3.0
+Quarantine,QPS5,OCGT,74.0
+Roma,ROMA_7,OCGT,5.0
+Roma,ROMA_8,OCGT,5.0
+Snapper Point Power Station,SNAPPER1_1,OCGT,5.0
+Snapper Point Power Station,SNAPPER1_2,OCGT,5.0
+Snapper Point Power Station,SNAPPER1_3,OCGT,5.0
+Snapper Point Power Station,SNAPPER1_4,OCGT,5.0
+Snapper Point Power Station,SNAPPER1_5,OCGT,5.0
+Snuggery,SNUG1,OCGT,5.0
+Snuggery,SNUG2,OCGT,5.0
+Snuggery,SNUG3,OCGT,5.0
+Tallawarra B,TALWB1,OCGT,160.0
+Tamar Valley Peaking,TVPP104,OCGT,30.0
+Uranquinty,URANQ11,OCGT,80.0
+Uranquinty,URANQ12,OCGT,80.0
+Uranquinty,URANQ13,OCGT,80.0
+Uranquinty,URANQ14,OCGT,80.0
+Valley Power,VPGS1,OCGT,30.0
+Valley Power,VPGS2,OCGT,30.0
+Valley Power,VPGS3,OCGT,30.0
+Valley Power,VPGS4,OCGT,30.0
+Valley Power,VPGS5,OCGT,30.0
+Valley Power,VPGS6,OCGT,30.0
