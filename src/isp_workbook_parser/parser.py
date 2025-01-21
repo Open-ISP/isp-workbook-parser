@@ -499,7 +499,11 @@ class Parser:
 
         Examples:
 
+        >>> import pandas as pd
         >>> from isp_workbook_parser import TableConfig
+
+        >>> pd.set_option("display.max_columns", 4)
+        >>> pd.set_option("display.width", None)
 
         >>> config = TableConfig(
         ... name='existing_generators_summary',
