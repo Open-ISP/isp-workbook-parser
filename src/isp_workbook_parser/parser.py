@@ -236,15 +236,30 @@ class Parser:
                 error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
                 raise TableConfigError(error_message)
 
-    @staticmethod
-    def _check_last_column_isnt_empty(data: pd.DataFrame, name: str) -> None:
+    def _check_last_column_isnt_empty(
+        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+    ) -> None:
         """Check the column in the table isnt empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
         table then empty columns of data could be read into the table. Checking if the last column in the table is
         empty helps detect if the config is incorrect.
         """
-        if data[data.columns[-1]].isna().all():
+        last_column = range.split(":")[1]
+        last_column = last_column + ":" + last_column
+        range_error = False
+        try:
+            pd.read_excel(
+                self.file,
+                sheet_name=sheet_name,
+                header=start_row - 1,
+                usecols=last_column,
+                nrows=(end_row - start_row),
+            )
+        except pd.errors.ParserError:
+            range_error = True
+
+        if range_error:
             error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
@@ -370,9 +385,11 @@ class Parser:
 
     def _check_table(self, data, table_config) -> None:
         if isinstance(table_config.header_rows, list):
-            start_row = table_config.header_rows[-1]
+            start_row = table_config.header_rows[0]
+            last_header_row = table_config.header_rows[-1]
         else:
             start_row = table_config.header_rows
+            last_header_row = table_config.header_rows
         self._check_no_data_above_first_header_row(
             table_config.sheet_name,
             table_config.header_rows,
@@ -387,7 +404,7 @@ class Parser:
         )
         self._check_for_missed_column_on_right_hand_side_of_table(
             table_config.sheet_name,
-            start_row,
+            last_header_row,
             table_config.end_row,
             table_config.column_range,
             table_config.name,
@@ -399,10 +416,15 @@ class Parser:
             table_config.column_range,
             table_config.name,
         )
+        self._check_last_column_isnt_empty(
+            table_config.sheet_name,
+            start_row,
+            table_config.end_row,
+            table_config.column_range,
+            table_config.name,
+        )
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
-        if table_config.forward_fill_values:
-            self._check_last_column_isnt_empty(data, table_config.name)
 
     def _postprocess_percentage_columns_between_0_and_100(
         self, data: pd.DataFrame, table_config: TableConfig
@@ -570,7 +592,7 @@ class Parser:
         if table_name not in self.table_configs.keys():
             closest = process.extractOne(table_name, self.table_configs.keys())[0]
             raise ValueError(
-                "The table_name provided is not in the config for this workbook version."
+                f"The table_name ({table_name}) provided is not in the config for this workbook version."
                 + f" Did you mean '{closest}'?"
             )
 

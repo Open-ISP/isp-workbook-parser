@@ -1,3 +1,5 @@
+import re
+
 import pandas as pd
 
 from isp_workbook_parser.custom_string_replacements import typos_and_notes
@@ -66,6 +68,7 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                     _remove_series_thousands_commas,
                     _remove_series_notes_after_values,
                     _remove_series_trailing_footnotes,
+                    _extract_numeric_value_millions,
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
             # re-attempt conversion following sanitisation
@@ -148,7 +151,7 @@ def _remove_series_notes_after_values(
             hyphen with an empty string.
     """
     series = series.str.replace(
-        r"^([0-9\.]+)\s(?:(\([\w\s\.\<\=\-]+\)?\s?)+)", r"\1", regex=True
+        r"^([0-9\.]+)\s+(?:(\([\w\s\.\<\=\-\/\,]+\)?\s?)+)", r"\1", regex=True
     )
     series = series.str.replace(
         r"^(?![0-9]{4}\-[0-9]{2,4})([0-9\.]+)\s?(?:(\-[\w\s\.\<\=\-\(\)]+)+)",
@@ -157,3 +160,34 @@ def _remove_series_notes_after_values(
     )
     series = series.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
     return series
+
+
+def _extract_numeric_value_millions(
+    series: pd.Index | pd.Series,
+) -> pd.Index | pd.Series:
+    """
+    Extracts numeric value from strings like "$ 2849 M" and multiplies by 1 million.
+    If no 'M' is present, returns the value as is.
+    """
+
+    def extract(val):
+        # Return value unchanged if it's not a string
+        if not isinstance(val, str):
+            return val
+        # Match strings like "$ 2849 M" (optional $ and spaces, number, optional commas, 'M' or 'm')
+        match = re.match(r"\$?\s*([\d,.]+)\s*[mM]", val)
+        if match:
+            # Remove commas from the numeric part
+            num_str = match.group(1).replace(",", "")
+            # Check if the string is a valid number (allowing one decimal point)
+            if num_str.replace(".", "", 1).isdigit():
+                # Convert to float and multiply by 1,000,000
+                return float(num_str) * 1_000_000
+            else:
+                # If not a valid number, return the original value
+                return val
+        # Return value unchanged if pattern does not match
+        return val
+
+    # Apply extraction to each element in the series
+    return series.apply(extract)

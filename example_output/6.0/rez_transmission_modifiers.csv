@@ -1,9 +1,9 @@
 REZ ID,REZ,Project EnergyConnect,Western Renewables Link,Central-West Orana REZ Transmission Link,The Victorian Government RDP: Mortlake turn in Project_Mortlake turn in Project†,The Victorian Government RDP: The network augmentation project_The network augmentation project†,CopperString 2032
-N3 ,Central-West Orana ,Central-West Orana ,Central-West Orana ,3000 MW ,3000 MW ,3000 MW ,3000 MW 
-N5 ,South West NSW ,800 MW ,800 MW ,800 MW ,800 MW ,800 MW ,800 MW 
-V2 ,Murray River ,400 MW,400 MW,400 MW,400 MW,112 MW,112 MW
-V3 ,Western Victoria ,Western Victoria ,1460 MW,1460 MW,1460 MW,- ,- 
-SWV1,South West Victoria ,South West Victoria ,South West Victoria ,South West Victoria ,1100 MW,81 MW,81 MW
-V6 ,Central North Victoria ,Central North Victoria ,Central North Victoria ,Central North Victoria ,Central North Victoria ,12 MW,12 MW
-S2 ,Riverland ,800 MW ,800 MW ,800 MW ,800 MW ,800 MW ,800 MW 
+N3 ,Central-West Orana ,Central-West Orana ,Central-West Orana ,3000000000.0,3000000000.0,3000000000.0,3000000000.0
+N5 ,South West NSW ,800000000.0,800000000.0,800000000.0,800000000.0,800000000.0,800000000.0
+V2 ,Murray River ,400000000.0,400000000.0,400000000.0,400000000.0,112000000.0,112000000.0
+V3 ,Western Victoria ,Western Victoria ,1460000000.0,1460000000.0,1460000000.0,- ,- 
+SWV1,South West Victoria ,South West Victoria ,South West Victoria ,South West Victoria ,1100000000.0,81000000.0,81000000.0
+V6 ,Central North Victoria ,Central North Victoria ,Central North Victoria ,Central North Victoria ,Central North Victoria ,12000000.0,12000000.0
+S2 ,Riverland ,800000000.0,800000000.0,800000000.0,800000000.0,800000000.0,800000000.0
 Q2,North Qld Clean Energy Hub,North Qld Clean Energy Hub,North Qld Clean Energy Hub,North Qld Clean Energy Hub,North Qld Clean Energy Hub,North Qld Clean Energy Hub,1500
