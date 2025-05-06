@@ -236,30 +236,15 @@ class Parser:
                 error_message = f"The first column of the table {name} contains the sub string '{sub_string}'."
                 raise TableConfigError(error_message)
 
-    def _check_last_column_isnt_empty(
-        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
-    ) -> None:
+    @staticmethod
+    def _check_last_column_isnt_empty(data: pd.DataFrame, name: str) -> None:
         """Check the column in the table isnt empty.
 
         If the column range in the table config is incorrectly specified and the end column occurs after the end of the
         table then empty columns of data could be read into the table. Checking if the last column in the table is
         empty helps detect if the config is incorrect.
         """
-        last_column = range.split(":")[1]
-        last_column = last_column + ":" + last_column
-        range_error = False
-        try:
-            pd.read_excel(
-                self.file,
-                sheet_name=sheet_name,
-                header=start_row - 1,
-                usecols=last_column,
-                nrows=(end_row - start_row),
-            )
-        except pd.errors.ParserError:
-            range_error = True
-
-        if range_error:
+        if data[data.columns[-1]].isna().all() or "Unnamed" in data.columns[-1]:
             error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
@@ -416,13 +401,7 @@ class Parser:
             table_config.column_range,
             table_config.name,
         )
-        self._check_last_column_isnt_empty(
-            table_config.sheet_name,
-            start_row,
-            table_config.end_row,
-            table_config.column_range,
-            table_config.name,
-        )
+        self._check_last_column_isnt_empty(data, table_config.name)
         self._check_for_over_run_into_another_table(data, table_config.name)
         self._check_for_over_run_into_notes(data, table_config.name)
 
