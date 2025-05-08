@@ -174,7 +174,7 @@ def _extract_numeric_value_millions(
         # Return value unchanged if it's not a string
         if not isinstance(val, str):
             return val
-        # Match strings like "$ 2849 M" (optional $ and spaces, number, optional commas, 'M' or 'm')
+        # Match strings like "$ 2849 M" (optional $ and spaces, number, optional commas, 'M')
         match = re.match(r"\$?\s*([\d,.]+)\s*[M]$", val)
         if match:
             # Remove commas from the numeric part

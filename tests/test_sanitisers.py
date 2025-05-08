@@ -3,6 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 from isp_workbook_parser.sanitisers import (
+    _extract_numeric_value_millions,
     _remove_series_double_whitespaces,
     _remove_series_notes_after_values,
     _remove_series_thousands_commas,
@@ -43,6 +44,35 @@ def test_replace_series_newlines_with_whitespace(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
+        ]
+    )
+    pd.testing.assert_series_equal(result, expected)
+
+
+def test_extract_numeric_value_millions(sample_series):
+    result = _extract_numeric_value_millions(sample_series)
+    expected = pd.Series(
+        [
+            "First line\nSecond line",
+            "This  is  a  test",
+            "Value with *",
+            "SomeUnitA5",
+            "An actual footnote1",
+            "  leading and trailing  ",
+            "1,234,567",
+            "50.0 - note",
+            "35.5 (comment)",
+            "42.0 - note (additional info)",
+            "999.9 (info) - second note",
+            "2024-25 data for year",
+            1_000_000,
+            1_000_000,
+            1_000_000,
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -64,6 +94,10 @@ def test_remove_series_double_whitespaces(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -85,6 +119,10 @@ def test_remove_series_trailing_asterisks(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -106,6 +144,10 @@ def test_remove_series_trailing_footnotes(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -127,6 +169,10 @@ def test_strip_series_whitespaces(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -148,6 +194,10 @@ def test_remove_series_thousands_commas(sample_series):
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)
@@ -169,6 +219,10 @@ def test_remove_series_notes_after_values(sample_series):
             "42.0",
             "999.9",
             "2024-25 data for year",  # No change for financial year case
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
     pd.testing.assert_series_equal(result, expected)

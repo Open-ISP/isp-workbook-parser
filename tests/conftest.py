@@ -26,5 +26,9 @@ def sample_series():
             "42.0 - note (additional info)",
             "999.9 (info) - second note",
             "2024-25 data for year",
+            "$ 1 M",
+            "$ 1.0 M",
+            "$ 1,,.0 M",
+            "$ 1.0.0 M",
         ]
     )
