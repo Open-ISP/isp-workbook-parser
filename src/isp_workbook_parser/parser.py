@@ -18,7 +18,7 @@ class Parser:
     """Extracts ISP inputs and assumptions data from the IASR workbbook.
 
     If a directory path containing configs is provided by the user, this is used as the
-    path to load the config YAM files from. Otherwise a default path is constructed
+    path to load the config YAM files from. Otherwise, a default path is constructed
     using the workbook version number. This uses config files shipped with the package.
 
     For a list of tables with pre-defined config (i.e. those shipped with the package)
@@ -244,7 +244,7 @@ class Parser:
         table then empty columns of data could be read into the table. Checking if the last column in the table is
         empty helps detect if the config is incorrect.
         """
-        if data[data.columns[-1]].isna().all() or "Unnamed" in data.columns[-1]:
+        if "Unnamed" in data.columns[-1]:
             error_message = f"The last column of the table {name} is empty."
             raise TableConfigError(error_message)
 
