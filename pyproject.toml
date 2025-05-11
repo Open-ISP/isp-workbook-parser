@@ -1,6 +1,6 @@
 [project]
 name = "isp-workbook-parser"
-version = "2.4.1"
+version = "2.5.0"
 description = "A Python package for reading data from the Inputs, Assumptions and Scenarios Report (IASR) Microsoft Excel workbook published by the Australian Energy Market Operator for use in their Integrated System Plan modelling."
 authors = [
     { name = "nick-gorman", email = "n.gorman305@gmail.com" },
@@ -27,8 +27,8 @@ dev-dependencies = [
     "pre-commit>=3.8.0",
     "ipython>=8.0",
     "ipdb>=0.13.13",
-    "pytest>=8.3.2",
-    "pytest-cov>=5.0.0",
+    "pytest-cov>=6.1.1",
+    "pytest>=8.3.3",
 ]
 
 [tool.pytest.ini_options]

@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 from isp_workbook_parser.config_model import TableConfig
@@ -58,6 +60,19 @@ def test_last_column_not_on_sheet_throws_error(workbook_v6):
     error_message = (
         f"The last column for table {table_config.name} is not within the excel sheet."
     )
+    with pytest.raises(TableConfigError, match=error_message):
+        workbook_v6.get_table_from_config(table_config)
+
+
+def test_last_column_empty_throws_error(workbook_v6):
+    table_config = TableConfig(
+        name="DUMMY",
+        sheet_name="Generation limits",
+        header_rows=8,
+        end_row=52,
+        column_range="B:E",
+    )
+    error_message = f"The last column of the table {table_config.name} is empty."
     with pytest.raises(TableConfigError, match=error_message):
         workbook_v6.get_table_from_config(table_config)
 
@@ -173,3 +188,10 @@ def test_good_config_throws_no_error(workbook_v6):
         column_range="B:J",
     )
     workbook_v6.get_table_from_config(table_config)
+
+
+def test_incorrect_table_name_throws_error(workbook_v6):
+    error_message = "The table_name (affine_heat_rates_new_entrant) provided is not in the config for this workbook version. Did you mean 'affine_heat_rates_new_entrants'?"
+    error_message = re.escape(error_message)
+    with pytest.raises(ValueError, match=error_message):
+        workbook_v6.get_table("affine_heat_rates_new_entrant")

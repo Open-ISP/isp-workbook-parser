@@ -1,1 +1,76 @@
-# Not implemented out because version does not support merged cells across rows.
+flow_path_augmentation_options_CQ-NQ:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [11, 12]
+ end_row: 14
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "D"]
+
+flow_path_augmentation_options_CQ-GG:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [18, 19]
+ end_row: 20
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "D"]
+
+flow_path_augmentation_options_SQ-CQ:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [23, 24]
+ end_row: 29
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "D"]
+
+flow_path_augmentation_options_NNSW-SQ:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [32, 33]
+ end_row: 38
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_CNSW-NNSW:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [41, 42]
+ end_row: 47
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_CNSW-SNW:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [50, 51]
+ end_row: 62
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_SNSW-CNSW:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [65, 66]
+ end_row: 70
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_VIC-SNSW:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [73, 74]
+ end_row: 75
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_TAS-VIC:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [78, 79]
+ end_row: 81
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_VIC-SESA:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [85, 86]
+ end_row: 88
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
+
+flow_path_augmentation_options_SESA-CSA:
+ sheet_name: "Flow Path Augmentation options"
+ header_rows: [92, 93]
+ end_row: 94
+ column_range: "B:O"
+ columns_with_merged_rows: ["B", "C", "D"]
