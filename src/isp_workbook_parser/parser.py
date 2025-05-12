@@ -1,5 +1,6 @@
 import glob
 import os
+import warnings
 from pathlib import Path
 from typing import Any
 
@@ -48,8 +49,15 @@ class Parser:
         self, file_path: str | Path, user_config_directory_path: str | Path = None
     ) -> None:
         self.file_path = self._make_path_object(file_path)
-        self.file = pd.ExcelFile(self.file_path)
-        self.openpyxl_file = openpyxl.load_workbook(self.file_path)
+
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                message="Data Validation extension is not supported and will be removed",
+            )
+            self.file = pd.ExcelFile(self.file_path)
+            self.openpyxl_file = openpyxl.load_workbook(self.file_path)
+
         self.workbook_version = self._get_version()
         self.default_config_path = Path(__file__).parent.parent / Path(
             "isp_table_configs"

@@ -1,5 +1,6 @@
 import re
 
+import numpy as np
 import pandas as pd
 
 from isp_workbook_parser.custom_string_replacements import typos_and_notes
@@ -81,7 +82,7 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
 
 def _replace_dataframe_hyphens_with_na(df: pd.DataFrame) -> pd.DataFrame:
     """Replaces any hyphen values with a `pandas.NA`"""
-    return df.replace("-", pd.NA, regex=False)
+    return df.replace("-", np.nan, regex=False)
 
 
 def _replace_series_newlines_with_whitespace(
