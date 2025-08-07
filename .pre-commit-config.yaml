@@ -10,7 +10,7 @@ repos:
   -   id: check-added-large-files
       exclude: |
         (?x)^(
-          ^workbooks |
+          workbooks/.* |
           tests/test_data/2024-isp-inputs-and-assumptions-workbook-missing-sheets\.xlsx
         )$
 - repo: https://github.com/astral-sh/ruff-pre-commit

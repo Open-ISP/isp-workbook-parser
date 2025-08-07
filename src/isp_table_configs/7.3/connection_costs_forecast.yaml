@@ -1,0 +1,23 @@
+connection_cost_forecast_wind_and_solar_step_change&green_energy_exports:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 11
+  end_row: 54
+  column_range: "B:AG"
+
+connection_cost_forecast_non_rez_step_change&green_energy_exports:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 61
+  end_row: 63
+  column_range: "B:AG"
+
+connection_cost_forecast_wind_and_solar_progressive_change:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 69
+  end_row: 112
+  column_range: "B:AG"
+
+connection_cost_forecast_non_rez_progressive_change:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 120
+  end_row: 122
+  column_range: "B:AG"

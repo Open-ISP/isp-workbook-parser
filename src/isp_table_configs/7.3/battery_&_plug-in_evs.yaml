@@ -1,0 +1,42 @@
+ev_energy_consultant_scenario_mapping:
+  sheet_name: "Battery & Plug-in EVs"
+  header_rows: 7
+  end_row: 8
+  column_range: "B:E"
+
+# tables below will be made available in Stage 2 of consultation
+#ev_energy_capacity_progressive_change:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 15
+#  end_row: 20
+#  column_range: "B:AH"
+#
+#ev_energy_capacity_step_change:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 23
+#  end_row: 28
+#  column_range: "B:AH"
+#
+#ev_energy_capacity_green_energy_exports:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 31
+#  end_row: 36
+#  column_range: "B:AH"
+#
+#ev_uptake_progressive_change:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 42
+#  end_row: 47
+#  column_range: "B:AH"
+#
+#ev_uptake_step_change:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 50
+#  end_row: 55
+#  column_range: "B:AH"
+#
+#ev_uptake_green_energy_exports:
+#  sheet_name: "Battery & Plug-in EVs"
+#  header_rows: 58
+#  end_row: 63
+#  column_range: "B:AH"

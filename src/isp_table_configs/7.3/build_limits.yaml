@@ -1,0 +1,17 @@
+rez_initial_resource_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [6, 7]
+  end_row: 52
+  column_range: "B:O"
+
+rez_initial_transmission_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [58, 59]
+  end_row: 102
+  column_range: "B:O"
+
+rez_transmission_modifiers:
+  sheet_name: "Build limits - REZs"
+  header_rows: [110, 111]
+  end_row: 119
+  column_range: "B:J"
