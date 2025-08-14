@@ -1,41 +1,17 @@
 pvnsg_consultant_scenario_mapping:
   sheet_name: "PVNSG"
-  header_rows: 7
-  end_row: 8
+  header_rows: 9
+  end_row: 10
   column_range: "B:E"
 
-pvnsg_power_capacity_progressive_change:
+pvnsg_power_capacity:
   sheet_name: "PVNSG"
-  header_rows: 14
-  end_row: 20
-  column_range: "B:AF"
+  header_rows: 15
+  end_row: 63
+  column_range: "B:AH"
 
-pvnsg_power_capacity_step_change:
+pvnsg_energy_capacity:
   sheet_name: "PVNSG"
-  header_rows: 23
-  end_row: 29
-  column_range: "B:AF"
-
-pvnsg_power_capacity_green_energy_capacity_exports:
-  sheet_name: "PVNSG"
-  header_rows: 32
-  end_row: 38
-  column_range: "B:AF"
-
-pvnsg_energy_capacity_progressive_change:
-  sheet_name: "PVNSG"
-  header_rows: 44
-  end_row: 50
-  column_range: "B:AF"
-
-pvnsg_energy_capacity_step_change:
-  sheet_name: "PVNSG"
-  header_rows: 53
-  end_row: 59
-  column_range: "B:AF"
-
-pvnsg_energy_capacity_green_energy_capacity_exports:
-  sheet_name: "PVNSG"
-  header_rows: 62
-  end_row: 68
-  column_range: "B:AF"
+  header_rows: 68
+  end_row: 116
+  column_range: "B:AH"

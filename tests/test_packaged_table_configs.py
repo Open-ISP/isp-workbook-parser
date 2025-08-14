@@ -18,13 +18,14 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
 
     # Check that configs don't look at the same tables.
     configs = workbook.table_configs
-    sheet_and_header_combos = [
-        c.sheet_name + str(c.header_rows) + c.column_range for c in configs.values()
+    sheet_header_end_row_combos = [
+        c.sheet_name + str(c.header_rows) + str(c.end_row) + c.column_range
+        for c in configs.values()
     ]
     table_names = [c.name for c in configs.values()]
     duplicate_configs = []
-    for index, value in enumerate(sheet_and_header_combos):
-        if sheet_and_header_combos.count(value) > 1:
+    for index, value in enumerate(sheet_header_end_row_combos):
+        if sheet_header_end_row_combos.count(value) > 1:
             duplicate_configs.append(table_names[index])
     if len(duplicate_configs) > 0:
         print(duplicate_configs)
@@ -43,7 +44,7 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
     if error_tables:
         error_str = ""
         for key in error_tables:
-            error_str += str(error_tables[key]) + "\n"
+            error_str += key + ":" + str(error_tables[key]) + "\n"
         raise TableLoadError(error_str)
 
 

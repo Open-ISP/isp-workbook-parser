@@ -1,11 +1,12 @@
-fixed_opex_existing_committed_anticipated_additional_generators:
+fixed_opex_ecaa_generators:
   sheet_name: "Fixed OPEX"
   header_rows: [6, 7]
-  end_row: 79
-  column_range: "B:D"
+  end_row: 663
+  column_range: "B:E"
 
 fixed_opex_new_entrants:
   sheet_name: "Fixed OPEX"
   header_rows: [6, 7]
-  end_row: 25
-  column_range: "F:BO"
+  end_row: 28
+  column_range: "G:I"
+  forward_fill_values: False

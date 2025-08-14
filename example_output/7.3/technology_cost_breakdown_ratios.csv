@@ -1,0 +1,22 @@
+Technology,Equipment costs,Fuel connection costs,Cost of land and development,Installation costs,Topographical cost
+OCGT (small GT),61.2473171276274,4.62917761555154,7.874655059266381,26.248850197554603,Not Applicable
+OCGT (large GT),59.90632413551759,6.717295274693889,7.70224167456656,25.6741389152218,Not Applicable
+CCGT,62.652065446390104,2.4417838018469,8.05526559105169,26.8508851607112,Not Applicable
+CCGT with CCS,77.32485058482143,1.1313972693195362,8.163462616665482,13.380289529193542,Not Applicable
+Biomass,55.0459282630708,0,8.25692070764788,36.6971510292812,Not Applicable
+Large scale Solar PV,56.6037735849056,0,5.66037735849056,37.7358490566037,Not Applicable
+Solar Thermal (16hrs Storage),72.46743544070844,0,3.3767527457220767,24.155811813569482,Not Applicable
+Battery storage (1hr storage),78.2825484764543,0,5.540166204986139,16.177285318559502,Not Applicable
+Battery storage (2hrs storage),79.4435215946843,0,4.15282392026578,16.403654485049803,Not Applicable
+Battery storage (4hrs storage),80.39509129003291,0,2.99311583358275,16.6117928763843,Not Applicable
+Battery Storage (8hrs storage),81.35185185185179,0,1.85185185185185,16.7962962962962,Not Applicable
+Wind,70.3793762250949,0,2.4390243902439024,27.181599384661194,Not Applicable
+Wind - Offshore (fixed),68.0,0,5.0,27.0,Not Applicable
+Wind - offshore (floating),85.0,0,4.0,11.0,Not Applicable
+Pumped Hydro (10hrs storage),14.000000000000002,0,6.0,40.0,40.0
+Pumped Hydro (24hrs storage),14.000000000000002,0,6.0,40.0,40.0
+Pumped Hydro (48hrs storage),14.000000000000002,0,6.0,40.0,40.0
+Distributed Resources Solar,56.6037735849056,0,5.66037735849056,37.7358490566037,Not Applicable
+Distributed Resources Batteries,80.0,0,4.0,16.0,Not Applicable
+Alkaline Electrolyser,33.6289726533629,0,9.09090909090909,57.280118255728,Not Applicable
+BOTN - Cethana,Not Applicable,Not Applicable,Not Applicable,Not Applicable,Not Applicable

@@ -1,65 +1,83 @@
-#rez_augmentation_costs_qld:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 9
-#  end_row: 30
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_nsw:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 33
-#  end_row: 62
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_sa:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 65
-#  end_row: 87
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_tas:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 90
-#  end_row: 100
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_vic:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 103
-#  end_row: 124
-#  column_range: "B:AK"
-#
-#rez_augmentation_preparatory_activities:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 129
-#  end_row: 139
-#  column_range: "B:AJ"
-#
-#rez_augmentation_costs_progressive_change_qld:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 143
-#  end_row: 164
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_progressive_change_nsw:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 167
-#  end_row: 196
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_progressive_change_tas:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 224
-#  end_row: 234
-#  column_range: "B:AK"
-#
-#rez_augmentation_costs_progressive_change_vic:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 237
-#  end_row: 258
-#  column_range: "B:AK"
-#
-#rez_augmentation_preparatory_activities_progressive_change:
-#  sheet_name: "REZ Costs forecast"
-#  header_rows: 263
-#  end_row: 273
-#  column_range: "B:AK"
+rez_augmentation_costs_slower_growth_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 13
+  end_row: 45
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 47
+  end_row: 60
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 62
+  end_row: 72
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 74
+  end_row: 92
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 95
+  end_row: 127
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 129
+  end_row: 142
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 144
+  end_row: 154
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 156
+  end_row: 174
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 177
+  end_row: 209
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 211
+  end_row: 224
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 226
+  end_row: 236
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 238
+  end_row: 256
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]

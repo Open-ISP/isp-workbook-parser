@@ -1,0 +1,22 @@
+Fuel type,Full outage (% of time),Partial outage (% of time),Full outage MTTR (hrs),Partial outage MTTR (hrs),Partial Outage Derating Factor (%),notes
+OCGT (small GT),2.0,,75.0,,,
+OCGT (large GT),2.0,,22.0,,,
+CCGT,3.5000000000000004,,54.0,,,
+CCGT with CCS,3.5000000000000004,,54.0,,,
+Biomass,4.0,,22.0,,,
+Battery storage (1hr storage),1.5,,48.0,,,
+Battery storage (2hrs storage),1.5,,48.0,,,
+Battery storage (4hrs storage),1.5,,48.0,,,
+Battery storage (8hrs storage),1.5,,48.0,,,
+Large scale Solar PV,,,,,,See footnote
+Pumped Hydro (10hrs storage),1.5,,27.0,,,
+Pumped Hydro (24hrs storage),1.5,,27.0,,,
+Pumped Hydro (48hrs storage),1.5,,27.0,,,
+Solar Thermal (16hrs storage),,,,,,See footnote
+Wind,,,,,,See footnote
+Wind - offshore (fixed),,,,,,See footnote
+Wind - offshore (floating),,,,,,See footnote
+Distributed Resources Solar,,,,,,See footnote
+Distributed Resources Batteries,,,,,,See footnote
+Alkaline Electrolyser,,,,,,See footnote
+BOTN - Cethana,1.5,,27.0,,,

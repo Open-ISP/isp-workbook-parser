@@ -1,11 +1,11 @@
 connection_costs_for_wind_and_solar:
   sheet_name: "Connection cost"
   header_rows: 8
-  end_row: 51
+  end_row: 48
   column_range: "B:J"
 
 connection_costs_other:
   sheet_name: "Connection cost"
-  header_rows: 57
-  end_row: 62
-  column_range: "B:Q"
+  header_rows: 54
+  end_row: 60
+  column_range: "B:R"

@@ -1,11 +1,11 @@
 seasonal_ratings_new_entrants:
   sheet_name: "Seasonal ratings"
-  header_rows: 12
-  end_row: 30
+  header_rows: 11
+  end_row: 32
   column_range: "B:E"
 
-seasonal_ratings_existing_committed_anticipated_additional_generators:
+seasonal_ratings_ecaa_generators:
   sheet_name: "Seasonal ratings"
-  header_rows: [41, 42]
-  end_row: 521
+  header_rows: [43, 44]
+  end_row: 700
   column_range: "B:AI"

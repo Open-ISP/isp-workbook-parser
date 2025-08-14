@@ -1,6 +1,36 @@
 generator_storage_summary:
   sheet_name: "Summary Mapping"
   header_rows: [4, 5, 6]
-  end_row: 866
-  column_range: "B:AB"
+  end_row: 662
+  column_range: "B:AG"
+  forward_fill_values: False
+
+consumer_energy_resources_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 668
+  end_row: 718
+  column_range: "B:AG"
+  forward_fill_values: False
+
+new_entrant_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 724
+  end_row: 1188
+  column_range: "B:AG"
+  forward_fill_values: False
+
+new_entrant_electrolysers_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 1193
+  end_row: 1309
+  column_range: "B:AG"
   forward_fill_values: False

@@ -1,12 +1,23 @@
 battery_properties:
   sheet_name: "Storage properties"
   header_rows: [4, 5]
-  end_row: 10
+  end_row: 12
   column_range: "B:J"
 
-pumped_hydro_properties:
+pumped_hydro_ecaa_properties:
   sheet_name: "Storage properties"
-  header_rows: 19
-  end_row: 29
+  header_rows: 21
+  end_row: 28
   column_range: "B:E"
-  skip_rows: [20, 26]
+
+pumped_hydro_new_entrant_properties:
+  sheet_name: "Storage properties"
+  header_rows: 21
+  end_row: 25
+  column_range: "G:J"
+
+on_site_diesel_properties:
+  sheet_name: "Storage properties"
+  header_rows: 39
+  end_row: 40
+  column_range: "B:C"

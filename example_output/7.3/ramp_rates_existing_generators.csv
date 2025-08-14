@@ -1,0 +1,182 @@
+IASR ID,Power Station,Technology Type,Max Ramp Up (MW/min),Max Ramp Down (MW/min)
+ANGAS1,Angaston,Reciprocating engine,Assumed sufficiently high,Assumed sufficiently high
+ANGAS2,Angaston,Reciprocating engine,Assumed sufficiently high,Assumed sufficiently high
+BDL01,Bairnsdale,OCGT (small GT),9,5
+BDL02,Bairnsdale,OCGT (small GT),9,7.2
+BARCALDN,Barcaldine Power Station,OCGT (small GT),3.3,3.3
+BIPS1_01,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_02,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_03,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_04,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_05,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_06,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_07,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_08,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_09,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_10,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_11,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BIPS1_12,Barker Inlet Power Station,Reciprocating engine,5,4.25
+BW01,Bayswater,Steam Sub Critical,5,5
+BW02,Bayswater,Steam Sub Critical,5,5
+BW03,Bayswater,Steam Sub Critical,5,5
+BW04,Bayswater,Steam Sub Critical,5,5
+BBTHREE1,Bell Bay Three,OCGT (large GT),7,8
+BBTHREE2,Bell Bay Three,OCGT (large GT),7,8
+BBTHREE3,Bell Bay Three,OCGT (large GT),7,8
+BOLIVPS1_1,Bolivar Power Station,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+BOLIVPS1_2,Bolivar Power Station,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+BOLIVPS1_3,Bolivar Power Station,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+BOLIVPS1_4,Bolivar Power Station,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+BRAEMAR1,Braemar,OCGT (large GT),22,14.1
+BRAEMAR2,Braemar,OCGT (large GT),20,14.1
+BRAEMAR3,Braemar,OCGT (large GT),14,14.1
+BRAEMAR5,Braemar 2 Power Station,OCGT (large GT),20,11
+BRAEMAR6,Braemar 2 Power Station,OCGT (large GT),16,11
+BRAEMAR7,Braemar 2 Power Station,OCGT (large GT),16,11
+Kogan Gas,Brigalow GT,OCGT (large GT),80,80
+CALL_B_1,Callide B,Steam Sub Critical,4,4
+CALL_B_2,Callide B,Steam Sub Critical,4,4
+CPP_3,Callide C,Steam Super Critical,4,4
+CPP_4,Callide C,Steam Super Critical,4,4
+CG1,Colongra,OCGT (small GT),13.3,22.5
+CG2,Colongra,OCGT (small GT),13.4,22.5
+CG3,Colongra,OCGT (small GT),13.4,22.5
+CG4,Colongra,OCGT (small GT),13.4,22.5
+CPSA_GT1,Condamine A,CCGT - Gas Turbine,1.6,1.6
+CPSA_GT2,Condamine A,CCGT - Gas Turbine,1.6,1.6
+CPSA_ST,Condamine A,CCGT - Steam Turbine,0.4,5
+DDPS1_GT1,Darling Downs,CCGT - Gas Turbine,4.75,4.3
+DDPS1_GT2,Darling Downs,CCGT - Gas Turbine,4.75,4.3
+DDPS1_GT3,Darling Downs,CCGT - Gas Turbine,4.75,4.3
+DDPS1_ST,Darling Downs,CCGT - Steam Turbine,3.5,25
+DRYCGT1,Dry Creek GT,OCGT (small GT),5.8,5
+DRYCGT2,Dry Creek GT,OCGT (small GT),4.7,5
+DRYCGT3,Dry Creek GT,OCGT (small GT),11.5,5
+ER01,Eraring,Steam Sub Critical,5,5
+ER02,Eraring,Steam Sub Critical,5,5
+ER03,Eraring,Steam Sub Critical,5,5
+ER04,Eraring,Steam Sub Critical,5,5
+GSTONE1,Gladstone,Steam Sub Critical,5,5
+GSTONE2,Gladstone,Steam Sub Critical,5,5
+GSTONE3,Gladstone,Steam Sub Critical,5,5
+GSTONE4,Gladstone,Steam Sub Critical,5,5
+GSTONE5,Gladstone,Steam Sub Critical,5,5
+GSTONE6,Gladstone,Steam Sub Critical,5,5
+AGLHAL01,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL02,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL03,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL04,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL05,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL06,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL07,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL08,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL09,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL10,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL11,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHAL12,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLHALRE,Hallett GT,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+HEZ1,Hunter Economic Zone,Reciprocating engine,Assumed sufficiently high,Assumed sufficiently high
+HUNTER1,Hunter Power Station,OCGT (large GT),40,40
+HUNTER2,Hunter Power Station,OCGT (large GT),40,40
+JLA01,Jeeralang A,OCGT (small GT),11.7,9
+JLA02,Jeeralang A,OCGT (small GT),15.6,9
+JLA03,Jeeralang A,OCGT (small GT),14.3,9
+JLA04,Jeeralang A,OCGT (small GT),15.2,9
+JLB01,Jeeralang B,OCGT (small GT),7.8,8.2
+JLB02,Jeeralang B,OCGT (small GT),7.1,14.5
+JLB03,Jeeralang B,OCGT (small GT),7.1,8.2
+KPP_1,Kogan Creek,Steam Super Critical,8,8
+LADBROK1,Ladbroke Grove,OCGT (small GT),8.4,11
+LADBROK2,Ladbroke Grove,OCGT (small GT),8.4,11
+LNGS1,Laverton North,OCGT (large GT),25.7,26
+LNGS2,Laverton North,OCGT (large GT),24.9,26
+Lockyer Valley GT,Lockyer Valley GT,OCGT (small GT),22,22
+LONSDALE,Lonsdale,Reciprocating engine,Assumed sufficiently high,Assumed sufficiently high
+LYA1,Loy Yang A Power Station,Steam Sub Critical,5.2,5.2
+LYA2,Loy Yang A Power Station,Steam Sub Critical,5.2,5.2
+LYA3,Loy Yang A Power Station,Steam Sub Critical,5.2,5.2
+LYA4,Loy Yang A Power Station,Steam Sub Critical,5.2,5.2
+LOYYB1,Loy Yang B,Steam Sub Critical,10,10
+LOYYB2,Loy Yang B,Steam Sub Critical,10,10
+MPP_1,Millmerran,Steam Super Critical,5,5
+MPP_2,Millmerran,Steam Super Critical,5,5
+MINTARO,Mintaro GT,OCGT (small GT),6.5,6.5
+MORTLK11,Mortlake,OCGT (large GT),25.6,34
+MORTLK12,Mortlake,OCGT (large GT),13.3,13.4
+MP1,Mt Piper,Steam Sub Critical,6.2,6.2
+MP2,Mt Piper,Steam Sub Critical,6.2,6.2
+MSTUART1,Mt Stuart,OCGT (small GT),11.1,14.5
+MSTUART2,Mt Stuart,OCGT (small GT),10.1,14.5
+MSTUART3,Mt Stuart,OCGT (small GT),13.6,14.5
+NPS,Newport,OCGT (large GT),11.7,11.7
+OAKEY1,Oakey Power Station,OCGT (large GT),12.1,11
+OAKEY2,Oakey Power Station,OCGT (large GT),11,11
+OsborneGT,Osborne,CCGT - Gas Turbine,4.2,0
+OsborneST,Osborne,CCGT - Steam Turbine,5,18
+PPCCGTGT1,Pelican Point,CCGT - Gas Turbine,5,4.1
+PPCCGTGT2,Pelican Point,CCGT - Gas Turbine,5,4.1
+PPCCGTST,Pelican Point,CCGT - Steam Turbine,2.5,33
+POR01-1,Port Lincoln GT,OCGT (small GT),2.75,6.7
+POR01-2,Port Lincoln GT,OCGT (small GT),2.75,6.7
+POR01-3,Port Lincoln GT,OCGT (small GT),3,6.7
+PTSTAN1_1,Port Stanvac 1,Reciprocating engine,5.75,5.75
+PTSTAN1_2,Port Stanvac 1,Reciprocating engine,5.75,5.75
+QPS1,Quarantine,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+QPS2,Quarantine,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+QPS3,Quarantine,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+QPS4,Quarantine,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+QPS5,Quarantine,OCGT (small GT),13.6,46.5
+ROMA_7,Roma,OCGT (small GT),6.4,8.4
+ROMA_8,Roma,OCGT (small GT),6.4,8.4
+SITHE01,Smithfield Energy Facility,OCGT (small GT),24.7,26.2
+SNAPPER1_1,Snapper Point Power Station,OCGT (small GT),6,6
+SNAPPER1_2,Snapper Point Power Station,OCGT (small GT),6,6
+SNAPPER1_3,Snapper Point Power Station,OCGT (small GT),6,6
+SNAPPER1_4,Snapper Point Power Station,OCGT (small GT),6,6
+SNAPPER1_5,Snapper Point Power Station,OCGT (small GT),6,6
+SNUG1,Snuggery,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+SNUG2,Snuggery,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+SNUG3,Snuggery,OCGT (small GT),Assumed sufficiently high,Assumed sufficiently high
+AGLSOM01,Somerton,OCGT (small GT),2.2,27.5
+AGLSOM02,Somerton,OCGT (small GT),2.2,27.5
+AGLSOM03,Somerton,OCGT (small GT),2.2,27.5
+AGLSOM04,Somerton,OCGT (small GT),2.2,27.5
+STAN-1,Stanwell,Steam Sub Critical,4,4
+STAN-2,Stanwell,Steam Sub Critical,4,4
+STAN-3,Stanwell,Steam Sub Critical,4,4
+STAN-4,Stanwell,Steam Sub Critical,4,4
+SWAN_E,Swanbank E GT,CCGT,24.5,37
+TALWA1,Tallawarra,CCGT,28,83.3
+Tallawarra B,Tallawarra B,OCGT (large GT),33,27.5
+TVCC201_GT,Tamar Valley Combined Cycle,CCGT - Gas Turbine,4.15,9
+TVCC201_ST,Tamar Valley Combined Cycle,CCGT - Steam Turbine,0.4,3
+TVPP104,Tamar Valley Peaking,OCGT (large GT),11,9.1
+TARONG#1,Tarong,Steam Sub Critical,4,4
+TARONG#2,Tarong,Steam Sub Critical,4,4
+TARONG#3,Tarong,Steam Sub Critical,4,4
+TARONG#4,Tarong,Steam Sub Critical,4,4
+TNPS1,Tarong North,Steam Super Critical,4,4
+TORRB1,Torrens Island B,OCGT (small GT),5,5
+TORRB2,Torrens Island B,OCGT (small GT),5,5
+TORRB3,Torrens Island B,OCGT (small GT),5,5
+TORRB4,Torrens Island B,OCGT (small GT),5,5
+YABULU,Townsville Power Station,CCGT - Gas Turbine,18,16
+YABULU2,Townsville Power Station,CCGT - Steam Turbine,2.5,7.7
+Tully Sugar Mill Biomass,Tully Sugar Mill Biomass,Biomass,1,1
+URANQ11,Uranquinty,OCGT (large GT),14,11
+URANQ12,Uranquinty,OCGT (large GT),14,11
+URANQ13,Uranquinty,OCGT (large GT),14,11
+URANQ14,Uranquinty,OCGT (large GT),14,11
+VP5,Vales Point B,Steam Sub Critical,6,6
+VP6,Vales Point B,Steam Sub Critical,6,6
+VPGS1,Valley Power,OCGT (small GT),6,8.2
+VPGS2,Valley Power,OCGT (small GT),6,8.2
+VPGS3,Valley Power,OCGT (small GT),6,8.2
+VPGS4,Valley Power,OCGT (small GT),6,11.5
+VPGS5,Valley Power,OCGT (small GT),6,11.5
+VPGS6,Valley Power,OCGT (small GT),6,11.5
+YWPS1,Yallourn W,Steam Sub Critical,3,3
+YWPS2,Yallourn W,Steam Sub Critical,3,3
+YWPS3,Yallourn W,Steam Sub Critical,3,3
+YWPS4,Yallourn W,Steam Sub Critical,3,3
+YARWUN_1,Yarwun Cogen,CCGT,2.2,2.2

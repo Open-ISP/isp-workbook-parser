@@ -1,11 +1,11 @@
 ramp_rates_existing_generators:
   sheet_name: "Max Ramp Rates"
   header_rows: 8
-  end_row: 80
+  end_row: 189
   column_range: "B:F"
 
 ramp_rates_new_entrants:
   sheet_name: "Max Ramp Rates"
   header_rows: 8
-  end_row: 15
+  end_row: 29
   column_range: "H:J"

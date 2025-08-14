@@ -1,0 +1,17 @@
+appliance_uptake_forecasts_slower_growth:
+  sheet_name: "Appliance Uptake Forecasts"
+  header_rows: 14
+  end_row: 20
+  column_range: "B:AG"
+
+appliance_uptake_forecasts_step_change:
+  sheet_name: "Appliance Uptake Forecasts"
+  header_rows: 23
+  end_row: 29
+  column_range: "B:AG"
+
+appliance_uptake_forecasts_accelerate_transition:
+  sheet_name: "Appliance Uptake Forecasts"
+  header_rows: 32
+  end_row: 38
+  column_range: "B:AG"

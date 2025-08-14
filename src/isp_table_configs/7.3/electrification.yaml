@@ -1,1 +1,23 @@
-# now accessible via a forecasting portal. no tables in the workbook
+electrification_consultant_scenario_mapping:
+  sheet_name: "Electrification"
+  header_rows: 8
+  end_row: 9
+  column_range: "B:E"
+
+electrification_slower_growth:
+  sheet_name: "Electrification"
+  header_rows: 13
+  end_row: 19
+  column_range: "B:AF"
+
+electrification_step_change:
+  sheet_name: "Electrification"
+  header_rows: 22
+  end_row: 28
+  column_range: "B:AF"
+
+electrification_accelerated_transition:
+  sheet_name: "Electrification"
+  header_rows: 31
+  end_row: 37
+  column_range: "B:AF"

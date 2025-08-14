@@ -1,0 +1,32 @@
+Technology Type,Retirement ($/MW)
+Steam Sub Critical,254000
+Steam Super Critical,247000
+CCGT - Gas Turbine,105500
+CCGT - Steam Turbine,105500
+CCGT,105500
+CCGT with CCS,121000
+OCGT (large GT),37000
+OCGT (small GT),38000
+Large scale Solar PV,110000
+Solar Thermal (16hrs storage),384000
+Wind,152000
+Wind - offshore (fixed),557000
+Wind - offshore (floating),182000
+Hydro,10500
+Biomass,133500
+Pumped Hydro (10hrs storage),10500
+Pumped Hydro (1wk storage),7000
+Pumped Hydro (24hrs storage),7000
+Pumped Hydro (48hrs storage),7000
+Pumped Hydro Energy System,7000
+Reciprocating engine,58000
+Battery storage (1hr storage),31000
+Battery storage (2hrs storage),49000
+Battery storage (4hrs storage),94000
+Battery storage (8hrs storage),166000
+Distributed Resources Solar,208000
+Distributed Resources Batteries,136000
+Rooftop PV,0
+VPP (aggregated ESS) - Coordinated CER,0
+VPP (aggregated ESS) - V2G,0
+Alkaline Electrolyser,173500

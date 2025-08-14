@@ -1,0 +1,27 @@
+Pipeline,Direction,Tariff,Source
+BWP,Both directions,0.29,Data shown from 2025 GSOO
+CGP,Northern flow,1.47,Data shown from 2025 GSOO
+CGP,Southern flow,1.29,Data shown from 2025 GSOO
+DDP,Both directions,0.33,Data shown from 2025 GSOO
+EGP,Northern flow,1.58,Data shown from 2025 GSOO
+EORM1,Both directions,0.82,Data shown from 2025 GSOO
+Inner Ring Main,Western flow,0.55,Data shown from 2025 GSOO
+LMP1,Western flow,2.1,Data shown from 2025 GSOO
+MAP,Both directions,0.95,Data shown from 2025 GSOO
+MSP,Both directions,1.35,Data shown from 2025 GSOO
+NGP,South-eastern flow,1.79,Data shown from 2025 GSOO
+NQGP,Northern flow,1.47,Data shown from 2025 GSOO
+QGP,Northern flow,1.22,Data shown from 2025 GSOO
+QGP,Southern flow,0.35,Data shown from 2025 GSOO
+RBP,Both directions,0.68,Data shown from 2025 GSOO
+PCA,Western flow,1.09,Data shown from 2025 GSOO
+SNP,Both directions,0.71,Data shown from 2025 GSOO
+SWP1,South-eastern flow,2.85,Data shown from 2025 GSOO
+SWP1,North-western flow,0.21,Data shown from 2025 GSOO
+SWQP,Western flow,1.48,Data shown from 2025 GSOO
+SWQP,Eastern flow,1.48,Data shown from 2025 GSOO
+TGP,Southern flow,2.86,Data shown from 2025 GSOO
+VNI1,Southern flow,2.84,Data shown from 2025 GSOO
+VNI1,Northern flow,1.96,Data shown from 2025 GSOO
+WGP,Northern flow,1.36,Data shown from 2025 GSOO
+WORM1,Both directions,1.01,Data shown from 2025 GSOO
