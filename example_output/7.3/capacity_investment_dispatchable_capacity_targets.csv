@@ -1,0 +1,5 @@
+Financial year,Power Capacity (MW),Energy Capacity (MWh),Notes
+NEM-wide (MW),2736,10940,Represents remaining NEM-wide capacity not covered by the minimum state-level storage capacity targets to reach 7.22 GW (the allocated NEM share of the target).
+New South Wales (MW),1850,7400,Represents the NSW CIS Pilot (550 MW) and 1.3 GW of capacity under the cumulative state-level dispatchable allocation
+South Australia (MW),930,3720,Cumulative state-level dispatchable allocation
+Victoria (MW),1700,6800,Cumulative state-level dispatchable allocation

@@ -1,0 +1,47 @@
+hydro_inflows_blowering:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 10
+  end_row: 25
+  column_range: "B:O"
+
+hydro_inflows_hume:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 28
+  end_row: 43
+  column_range: "B:O"
+
+hydro_inflows_eildon:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 46
+  end_row: 61
+  column_range: "B:O"
+
+hydro_inflows_dartmouth:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 64
+  end_row: 79
+  column_range: "B:O"
+
+hydro_inflows_kareeya:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 87
+  end_row: 102
+  column_range: "B:O"
+
+hydro_inflows_barron_gorge:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 105
+  end_row: 120
+  column_range: "B:O"
+
+hydro_inflows_tas:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 126
+  end_row: 141
+  column_range: "B:O"
+
+hydro_inflows_snowy:
+  sheet_name: "Hydro Scheme Inflows"
+  header_rows: 147
+  end_row: 162
+  column_range: "B:O"

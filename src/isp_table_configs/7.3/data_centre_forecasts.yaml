@@ -1,0 +1,23 @@
+data_centre_forecasts_consultant_scenario_mapping:
+  sheet_name: "Data Centre Forecasts"
+  header_rows: 7
+  end_row: 8
+  column_range: "B:E"
+
+data_centre_forecasts_slower_growth:
+  sheet_name: "Data Centre Forecasts"
+  header_rows: 11
+  end_row: 16
+  column_range: "B:AF"
+
+data_centre_forecasts_step_change:
+  sheet_name: "Data Centre Forecasts"
+  header_rows: 19
+  end_row: 24
+  column_range: "B:AF"
+
+data_centre_forecasts_accelerated_transition:
+  sheet_name: "Data Centre Forecasts"
+  header_rows: 27
+  end_row: 32
+  column_range: "B:AF"

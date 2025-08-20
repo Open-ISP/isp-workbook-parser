@@ -1,0 +1,18 @@
+long_duration_outages_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 10
+  end_row: 16
+  column_range: "B:M"
+
+other_outages_existing_generators:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 22
+  end_row: 52
+  column_range: "B:M"
+
+outages_new_entrants:
+  sheet_name: "Generator Reliability Settings"
+  header_rows: 58
+  end_row: 79
+  column_range: "B:H"
+  forward_fill_values: False

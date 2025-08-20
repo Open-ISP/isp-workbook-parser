@@ -1,0 +1,11 @@
+fcev_consultant_scenario_mapping:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 8
+  end_row: 9
+  column_range: "B:E"
+
+fcev_uptake:
+  sheet_name: "Fuel cell EVs"
+  header_rows: 14
+  end_row: 62
+  column_range: "B:AH"

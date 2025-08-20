@@ -1,0 +1,16 @@
+Region,ISP Subregion,Assumed location of consumption:_Green commodities,Assumed location of consumption:_Export,Assumed location of consumption:_Domestic
+NSW,SNSW,Newcastle Hub,Newcastle Hub,SRRN
+NSW,CNSW,Newcastle Hub,Newcastle Hub,SRRN
+NSW,SNW,Newcastle Hub,Newcastle Hub,Newcastle Hub
+NSW,NNSW,Newcastle Hub,Newcastle Hub,SRRN
+QLD,NQ,Gladstone Hub,Gladstone Hub,SRRN
+QLD,GG,Gladstone Hub,Gladstone Hub,Gladstone Hub
+QLD,CQ,Gladstone Hub,Gladstone Hub,SRRN
+QLD,SQ,Gladstone Hub,Gladstone Hub,SRRN
+SA,CSA,Port Bonython Hub,Port Bonython Hub,SRRN
+SA,NSA,Port Bonython Hub,Port Bonython Hub,Port Bonython Hub
+SA,SESA,Port Bonython Hub,Port Bonython Hub,SRRN
+TAS,TAS,Bell Bay Hub,Bell Bay Hub,Bell Bay Hub
+VIC,MEL,Portland Port,Portland Port,SRRN
+VIC,WNV,Portland Port,Portland Port,Portland Port
+VIC,SEV,Portland Port,Portland Port,SRRN

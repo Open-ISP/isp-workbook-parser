@@ -1,0 +1,26 @@
+Technology type,Notes,Slower Growth,Step Change,Accelerated Transition
+OCGT (small GT),,8.0,9.0,10.0
+OCGT (large GT),,8.0,9.0,10.0
+CCGT,A,9.5,10.5,12.0
+CCGT with CCS,A,9.5,10.5,12.0
+Biomass,A,9.5,10.5,12.0
+Large scale Solar PV,,6.5,7.000000000000001,8.0
+Solar Thermal (16hrs storage),A,9.5,10.5,12.0
+Battery storage (1hr storage),,7.5,8.0,9.5
+Battery storage (2hrs storage),,7.5,8.0,9.5
+Battery storage (4hrs storage),,7.5,8.0,9.5
+Battery storage (8hrs storage),,7.5,8.0,9.5
+Wind,,7.000000000000001,7.5,8.5
+Wind - offshore (fixed),,7.000000000000001,7.5,8.5
+Wind - offshore (floating),,7.000000000000001,7.5,8.5
+Pumped Hydro (10hrs storage),,7.5,8.5,9.5
+Pumped Hydro (24hrs storage),,7.5,8.5,9.5
+Pumped Hydro (48hrs storage),,7.5,8.5,9.5
+Distributed Resources Solar,C,6.5,7.000000000000001,8.0
+Distributed Resources Batteries,C,7.5,8.0,9.5
+Alkaline Electrolyser,,7.000000000000001,8.0,9.0
+BOTN - Cethana,,7.5,8.5,9.5
+Electricity - Transmission and Distribution (Regulated),,3.0,3.0,3.5000000000000004
+Electricity - Transmission and Distribution (Unregulated) ,,6.0,6.5,7.5
+Gas - Transmission and Distribution (Regulated) ,,3.0,3.0,3.5000000000000004
+Gas - Transmission and Distribution (Unregulated),,6.5,7.000000000000001,8.0

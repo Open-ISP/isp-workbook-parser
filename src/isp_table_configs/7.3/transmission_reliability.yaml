@@ -1,0 +1,5 @@
+transmission_unplanned_outage_rate:
+  sheet_name: "Transmission Reliability"
+  header_rows: 7
+  end_row: 13
+  column_range: "B:E"

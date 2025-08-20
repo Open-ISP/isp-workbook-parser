@@ -1,0 +1,11 @@
+dsp_summer:
+  sheet_name: "DSP"
+  header_rows: 9
+  end_row: 84
+  column_range: "B:AI"
+
+dsp_winter:
+  sheet_name: "DSP"
+  header_rows: 89
+  end_row: 164
+  column_range: "B:AI"

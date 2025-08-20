@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 import yaml
 from pydantic import BaseModel
@@ -37,7 +37,8 @@ class TableConfig(BaseModel):
         end_row: the last row of table data.
         column_range: the columns over which the table is defined in the alphabetical format, i.e. 'B:F'
         skip_rows: optional, an `int` specifying a row to skip, or a list of `int` corresponding to
-            row numbers to skip.
+            row numbers to skip, or a dict like {'start': 11, 'end': 21} specifying a block of
+            rows to be skipped.
         columns_with_merged_rows: optional, a `str` specifying a column with merged rows
             in alphabetical format (e.g. "B") or a list of `str` corresponding to columns
             in alphabetical format with merged rows (e.g. ["B", "D"]).
@@ -51,7 +52,7 @@ class TableConfig(BaseModel):
     header_rows: int | List[int]
     end_row: int
     column_range: str
-    skip_rows: Optional[int | List[int]] = None
+    skip_rows: Optional[int | List[int] | Dict[str, int]] = None
     columns_with_merged_rows: Optional[str | List[str]] = None
     forward_fill_values: bool = True
 

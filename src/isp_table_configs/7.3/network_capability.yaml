@@ -1,0 +1,47 @@
+flow_path_transfer_capability:
+  sheet_name: "Network Capability"
+  header_rows: [6, 7]
+  end_row: 25
+  column_range: "B:K"
+
+interconnector_transfer_capability:
+  sheet_name: "Network Capability"
+  header_rows: [34, 35]
+  end_row: 42
+  column_range: "B:K"
+
+notional_transfer_uplift_committed_and_anticipated:
+  sheet_name: "Network Capability"
+  header_rows: [51, 52]
+  end_row: 60
+  column_range: "B:N"
+
+sydney_ring_generator_coefficients:
+  sheet_name: "Network Capability"
+  header_rows: [75, 76, 77]
+  end_row: 84
+  column_range: "B:V"
+
+reference_temperatures:
+  sheet_name: "Network Capability"
+  header_rows: 89
+  end_row: 94
+  column_range: "B:E"
+
+temperature_dependence_murrylink:
+  sheet_name: "Network Capability"
+  header_rows: [99, 100]
+  end_row: 115
+  column_range: "B:D"
+
+basslink_daily_energy_transfer_limit:
+  sheet_name: "Network Capability"
+  header_rows: 122
+  end_row: 134
+  column_range: "B:C"
+
+network_committed_and_anticipated_project_timing:
+  sheet_name: "Network Capability"
+  header_rows: 139
+  end_row: 148
+  column_range: "B:C"

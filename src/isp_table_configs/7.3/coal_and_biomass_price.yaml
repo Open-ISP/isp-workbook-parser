@@ -1,0 +1,11 @@
+coal_fuel_price:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 9
+  end_row: 54
+  column_range: "B:AG"
+
+biomass_fuel_price:
+  sheet_name: "Coal and Biomass price"
+  header_rows: 58
+  end_row: 61
+  column_range: "B:AG"

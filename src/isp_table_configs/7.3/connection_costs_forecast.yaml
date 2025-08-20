@@ -1,0 +1,5 @@
+connection_cost_forecast_wind_and_solar:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 10
+  end_row: 121
+  column_range: "B:AI"

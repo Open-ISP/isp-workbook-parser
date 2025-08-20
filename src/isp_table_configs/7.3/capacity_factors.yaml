@@ -1,0 +1,5 @@
+capacity_factors_wind_and_solar:
+  sheet_name: "Capacity Factors "
+  header_rows: 7
+  end_row: 178
+  column_range: "B:V"

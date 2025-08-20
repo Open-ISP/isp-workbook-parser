@@ -1,0 +1,5 @@
+first_of_a_kind_premium:
+  sheet_name: "First-of-a-kind premium"
+  header_rows: 7
+  end_row: 11
+  column_range: "B:D"

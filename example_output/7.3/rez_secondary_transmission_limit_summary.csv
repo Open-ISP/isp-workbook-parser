@@ -1,0 +1,14 @@
+Term,Description,Group constraint ID,Transmission-limited total build_Summer peak,Transmission-limited total build_Summer typical,Transmission-limited total build_Winter reference,Indicative transmission expansion cost ($M/MW),Indicative transmission expansion cost ($M/MW) Tranche 2,Notes
+Limondale SF,Existing BESS and solar generation in South West New South Wales area,SWNSW1,1200,1200,1200,1200,1200,"Limodale 1, Limondale 2 and Sunraysia SFs are mapped as being in the N5 REZ only, following the update to the REZ geographical boundary."
+Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF,Limondale 2 SF
+Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF,Sunraysia SF
+Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF,Coleambally SF
+Finley SF,Finley SF,Finley SF,Finley SF,Finley SF,Finley SF,Finley SF,Finley SF,Finley SF
+Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF,Darlington Pt SF
+Hillston SF,Hillston SF,Hillston SF,Hillston SF,Hillston SF,Hillston SF,Hillston SF,Hillston SF,Hillston SF
+Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS,Darlington Point BESS
+Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2,Riverina BESS 1 & 2
+Broken Hill SF,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area,Existing generation in Broken Hill area
+Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS,Broken Hill BESS
+Silverton WF,Silverton WF,Silverton WF,Silverton WF,Silverton WF,Silverton WF,Silverton WF,Silverton WF,Silverton WF
+Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage,Silver City Energy Storage

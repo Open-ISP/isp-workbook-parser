@@ -1,0 +1,11 @@
+variable_opex_existing_committed_anticipated_additional_generators:
+  sheet_name: "Variable OPEX"
+  header_rows: [6, 7]
+  end_row: 663
+  column_range: "B:E"
+
+variable_opex_new_entrants:
+  sheet_name: "Variable OPEX"
+  header_rows: [6, 7]
+  end_row: 28
+  column_range: "G:H"

@@ -1,0 +1,35 @@
+hydrogen_heat_content:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 4
+  end_row: 5
+  column_range: "B:C"
+
+electrolysers_electricity_consumption_rate:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 9
+  end_row: 11
+  column_range: "B:AF"
+
+cost_of_water_for_hydrogen_production:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 15
+  end_row: 17
+  column_range: "B:AF"
+
+electricity_consumption_rate_adjustments_to_include_conversion_to_ammonia:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 21
+  end_row: 22
+  column_range: "B:AF"
+
+minimum_electrolyser_utilisation_factor:
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 29
+  end_row: 30
+  column_range: "B:AF"
+
+electrolyser_balance_of_plant :
+  sheet_name: "Other hydrogen assumptions"
+  header_rows: 34
+  end_row: 35
+  column_range: "B:C"

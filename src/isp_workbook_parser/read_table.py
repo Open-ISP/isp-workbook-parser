@@ -222,6 +222,9 @@ def _skip_rows_in_dataframe(
     df_reset_index = df.reset_index(drop=True)
     if isinstance(config_skip_rows, int):
         skip_rows = [config_skip_rows - last_header_row - 1]
+    elif isinstance(config_skip_rows, dict):
+        skip_rows = list(range(config_skip_rows["start"], config_skip_rows["end"] + 1))
+        skip_rows = np.subtract(skip_rows, last_header_row + 1)
     else:
         skip_rows = np.subtract(config_skip_rows, last_header_row + 1)
     dropped = df_reset_index.drop(index=skip_rows).reset_index(drop=True)

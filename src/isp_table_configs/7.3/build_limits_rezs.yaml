@@ -1,0 +1,37 @@
+initial_resource_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [6, 7]
+  end_row: 49
+  column_range: "B:O"
+  forward_fill_values: False
+
+initial_transmission_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [55, 56]
+  end_row: 94
+  column_range: "B:N"
+  forward_fill_values: False
+
+rez_transmission_modifiers:
+  sheet_name: "Build limits - REZs"
+  header_rows: 102
+  end_row: 108
+  column_range: "B:F"
+
+rez_group_constraint_summary:
+  sheet_name: "Build limits - REZs"
+  header_rows: [114, 115]
+  end_row: 186
+  column_range: "B:J"
+
+rez_transmission_limit_summary:
+  sheet_name: "Build limits - REZs"
+  header_rows: [190, 191]
+  end_row: 209
+  column_range: "B:J"
+
+rez_secondary_transmission_limit_summary:
+  sheet_name: "Build limits - REZs"
+  header_rows: [213, 214]
+  end_row: 227
+  column_range: "B:J"

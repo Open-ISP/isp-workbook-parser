@@ -1,0 +1,3 @@
+Flow Path,Interconnector Name,From region,To region,Loss Equation,MLF Equation,From region loss proportion,To region loss proportion,Notes
+SNSW-CNSW,Southern New South Wales (SNSW) to Central New South Wales (CNSW),SNSW,CNSW,'= (-0.0361 + -6.6159e-06*SNSWd + 5.4521e-06*CNSWd)*SNSW-CNSWt + 2.5934e-05*SNSW-CNSWt^2,'= 0.9639 + 5.1868e-05*SNSW-CNSWt + -6.6159e-06*SNSWd + 5.4521e-06*CNSWd,0.2975,0.7025,
+SNSW-CNSW Option 1 (HumeLink),SNSW-CNSW,SNSW,CNSW,'= (8.8880 + 8.8800e-01*SNSWd + 8.8800e-01*CNSWd)*SNSW-CNSWt + 8.8800e-01*SNSW-CNSWt^2,'= 9.8880 + 1.7760e+00*SNSW-CNSWt + 8.8800e-01*SNSWd + 8.8800e-01*CNSWd,0.5,0.5,

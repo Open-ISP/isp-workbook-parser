@@ -1,0 +1,83 @@
+rez_augmentation_costs_slower_growth_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 13
+  end_row: 45
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 47
+  end_row: 60
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 62
+  end_row: 72
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_slower_growth_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 74
+  end_row: 92
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 95
+  end_row: 127
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 129
+  end_row: 142
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 144
+  end_row: 154
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_step_change_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 156
+  end_row: 174
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_NSW:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 177
+  end_row: 209
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_SA:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 211
+  end_row: 224
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_TAS:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 226
+  end_row: 236
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_costs_accelerated_transition_QLD:
+  sheet_name: "REZ cost forecasts"
+  header_rows: 238
+  end_row: 256
+  column_range: "B:AI"
+  columns_with_merged_rows: ["B", "C"]

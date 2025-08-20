@@ -1,0 +1,17 @@
+marginal_loss_factors_existing_generators:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 12
+  end_row: 668
+  column_range: "B:G"
+
+marginal_loss_factors_new_entrants:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 12
+  end_row: 476
+  column_range: "I:M"
+
+marginal_loss_factors_new_entrant_electrolysers:
+  sheet_name: "Marginal Loss Factors"
+  header_rows: 12
+  end_row: 128
+  column_range: "O:S"
