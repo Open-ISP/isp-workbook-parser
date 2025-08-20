@@ -4,7 +4,7 @@ battery_properties:
   end_row: 12
   column_range: "B:J"
 
-pumped_hydro_ecaa_properties:
+pumped_hydro_existing_committed_anticipated_additional_properties:
   sheet_name: "Storage properties"
   header_rows: 21
   end_row: 28

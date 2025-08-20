@@ -1,4 +1,4 @@
-generator_storage_summary:
+existing_committed_anticipated_additional_generator_summary:
   sheet_name: "Summary Mapping"
   header_rows: [4, 5, 6]
   end_row: 662
@@ -15,7 +15,7 @@ consumer_energy_resources_summary:
   column_range: "B:AG"
   forward_fill_values: False
 
-new_entrant_summary:
+new_entrants_summary:
   sheet_name: "Summary Mapping"
   header_rows: [4, 5, 6]
   skip_rows:

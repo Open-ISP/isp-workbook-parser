@@ -1,4 +1,4 @@
-emissions_intensity_ecaa_generators:
+emissions_intensity_existing_committed_anticipated_additional_generators:
   sheet_name: "Emissions intensity"
   header_rows: 8
   end_row: 664

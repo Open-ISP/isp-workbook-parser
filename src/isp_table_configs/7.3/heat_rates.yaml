@@ -1,4 +1,4 @@
-heat_rates_ecaa_generators:
+heat_rates_existing_committed_anticipated_additional_generators:
   sheet_name: "Heat rates"
   header_rows: 8
   end_row: 664

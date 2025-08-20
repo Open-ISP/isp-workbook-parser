@@ -1,4 +1,4 @@
-fixed_opex_ecaa_generators:
+fixed_opex_existing_committed_anticipated_additional_generators:
   sheet_name: "Fixed OPEX"
   header_rows: [6, 7]
   end_row: 663

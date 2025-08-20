@@ -4,7 +4,7 @@ seasonal_ratings_new_entrants:
   end_row: 32
   column_range: "B:E"
 
-seasonal_ratings_ecaa_generators:
+seasonal_ratings_existing_committed_anticipated_additional_generators:
   sheet_name: "Seasonal ratings"
   header_rows: [43, 44]
   end_row: 700

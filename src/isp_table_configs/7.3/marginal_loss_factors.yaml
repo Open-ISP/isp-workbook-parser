@@ -10,7 +10,7 @@ marginal_loss_factors_new_entrants:
   end_row: 476
   column_range: "I:M"
 
-marginal_loss_factors_committed_generators:
+marginal_loss_factors_new_entrant_electrolysers:
   sheet_name: "Marginal Loss Factors"
   header_rows: 12
   end_row: 128
