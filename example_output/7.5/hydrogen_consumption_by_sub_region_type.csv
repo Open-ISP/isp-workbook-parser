@@ -1,0 +1,4 @@
+Type of subregion,Assumed location of hydrogen consumption
+Contains a candidate hydrogen hub,Hydrogen hub
+Contains a candidate hydrogen port but no hub,Hydrogen port
+Contains neither a candidate hub nor port,"Sub-regional reference node (note this is where the hydrogen is assumed to be consumed for the purpose of ISP modelling, but is not necessarily the location of the electrolysers)."
