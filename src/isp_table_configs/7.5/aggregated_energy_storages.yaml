@@ -1,0 +1,17 @@
+embedded_storage_consultant_scenario_mapping:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 7
+  end_row: 8
+  column_range: "B:E"
+
+aggregated_storage_regional_power_capacity:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 13
+  end_row: 61
+  column_range: "B:AH"
+
+aggregated_storage_regional_energy_capacity:
+  sheet_name: "Aggregated energy storages"
+  header_rows: 67
+  end_row: 115
+  column_range: "B:AH"

@@ -1,0 +1,5 @@
+regional_reserve:
+  sheet_name: "Reserves"
+  header_rows: 8
+  end_row: 13
+  column_range: "B:C"

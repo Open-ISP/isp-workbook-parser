@@ -1,0 +1,27 @@
+rez_augmentation_options_QLD:
+  sheet_name: "REZ Augmentations Options"
+  header_rows: 11
+  end_row: 37
+  column_range: "B:O"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_options_NSW:
+  sheet_name: "REZ Augmentations Options"
+  header_rows: 40
+  end_row: 76
+  column_range: "B:O"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_options_SA:
+  sheet_name: "REZ Augmentations Options"
+  header_rows: 79
+  end_row: 95
+  column_range: "B:O"
+  columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_options_TAS:
+  sheet_name: "REZ Augmentations Options"
+  header_rows: 98
+  end_row: 108
+  column_range: "B:O"
+  columns_with_merged_rows: ["B", "C"]
