@@ -175,7 +175,7 @@ flow_path_augmentation_costs_step_change_CSA-NSA:
  column_range: "B:AI"
  columns_with_merged_rows: "B"
 
-flow_path_augmentation_costs_step_change_VIC-SNSW:
+flow_path_augmentation_costs_step_change_WNV-SNSW:
  sheet_name: "Flow path cost forecasts"
  header_rows: 196
  end_row: 197

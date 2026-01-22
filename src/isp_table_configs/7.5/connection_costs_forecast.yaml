@@ -3,3 +3,9 @@ connection_cost_forecast_wind_and_solar:
   header_rows: 9
   end_row: 141
   column_range: "B:AJ"
+
+connection_cost_forecast_other:
+  sheet_name: "Connection cost forecasts"
+  header_rows: 145
+  end_row: 385
+  column_range: "B:AJ"

@@ -25,3 +25,10 @@ rez_augmentation_options_TAS:
   end_row: 108
   column_range: "B:O"
   columns_with_merged_rows: ["B", "C"]
+
+rez_augmentation_options_VIC:
+  sheet_name: "REZ Augmentations Options"
+  header_rows: 111
+  end_row: 133
+  column_range: "B:O"
+  columns_with_merged_rows: ["B", "C"]
