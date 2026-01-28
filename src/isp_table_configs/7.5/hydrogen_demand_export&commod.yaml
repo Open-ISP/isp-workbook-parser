@@ -1,0 +1,17 @@
+hydrogen_demand_export:
+  sheet_name: "Hydrogen demand-Export&Commod"
+  header_rows: 7
+  end_row: 52
+  column_range: "B:AH"
+
+hydrogen_demand_green_commodities:
+  sheet_name: "Hydrogen demand-Export&Commod"
+  header_rows: 60
+  end_row: 105
+  column_range: "B:AH"
+
+hydrogen_demand_green_steel:
+  sheet_name: "Hydrogen demand-Export&Commod"
+  header_rows: 111
+  end_row: 156
+  column_range: "B:AH"

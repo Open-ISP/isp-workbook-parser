@@ -1,0 +1,11 @@
+seasonal_ratings_new_entrants:
+  sheet_name: "Seasonal ratings"
+  header_rows: 11
+  end_row: 32
+  column_range: "B:E"
+
+seasonal_ratings_existing_committed_anticipated_additional_generators:
+  sheet_name: "Seasonal ratings"
+  header_rows: [43, 44]
+  end_row: 700
+  column_range: "B:AI"

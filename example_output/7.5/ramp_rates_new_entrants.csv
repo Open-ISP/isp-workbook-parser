@@ -1,0 +1,22 @@
+Technology,Max Ramp Up (MW/min),Max Ramp Down (MW/min)
+OCGT (small GT),87,87
+OCGT (large GT),22,22
+CCGT,22,22
+CCGT with CCS,22,22
+Biomass,1,1
+Large scale Solar PV,Assumed sufficiently high,Assumed sufficiently high
+Solar Thermal (16hrs storage),6,6
+Battery storage (1hr storage),Assumed sufficiently high,Assumed sufficiently high
+Battery storage (2hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Battery storage (4hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Battery storage (8hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Wind,Assumed sufficiently high,Assumed sufficiently high
+Wind - offshore (fixed),Assumed sufficiently high,Assumed sufficiently high
+Wind - offshore (floating),Assumed sufficiently high,Assumed sufficiently high
+Pumped Hydro (10hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Pumped Hydro (24hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Pumped Hydro (48hrs storage),Assumed sufficiently high,Assumed sufficiently high
+Distributed Resources Solar,Assumed sufficiently high,Assumed sufficiently high
+Distributed Resources Batteries,Assumed sufficiently high,Assumed sufficiently high
+Alkaline Electrolyser,Assumed sufficiently high,Assumed sufficiently high
+BOTN - Cethana,Assumed sufficiently high,Assumed sufficiently high

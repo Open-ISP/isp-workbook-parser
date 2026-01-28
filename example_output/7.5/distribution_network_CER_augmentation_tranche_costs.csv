@@ -1,0 +1,14 @@
+Distribution Network Service Provider,Use existing capacity_Cost ($/MW),Use existing capacity_Tranche upper range (MW),Voltage management optimisation_Cost ($/MW),Voltage management optimisation_Tranche upper range (MW),Network augmentation_Cost ($/MW),Network augmentation_Tranche upper range (MW)
+Ausgrid,0,4760,251000,7890,730000,20000
+AusNet,0,4520,275000,6720,2400000,11950
+CitiPower,0,1240,400000,2880,2400000,8900
+Endeavour Energy,0,8170,400000,12190,2400000,21860
+Energex,0,12570,400000,16880,2400000,30570
+Ergon Energy,0,6650,400000,10100,2400000,18740
+Essential Energy,0,7030,400000,10790,2400000,20390
+Evoenergy,0,1520,400000,2340,2400000,4500
+Jemena,0,1980,400000,3050,2400000,5820
+Powercor,0,2310,400000,5260,2400000,16040
+SA Power Networks,0,3000,90000,9000,1600000,18040
+TasNetworks,0,2520,400000,3920,2400000,7600
+United Energy,0,1340,400000,3300,2400000,10650

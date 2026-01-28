@@ -1,0 +1,11 @@
+onsg_sub_regional_capacity:
+  sheet_name: "ONSG"
+  header_rows: 10
+  end_row: 55
+  column_range: "B:AH"
+
+onsg_regional_capacity:
+  sheet_name: "ONSG"
+  header_rows: 59
+  end_row: 74
+  column_range: "B:AG"

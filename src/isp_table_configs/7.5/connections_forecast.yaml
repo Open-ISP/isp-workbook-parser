@@ -1,0 +1,23 @@
+connections_forecasts_consultant_mapping:
+  sheet_name: "Connections Forecasts"
+  header_rows: 9
+  end_row: 10
+  column_range: "B:E"
+
+connections_forecasts_slower_growth:
+  sheet_name: "Connections Forecasts"
+  header_rows: 16
+  end_row: 22
+  column_range: "B:AH"
+
+connections_forecasts_step_change:
+  sheet_name: "Connections Forecasts"
+  header_rows: 25
+  end_row: 31
+  column_range: "B:AH"
+
+connections_forecasts_accelerated_transition:
+  sheet_name: "Connections Forecasts"
+  header_rows: 34
+  end_row: 40
+  column_range: "B:AH"
