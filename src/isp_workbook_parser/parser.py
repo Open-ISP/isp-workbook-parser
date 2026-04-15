@@ -123,7 +123,7 @@ class Parser:
         configs = {}
         for file in config_files:
             config_dict = load_yaml(Path(file))
-            for config_name in config_dict.keys():
+            for config_name in config_dict:
                 config = config_dict[config_name]
                 config_sheet_name_lowercase = config.sheet_name.lower()
                 sheet_names = [
@@ -135,12 +135,11 @@ class Parser:
                     raise TableConfigError(
                         f"Workbook sheet '{config.sheet_name}' is not unique"
                     )
-                elif len(sheet_names) < 1:
+                if len(sheet_names) < 1:
                     raise TableConfigError(
                         f" Sheet '{config.sheet_name}' cannot be found in the workbook"
                     )
-                else:
-                    config.sheet_name = sheet_names.pop()
+                config.sheet_name = sheet_names.pop()
                 config_dict[config_name] = config
             configs.update(config_dict)
         return configs
@@ -165,7 +164,7 @@ class Parser:
         second column ends appears to be always blank. Therefore, checking that this cell is blank can be used to verify
         that the config has not specified a table end row that is before the actual last row of the table.
         """
-        first_column = range.split(":")[0]
+        first_column = range.split(":", maxsplit=1)[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         second_col_index = first_col_index + 1
         # We check that value in the second column is blank because sometime the row after the first column will
@@ -189,7 +188,7 @@ class Parser:
         second column appears to be always blank. Therefore, checking that this cell is blank can be used to verify
         that the config has not specified a table header row that is after the first header row of the table.
         """
-        first_column = range.split(":")[0]
+        first_column = range.split(":", maxsplit=1)[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         second_col_index = first_col_index + 1
 
@@ -318,7 +317,7 @@ class Parser:
         there is data in the adjacent column can help detect when the column range in the config has been incorrectly
         specified.
         """
-        first_column = range.split(":")[0]
+        first_column = range.split(":", maxsplit=1)[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         column_next_to_first_column = openpyxl.utils.get_column_letter(
             first_col_index - 1
@@ -459,7 +458,7 @@ class Parser:
                     if isinstance(sr, list) and cell.row in sr:
                         skipped_rows += 1
                         continue
-                    elif isinstance(sr, int) and cell.row == sr:
+                    if isinstance(sr, int) and cell.row == sr:
                         skipped_rows += 1
                         continue
                 if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
@@ -579,7 +578,7 @@ class Parser:
         """
         if not isinstance(table_name, str):
             raise ValueError("The parameter table_name must be provided as a string.")
-        if table_name not in self.table_configs.keys():
+        if table_name not in self.table_configs:
             closest = process.extractOne(table_name, self.table_configs.keys())[0]
             raise ValueError(
                 f"The table_name ({table_name}) provided is not in the config for this workbook version."
@@ -587,8 +586,7 @@ class Parser:
             )
 
         table_config = self.table_configs[table_name]
-        data = self.get_table_from_config(table_config, config_checks=config_checks)
-        return data
+        return self.get_table_from_config(table_config, config_checks=config_checks)
 
     def save_tables(
         self,
@@ -621,7 +619,7 @@ class Parser:
         if not directory.is_dir():
             raise ValueError("The path provided is not a directory.")
 
-        if not (isinstance(tables, str) or isinstance(tables, list)):
+        if not (isinstance(tables, (str, list))):
             raise ValueError(
                 "The parameter tables must be provided as str or list[str]."
             )

@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Optional
 
 import yaml
 from pydantic import BaseModel
@@ -49,11 +49,11 @@ class TableConfig(BaseModel):
 
     name: str
     sheet_name: str
-    header_rows: int | List[int]
+    header_rows: int | list[int]
     end_row: int
     column_range: str
-    skip_rows: Optional[int | List[int] | Dict[str, int]] = None
-    columns_with_merged_rows: Optional[str | List[str]] = None
+    skip_rows: Optional[int | list[int] | dict[str, int]] = None
+    columns_with_merged_rows: Optional[str | list[str]] = None
     forward_fill_values: bool = True
 
 
@@ -118,7 +118,7 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
         path: pathlib Path instance specifying the location of the YAML file.
 
     """
-    with open(path, "r") as f:
+    with open(path) as f:
         config = yaml.safe_load(f)
         f.close()
     if config is not None:

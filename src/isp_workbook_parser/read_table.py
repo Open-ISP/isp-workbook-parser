@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Union
 
 import numpy as np
 import openpyxl
@@ -92,16 +92,18 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         )
         df_initial.columns = _column_name_sanitiser(df_initial.columns)
         # check that header_rows list is sorted
-        assert sorted(table.header_rows) == table.header_rows
+        if sorted(table.header_rows) != table.header_rows:
+            raise ValueError
         # check that the header_rows are adjacent
-        assert set(np.diff(table.header_rows)) == set([1])
+        if set(np.diff(table.header_rows)) != {1}:
+            raise ValueError
         # start processing multiple header rows
         header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
         initial_header = pd.Series(df_initial.columns)
         ffilled_initial_header = _ffill_highest_header(initial_header)
         filled_headers = []
         # ffill intermediate header rows
-        for i in range(0, header_rows_in_table - 1):
+        for i in range(header_rows_in_table - 1):
             if i == 0:
                 preceding_header = initial_header
             filled_headers.append(
@@ -208,12 +210,11 @@ def _build_cleaned_dataframe(
     df_cleaned.columns = new_headers
     if forward_fill_values:
         df_cleaned = df_cleaned.ffill(axis=1)
-    df_cleaned = df_cleaned.reset_index(drop=True)
-    return df_cleaned
+    return df_cleaned.reset_index(drop=True)
 
 
 def _skip_rows_in_dataframe(
-    df: pd.DataFrame, config_skip_rows: Union[int, List[int]], last_header_row: int
+    df: pd.DataFrame, config_skip_rows: Union[int, list[int]], last_header_row: int
 ) -> pd.DataFrame:
     """
     Drop rows specified by `skip_rows` by applying an offset from the header and
@@ -233,7 +234,7 @@ def _skip_rows_in_dataframe(
 
 def _handle_merged_rows(
     df: pd.DataFrame,
-    config_cols_with_merged_rows: Union[str, List[str]],
+    config_cols_with_merged_rows: Union[str, list[str]],
     column_range: str,
 ) -> pd.DataFrame:
     """
@@ -267,7 +268,7 @@ def _find_data_column_index(
         (zero-indexed)
     """
     first_col_index = openpyxl.utils.column_index_from_string(
-        column_range_from_table_config.split(":")[0]
+        column_range_from_table_config.split(":", maxsplit=1)[0]
     )
     data_col_index = openpyxl.utils.column_index_from_string(column_alphabetical)
     return data_col_index - first_col_index
