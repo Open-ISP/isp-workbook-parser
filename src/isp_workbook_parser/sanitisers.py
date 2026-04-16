@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+import contextlib
 import re
 
 import numpy as np
@@ -24,8 +27,7 @@ def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Serie
     columns = columns.str.strip()
     columns = _replace_series_newlines_with_whitespace(columns)
     columns = _remove_series_double_whitespaces(columns)
-    columns = _remove_column_name_trailing_footnotes(columns)
-    return columns
+    return _remove_column_name_trailing_footnotes(columns)
 
 
 def _custom_string_replacements(
@@ -75,10 +77,8 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
             # re-attempt conversion following sanitisation
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 df[object_col] = pd.to_numeric(df[object_col])
-            except (ValueError, TypeError):
-                pass
     return df
 
 
