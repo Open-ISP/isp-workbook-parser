@@ -1,11 +1,14 @@
-from typing import List, Union
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 import numpy as np
 import openpyxl
 import openpyxl.utils
 import pandas as pd
 
-from isp_workbook_parser import TableConfig
+if TYPE_CHECKING:
+    from isp_workbook_parser import TableConfig
 
 from .sanitisers import _column_name_sanitiser
 
@@ -80,60 +83,62 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
                 df, table.columns_with_merged_rows, table.column_range
             )
         return df
+
+    df_initial = pd.read_excel(
+        workbook_file,
+        sheet_name=table.sheet_name,
+        header=(table.header_rows[0] - 1),
+        usecols=table.column_range,
+        nrows=(table.end_row - table.header_rows[0]),
+        # do not parse dtypes
+        dtype="object",
+    )
+    df_initial.columns = _column_name_sanitiser(df_initial.columns)
+    # check that header_rows list is sorted
+    if sorted(table.header_rows) != table.header_rows:
+        raise ValueError
+    # check that the header_rows are adjacent
+    if set(np.diff(table.header_rows)) != {1}:
+        raise ValueError
+    # start processing multiple header rows
+    header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
+    initial_header = pd.Series(df_initial.columns)
+    ffilled_initial_header = _ffill_highest_header(initial_header)
+    filled_headers = []
+    # ffill intermediate header rows
+    for i in range(header_rows_in_table - 1):
+        if i == 0:
+            preceding_header = initial_header
+        filled_headers.append(
+            _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
+        )
+        preceding_header = df_initial.iloc[i, :]
+    # process last header row
+    if not filled_headers:
+        processed_last_header = _process_last_header_row(
+            df_initial.iloc[header_rows_in_table - 1, :], ffilled_initial_header
+        )
     else:
-        df_initial = pd.read_excel(
-            workbook_file,
-            sheet_name=table.sheet_name,
-            header=(table.header_rows[0] - 1),
-            usecols=table.column_range,
-            nrows=(table.end_row - table.header_rows[0]),
-            # do not parse dtypes
-            dtype="object",
+        processed_last_header = _process_last_header_row(
+            df_initial.iloc[header_rows_in_table - 1, :], filled_headers[-1]
         )
-        df_initial.columns = _column_name_sanitiser(df_initial.columns)
-        # check that header_rows list is sorted
-        assert sorted(table.header_rows) == table.header_rows
-        # check that the header_rows are adjacent
-        assert set(np.diff(table.header_rows)) == set([1])
-        # start processing multiple header rows
-        header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
-        initial_header = pd.Series(df_initial.columns)
-        ffilled_initial_header = _ffill_highest_header(initial_header)
-        filled_headers = []
-        # ffill intermediate header rows
-        for i in range(0, header_rows_in_table - 1):
-            if i == 0:
-                preceding_header = initial_header
-            filled_headers.append(
-                _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
-            )
-            preceding_header = df_initial.iloc[i, :]
-        # process last header row
-        if not filled_headers:
-            processed_last_header = _process_last_header_row(
-                df_initial.iloc[header_rows_in_table - 1, :], ffilled_initial_header
-            )
-        else:
-            processed_last_header = _process_last_header_row(
-                df_initial.iloc[header_rows_in_table - 1, :], filled_headers[-1]
-            )
-        filled_headers.append(processed_last_header)
-        # add separators manually - ignore any "" entries
-        for series in filled_headers:
-            series[series != ""] = "_" + series[series != ""]
-        merged_headers = ffilled_initial_header.str.cat(filled_headers)
-        df_cleaned = _build_cleaned_dataframe(
-            df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
+    filled_headers.append(processed_last_header)
+    # add separators manually - ignore any "" entries
+    for series in filled_headers:
+        series[series != ""] = "_" + series[series != ""]
+    merged_headers = ffilled_initial_header.str.cat(filled_headers)
+    df_cleaned = _build_cleaned_dataframe(
+        df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
+    )
+    if table.skip_rows:
+        df_cleaned = _skip_rows_in_dataframe(
+            df_cleaned, table.skip_rows, table.header_rows[-1]
         )
-        if table.skip_rows:
-            df_cleaned = _skip_rows_in_dataframe(
-                df_cleaned, table.skip_rows, table.header_rows[-1]
-            )
-        if table.columns_with_merged_rows:
-            df_cleaned = _handle_merged_rows(
-                df_cleaned, table.columns_with_merged_rows, table.column_range
-            )
-        return df_cleaned
+    if table.columns_with_merged_rows:
+        df_cleaned = _handle_merged_rows(
+            df_cleaned, table.columns_with_merged_rows, table.column_range
+        )
+    return df_cleaned
 
 
 def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
@@ -142,8 +147,7 @@ def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
     a multi-header table
     """
     initial_header[initial_header.str.contains("Unnamed")] = pd.NA
-    ffill_initial_header = initial_header.ffill().reset_index(drop=True).fillna("")
-    return ffill_initial_header
+    return initial_header.ffill().reset_index(drop=True).fillna("")
 
 
 def _ffill_intermediate_header_row(
@@ -172,8 +176,7 @@ def _ffill_intermediate_header_row(
             int_header.iloc[n] = pd.NA
 
     _ffill_intermediate_header = int_header.reset_index(drop=True).fillna("")
-    _ffill_intermediate_header = _column_name_sanitiser(_ffill_intermediate_header)
-    return _ffill_intermediate_header
+    return _column_name_sanitiser(_ffill_intermediate_header)
 
 
 def _process_last_header_row(
@@ -187,14 +190,14 @@ def _process_last_header_row(
     """
     last_header = last_header.reset_index(drop=True).fillna("")
     last_header = _column_name_sanitiser(last_header)
-    last_header = last_header.where(last_header != preceding_header, "")
-    return last_header
+    return last_header.where(last_header != preceding_header, "")
 
 
 def _build_cleaned_dataframe(
     df_initial: pd.DataFrame,
     header_rows_in_table: int,
     new_headers: pd.Series,
+    *,
     forward_fill_values: bool,
 ) -> pd.DataFrame:
     """
@@ -208,12 +211,11 @@ def _build_cleaned_dataframe(
     df_cleaned.columns = new_headers
     if forward_fill_values:
         df_cleaned = df_cleaned.ffill(axis=1)
-    df_cleaned = df_cleaned.reset_index(drop=True)
-    return df_cleaned
+    return df_cleaned.reset_index(drop=True)
 
 
 def _skip_rows_in_dataframe(
-    df: pd.DataFrame, config_skip_rows: Union[int, List[int]], last_header_row: int
+    df: pd.DataFrame, config_skip_rows: int | list[int], last_header_row: int
 ) -> pd.DataFrame:
     """
     Drop rows specified by `skip_rows` by applying an offset from the header and
@@ -227,13 +229,12 @@ def _skip_rows_in_dataframe(
         skip_rows = np.subtract(skip_rows, last_header_row + 1)
     else:
         skip_rows = np.subtract(config_skip_rows, last_header_row + 1)
-    dropped = df_reset_index.drop(index=skip_rows).reset_index(drop=True)
-    return dropped
+    return df_reset_index.drop(index=skip_rows).reset_index(drop=True)
 
 
 def _handle_merged_rows(
     df: pd.DataFrame,
-    config_cols_with_merged_rows: Union[str, List[str]],
+    config_cols_with_merged_rows: str | list[str],
     column_range: str,
 ) -> pd.DataFrame:
     """
@@ -243,9 +244,7 @@ def _handle_merged_rows(
         cols = [config_cols_with_merged_rows]
     else:
         cols = config_cols_with_merged_rows
-    actual_col_indices = list(
-        map(lambda col: _find_data_column_index(col, column_range), cols)
-    )
+    actual_col_indices = [_find_data_column_index(col, column_range) for col in cols]
     for index in actual_col_indices:
         df.iloc[:, index] = df.iloc[:, index].ffill()
     return df
@@ -267,7 +266,7 @@ def _find_data_column_index(
         (zero-indexed)
     """
     first_col_index = openpyxl.utils.column_index_from_string(
-        column_range_from_table_config.split(":")[0]
+        column_range_from_table_config.split(":", maxsplit=1)[0]
     )
     data_col_index = openpyxl.utils.column_index_from_string(column_alphabetical)
     return data_col_index - first_col_index

@@ -11,8 +11,10 @@ def test_skip_single_row_in_single_header_row_table(workbook_v6):
         skip_rows=30,
     )
     df = workbook_v6.get_table_from_config(table_config)
-    assert len(df) == (table_config.end_row - table_config.header_rows - 1)
-    assert df[df.Technology.str.contains("Hydrogen")].empty
+    if len(df) != (table_config.end_row - table_config.header_rows - 1):
+        raise ValueError
+    if not df[df.Technology.str.contains("Hydrogen")].empty:
+        raise ValueError
 
 
 def test_skip_multiple_rows_in_single_header_row_table(workbook_v6):

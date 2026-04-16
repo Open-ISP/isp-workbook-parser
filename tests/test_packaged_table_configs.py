@@ -9,10 +9,10 @@ workbook_path = Path("workbooks")
 
 @pytest.mark.parametrize("workbook_version_folder", workbook_path.iterdir())
 def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
-    xl_file = [file for file in workbook_version_folder.glob("[!.]*.xls*")]
-    assert (
-        len(xl_file) == 1
-    ), f"There should only be one Excel workbook in each version sub-directory, got {xl_file}"
+    xl_file = list(workbook_version_folder.glob("[!.]*.xls*"))
+    if len(xl_file) != 1:
+        msg = f"There should only be one Excel workbook in each version sub-directory, got {xl_file}"
+        raise RuntimeError(msg)
     workbook_name = xl_file.pop()
     workbook = Parser(workbook_name)
 
@@ -43,8 +43,8 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
             error_tables[table_name] = e
     if error_tables:
         error_str = ""
-        for key in error_tables:
-            error_str += key + ":" + str(error_tables[key]) + "\n"
+        for key, value in error_tables.items():
+            error_str += key + ":" + str(value) + "\n"
         raise TableLoadError(error_str)
 
 
