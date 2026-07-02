@@ -6,12 +6,12 @@ other_distributed_resources_build_limits:
 
 distribution_network_CER_augmentation_tranche_costs:
   sheet_name: "Distribution network"
-  header_rows: [41, 42]
-  end_row: 55
+  header_rows: [43, 44]
+  end_row: 57
   column_range: "B:H"
 
 distribution_network_cer_generation_limit_profiles:
   sheet_name: "Distribution network"
-  header_rows: 63
-  end_row: 1431
+  header_rows: 65
+  end_row: 1433
   column_range: "B:AZ"

@@ -1,7 +1,7 @@
 emissions_intensity_existing_committed_anticipated_additional_generators:
   sheet_name: "Emissions intensity"
   header_rows: 8
-  end_row: 650
+  end_row: 734
   column_range: "B:E"
 
 emissions_intensity_new_entrants:

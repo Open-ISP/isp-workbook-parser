@@ -1,7 +1,7 @@
 variable_opex_existing_committed_anticipated_additional_generators:
   sheet_name: "Variable OPEX"
   header_rows: [6, 7]
-  end_row: 649
+  end_row: 733
   column_range: "B:E"
 
 variable_opex_new_entrants:

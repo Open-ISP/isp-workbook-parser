@@ -6,18 +6,18 @@ battery_properties:
 
 pumped_hydro_existing_committed_anticipated_additional_properties:
   sheet_name: "Storage properties"
-  header_rows: 22
-  end_row: 29
+  header_rows: 23
+  end_row: 30
   column_range: "B:E"
 
 pumped_hydro_new_entrant_properties:
   sheet_name: "Storage properties"
-  header_rows: 22
-  end_row: 26
+  header_rows: 23
+  end_row: 27
   column_range: "G:J"
 
 on_site_diesel_properties:
   sheet_name: "Storage properties"
-  header_rows: 40
-  end_row: 41
+  header_rows: 41
+  end_row: 42
   column_range: "B:C"

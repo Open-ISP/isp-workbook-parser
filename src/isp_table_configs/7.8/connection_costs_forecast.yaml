@@ -1,11 +1,11 @@
 connection_cost_forecast_wind_and_solar:
   sheet_name: "Connection cost forecasts"
   header_rows: 9
-  end_row: 141
+  end_row: 144
   column_range: "B:AJ"
 
 connection_cost_forecast_other:
   sheet_name: "Connection cost forecasts"
-  header_rows: 145
-  end_row: 385
+  header_rows: 148
+  end_row: 388
   column_range: "B:AJ"

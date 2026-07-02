@@ -1,11 +1,11 @@
 maximum_capacity_existing_committed_anticipated_additional_generators:
   sheet_name: "Maximum capacity"
-  header_rows: 9
-  end_row: 651
+  header_rows: 10
+  end_row: 736
   column_range: "B:J"
 
 maximum_capacity_new_entrants:
   sheet_name: "Maximum capacity"
-  header_rows: 9
-  end_row: 30
+  header_rows: 10
+  end_row: 31
   column_range: "L:O"

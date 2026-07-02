@@ -7,5 +7,5 @@ seasonal_ratings_new_entrants:
 seasonal_ratings_existing_committed_anticipated_additional_generators:
   sheet_name: "Seasonal ratings"
   header_rows: [43, 44]
-  end_row: 700
+  end_row: 770
   column_range: "B:AI"

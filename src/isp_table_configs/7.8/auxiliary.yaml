@@ -1,7 +1,7 @@
 auxiliary_load_existing_committed_anticipated_additional_generators:
   sheet_name: "Auxiliary"
   header_rows: 6
-  end_row: 648
+  end_row: 732
   column_range: "B:E"
 
 auxiliary_load_new_entrants:
