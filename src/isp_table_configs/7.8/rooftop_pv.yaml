@@ -1,0 +1,17 @@
+rooftop_pv_consultant_scenario_mapping:
+  sheet_name: "Rooftop PV"
+  header_rows: 9
+  end_row: 10
+  column_range: "B:E"
+
+rooftop_pv_power_capacity:
+  sheet_name: "Rooftop PV"
+  header_rows: 15
+  end_row: 63
+  column_range: "B:AH"
+
+rooftop_pv_energy_capacity:
+  sheet_name: "Rooftop PV"
+  header_rows: 68
+  end_row: 116
+  column_range: "B:AH"

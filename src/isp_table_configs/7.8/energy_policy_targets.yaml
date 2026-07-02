@@ -1,0 +1,83 @@
+powering_australia_plan:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 19
+  end_row: 20
+  column_range: "D:E"
+
+capacity_investment_generation_targets:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 56
+  end_row: 62
+  column_range: "D:F"
+
+capacity_investment_dispatchable_capacity_targets:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 89
+  end_row: 93
+  column_range: "D:G"
+
+lret_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 110
+  end_row: 111
+  column_range: "D:E"
+
+nsw_roadmap_min_vre_generation_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 133
+  end_row: 134
+  column_range: "D:E"
+
+nsw_roadmap_storage_power_capacity_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 148
+  end_row: 150
+  column_range: "D:E"
+
+nsw_roadmap_storage_energy_capacity_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 155
+  end_row: 157
+  column_range: "D:F"
+
+nsw_roadmap_rez_max_connection_limit:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 180
+  end_row: 182
+  column_range: "D:G"
+
+sa_renewable_generation_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 209
+  end_row: 210
+  column_range: "D:E"
+
+tas_renewable_energy_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: [227, 228]
+  end_row: 230
+  column_range: "D:E"
+
+tas_renewable_target_trajectory:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 239
+  end_row: 241
+  column_range: "D:F"
+
+vic_renewable_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 260
+  end_row: 263
+  column_range: "D:E"
+
+vic_storage_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 285
+  end_row: 287
+  column_range: "D:E"
+
+vic_offshore_wind_target:
+  sheet_name: "Energy Policy Targets"
+  header_rows: 301
+  end_row: 304
+  column_range: "D:E"

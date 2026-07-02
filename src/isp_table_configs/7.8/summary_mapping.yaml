@@ -1,0 +1,36 @@
+existing_committed_anticipated_additional_generator_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  end_row: 648
+  column_range: "B:AF"
+  forward_fill_values: False
+
+consumer_energy_resources_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 654
+  end_row: 704
+  column_range: "B:AF"
+  forward_fill_values: False
+
+new_entrants_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 710
+  end_row: 1227
+  column_range: "B:AF"
+  forward_fill_values: False
+
+new_entrant_electrolysers_summary:
+  sheet_name: "Summary Mapping"
+  header_rows: [4, 5, 6]
+  skip_rows:
+    start: 7
+    end: 1232
+  end_row: 1383
+  column_range: "B:AF"
+  forward_fill_values: False
