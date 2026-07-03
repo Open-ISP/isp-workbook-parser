@@ -1,23 +1,23 @@
 locational_cost_factors:
   sheet_name: "Locational Cost Factors"
   header_rows: 10
-  end_row: 74
+  end_row: 75
   column_range: "B:H"
 
 locational_cost_pumped_hydro_factors:
   sheet_name: "Locational Cost Factors"
-  header_rows: 83
-  end_row: 128
+  header_rows: 84
+  end_row: 129
   column_range: "B:I"
 
 technology_cost_breakdown_ratios:
   sheet_name: "Locational Cost Factors"
-  header_rows: 134
-  end_row: 155
+  header_rows: 135
+  end_row: 156
   column_range: "B:G"
 
 technology_specific_lcfs:
   sheet_name: "Locational Cost Factors"
-  header_rows: 161
-  end_row: 225
+  header_rows: 162
+  end_row: 227
   column_range: "B:X"
