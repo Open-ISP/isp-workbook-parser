@@ -1,8 +1,8 @@
 other_distributed_resources_build_limits:
   sheet_name: "Distribution network"
-  header_rows: [16, 17]
-  end_row: 36
-  column_range: "B:E"
+  header_rows: [18, 19]
+  end_row: 38
+  column_range: "B:G"
 
 distribution_network_CER_augmentation_tranche_costs:
   sheet_name: "Distribution network"
