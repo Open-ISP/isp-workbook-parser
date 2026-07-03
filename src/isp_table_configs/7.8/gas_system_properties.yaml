@@ -1,7 +1,7 @@
 gas_system_properties_pipelines:
   sheet_name: "Gas System Properties"
   header_rows: 11
-  end_row: 48
+  end_row: 49
   column_range: "B:F"
 
 gas_system_properties_processing_facilities:
@@ -25,17 +25,17 @@ gas_system_properties_reserves_and_resources_1:
 gas_system_properties_reserves_and_resources_2:
   sheet_name: "Gas System Properties"
   header_rows: 133
-  end_row: 143
+  end_row: 144
   column_range: "B:E"
 
 pipeline_transmission_tariffs:
   sheet_name: "Gas System Properties"
   header_rows: 149
-  end_row: 175
+  end_row: 168
   column_range: "B:E"
 
 gas_production_costs:
   sheet_name: "Gas System Properties"
-  header_rows: 181
-  end_row: 190
+  header_rows: 174
+  end_row: 184
   column_range: "B:E"
