@@ -1,37 +1,49 @@
 initial_resource_limits:
   sheet_name: "Build limits - REZs"
   header_rows: [6, 7]
-  end_row: 58
-  column_range: "B:O"
+  end_row: 59
+  column_range: "B:Q"
   forward_fill_values: False
 
 initial_transmission_limits:
   sheet_name: "Build limits - REZs"
-  header_rows: [64, 65]
-  end_row: 112
+  header_rows: [66, 67]
+  end_row: 115
   column_range: "B:N"
   forward_fill_values: False
 
 rez_transmission_modifiers:
   sheet_name: "Build limits - REZs"
-  header_rows: 120
-  end_row: 128
+  header_rows: 123
+  end_row: 132
   column_range: "B:F"
 
 rez_group_constraint_summary:
   sheet_name: "Build limits - REZs"
-  header_rows: [134, 135]
-  end_row: 211
+  header_rows: [138, 139]
+  end_row: 265
   column_range: "B:K"
 
 rez_transmission_limit_summary:
   sheet_name: "Build limits - REZs"
-  header_rows: [215, 216]
-  end_row: 248
+  header_rows: [269, 270]
+  end_row: 317
   column_range: "B:K"
 
 rez_secondary_transmission_limit_summary:
   sheet_name: "Build limits - REZs"
-  header_rows: [252, 253]
-  end_row: 266
+  header_rows: [321, 322]
+  end_row: 335
   column_range: "B:K"
+
+non_rez_connections_pipeline_build_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [338, 339]
+  end_row: 354
+  column_range: "B:E"
+
+rez_technology_specific_access_rights_limits:
+  sheet_name: "Build limits - REZs"
+  header_rows: [360, 361]
+  end_row: 363
+  column_range: "B:G"
