@@ -1,6 +1,7 @@
 import re
 
 import pytest
+from pydantic import ValidationError
 
 from isp_workbook_parser.config_model import TableConfig
 from isp_workbook_parser.parser import TableConfigError
@@ -195,3 +196,43 @@ def test_incorrect_table_name_throws_error(workbook_v6):
     error_message = re.escape(error_message)
     with pytest.raises(ValueError, match=error_message):
         workbook_v6.get_table("affine_heat_rates_new_entrant")
+
+
+def test_skip_checks_silences_named_check(workbook_v6):
+    table_config = TableConfig(
+        name="DUMMY",
+        sheet_name="Network Capability",
+        header_rows=[6, 7],
+        end_row=21,
+        column_range="B:I",
+        skip_checks=["missed_column_on_right_hand_side"],
+    )
+    workbook_v6.get_table_from_config(table_config)
+
+
+def test_skip_checks_does_not_silence_other_checks(workbook_v6):
+    table_config = TableConfig(
+        name="DUMMY",
+        sheet_name="Network Capability",
+        header_rows=[6, 7],
+        end_row=20,
+        column_range="B:J",
+        skip_checks=["missed_column_on_right_hand_side"],
+    )
+    error_message = (
+        "There is data in the row after the defined table end for table DUMMY."
+    )
+    with pytest.raises(TableConfigError, match=error_message):
+        workbook_v6.get_table_from_config(table_config)
+
+
+def test_skip_checks_invalid_check_name_throws_error():
+    with pytest.raises(ValidationError):
+        TableConfig(
+            name="DUMMY",
+            sheet_name="Network Capability",
+            header_rows=[6, 7],
+            end_row=21,
+            column_range="B:J",
+            skip_checks=["not_a_real_check"],
+        )
