@@ -67,6 +67,9 @@ pip install isp-workbook-parser
 - `forward_fill_values`: optional, specifies whether table values should be forward filled
   - Default `True` to handle merged cells in tables
   - Should be set to `False` where there are empty columns
+- `skip_checks`: optional, a list of table validation check names not to run for the table
+  - An escape hatch for known data artifacts in a published workbook that would otherwise make a correctly specified table fail validation (e.g. stray values in the column adjacent to a table) — use sparingly
+  - Valid names: `no_data_above_first_header_row`, `data_ends_where_expected`, `missed_column_on_right_hand_side`, `missed_column_on_left_hand_side`, `last_column_isnt_empty`, `over_run_into_another_table`, `over_run_into_notes`
 
 </details>
 
