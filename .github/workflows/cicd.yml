@@ -26,8 +26,8 @@ jobs:
       # Checkout repo
       - name: Checkout
         uses: actions/checkout@v4
-      # Install uv and set Python version
-      - name: Install uv
+      # Install uv with cache
+      - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
@@ -35,7 +35,7 @@ jobs:
       # Sync dependencies
       - name: Sync dependencies
         run: uv sync --python ${{ matrix.python-version }}
-      # Run tests
+      # Run tests without updating uv.lock
       - name: Run tests
         run: uv run --frozen --python ${{ matrix.python-version }} pytest
       # Code coverage to codecov.io
