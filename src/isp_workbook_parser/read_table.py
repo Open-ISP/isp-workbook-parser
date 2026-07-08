@@ -1,5 +1,3 @@
-from typing import List, Union
-
 import numpy as np
 import openpyxl
 import openpyxl.utils
@@ -213,7 +211,7 @@ def _build_cleaned_dataframe(
 
 
 def _skip_rows_in_dataframe(
-    df: pd.DataFrame, config_skip_rows: Union[int, List[int]], last_header_row: int
+    df: pd.DataFrame, config_skip_rows: int | list[int], last_header_row: int
 ) -> pd.DataFrame:
     """
     Drop rows specified by `skip_rows` by applying an offset from the header and
@@ -233,7 +231,7 @@ def _skip_rows_in_dataframe(
 
 def _handle_merged_rows(
     df: pd.DataFrame,
-    config_cols_with_merged_rows: Union[str, List[str]],
+    config_cols_with_merged_rows: str | list[str],
     column_range: str,
 ) -> pd.DataFrame:
     """
