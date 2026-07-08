@@ -387,43 +387,62 @@ class Parser:
             start_row = table_config.header_rows
             last_header_row = table_config.header_rows
 
+        checks = {
+            "no_data_above_first_header_row": (
+                self._check_no_data_above_first_header_row,
+                (
+                    table_config.sheet_name,
+                    table_config.header_rows,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "data_ends_where_expected": (
+                self._check_data_ends_where_expected,
+                (
+                    table_config.sheet_name,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "missed_column_on_right_hand_side": (
+                self._check_for_missed_column_on_right_hand_side_of_table,
+                (
+                    table_config.sheet_name,
+                    last_header_row,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "missed_column_on_left_hand_side": (
+                self._check_for_missed_column_on_left_hand_side_of_table,
+                (
+                    table_config.sheet_name,
+                    start_row,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "last_column_isnt_empty": (
+                self._check_last_column_isnt_empty,
+                (data, table_config.name),
+            ),
+            "over_run_into_another_table": (
+                self._check_for_over_run_into_another_table,
+                (data, table_config.name),
+            ),
+            "over_run_into_notes": (
+                self._check_for_over_run_into_notes,
+                (data, table_config.name),
+            ),
+        }
         skips = table_config.skip_checks or []
-        if "no_data_above_first_header_row" not in skips:
-            self._check_no_data_above_first_header_row(
-                table_config.sheet_name,
-                table_config.header_rows,
-                table_config.column_range,
-                table_config.name,
-            )
-        if "data_ends_where_expected" not in skips:
-            self._check_data_ends_where_expected(
-                table_config.sheet_name,
-                table_config.end_row,
-                table_config.column_range,
-                table_config.name,
-            )
-        if "missed_column_on_right_hand_side" not in skips:
-            self._check_for_missed_column_on_right_hand_side_of_table(
-                table_config.sheet_name,
-                last_header_row,
-                table_config.end_row,
-                table_config.column_range,
-                table_config.name,
-            )
-        if "missed_column_on_left_hand_side" not in skips:
-            self._check_for_missed_column_on_left_hand_side_of_table(
-                table_config.sheet_name,
-                start_row,
-                table_config.end_row,
-                table_config.column_range,
-                table_config.name,
-            )
-        if "last_column_isnt_empty" not in skips:
-            self._check_last_column_isnt_empty(data, table_config.name)
-        if "over_run_into_another_table" not in skips:
-            self._check_for_over_run_into_another_table(data, table_config.name)
-        if "over_run_into_notes" not in skips:
-            self._check_for_over_run_into_notes(data, table_config.name)
+        for check_name, (check, args) in checks.items():
+            if check_name not in skips:
+                check(*args)
 
     def _postprocess_percentage_columns_between_0_and_100(
         self, data: pd.DataFrame, table_config: TableConfig
