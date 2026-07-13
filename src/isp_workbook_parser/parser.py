@@ -379,7 +379,12 @@ class Parser:
             error_message = f"The last column for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _check_table(self, data, table_config) -> None:
+    def _build_checks(self, data, table_config):
+        """Builds a dict mapping each skippable check name to its check method and arguments.
+
+        The keys must stay in sync with `CheckName` in `config_model` (enforced by
+        `test_skippable_check_names_match_config_literal`).
+        """
         if isinstance(table_config.header_rows, list):
             start_row = table_config.header_rows[0]
             last_header_row = table_config.header_rows[-1]
@@ -387,7 +392,7 @@ class Parser:
             start_row = table_config.header_rows
             last_header_row = table_config.header_rows
 
-        checks = {
+        return {
             "no_data_above_first_header_row": (
                 self._check_no_data_above_first_header_row,
                 (
@@ -439,6 +444,9 @@ class Parser:
                 (data, table_config.name),
             ),
         }
+
+    def _check_table(self, data, table_config) -> None:
+        checks = self._build_checks(data, table_config)
         skips = table_config.skip_checks or []
         for check_name, (check, args) in checks.items():
             if check_name not in skips:
