@@ -3,3 +3,4 @@ build_costs:
   header_rows: 10
   end_row: 73
   column_range: "B:AI"
+  skip_checks: ["missed_column_on_right_hand_side"]
