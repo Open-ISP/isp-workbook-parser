@@ -1,4 +1,4 @@
-embedded_storage_consultant_scenario_mapping:
+aggregated_storage_consultant_scenario_mapping:
   sheet_name: "Aggregated energy storages"
   header_rows: 7
   end_row: 8
