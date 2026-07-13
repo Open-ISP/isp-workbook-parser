@@ -1,7 +1,18 @@
 from pathlib import Path
+from typing import Literal
 
 import yaml
 from pydantic import BaseModel
+
+CheckName = Literal[
+    "no_data_above_first_header_row",
+    "data_ends_where_expected",
+    "missed_column_on_right_hand_side",
+    "missed_column_on_left_hand_side",
+    "last_column_isnt_empty",
+    "over_run_into_another_table",
+    "over_run_into_notes",
+]
 
 
 class TableConfig(BaseModel):
@@ -26,7 +37,7 @@ class TableConfig(BaseModel):
     >>> table_configs = load_yaml(Path("src/isp_table_configs/6.0/capacity_factors.yaml"))
 
     >>> print(table_configs)
-    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True)}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None)}
 
     Attributes:
         name: the table name
@@ -44,6 +55,14 @@ class TableConfig(BaseModel):
         forward_fill_values: optional, a `bool` specifying whether table values should be
             forward filled. Default `True` since this functionality is needed to handle
             merged cells. Should be set to `False` where there are empty columns
+        skip_checks: optional, a list of table check names that should not be run for
+            this table. Intended for known data artifacts in a published workbook that
+            would otherwise make a correctly specified table fail validation (e.g. stray
+            values in the column adjacent to a table). Use sparingly. Valid check names:
+            'no_data_above_first_header_row', 'data_ends_where_expected',
+            'missed_column_on_right_hand_side', 'missed_column_on_left_hand_side',
+            'last_column_isnt_empty', 'over_run_into_another_table',
+            'over_run_into_notes'.
     """
 
     name: str
@@ -54,6 +73,7 @@ class TableConfig(BaseModel):
     skip_rows: int | list[int] | dict[str, int] | None = None
     columns_with_merged_rows: str | list[str] | None = None
     forward_fill_values: bool = True
+    skip_checks: list[CheckName] | None = None
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
@@ -111,7 +131,7 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
     When read using `load_yaml` it will be converted to a dictionary contain `TableConfig` instances:
 
     >>> print(load_yaml(path_to_yaml))
-    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True)}
+    {'wind_high_capacity_factors': TableConfig(name='wind_high_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'wind_medium_capacity_factors': TableConfig(name='wind_medium_capacity_factors', sheet_name='Capacity Factors ', header_rows=[7, 8, 9], end_row=48, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'solar_pv_capacity_factors': TableConfig(name='solar_pv_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='B:R', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'solar_thermal_15hrstorage_capacity_factors': TableConfig(name='solar_thermal_15hrstorage_capacity_factors', sheet_name='Capacity Factors ', header_rows=[50, 51, 52], end_row=91, column_range='T:AJ', skip_rows=None, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'offshore_wind_fixed_capacity_factors': TableConfig(name='offshore_wind_fixed_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='B:R', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None), 'offshore_wind_floating_capacity_factors': TableConfig(name='offshore_wind_floating_capacity_factors', sheet_name='Capacity Factors ', header_rows=[93, 94, 95], end_row=102, column_range='T:AJ', skip_rows=102, columns_with_merged_rows=None, forward_fill_values=True, skip_checks=None)}
 
     Args:
         path: pathlib Path instance specifying the location of the YAML file.

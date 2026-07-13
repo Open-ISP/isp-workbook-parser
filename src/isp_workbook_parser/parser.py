@@ -379,42 +379,78 @@ class Parser:
             error_message = f"The last column for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _check_table(self, data, table_config) -> None:
+    def _build_checks(self, data, table_config):
+        """Builds a dict mapping each skippable check name to its check method and arguments.
+
+        The keys must stay in sync with `CheckName` in `config_model` (enforced by
+        `test_skippable_check_names_match_config_literal`).
+        """
         if isinstance(table_config.header_rows, list):
             start_row = table_config.header_rows[0]
             last_header_row = table_config.header_rows[-1]
         else:
             start_row = table_config.header_rows
             last_header_row = table_config.header_rows
-        self._check_no_data_above_first_header_row(
-            table_config.sheet_name,
-            table_config.header_rows,
-            table_config.column_range,
-            table_config.name,
-        )
-        self._check_data_ends_where_expected(
-            table_config.sheet_name,
-            table_config.end_row,
-            table_config.column_range,
-            table_config.name,
-        )
-        self._check_for_missed_column_on_right_hand_side_of_table(
-            table_config.sheet_name,
-            last_header_row,
-            table_config.end_row,
-            table_config.column_range,
-            table_config.name,
-        )
-        self._check_for_missed_column_on_left_hand_side_of_table(
-            table_config.sheet_name,
-            start_row,
-            table_config.end_row,
-            table_config.column_range,
-            table_config.name,
-        )
-        self._check_last_column_isnt_empty(data, table_config.name)
-        self._check_for_over_run_into_another_table(data, table_config.name)
-        self._check_for_over_run_into_notes(data, table_config.name)
+
+        return {
+            "no_data_above_first_header_row": (
+                self._check_no_data_above_first_header_row,
+                (
+                    table_config.sheet_name,
+                    table_config.header_rows,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "data_ends_where_expected": (
+                self._check_data_ends_where_expected,
+                (
+                    table_config.sheet_name,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "missed_column_on_right_hand_side": (
+                self._check_for_missed_column_on_right_hand_side_of_table,
+                (
+                    table_config.sheet_name,
+                    last_header_row,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "missed_column_on_left_hand_side": (
+                self._check_for_missed_column_on_left_hand_side_of_table,
+                (
+                    table_config.sheet_name,
+                    start_row,
+                    table_config.end_row,
+                    table_config.column_range,
+                    table_config.name,
+                ),
+            ),
+            "last_column_isnt_empty": (
+                self._check_last_column_isnt_empty,
+                (data, table_config.name),
+            ),
+            "over_run_into_another_table": (
+                self._check_for_over_run_into_another_table,
+                (data, table_config.name),
+            ),
+            "over_run_into_notes": (
+                self._check_for_over_run_into_notes,
+                (data, table_config.name),
+            ),
+        }
+
+    def _check_table(self, data, table_config) -> None:
+        checks = self._build_checks(data, table_config)
+        skips = table_config.skip_checks or []
+        for check_name, (check, args) in checks.items():
+            if check_name not in skips:
+                check(*args)
 
     def _postprocess_percentage_columns_between_0_and_100(
         self, data: pd.DataFrame, table_config: TableConfig
