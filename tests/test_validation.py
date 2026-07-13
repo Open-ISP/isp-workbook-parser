@@ -1,9 +1,11 @@
 import re
+from typing import get_args
 
+import pandas as pd
 import pytest
 from pydantic import ValidationError
 
-from isp_workbook_parser.config_model import TableConfig
+from isp_workbook_parser.config_model import CheckName, TableConfig
 from isp_workbook_parser.parser import TableConfigError
 
 
@@ -236,3 +238,15 @@ def test_skip_checks_invalid_check_name_throws_error():
             column_range="B:J",
             skip_checks=["not_a_real_check"],
         )
+
+
+def test_skippable_check_names_match_config_literal(workbook_v6):
+    table_config = TableConfig(
+        name="DUMMY",
+        sheet_name="Network Capability",
+        header_rows=[6, 7],
+        end_row=21,
+        column_range="B:J",
+    )
+    checks = workbook_v6._build_checks(pd.DataFrame(), table_config)
+    assert set(checks) == set(get_args(CheckName))
