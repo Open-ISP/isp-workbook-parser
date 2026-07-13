@@ -4,6 +4,16 @@ from typing import Literal
 import yaml
 from pydantic import BaseModel
 
+CheckName = Literal[
+    "no_data_above_first_header_row",
+    "data_ends_where_expected",
+    "missed_column_on_right_hand_side",
+    "missed_column_on_left_hand_side",
+    "last_column_isnt_empty",
+    "over_run_into_another_table",
+    "over_run_into_notes",
+]
+
 
 class TableConfig(BaseModel):
     """A `Pydantic` class for storing the location of a table within an Excel Workbook, which is referred to as a table config throughout this package.
@@ -63,20 +73,7 @@ class TableConfig(BaseModel):
     skip_rows: int | list[int] | dict[str, int] | None = None
     columns_with_merged_rows: str | list[str] | None = None
     forward_fill_values: bool = True
-    skip_checks: (
-        list[
-            Literal[
-                "no_data_above_first_header_row",
-                "data_ends_where_expected",
-                "missed_column_on_right_hand_side",
-                "missed_column_on_left_hand_side",
-                "last_column_isnt_empty",
-                "over_run_into_another_table",
-                "over_run_into_notes",
-            ]
-        ]
-        | None
-    ) = None
+    skip_checks: list[CheckName] | None = None
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
