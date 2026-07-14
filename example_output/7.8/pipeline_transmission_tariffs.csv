@@ -1,0 +1,20 @@
+Pipeline,Direction,Tariff,Source
+AGP,Both directions,0.4,Data shown from 2026 GSOO
+BWP,Both directions,0.3015,Data shown from 2026 GSOO
+CGP,Northern flow,1.524,Data shown from 2026 GSOO
+CGP,Southern flow,1.3992,Data shown from 2026 GSOO
+DDP,Both directions,0.1736,Data shown from 2026 GSOO
+DTS,Both directions,0.6965,Data shown from 2026 GSOO
+EGP,Northern flow,1.5841,Data shown from 2026 GSOO
+MAP,Both directions,0.974,Data shown from 2026 GSOO
+MSP,Both directions,1.3992,Data shown from 2026 GSOO
+NGP,South-eastern flow,1.8308,Data shown from 2026 GSOO
+NQGP,Northern flow,2.0871,Data shown from 2026 GSOO
+QGP,Northern flow,1.2532,Data shown from 2026 GSOO
+QGP,Southern flow,0.3591,Data shown from 2026 GSOO
+RBP,Both directions,0.7005,Data shown from 2026 GSOO
+PCA,Western flow,1.103,Data shown from 2026 GSOO
+SWQP,Western flow,1.5265,Data shown from 2026 GSOO
+SWQP,Eastern flow,1.5265,Data shown from 2026 GSOO
+TGP,Southern flow,2.9314,Data shown from 2026 GSOO
+WGP,Northern flow,1.4171,Data shown from 2026 GSOO

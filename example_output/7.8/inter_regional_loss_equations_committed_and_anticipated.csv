@@ -1,0 +1,2 @@
+Flow Path,Development Option,From region,To region,Loss Equation,MLF Equation,From region loss proportion,To region loss proportion,Notes
+SNSW-CNSW,SNSW-CNSW Option 1 ( Humelink),SNSW,CNSW,'= -0.0371 *SNSW-CNSWt + 2.5934e-05*SNSW-CNSWt^2,'= 0.9629 + 5.1868e-05*SNSW-CNSWt,0.2975,0.7025,
