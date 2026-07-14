@@ -13,7 +13,7 @@ repos:
           workbooks/.* |
           tests/test_data/2024-isp-inputs-and-assumptions-workbook-missing-sheets\.xlsx
         )$ |
-        example_output/7.5/distribution_network_cer_generation_limit_profiles.csv
+        example_output/.*/distribution_network_cer_generation_limit_profiles\.csv
 - repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
   rev: v0.8.1
