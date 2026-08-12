@@ -157,28 +157,31 @@ class Parser:
         return sorted_table_names_by_sheet
 
     def _check_data_ends_where_expected(
-        self, tab: str, end_row: int, range: str, name: str
+        self, tab: str, end_row: int, column_range: str, name: str
     ) -> None:
-        """Check that the cell after the last row of the table in the second column is blank.
+        """Check that the cells after the last row of the table, from the second column to the last, are all blank.
 
-        While there are often notes on the data in the first cell after the first column ends, the first cell after the
-        second column ends appears to be always blank. Therefore, checking that this cell is blank can be used to verify
-        that the config has not specified a table end row that is before the actual last row of the table.
+        While there are often notes on the data in the first cell after the first column ends, the cells after the
+        remaining columns end appear to be almost always blank. Therefore, checking that these cells are blank can be
+        used to verify that the config has not specified a table end row that is before the actual last row of the
+        table.
         """
-        first_column = range.split(":")[0]
+        first_column, last_column = column_range.split(":")
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
-        second_col_index = first_col_index + 1
-        # We check that value in the second column is blank because sometime the row after the first column will
-        # contain notes on the data.
-        value_in_second_column_after_last_row = (
-            self.openpyxl_file[tab].cell(row=end_row + 1, column=second_col_index).value
-        )
-        if (
-            value_in_second_column_after_last_row is not None
-            and value_in_second_column_after_last_row not in ["", " ", "\u00a0"]
-        ):
-            error_message = f"There is data in the row after the defined table end for table {name}."
-            raise TableConfigError(error_message)
+        last_col_index = openpyxl.utils.column_index_from_string(last_column)
+        # We don't check the value in the first column because sometimes the row after the table end will
+        # contain notes on the data in the first column.
+        for col_index in range(first_col_index + 1, last_col_index + 1):
+            value_after_last_row = (
+                self.openpyxl_file[tab].cell(row=end_row + 1, column=col_index).value
+            )
+            if value_after_last_row is not None and value_after_last_row not in [
+                "",
+                " ",
+                "\u00a0",
+            ]:
+                error_message = f"There is data in the row after the defined table end for table {name}."
+                raise TableConfigError(error_message)
 
     def _check_no_data_above_first_header_row(
         self, tab: str, header_rows: int, range: str, name: str

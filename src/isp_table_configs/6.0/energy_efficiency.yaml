@@ -21,6 +21,8 @@ energy_efficiency_residential_green_energy_exports:
   header_rows: 29
   end_row: 34
   column_range: "B:AG"
+  # Cell H35, immediately below the table, contains a stray "=SUM(H30:H34)" total that is not part of the table.
+  skip_checks: ["data_ends_where_expected"]
 
 energy_efficiency_residential_reduced:
   sheet_name: "Energy Efficiency"
