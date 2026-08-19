@@ -1,7 +1,7 @@
 marginal_loss_factors_existing_generators:
   sheet_name: "Marginal Loss Factors"
   header_rows: 12
-  end_row: 654
+  end_row: 738
   column_range: "B:G"
 
 marginal_loss_factors_new_entrants:
