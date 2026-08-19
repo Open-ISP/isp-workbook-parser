@@ -1,0 +1,20 @@
+Sub-region,Distribution Network Service Provider(s),Solar PV (MW),Battery storage (MW),Connections pipeline to 2029-30_Solar PV (MW),Connections pipeline to 2029-30_Battery storage (MW)
+NQ,Ergon Energy,3170,39234,0,0
+GG,Ergon Energy,243,2370,0,0
+CQ,Ergon Energy,2699,24677,0,0
+SQ,"Energex, Ergon Energy",6913,90136,0,0
+NNSW,Essential Energy,1378,8769,0,0
+CNSW,Essential Energy,1872,13675,0,0
+SNW,Ausgrid,369,2432,0,0
+SNW,Endeavour Energy,521,3292,0,0
+SNSW,Essential Energy,3180,25796,0,0
+SNSW,Evoenergy,41,763,0,0
+SEV,AusNet,325,1321,0,0
+MEL,AusNet,130,1571,0,0
+MEL,"CitiPower, Jemena, Powercor, United Energy",219,2392,0,0
+WNV,AusNet,153,693,0,0
+WNV,Powercor,1119,6842,0,0
+SESA,SA Power Networks,1836,8113,0,0
+CSA,SA Power Networks,1856,459,0,0
+NSA,SA Power Networks,788,2490,0,0
+TAS,TasNetworks,846,6971,0,0

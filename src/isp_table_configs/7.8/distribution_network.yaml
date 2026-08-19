@@ -1,0 +1,17 @@
+other_distributed_resources_build_limits:
+  sheet_name: "Distribution network"
+  header_rows: [18, 19]
+  end_row: 38
+  column_range: "B:G"
+
+distribution_network_CER_augmentation_tranche_costs:
+  sheet_name: "Distribution network"
+  header_rows: [43, 44]
+  end_row: 57
+  column_range: "B:H"
+
+distribution_network_cer_generation_limit_profiles:
+  sheet_name: "Distribution network"
+  header_rows: 65
+  end_row: 1433
+  column_range: "B:AZ"

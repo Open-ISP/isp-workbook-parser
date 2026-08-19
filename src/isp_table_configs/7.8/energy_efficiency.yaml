@@ -1,0 +1,65 @@
+energy_efficiency_consultant_mapping:
+  sheet_name: "Energy Efficiency"
+  header_rows: 9
+  end_row: 10
+  column_range: "B:G"
+
+energy_efficiency_residential_slower_growth:
+  sheet_name: "Energy Efficiency"
+  header_rows: 15
+  end_row: 30
+  column_range: "B:AG"
+
+energy_efficiency_residential_step_change:
+  sheet_name: "Energy Efficiency"
+  header_rows: 33
+  end_row: 48
+  column_range: "B:AG"
+
+energy_efficiency_residential_accelerated_transition:
+  sheet_name: "Energy Efficiency"
+  header_rows: 51
+  end_row: 66
+  column_range: "B:AG"
+
+energy_efficiency_residential_lower_energy_efficiency:
+  sheet_name: "Energy Efficiency"
+  header_rows: 69
+  end_row: 84
+  column_range: "B:AG"
+
+energy_efficiency_residential_higher_energy_efficiency:
+  sheet_name: "Energy Efficiency"
+  header_rows: 87
+  end_row: 102
+  column_range: "B:AG"
+
+energy_efficiency_business_slower_growth:
+  sheet_name: "Energy Efficiency"
+  header_rows: 107
+  end_row: 122
+  column_range: "B:AG"
+
+energy_efficiency_business_step_change:
+  sheet_name: "Energy Efficiency"
+  header_rows: 125
+  end_row: 140
+  column_range: "B:AG"
+
+energy_efficiency_business_accelerated_transition:
+  sheet_name: "Energy Efficiency"
+  header_rows: 143
+  end_row: 158
+  column_range: "B:AG"
+
+energy_efficiency_business_lower_energy_efficiency:
+  sheet_name: "Energy Efficiency"
+  header_rows: 161
+  end_row: 176
+  column_range: "B:AG"
+
+energy_efficiency_business_higher_energy_efficiency:
+  sheet_name: "Energy Efficiency"
+  header_rows: 179
+  end_row: 194
+  column_range: "B:AG"

@@ -1,0 +1,5 @@
+residential_electricity_price_indices:
+  sheet_name: "Elec. Retail Price Indices"
+  header_rows: 9
+  end_row: 12
+  column_range: "B:AG"

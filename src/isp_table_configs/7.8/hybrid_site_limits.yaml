@@ -1,0 +1,6 @@
+hybrid_site_limits:
+  sheet_name: "Hybrid site limits"
+  header_rows: 9
+  end_row: 67
+  column_range: "B:G"
+  columns_with_merged_rows: "F"

@@ -1,0 +1,525 @@
+IASR ID,Power Station,Status,MLF,Shadow connection point
+BOTN - Cethana - 20h,BOTN - Cethana - 20h,New Entrant,1.0,Tamar Valley CCGT
+CNSW Battery - 1h,CNSW Battery - 1h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Battery - 2h,CNSW Battery - 2h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Battery - 4h,CNSW Battery - 4h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Battery - 8h,CNSW Battery - 8h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Battery - Distributed Resources,CNSW Battery - Distributed Resources,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Biomass,CNSW Biomass,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW CCGT,CNSW CCGT,New Entrant,0.9893,Tallawarra PS
+CNSW CCGT with CCS,CNSW CCGT with CCS,New Entrant,0.9893,Tallawarra PS
+CNSW OCGT Large,CNSW OCGT Large,New Entrant,0.9893,Tallawarra PS
+CNSW OCGT Small,CNSW OCGT Small,New Entrant,0.9893,Tallawarra PS
+CNSW Pumped Hydro - 10h,CNSW Pumped Hydro - 10h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Pumped Hydro - 24h,CNSW Pumped Hydro - 24h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW Pumped Hydro - 48h,CNSW Pumped Hydro - 48h,New Entrant,0.9637,Bayswater PS Unit 1
+CNSW SAT - Distributed Resources,CNSW SAT - Distributed Resources,New Entrant,0.9637,Bayswater PS Unit 1
+CQ Battery - 1h,CQ Battery - 1h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Battery - 2h,CQ Battery - 2h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Battery - 4h,CQ Battery - 4h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Battery - 8h,CQ Battery - 8h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Battery - Distributed Resources,CQ Battery - Distributed Resources,New Entrant,0.9222,Callide C PS Unit 3
+CQ Biomass,CQ Biomass,New Entrant,0.9222,Callide C PS Unit 3
+CQ CCGT,CQ CCGT,New Entrant,0.9222,Callide C PS Unit 3
+CQ CCGT with CCS,CQ CCGT with CCS,New Entrant,0.9222,Callide C PS Unit 3
+CQ OCGT Large,CQ OCGT Large,New Entrant,0.9222,Callide C PS Unit 3
+CQ OCGT Small,CQ OCGT Small,New Entrant,0.9222,Callide C PS Unit 3
+CQ Pumped Hydro - 10h,CQ Pumped Hydro - 10h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Pumped Hydro - 24h,CQ Pumped Hydro - 24h,New Entrant,0.9222,Callide C PS Unit 3
+CQ Pumped Hydro - 48h,CQ Pumped Hydro - 48h,New Entrant,0.9222,Callide C PS Unit 3
+CQ SAT - Distributed Resources,CQ SAT - Distributed Resources,New Entrant,0.9222,Callide C PS Unit 3
+CSA Battery - 1h,CSA Battery - 1h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Battery - 2h,CSA Battery - 2h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Battery - 4h,CSA Battery - 4h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Battery - 8h,CSA Battery - 8h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Battery - Distributed Resources,CSA Battery - Distributed Resources,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Biomass,CSA Biomass,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA CCGT,CSA CCGT,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA CCGT with CCS,CSA CCGT with CCS,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA OCGT Large,CSA OCGT Large,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA OCGT Small,CSA OCGT Small,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Pumped Hydro - 10h,CSA Pumped Hydro - 10h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Pumped Hydro - 24h,CSA Pumped Hydro - 24h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA Pumped Hydro - 48h,CSA Pumped Hydro - 48h,New Entrant,0.9992,Torrens Island PS B Unit 1
+CSA SAT - Distributed Resources,CSA SAT - Distributed Resources,New Entrant,0.9992,Torrens Island PS B Unit 1
+DREZ Dubbo Battery - 2h,DREZ Dubbo Battery - 2h,New Entrant,0.923,Wellington Solar Farm
+DREZ Dubbo Battery - 4h,DREZ Dubbo Battery - 4h,New Entrant,0.923,Wellington Solar Farm
+DREZ Dubbo Battery - 8h,DREZ Dubbo Battery - 8h,New Entrant,0.923,Wellington Solar Farm
+DREZ Marulan Battery - 2h,DREZ Marulan Battery - 2h,New Entrant,0.9521,Gunning Wind Farm
+DREZ Marulan Battery - 4h,DREZ Marulan Battery - 4h,New Entrant,0.9521,Gunning Wind Farm
+DREZ Marulan Battery - 8h,DREZ Marulan Battery - 8h,New Entrant,0.9521,Gunning Wind Farm
+DREZ Yass Battery - 2h,DREZ Yass Battery - 2h,New Entrant,0.962,Gullen Range Solar Farm
+DREZ Yass Battery - 4h,DREZ Yass Battery - 4h,New Entrant,0.962,Gullen Range Solar Farm
+DREZ Yass Battery - 8h,DREZ Yass Battery - 8h,New Entrant,0.962,Gullen Range Solar Farm
+DREZ_SAT_Dubbo,DREZ_SAT_Dubbo,New Entrant,0.923,Wellington Solar Farm
+DREZ_SAT_Marulan,DREZ_SAT_Marulan,New Entrant,0.9521,Gunning Wind Farm
+DREZ_SAT_Yass,DREZ_SAT_Yass,New Entrant,0.962,Gullen Range Solar Farm
+DREZ_WH_Dubbo,DREZ_WH_Dubbo,New Entrant,0.923,Wellington Solar Farm
+DREZ_WH_Marulan,DREZ_WH_Marulan,New Entrant,0.9521,Gunning Wind Farm
+DREZ_WH_Yass,DREZ_WH_Yass,New Entrant,0.962,Gullen Range Solar Farm
+GG Battery - 1h,GG Battery - 1h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG Battery - 2h,GG Battery - 2h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG Battery - 4h,GG Battery - 4h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG Battery - 8h,GG Battery - 8h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG Battery - Distributed Resources,GG Battery - Distributed Resources,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG Biomass,GG Biomass,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG CCGT,GG CCGT,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG CCGT with CCS,GG CCGT with CCS,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG OCGT Large,GG OCGT Large,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG OCGT Small,GG OCGT Small,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+GG SAT - Distributed Resources,GG SAT - Distributed Resources,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+MEL Battery - 1h,MEL Battery - 1h,New Entrant,0.9943,Newport PS
+MEL Battery - 2h,MEL Battery - 2h,New Entrant,0.9943,Newport PS
+MEL Battery - 4h,MEL Battery - 4h,New Entrant,0.9943,Newport PS
+MEL Battery - 8h,MEL Battery - 8h,New Entrant,0.9943,Newport PS
+MEL Battery - Distributed Resources,MEL Battery - Distributed Resources,New Entrant,0.9943,Newport PS
+MEL Biomass,MEL Biomass,New Entrant,0.9943,Newport PS
+MEL CCGT,MEL CCGT,New Entrant,0.9943,Newport PS
+MEL CCGT with CCS,MEL CCGT with CCS,New Entrant,0.9943,Newport PS
+MEL OCGT Large,MEL OCGT Large,New Entrant,0.9943,Newport PS
+MEL OCGT Small,MEL OCGT Small,New Entrant,0.9943,Newport PS
+MEL SAT - Distributed Resources,MEL SAT - Distributed Resources,New Entrant,0.9943,Newport PS
+N0_CST_NSW,N0_CST_NSW,New Entrant,1.0,Default
+N0_SAT_NSW,N0_SAT_NSW,New Entrant,1.0,Default
+N0_WH_NSW,N0_WH_NSW,New Entrant,1.0,Default
+N0_WM_NSW,N0_WM_NSW,New Entrant,1.0,Default
+N1 Battery - 2h,N1 Battery - 2h,New Entrant,0.8387,Moree Solar Farm
+N1 Battery - 4h,N1 Battery - 4h,New Entrant,0.8387,Moree Solar Farm
+N1 Battery - 8h,N1 Battery - 8h,New Entrant,0.8387,Moree Solar Farm
+N1_CST_North West NSW,N1_CST_North West NSW,New Entrant,0.8387,Moree Solar Farm
+N1_SAT_North West NSW,N1_SAT_North West NSW,New Entrant,0.8387,Moree Solar Farm
+N1_WH_North West NSW,N1_WH_North West NSW,New Entrant,0.8149,White Rock Solar Farm
+N1_WM_North West NSW,N1_WM_North West NSW,New Entrant,0.8149,White Rock Solar Farm
+N2 Battery - 2h,N2 Battery - 2h,New Entrant,0.8149,White Rock Solar Farm
+N2 Battery - 4h,N2 Battery - 4h,New Entrant,0.8149,White Rock Solar Farm
+N2 Battery - 8h,N2 Battery - 8h,New Entrant,0.8149,White Rock Solar Farm
+N2_CST_New England,N2_CST_New England,New Entrant,0.8149,White Rock Solar Farm
+N2_SAT_New England,N2_SAT_New England,New Entrant,0.8149,White Rock Solar Farm
+N2_WH_New England,N2_WH_New England,New Entrant,0.8149,White Rock Solar Farm
+N2_WM_New England,N2_WM_New England,New Entrant,0.8149,White Rock Solar Farm
+N3 Battery - 2h,N3 Battery - 2h,New Entrant,0.9793,Burrendong Hydro PS
+N3 Battery - 4h,N3 Battery - 4h,New Entrant,0.9793,Burrendong Hydro PS
+N3 Battery - 8h,N3 Battery - 8h,New Entrant,0.9793,Burrendong Hydro PS
+N3_CST_Central-West Orana,N3_CST_Central-West Orana,New Entrant,0.9793,Burrendong Hydro PS
+N3_SAT_Central-West Orana,N3_SAT_Central-West Orana,New Entrant,0.9793,Burrendong Hydro PS
+N3_WH_Central-West Orana,N3_WH_Central-West Orana,New Entrant,0.9638,Bodangora Wind Farm
+N3_WM_Central-West Orana,N3_WM_Central-West Orana,New Entrant,0.9638,Bodangora Wind Farm
+N4 Battery - 2h,N4 Battery - 2h,New Entrant,0.8642,Broken Hill Solar Farm
+N4 Battery - 4h,N4 Battery - 4h,New Entrant,0.8642,Broken Hill Solar Farm
+N4 Battery - 8h,N4 Battery - 8h,New Entrant,0.8642,Broken Hill Solar Farm
+N4_CST_Broken Hill,N4_CST_Broken Hill,New Entrant,0.8642,Broken Hill Solar Farm
+N4_SAT_Broken Hill,N4_SAT_Broken Hill,New Entrant,0.8642,Broken Hill Solar Farm
+N4_WH_Broken Hill,N4_WH_Broken Hill,New Entrant,0.8627,Silverton Wind Farm
+N4_WM_Broken Hill,N4_WM_Broken Hill,New Entrant,0.8627,Silverton Wind Farm
+N5 Battery - 2h,N5 Battery - 2h,New Entrant,0.873,Coleambally Solar Farm
+N5 Battery - 4h,N5 Battery - 4h,New Entrant,0.873,Coleambally Solar Farm
+N5 Battery - 8h,N5 Battery - 8h,New Entrant,0.873,Coleambally Solar Farm
+N5_CST_South West NSW,N5_CST_South West NSW,New Entrant,0.873,Coleambally Solar Farm
+N5_SAT_South West NSW,N5_SAT_South West NSW,New Entrant,0.873,Coleambally Solar Farm
+N5_WH_South West NSW,N5_WH_South West NSW,New Entrant,1.0,Default
+N5_WM_South West NSW,N5_WM_South West NSW,New Entrant,1.0,Default
+N6 Battery - 2h,N6 Battery - 2h,New Entrant,0.9187,Bomen Solar Farm
+N6 Battery - 4h,N6 Battery - 4h,New Entrant,0.9187,Bomen Solar Farm
+N6 Battery - 8h,N6 Battery - 8h,New Entrant,0.9187,Bomen Solar Farm
+N6_CST_Wagga Wagga,N6_CST_Wagga Wagga,New Entrant,0.9187,Bomen Solar Farm
+N6_SAT_Wagga Wagga,N6_SAT_Wagga Wagga,New Entrant,0.9187,Bomen Solar Farm
+N6_WH_Wagga Wagga,N6_WH_Wagga Wagga,New Entrant,1.0,Default
+N6_WM_Wagga Wagga,N6_WM_Wagga Wagga,New Entrant,1.0,Default
+N7 Battery - 2h,N7 Battery - 2h,New Entrant,1.0,Default
+N7 Battery - 4h,N7 Battery - 4h,New Entrant,1.0,Default
+N7 Battery - 8h,N7 Battery - 8h,New Entrant,1.0,Default
+N7_CST_Tumut,N7_CST_Tumut,New Entrant,1.0,Default
+N7_SAT_Tumut,N7_SAT_Tumut,New Entrant,1.0,Default
+N7_WH_Tumut,N7_WH_Tumut,New Entrant,1.0,Default
+N7_WM_Tumut,N7_WM_Tumut,New Entrant,1.0,Default
+N8 Battery - 2h,N8 Battery - 2h,New Entrant,0.9814,Royalla Solar Farm
+N8 Battery - 4h,N8 Battery - 4h,New Entrant,0.9814,Royalla Solar Farm
+N8 Battery - 8h,N8 Battery - 8h,New Entrant,0.9814,Royalla Solar Farm
+N8_CST_Cooma-Monaro,N8_CST_Cooma-Monaro,New Entrant,0.9814,Royalla Solar Farm
+N8_SAT_Cooma-Monaro,N8_SAT_Cooma-Monaro,New Entrant,0.9814,Royalla Solar Farm
+N8_WH_Cooma-Monaro,N8_WH_Cooma-Monaro,New Entrant,0.9557,Boco Rock Wind Farm
+N8_WM_Cooma-Monaro,N8_WM_Cooma-Monaro,New Entrant,0.9557,Boco Rock Wind Farm
+N9a Battery - 2h,N9a Battery - 2h,New Entrant,0.923,Wellington Solar Farm
+N9b Battery - 2h,N9b Battery - 2h,New Entrant,0.923,Wellington Solar Farm
+N9a Battery - 4h,N9a Battery - 4h,New Entrant,0.923,Wellington Solar Farm
+N9b Battery - 4h,N9b Battery - 4h,New Entrant,0.923,Wellington Solar Farm
+N9a Battery - 8h,N9a Battery - 8h,New Entrant,0.923,Wellington Solar Farm
+N9b Battery - 8h,N9b Battery - 8h,New Entrant,0.923,Wellington Solar Farm
+N9a_CST_Hunter-Central Coast,N9a_CST_Hunter-Central Coast,New Entrant,0.923,Wellington Solar Farm
+N9a_SAT_Hunter-Central Coast,N9a_SAT_Hunter-Central Coast,New Entrant,0.923,Wellington Solar Farm
+N9a_WH_Hunter-Central Coast,N9a_WH_Hunter-Central Coast,New Entrant,0.9638,Bodangora Wind Farm
+N9a_WM_Hunter-Central Coast,N9a_WM_Hunter-Central Coast,New Entrant,0.9638,Bodangora Wind Farm
+N9b_CST_Hunter-Central Coast,N9b_CST_Hunter-Central Coast,New Entrant,0.923,Wellington Solar Farm
+N9b_SAT_Hunter-Central Coast,N9b_SAT_Hunter-Central Coast,New Entrant,0.923,Wellington Solar Farm
+N9b_WH_Hunter-Central Coast,N9b_WH_Hunter-Central Coast,New Entrant,0.9638,Bodangora Wind Farm
+N9b_WM_Hunter-Central Coast,N9b_WM_Hunter-Central Coast,New Entrant,0.9638,Bodangora Wind Farm
+N10_WFL_Hunter Coast,N10_WFL_Hunter Coast,New Entrant,0.9846,Eraring 330 PS Unit 1
+N10_WFX_Hunter Coast,N10_WFX_Hunter Coast,New Entrant,0.9846,Eraring 330 PS Unit 1
+N11_WFL_Illawarra Coast,N11_WFL_Illawarra Coast,New Entrant,0.9893,Tallawarra PS
+N11_WFX_Illawarra Coast,N11_WFX_Illawarra Coast,New Entrant,0.9893,Tallawarra PS
+N12 Battery - 2h,N12 Battery - 2h,New Entrant,0.9893,Tallawarra PS
+N12 Battery - 4h,N12 Battery - 4h,New Entrant,0.9893,Tallawarra PS
+N12 Battery - 8h,N12 Battery - 8h,New Entrant,0.9893,Tallawarra PS
+N12_CST_Illawarra,N12_CST_Illawarra,New Entrant,0.9893,Tallawarra PS
+N12_SAT_Illawarra,N12_SAT_Illawarra,New Entrant,0.9893,Tallawarra PS
+N12_WH_Illawarra,N12_WH_Illawarra,New Entrant,0.9893,Tallawarra PS
+N12_WM_Illawarra,N12_WM_Illawarra,New Entrant,0.9893,Tallawarra PS
+N13 Battery - 2h,N13 Battery - 2h,New Entrant,0.9793,Nyngan Solar Plant
+N13 Battery - 4h,N13 Battery - 4h,New Entrant,0.9793,Nyngan Solar Plant
+N13 Battery - 8h,N13 Battery - 8h,New Entrant,0.9793,Nyngan Solar Plant
+N13_CST_South Cobar,N13_CST_South Cobar,New Entrant,0.9793,Nyngan Solar Plant
+N13_SAT_South Cobar,N13_SAT_South Cobar,New Entrant,0.9793,Nyngan Solar Plant
+N13_WH_South Cobar,N13_WH_South Cobar,New Entrant,0.9793,Nyngan Solar Plant
+N13_WM_South Cobar,N13_WM_South Cobar,New Entrant,0.9793,Nyngan Solar Plant
+NNSW Battery - 1h,NNSW Battery - 1h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Battery - 2h,NNSW Battery - 2h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Battery - 4h,NNSW Battery - 4h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Battery - 8h,NNSW Battery - 8h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Battery - Distributed Resources,NNSW Battery - Distributed Resources,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Biomass,NNSW Biomass,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW CCGT,NNSW CCGT,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW CCGT with CCS,NNSW CCGT with CCS,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW OCGT Large,NNSW OCGT Large,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW OCGT Small,NNSW OCGT Small,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Pumped Hydro - 10h,NNSW Pumped Hydro - 10h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Pumped Hydro - 24h,NNSW Pumped Hydro - 24h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW Pumped Hydro - 48h,NNSW Pumped Hydro - 48h,New Entrant,0.9637,Bayswater PS Unit 1
+NNSW SAT - Distributed Resources,NNSW SAT - Distributed Resources,New Entrant,0.9637,Bayswater PS Unit 1
+NQ Battery - 1h,NQ Battery - 1h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Battery - 2h,NQ Battery - 2h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Battery - 4h,NQ Battery - 4h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Battery - 8h,NQ Battery - 8h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Battery - Distributed Resources,NQ Battery - Distributed Resources,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Biomass,NQ Biomass,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ CCGT,NQ CCGT,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ CCGT with CCS,NQ CCGT with CCS,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ OCGT Large,NQ OCGT Large,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ OCGT Small,NQ OCGT Small,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Pumped Hydro - 10h,NQ Pumped Hydro - 10h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Pumped Hydro - 24h,NQ Pumped Hydro - 24h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ Pumped Hydro - 48h,NQ Pumped Hydro - 48h,New Entrant,0.9121,Mt Stuart PS Unit 1
+NQ SAT - Distributed Resources,NQ SAT - Distributed Resources,New Entrant,0.9121,Mt Stuart PS Unit 1
+NSA Battery - 1h,NSA Battery - 1h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Battery - 2h,NSA Battery - 2h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Battery - 4h,NSA Battery - 4h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Battery - 8h,NSA Battery - 8h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Battery - Distributed Resources,NSA Battery - Distributed Resources,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Biomass,NSA Biomass,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA CCGT,NSA CCGT,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA CCGT with CCS,NSA CCGT with CCS,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA OCGT Large,NSA OCGT Large,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA OCGT Small,NSA OCGT Small,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Pumped Hydro - 10h,NSA Pumped Hydro - 10h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Pumped Hydro - 24h,NSA Pumped Hydro - 24h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA Pumped Hydro - 48h,NSA Pumped Hydro - 48h,New Entrant,0.9992,Torrens Island PS B Unit 1
+NSA SAT - Distributed Resources,NSA SAT - Distributed Resources,New Entrant,0.9992,Torrens Island PS B Unit 1
+Q1 Battery - 2h,Q1 Battery - 2h,New Entrant,0.9516,Hughenden Solar Farm
+Q1 Battery - 4h,Q1 Battery - 4h,New Entrant,0.9516,Hughenden Solar Farm
+Q1 Battery - 8h,Q1 Battery - 8h,New Entrant,0.9516,Hughenden Solar Farm
+Q1_CST_Far North QLD,Q1_CST_Far North QLD,New Entrant,0.9516,Hughenden Solar Farm
+Q1_SAT_Far North QLD,Q1_SAT_Far North QLD,New Entrant,0.9516,Hughenden Solar Farm
+Q1_WH_Far North QLD,Q1_WH_Far North QLD,New Entrant,0.9649,Mount Emerald Wind farm
+Q1_WM_Far North QLD,Q1_WM_Far North QLD,New Entrant,0.9649,Mount Emerald Wind farm
+Q10 Battery - 2h,Q10 Battery - 2h,New Entrant,0.9385,Hamilton Solar Farm
+Q10 Battery - 4h,Q10 Battery - 4h,New Entrant,0.9385,Hamilton Solar Farm
+Q10 Battery - 8h,Q10 Battery - 8h,New Entrant,0.9385,Hamilton Solar Farm
+Q10_CST_Collinsville,Q10_CST_Collinsville,New Entrant,0.9363,Clare Solar Farm
+Q10_SAT_Collinsville,Q10_SAT_Collinsville,New Entrant,0.9396,Hayman Solar Farm
+Q10_WH_Collinsville,Q10_WH_Collinsville,New Entrant,0.9385,Hamilton Solar Farm
+Q10_WM_Collinsville,Q10_WM_Collinsville,New Entrant,0.9385,Hamilton Solar Farm
+Q2 Battery - 2h,Q2 Battery - 2h,New Entrant,0.9516,Hughenden Solar Farm
+Q2 Battery - 4h,Q2 Battery - 4h,New Entrant,0.9516,Hughenden Solar Farm
+Q2 Battery - 8h,Q2 Battery - 8h,New Entrant,0.9516,Hughenden Solar Farm
+Q2_CST_Hughenden Hub,Q2_CST_Hughenden Hub,New Entrant,0.9516,Hughenden Solar Farm
+Q2_SAT_Hughenden Hub,Q2_SAT_Hughenden Hub,New Entrant,0.9516,Hughenden Solar Farm
+Q2_WH_Hughenden Hub,Q2_WH_Hughenden Hub,New Entrant,0.9696,Kaban Wind Farm
+Q2_WM_Hughenden Hub,Q2_WM_Hughenden Hub,New Entrant,0.9696,Kaban Wind Farm
+Q3 Battery - 2h,Q3 Battery - 2h,New Entrant,0.9516,Hughenden Solar Farm
+Q3 Battery - 4h,Q3 Battery - 4h,New Entrant,0.9516,Hughenden Solar Farm
+Q3 Battery - 8h,Q3 Battery - 8h,New Entrant,0.9516,Hughenden Solar Farm
+Q3_CST_Northern Qld,Q3_CST_Northern Qld,New Entrant,0.9516,Hughenden Solar Farm
+Q3_SAT_Northern Qld,Q3_SAT_Northern Qld,New Entrant,0.9516,Hughenden Solar Farm
+Q3_WH_Northern Qld,Q3_WH_Northern Qld,New Entrant,0.9649,Mount Emerald Wind farm
+Q3_WM_Northern Qld,Q3_WM_Northern Qld,New Entrant,0.9649,Mount Emerald Wind farm
+Q4 Battery - 2h,Q4 Battery - 2h,New Entrant,0.9363,Clare Solar Farm
+Q4 Battery - 4h,Q4 Battery - 4h,New Entrant,0.9363,Clare Solar Farm
+Q4 Battery - 8h,Q4 Battery - 8h,New Entrant,0.9363,Clare Solar Farm
+Q4_CST_Isaac,Q4_CST_Isaac,New Entrant,0.9363,Clare Solar Farm
+Q4_SAT_Isaac,Q4_SAT_Isaac,New Entrant,0.9363,Clare Solar Farm
+Q4_WH_Isaac,Q4_WH_Isaac,New Entrant,0.9385,Hamilton Solar Farm
+Q4_WM_Isaac,Q4_WM_Isaac,New Entrant,0.9385,Hamilton Solar Farm
+Q5 Battery - 2h,Q5 Battery - 2h,New Entrant,0.941,Barcaldine Solar at Lilyvale (132)
+Q5 Battery - 4h,Q5 Battery - 4h,New Entrant,0.941,Barcaldine Solar at Lilyvale (132)
+Q5 Battery - 8h,Q5 Battery - 8h,New Entrant,0.941,Barcaldine Solar at Lilyvale (132)
+Q5_CST_Barcaldine,Q5_CST_Barcaldine,New Entrant,0.941,Barcaldine Solar at Lilyvale (132)
+Q5_SAT_Barcaldine,Q5_SAT_Barcaldine,New Entrant,0.941,Barcaldine Solar at Lilyvale (132)
+Q5_WH_Barcaldine,Q5_WH_Barcaldine,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q5_WM_Barcaldine,Q5_WM_Barcaldine,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6 Battery - 2h,Q6 Battery - 2h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6 Battery - 4h,Q6 Battery - 4h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6 Battery - 8h,Q6 Battery - 8h,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6_CST_Fitzroy,Q6_CST_Fitzroy,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6_SAT_Fitzroy,Q6_SAT_Fitzroy,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6_WH_Fitzroy,Q6_WH_Fitzroy,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q6_WM_Fitzroy,Q6_WM_Fitzroy,New Entrant,0.9461,Gladstone PS (275 kV) Unit 1
+Q7 Battery - 2h,Q7 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+Q7 Battery - 4h,Q7 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+Q7 Battery - 8h,Q7 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+Q7_CST_Wide Bay,Q7_CST_Wide Bay,New Entrant,0.9725,Bungala One Solar Farm
+Q7_SAT_Wide Bay,Q7_SAT_Wide Bay,New Entrant,0.9725,Bungala One Solar Farm
+Q7_WH_Wide Bay,Q7_WH_Wide Bay,New Entrant,0.9403,Mt Millar Wind Farm
+Q7_WM_Wide Bay,Q7_WM_Wide Bay,New Entrant,0.9403,Mt Millar Wind Farm
+Q8 Battery - 2h,Q8 Battery - 2h,New Entrant,0.9849,Darling Downs Solar Farm
+Q8 Battery - 4h,Q8 Battery - 4h,New Entrant,0.9849,Darling Downs Solar Farm
+Q8 Battery - 8h,Q8 Battery - 8h,New Entrant,0.9849,Darling Downs Solar Farm
+Q8a_CST_Darling Downs,Q8a_CST_Darling Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8a_SAT_Darling Downs,Q8a_SAT_Darling Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8a_WH_Darling Downs,Q8a_WH_Darling Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8a_WM_Darling Downs,Q8a_WM_Darling Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8b_CST_Southern Downs,Q8b_CST_Southern Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8b_SAT_Southern Downs,Q8b_SAT_Southern Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8b_WH_Southern Downs,Q8b_WH_Southern Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8b_WM_Southern Downs,Q8b_WM_Southern Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8c_CST_Western Downs,Q8c_CST_Western Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8c_SAT_Western Downs,Q8c_SAT_Western Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8c_WH_Western Downs,Q8c_WH_Western Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q8c_WM_Western Downs,Q8c_WM_Western Downs,New Entrant,0.9849,Darling Downs Solar Farm
+Q9 Battery - 2h,Q9 Battery - 2h,New Entrant,0.9516,Hughenden Solar Farm
+Q9 Battery - 4h,Q9 Battery - 4h,New Entrant,0.9516,Hughenden Solar Farm
+Q9 Battery - 8h,Q9 Battery - 8h,New Entrant,0.9516,Hughenden Solar Farm
+Q9_CST_Banana,Q9_CST_Banana,New Entrant,0.9516,Hughenden Solar Farm
+Q9_SAT_Banana,Q9_SAT_Banana,New Entrant,0.9516,Hughenden Solar Farm
+Q9_WH_Banana,Q9_WH_Banana,New Entrant,0.9649,Mount Emerald Wind farm
+Q9_WM_Banana,Q9_WM_Banana,New Entrant,0.9649,Mount Emerald Wind farm
+S1 Battery - 2h,S1 Battery - 2h,New Entrant,0.9952,Tailem Bend Solar Farm
+S1 Battery - 4h,S1 Battery - 4h,New Entrant,0.9952,Tailem Bend Solar Farm
+S1 Battery - 8h,S1 Battery - 8h,New Entrant,0.9952,Tailem Bend Solar Farm
+S1_CST_South East SA,S1_CST_South East SA,New Entrant,0.9952,Tailem Bend Solar Farm
+S1_SAT_South East SA,S1_SAT_South East SA,New Entrant,0.9952,Tailem Bend Solar Farm
+S1_WH_South East SA,S1_WH_South East SA,New Entrant,0.9502,Lake Bonney Wind Farm
+S1_WM_South East SA,S1_WM_South East SA,New Entrant,0.9502,Lake Bonney Wind Farm
+S2 Battery - 2h,S2 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S2 Battery - 4h,S2 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S2 Battery - 8h,S2 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S2_CST_Riverland,S2_CST_Riverland,New Entrant,0.9725,Bungala One Solar Farm
+S2_SAT_Riverland,S2_SAT_Riverland,New Entrant,0.9725,Bungala One Solar Farm
+S2_WH_Riverland,S2_WH_Riverland,New Entrant,0.9624,Waterloo Wind Farm
+S2_WM_Riverland,S2_WM_Riverland,New Entrant,0.9624,Waterloo Wind Farm
+S3 Battery - 2h,S3 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S3 Battery - 4h,S3 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S3 Battery - 8h,S3 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S3_CST_Mid-North SA,S3_CST_Mid-North SA,New Entrant,0.9725,Bungala One Solar Farm
+S3_SAT_Mid-North SA,S3_SAT_Mid-North SA,New Entrant,0.9725,Bungala One Solar Farm
+S3_WH_Mid-North SA,S3_WH_Mid-North SA,New Entrant,0.956,Hornsdale Wind Farm Stage 1
+S3_WM_Mid-North SA,S3_WM_Mid-North SA,New Entrant,0.956,Hornsdale Wind Farm Stage 1
+S4 Battery - 2h,S4 Battery - 2h,New Entrant,0.8456,Wattle Point Wind Farm
+S4 Battery - 4h,S4 Battery - 4h,New Entrant,0.8456,Wattle Point Wind Farm
+S4 Battery - 8h,S4 Battery - 8h,New Entrant,0.8456,Wattle Point Wind Farm
+S4_CST_Yorke Peninsula,S4_CST_Yorke Peninsula,New Entrant,0.8456,Wattle Point Wind Farm
+S4_SAT_Yorke Peninsula,S4_SAT_Yorke Peninsula,New Entrant,0.8456,Wattle Point Wind Farm
+S4_WH_Yorke Peninsula,S4_WH_Yorke Peninsula,New Entrant,0.9031,Ararat Wind Farm
+S4_WM_Yorke Peninsula,S4_WM_Yorke Peninsula,New Entrant,0.9031,Ararat Wind Farm
+S5 Battery - 2h,S5 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S5 Battery - 4h,S5 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S5 Battery - 8h,S5 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S5_CST_Northern SA,S5_CST_Northern SA,New Entrant,0.9725,Bungala One Solar Farm
+S5_SAT_Northern SA,S5_SAT_Northern SA,New Entrant,0.9725,Bungala One Solar Farm
+S5_WH_Northern SA,S5_WH_Northern SA,New Entrant,0.9689,Lincoln Gap Wind Farm
+S5_WM_Northern SA,S5_WM_Northern SA,New Entrant,0.9689,Lincoln Gap Wind Farm
+S6 Battery - 2h,S6 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S6 Battery - 4h,S6 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S6 Battery - 8h,S6 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S6_CST_Roxby Downs,S6_CST_Roxby Downs,New Entrant,0.9725,Bungala One Solar Farm
+S6_SAT_Roxby Downs,S6_SAT_Roxby Downs,New Entrant,0.9725,Bungala One Solar Farm
+S6_WH_Roxby Downs,S6_WH_Roxby Downs,New Entrant,0.9689,Lincoln Gap Wind Farm
+S6_WM_Roxby Downs,S6_WM_Roxby Downs,New Entrant,0.9689,Lincoln Gap Wind Farm
+S7 Battery - 2h,S7 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S7 Battery - 4h,S7 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S7 Battery - 8h,S7 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S7_CST_Eastern Eyre Peninsula,S7_CST_Eastern Eyre Peninsula,New Entrant,0.9725,Bungala One Solar Farm
+S7_SAT_Eastern Eyre Peninsula,S7_SAT_Eastern Eyre Peninsula,New Entrant,0.9725,Bungala One Solar Farm
+S7_WH_Eastern Eyre Peninsula,S7_WH_Eastern Eyre Peninsula,New Entrant,0.9403,Mt Millar Wind Farm
+S7_WM_Eastern Eyre Peninsula,S7_WM_Eastern Eyre Peninsula,New Entrant,0.9403,Mt Millar Wind Farm
+S8 Battery - 2h,S8 Battery - 2h,New Entrant,0.9725,Bungala One Solar Farm
+S8 Battery - 4h,S8 Battery - 4h,New Entrant,0.9725,Bungala One Solar Farm
+S8 Battery - 8h,S8 Battery - 8h,New Entrant,0.9725,Bungala One Solar Farm
+S8_CST_Western Eyre Peninsula,S8_CST_Western Eyre Peninsula,New Entrant,0.9725,Bungala One Solar Farm
+S8_SAT_Western Eyre Peninsula,S8_SAT_Western Eyre Peninsula,New Entrant,0.9725,Bungala One Solar Farm
+S8_WH_Western Eyre Peninsula,S8_WH_Western Eyre Peninsula,New Entrant,0.9403,Mt Millar Wind Farm
+S8_WM_Western Eyre Peninsula,S8_WM_Western Eyre Peninsula,New Entrant,0.9403,Mt Millar Wind Farm
+SESA Battery - 1h,SESA Battery - 1h,New Entrant,0.9522,Ladbroke Grove
+SESA Battery - 2h,SESA Battery - 2h,New Entrant,0.9522,Ladbroke Grove
+SESA Battery - 4h,SESA Battery - 4h,New Entrant,0.9522,Ladbroke Grove
+SESA Battery - 8h,SESA Battery - 8h,New Entrant,0.9522,Ladbroke Grove
+SESA Battery - Distributed Resources,SESA Battery - Distributed Resources,New Entrant,0.9522,Ladbroke Grove
+SESA Biomass,SESA Biomass,New Entrant,0.9522,Ladbroke Grove
+SESA CCGT,SESA CCGT,New Entrant,0.9522,Ladbroke Grove
+SESA CCGT with CCS,SESA CCGT with CCS,New Entrant,0.9522,Ladbroke Grove
+SESA OCGT Large,SESA OCGT Large,New Entrant,0.9522,Ladbroke Grove
+SESA OCGT Small,SESA OCGT Small,New Entrant,0.9522,Ladbroke Grove
+SESA SAT - Distributed Resources,SESA SAT - Distributed Resources,New Entrant,0.9522,Ladbroke Grove
+SEV Battery - 1h,SEV Battery - 1h,New Entrant,0.9873,Hazelwood BESS
+SEV Battery - 2h,SEV Battery - 2h,New Entrant,0.9873,Hazelwood BESS
+SEV Battery - 4h,SEV Battery - 4h,New Entrant,0.9873,Hazelwood BESS
+SEV Battery - 8h,SEV Battery - 8h,New Entrant,0.9873,Hazelwood BESS
+SEV Battery - Distributed Resources,SEV Battery - Distributed Resources,New Entrant,0.9873,Hazelwood BESS
+SEV Biomass,SEV Biomass,New Entrant,0.9768,Jeeralang A
+SEV CCGT,SEV CCGT,New Entrant,0.9815,Valley Power
+SEV CCGT with CCS,SEV CCGT with CCS,New Entrant,0.9815,Valley Power
+SEV OCGT Large,SEV OCGT Large,New Entrant,0.9815,Valley Power
+SEV OCGT Small,SEV OCGT Small,New Entrant,0.9815,Valley Power
+SEV SAT - Distributed Resources,SEV SAT - Distributed Resources,New Entrant,0.9873,Hazelwood BESS
+SNSW Battery - 1h,SNSW Battery - 1h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Battery - 2h,SNSW Battery - 2h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Battery - 4h,SNSW Battery - 4h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Battery - 8h,SNSW Battery - 8h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Battery - Distributed Resources,SNSW Battery - Distributed Resources,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Biomass,SNSW Biomass,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW CCGT,SNSW CCGT,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW CCGT with CCS,SNSW CCGT with CCS,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW OCGT Large,SNSW OCGT Large,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW OCGT Small,SNSW OCGT Small,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Pumped Hydro - 10h,SNSW Pumped Hydro - 10h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Pumped Hydro - 24h,SNSW Pumped Hydro - 24h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW Pumped Hydro - 48h,SNSW Pumped Hydro - 48h,New Entrant,0.8729,Uranquinty PS Unit 11
+SNSW SAT - Distributed Resources,SNSW SAT - Distributed Resources,New Entrant,0.8729,Uranquinty PS Unit 11
+SNW Battery - 1h,SNW Battery - 1h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Battery - 2h,SNW Battery - 2h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Battery - 4h,SNW Battery - 4h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Battery - 8h,SNW Battery - 8h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Battery - Distributed Resources,SNW Battery - Distributed Resources,New Entrant,0.9849,Colongra PS Unit 1
+SNW Biomass,SNW Biomass,New Entrant,0.9849,Colongra PS Unit 1
+SNW CCGT,SNW CCGT,New Entrant,0.9849,Colongra PS Unit 1
+SNW CCGT with CCS,SNW CCGT with CCS,New Entrant,0.9849,Colongra PS Unit 1
+SNW OCGT Large,SNW OCGT Large,New Entrant,0.9849,Colongra PS Unit 1
+SNW OCGT Small,SNW OCGT Small,New Entrant,0.9849,Colongra PS Unit 1
+SNW Pumped Hydro - 10h,SNW Pumped Hydro - 10h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Pumped Hydro - 24h,SNW Pumped Hydro - 24h,New Entrant,0.9849,Colongra PS Unit 1
+SNW Pumped Hydro - 48h,SNW Pumped Hydro - 48h,New Entrant,0.9849,Colongra PS Unit 1
+SNW SAT - Distributed Resources,SNW SAT - Distributed Resources,New Entrant,0.9849,Colongra PS Unit 1
+SQ Battery - 1h,SQ Battery - 1h,New Entrant,0.9994,Swanbank E GT
+SQ Battery - 2h,SQ Battery - 2h,New Entrant,0.9994,Swanbank E GT
+SQ Battery - 4h,SQ Battery - 4h,New Entrant,0.9994,Swanbank E GT
+SQ Battery - 8h,SQ Battery - 8h,New Entrant,0.9994,Swanbank E GT
+SQ Battery - Distributed Resources,SQ Battery - Distributed Resources,New Entrant,0.9994,Swanbank E GT
+SQ Biomass,SQ Biomass,New Entrant,0.9994,Swanbank E GT
+SQ CCGT,SQ CCGT,New Entrant,0.9994,Swanbank E GT
+SQ CCGT with CCS,SQ CCGT with CCS,New Entrant,0.9994,Swanbank E GT
+SQ OCGT Large,SQ OCGT Large,New Entrant,0.9994,Swanbank E GT
+SQ OCGT Small,SQ OCGT Small,New Entrant,0.9994,Swanbank E GT
+SQ Pumped Hydro - 10h,SQ Pumped Hydro - 10h,New Entrant,0.9994,Swanbank E GT
+SQ Pumped Hydro - 24h,SQ Pumped Hydro - 24h,New Entrant,0.9994,Swanbank E GT
+SQ Pumped Hydro - 48h,SQ Pumped Hydro - 48h,New Entrant,0.9994,Swanbank E GT
+SQ SAT - Distributed Resources,SQ SAT - Distributed Resources,New Entrant,0.9994,Swanbank E GT
+T1 Battery - 2h,T1 Battery - 2h,New Entrant,0.9101,Musselroe
+T1 Battery - 4h,T1 Battery - 4h,New Entrant,0.9101,Musselroe
+T1 Battery - 8h,T1 Battery - 8h,New Entrant,0.9101,Musselroe
+T1_CST_North East TAS,T1_CST_North East TAS,New Entrant,0.9101,Musselroe
+T1_SAT_North East TAS,T1_SAT_North East TAS,New Entrant,0.9101,Musselroe
+T1_WH_North East TAS,T1_WH_North East TAS,New Entrant,1.0,George Town
+T1_WM_North East TAS,T1_WM_North East TAS,New Entrant,1.0,George Town
+T2 Battery - 2h,T2 Battery - 2h,New Entrant,0.9763,Poatina
+T2 Battery - 4h,T2 Battery - 4h,New Entrant,0.9763,Poatina
+T2 Battery - 8h,T2 Battery - 8h,New Entrant,0.9763,Poatina
+T2_CST_North West TAS,T2_CST_North West TAS,New Entrant,0.9763,Poatina
+T2_SAT_North West TAS,T2_SAT_North West TAS,New Entrant,0.9763,Poatina
+T2_WH_North West TAS,T2_WH_North West TAS,New Entrant,0.9763,Poatina
+T2_WM_North West TAS,T2_WM_North West TAS,New Entrant,0.9763,Poatina
+T3 Battery - 2h,T3 Battery - 2h,New Entrant,0.9314,Lake Echo
+T3 Battery - 4h,T3 Battery - 4h,New Entrant,0.9314,Lake Echo
+T3 Battery - 8h,T3 Battery - 8h,New Entrant,0.9314,Lake Echo
+T3_CST_Central Highlands,T3_CST_Central Highlands,New Entrant,0.9314,Lake Echo
+T3_SAT_Central Highlands,T3_SAT_Central Highlands,New Entrant,0.9314,Lake Echo
+T3_WH_Central Highlands,T3_WH_Central Highlands,New Entrant,0.9924,Wild Cattle Hill Wind Farm
+T3_WM_Central Highlands,T3_WM_Central Highlands,New Entrant,0.9924,Wild Cattle Hill Wind Farm
+T4_WFL_North Tasmania Coast,T4_WFL_North Tasmania Coast,New Entrant,0.9763,Poatina
+T4_WFX_North Tasmania Coast,T4_WFX_North Tasmania Coast,New Entrant,0.9763,Poatina
+TAS Battery - 1h,TAS Battery - 1h,New Entrant,1.0,Tamar Valley CCGT
+TAS Battery - 2h,TAS Battery - 2h,New Entrant,1.0,Tamar Valley CCGT
+TAS Battery - 4h,TAS Battery - 4h,New Entrant,1.0,Tamar Valley CCGT
+TAS Battery - 8h,TAS Battery - 8h,New Entrant,1.0,Tamar Valley CCGT
+TAS Battery - Distributed Resources,TAS Battery - Distributed Resources,New Entrant,1.0,Tamar Valley CCGT
+TAS Biomass,TAS Biomass,New Entrant,1.0,Tamar Valley CCGT
+TAS CCGT,TAS CCGT,New Entrant,1.0,Tamar Valley CCGT
+TAS CCGT with CCS,TAS CCGT with CCS,New Entrant,1.0,Tamar Valley CCGT
+TAS OCGT Large,TAS OCGT Large,New Entrant,1.0,Tamar Valley CCGT
+TAS OCGT Small,TAS OCGT Small,New Entrant,1.0,Tamar Valley CCGT
+TAS Pumped Hydro - 10h,TAS Pumped Hydro - 10h,New Entrant,1.0,Tamar Valley CCGT
+TAS Pumped Hydro - 24h,TAS Pumped Hydro - 24h,New Entrant,1.0,Tamar Valley CCGT
+TAS Pumped Hydro - 48h,TAS Pumped Hydro - 48h,New Entrant,1.0,Tamar Valley CCGT
+TAS SAT - Distributed Resources,TAS SAT - Distributed Resources,New Entrant,1.0,Tamar Valley CCGT
+V0_CST_VIC,V0_CST_VIC,New Entrant,1.0,Default
+V0_SAT_VIC,V0_SAT_VIC,New Entrant,1.0,Default
+V0_WH_VIC,V0_WH_VIC,New Entrant,1.0,Default
+V0_WM_VIC,V0_WM_VIC,New Entrant,1.0,Default
+V1 Battery - 2h,V1 Battery - 2h,New Entrant,1.0227,Gannawarra Energy Storage System
+V1 Battery - 4h,V1 Battery - 4h,New Entrant,1.0227,Gannawarra Energy Storage System
+V1 Battery - 8h,V1 Battery - 8h,New Entrant,1.0227,Gannawarra Energy Storage System
+V1_CST_North West VIC,V1_CST_North West VIC,New Entrant,0.9329,Kerang Solar Plant
+V1_SAT_North West VIC,V1_SAT_North West VIC,New Entrant,0.9329,Kerang Solar Plant
+V1_WH_North West VIC,V1_WH_North West VIC,New Entrant,0.9329,Kerang Solar Plant
+V1_WM_North West VIC,V1_WM_North West VIC,New Entrant,0.9329,Kerang Solar Plant
+V2 Battery - 2h,V2 Battery - 2h,New Entrant,0.9809,Ballarat Energy Storage System
+V2 Battery - 4h,V2 Battery - 4h,New Entrant,0.9809,Ballarat Energy Storage System
+V2 Battery - 8h,V2 Battery - 8h,New Entrant,0.9809,Ballarat Energy Storage System
+V2_CST_Central Highlands VIC,V2_CST_Central Highlands VIC,New Entrant,0.9834,Golden Plains Wind Farm 1
+V2_SAT_Central Highlands VIC,V2_SAT_Central Highlands VIC,New Entrant,0.9834,Golden Plains Wind Farm 1
+V2_WH_Central Highlands VIC,V2_WH_Central Highlands VIC,New Entrant,0.9834,Golden Plains Wind Farm 1
+V2_WM_Central Highlands VIC,V2_WM_Central Highlands VIC,New Entrant,0.9834,Golden Plains Wind Farm 1
+V3 Battery - 2h,V3 Battery - 2h,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3 Battery - 4h,V3 Battery - 4h,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3 Battery - 8h,V3 Battery - 8h,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3_CST_Western Victoria,V3_CST_Western Victoria,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3_SAT_Western Victoria,V3_SAT_Western Victoria,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3_WH_Western Victoria,V3_WH_Western Victoria,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V3_WM_Western Victoria,V3_WM_Western Victoria,New Entrant,0.8907,Bulgana Green Power Hub - Wind Farm
+V4 Battery - 2h,V4 Battery - 2h,New Entrant,0.8817,Murra Warra Wind Farm
+V4 Battery - 4h,V4 Battery - 4h,New Entrant,0.8817,Murra Warra Wind Farm
+V4 Battery - 8h,V4 Battery - 8h,New Entrant,0.8817,Murra Warra Wind Farm
+V4_CST_Western Victoria,V4_CST_Western Victoria,New Entrant,0.8817,Murra Warra Wind Farm
+V4_SAT_Western Victoria,V4_SAT_Western Victoria,New Entrant,0.8817,Murra Warra Wind Farm
+V4_WH_Western Victoria,V4_WH_Western Victoria,New Entrant,0.8817,Murra Warra Wind Farm
+V4_WM_Western Victoria,V4_WM_Western Victoria,New Entrant,0.8817,Murra Warra Wind Farm
+V5 Battery - 2h,V5 Battery - 2h,New Entrant,0.9525,Mortlake South Wind Farm
+V5 Battery - 4h,V5 Battery - 4h,New Entrant,0.9525,Mortlake South Wind Farm
+V5 Battery - 8h,V5 Battery - 8h,New Entrant,0.9525,Mortlake South Wind Farm
+V5_CST_South West VIC,V5_CST_South West VIC,New Entrant,0.9525,Mortlake South Wind Farm
+V5_SAT_South West VIC,V5_SAT_South West VIC,New Entrant,0.9525,Mortlake South Wind Farm
+V5_WH_South West VIC,V5_WH_South West VIC,New Entrant,0.9525,Mortlake South Wind Farm
+V5_WM_South West VIC,V5_WM_South West VIC,New Entrant,0.9525,Mortlake South Wind Farm
+V6 Battery - 2h,V6 Battery - 2h,New Entrant,0.9824,Latrobe Valley BESS
+V6 Battery - 4h,V6 Battery - 4h,New Entrant,0.9824,Latrobe Valley BESS
+V6 Battery - 8h,V6 Battery - 8h,New Entrant,0.9824,Latrobe Valley BESS
+V6_CST_Gippsland Onshore,V6_CST_Gippsland Onshore,New Entrant,0.9815,Valley Power
+V6_SAT_Gippsland Onshore,V6_SAT_Gippsland Onshore,New Entrant,0.9815,Valley Power
+V6_WH_Gippsland Onshore,V6_WH_Gippsland Onshore,New Entrant,0.9815,Valley Power
+V6_WM_Gippsland Onshore,V6_WM_Gippsland Onshore,New Entrant,0.9815,Valley Power
+V7 Battery - 2h,V7 Battery - 2h,New Entrant,0.9415,Mokoan Solar Farm
+V7 Battery - 4h,V7 Battery - 4h,New Entrant,0.9415,Mokoan Solar Farm
+V7 Battery - 8h,V7 Battery - 8h,New Entrant,0.9415,Mokoan Solar Farm
+V7_CST_Central North VIC,V7_CST_Central North VIC,New Entrant,0.9415,Mokoan Solar Farm
+V7_SAT_Central North VIC,V7_SAT_Central North VIC,New Entrant,0.9415,Mokoan Solar Farm
+V7_WH_Central North VIC,V7_WH_Central North VIC,New Entrant,0.9415,Mokoan Solar Farm
+V7_WM_Central North VIC,V7_WM_Central North VIC,New Entrant,0.9415,Mokoan Solar Farm
+V8_WFL_Gippsland Offshore,V8_WFL_Gippsland Offshore,New Entrant,0.9862,Bald Hills Wind Farm
+V8_WFX_Gippsland Offshore,V8_WFX_Gippsland Offshore,New Entrant,0.9862,Bald Hills Wind Farm
+V9_WFL_Southern Ocean,V9_WFL_Southern Ocean,New Entrant,0.9829,Macarthur Wind Farm
+V9_WFX_Southern Ocean,V9_WFX_Southern Ocean,New Entrant,0.9829,Macarthur Wind Farm
+WNV Battery - 1h,WNV Battery - 1h,New Entrant,0.9943,Newport PS
+WNV Battery - 2h,WNV Battery - 2h,New Entrant,0.9943,Newport PS
+WNV Battery - 4h,WNV Battery - 4h,New Entrant,0.9943,Newport PS
+WNV Battery - 8h,WNV Battery - 8h,New Entrant,0.9943,Newport PS
+WNV Battery - Distributed Resources,WNV Battery - Distributed Resources,New Entrant,0.9943,Newport PS
+WNV Biomass,WNV Biomass,New Entrant,0.9943,Newport PS
+WNV CCGT,WNV CCGT,New Entrant,0.9943,Newport PS
+WNV CCGT with CCS,WNV CCGT with CCS,New Entrant,0.9943,Newport PS
+WNV OCGT Large,WNV OCGT Large,New Entrant,0.9943,Newport PS
+WNV OCGT Small,WNV OCGT Small,New Entrant,0.9943,Newport PS
+WNV Pumped Hydro - 10h,WNV Pumped Hydro - 10h,New Entrant,0.9943,Newport PS
+WNV Pumped Hydro - 24h,WNV Pumped Hydro - 24h,New Entrant,0.9943,Newport PS
+WNV Pumped Hydro - 48h,WNV Pumped Hydro - 48h,New Entrant,0.9943,Newport PS
+WNV SAT - Distributed Resources,WNV SAT - Distributed Resources,New Entrant,0.9943,Newport PS
+WOO CCGT,WOO CCGT,New Entrant,0.9893,Tallawarra PS
+WOO CCGT with CCS,WOO CCGT with CCS,New Entrant,0.9893,Tallawarra PS
+WOO OCGT Large,WOO OCGT Large,New Entrant,0.9893,Tallawarra PS
+WOO OCGT Small,WOO OCGT Small,New Entrant,0.9893,Tallawarra PS

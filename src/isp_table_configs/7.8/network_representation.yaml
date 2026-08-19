@@ -1,0 +1,30 @@
+existing_sub_regional_topology_representation_capacity_outlook_model:
+  sheet_name: "Network representation"
+  header_rows: 5
+  end_row: 22
+  column_range: "B:C"
+
+sub_regional_reference_nodes:
+  sheet_name: "Network representation"
+  header_rows: 26
+  end_row: 41
+  column_range: "B:D"
+  columns_with_merged_rows: "B"
+
+regional_topology_representation:
+  sheet_name: "Network representation"
+  header_rows: 46
+  end_row: 53
+  column_range: "B:D"
+
+regional_reference_nodes:
+  sheet_name: "Network representation"
+  header_rows: 57
+  end_row: 62
+  column_range: "B:D"
+
+sub_regional_load_and_generation_representation:
+  sheet_name: "Network representation"
+  header_rows: 67
+  end_row: 82
+  column_range: "B:D"

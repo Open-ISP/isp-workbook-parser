@@ -1,0 +1,24 @@
+hydrogen_consumption_by_region_type:
+  sheet_name: "Hydrogen consumption locations"
+  header_rows: 7
+  end_row: 9
+  column_range: "B:C"
+
+hydrogen_consumption_by_sub_region_type:
+  sheet_name: "Hydrogen consumption locations"
+  header_rows: 15
+  end_row: 18
+  column_range: "B:C"
+
+hydrogen_consumption_explicit:
+  sheet_name: "Hydrogen consumption locations"
+  header_rows: [24, 25]
+  end_row: 40
+  column_range: "B:F"
+
+hydrogen_export_ports:
+  sheet_name: "Hydrogen consumption locations"
+  header_rows: 50
+  end_row: 57
+  column_range: "B:D"
+  columns_with_merged_rows: ["B"]

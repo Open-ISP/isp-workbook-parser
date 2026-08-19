@@ -1,0 +1,22 @@
+Technology Type,Unit size (MW),Number of units,Total plant size (MW)
+OCGT (small GT),33.7,6,202.20000000000002
+OCGT (large GT),265.0,1,265.0
+CCGT,409.0,1,409.0
+CCGT with CCS,409.0,1,409.0
+Biomass,30.0,1,30.0
+Large scale Solar PV,1.0,1,1.0
+Solar Thermal (16hrs storage),1.0,1,1.0
+Battery storage (1hr storage),1.0,1,1.0
+Battery storage (2hrs storage),1.0,1,1.0
+Battery storage (4hrs storage),1.0,1,1.0
+Battery storage (8hrs storage),1.0,1,1.0
+Wind,1.0,1,1.0
+Wind - offshore (fixed),1.0,1,1.0
+Wind - offshore (floating),1.0,1,1.0
+Pumped Hydro (10hrs storage),1.0,1,1.0
+Pumped Hydro (24hrs storage),1.0,1,1.0
+Pumped Hydro (48hrs storage),1.0,1,1.0
+Distributed Resources Solar,1.0,1,1.0
+Distributed Resources Batteries,1.0,1,1.0
+Alkaline Electrolyser,1.0,1,1.0
+BOTN - Cethana,750.0,1,750.0

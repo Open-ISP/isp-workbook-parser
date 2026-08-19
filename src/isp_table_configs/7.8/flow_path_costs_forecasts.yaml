@@ -1,0 +1,306 @@
+flow_path_augmentation_costs_slower_growth_CQ-NQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 12
+  end_row: 14
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_CQ-GG:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 17
+  end_row: 21
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_SQ-CQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 24
+  end_row: 30
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_NNSW-SQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 33
+  skip_rows:
+    start: 36
+    end: 89
+  end_row: 91
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_CNSW-NNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 38
+  end_row: 41
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_CNSW-SNW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 44
+  end_row: 54
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_SNSW-CNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 57
+  end_row: 61
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_WNV-SESA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 64
+  end_row: 67
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_SESA-CSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 70
+  end_row: 74
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_CSA-NSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 77
+  end_row: 82
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_WNV-SNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 85
+  end_row: 86
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_TAS-SEV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 94
+  end_row: 96
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_MEL-WNV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 99
+  end_row: 103
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_slower_growth_SEV-MEL:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 106
+  end_row: 111
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+################################################################################
+
+flow_path_augmentation_costs_step_change_CQ-NQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 117
+  end_row: 119
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_CQ-GG:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 122
+  end_row: 126
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_SQ-CQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 129
+  end_row: 135
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_NNSW-SQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 138
+  skip_rows:
+    start: 141
+    end: 194
+  end_row: 196
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_CNSW-NNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 143
+  end_row: 146
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_CNSW-SNW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 149
+  end_row: 159
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_SNSW-CNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 162
+  end_row: 166
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_WNV-SESA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 169
+  end_row: 172
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_SESA-CSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 175
+  end_row: 179
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_CSA-NSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 182
+  end_row: 187
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_WNV-SNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 190
+  end_row: 191
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_TAS-SEV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 199
+  end_row: 201
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_MEL-WNV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 204
+  end_row: 208
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_step_change_SEV-MEL:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 211
+  end_row: 216
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+################################################################################
+
+flow_path_augmentation_costs_accelerated_transition_CQ-NQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 222
+  end_row: 224
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_CQ-GG:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 227
+  end_row: 231
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_SQ-CQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 234
+  end_row: 240
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_NNSW-SQ:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 243
+  skip_rows:
+    start: 246
+    end: 299
+  end_row: 301
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_CNSW-NNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 248
+  end_row: 251
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_CNSW-SNW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 254
+  end_row: 264
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_SNSW-CNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 267
+  end_row: 271
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_WNV-SESA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 274
+  end_row: 277
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_SESA-CSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 280
+  end_row: 284
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_CSA-NSA:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 287
+  end_row: 292
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_WNV-SNSW:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 295
+  end_row: 296
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_TAS-SEV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 304
+  end_row: 306
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_MEL-WNV:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 309
+  end_row: 313
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
+
+flow_path_augmentation_costs_accelerated_transition_SEV-MEL:
+  sheet_name: "Flow path cost forecasts"
+  header_rows: 316
+  end_row: 321
+  column_range: "B:AI"
+  columns_with_merged_rows: "B"
