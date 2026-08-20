@@ -30,7 +30,7 @@ flow_path_augmentation_costs_slower_growth_NNSW-SQ:
  column_range: "B:AI"
  columns_with_merged_rows: "B"
 
-flow_path_augmentation_cost_slower_growth_CNSW-NNSW:
+flow_path_augmentation_costs_slower_growth_CNSW-NNSW:
  sheet_name: "Flow path cost forecasts"
  header_rows: 39
  end_row: 44
