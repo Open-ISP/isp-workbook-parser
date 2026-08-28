@@ -4,6 +4,7 @@ import pandas as pd
 
 from isp_workbook_parser.sanitisers import (
     _extract_numeric_value_millions,
+    _remove_series_bracketed_footnotes,
     _remove_series_double_whitespaces,
     _remove_series_notes_after_values,
     _remove_series_thousands_commas,
@@ -225,4 +226,39 @@ def test_remove_series_notes_after_values(sample_series):
             "$ 1.0.0 M",
         ]
     )
+    pd.testing.assert_series_equal(result, expected)
+
+
+def test_remove_series_notes_after_values_with_special_characters():
+    unsanitised = pd.Series(
+        [
+            "4758 (Marinus Link Pty Ltd and TasNetworks have advised that $534 million, "
+            "in $2023, of this amount relates to approved early works and other incurred "
+            "costs that should be excluded from the cost estimate for the 2026 ISP in "
+            "accordance with the AER's CBA Guidelines. AEMO has removed this from the "
+            "estimate of $5035 million in $2023, and has then adjusted to $2025.)",
+            "7035 (Transgrid has advised $565 million of this amount relates to approved "
+            "early works and other incurred costs that should be excluded from the total "
+            "cost estimate of $7600 million for the 2026 ISP.)",
+            "2431 (This figure reflects the estimate from Option 2 with a portion costed "
+            "at Class 5b removed.)",
+            "1749.5 (only part of this figure is included)",
+        ]
+    )
+    result = _remove_series_notes_after_values(unsanitised)
+    expected = pd.Series(["4758", "7035", "2431", "1749.5"])
+    pd.testing.assert_series_equal(result, expected)
+
+
+def test_remove_series_bracketed_footnotes():
+    unsanitised = pd.Series(
+        [
+            "750[footnote14]",
+            "750[footnote15]",
+            "1234[footnote 3]",
+            "750",
+        ]
+    )
+    result = _remove_series_bracketed_footnotes(unsanitised)
+    expected = pd.Series(["750", "750", "1234", "750"])
     pd.testing.assert_series_equal(result, expected)
