@@ -68,6 +68,7 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                     _remove_series_trailing_asterisks,
                     _remove_series_thousands_commas,
                     _remove_series_notes_after_values,
+                    _remove_series_bracketed_footnotes,
                     _remove_series_trailing_footnotes,
                     _extract_numeric_value_millions,
                 ):
@@ -134,6 +135,18 @@ def _remove_series_thousands_commas(
     """Removes thousands commas (i.e. commas preceded by and following digits)
     in a `pandas.Series` or `pandas.Index`"""
     return series.str.replace(r"(?<=[0-9]),(?=[0-9]{1,3})", "", regex=True)
+
+
+def _remove_series_bracketed_footnotes(
+    series: pd.Index | pd.Series,
+) -> pd.Index | pd.Series:
+    """Removes bracketed footnote markers (e.g. ``750[footnote14]``) anywhere in a
+    `pandas.Series` or `pandas.Index`.
+
+    Bracketed footnotes references that sit directely next to a cell value with no
+    separating whitespace, e.g. ``750[footnote14]`` are removed here.
+    """
+    return series.str.replace(r"\[footnote\s*\d+\]", "", regex=True)
 
 
 def _remove_series_notes_after_values(
