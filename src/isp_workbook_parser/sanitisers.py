@@ -142,8 +142,9 @@ def _remove_series_notes_after_values(
     """Removes notes after numeric values in a `pandas.Series` or `pandas.Index`
 
     This is done using three regular expression substitutions:
-        1. Capture a value (digits and decimal points) followed by one or more sequences
-            of text preceded by an opening parenthesis. Retain the captured group.
+        1. Capture a value (digits and decimal points) that is followed by whitespace
+            and then an opening parenthesis. Retain the captured group and discard
+            everything from the parenthesis onwards.
         2. Capture a value (digits and decimal points) followed by one or more sequences
             of text preceded by a hyphen (with or without a space between the value
             and the hyphen), BUT not where a hyphen is used to denote a financial year
@@ -151,9 +152,7 @@ def _remove_series_notes_after_values(
         3. Replace any hyphen followed by one or more sequences of text preceded by a
             hyphen with an empty string.
     """
-    series = series.str.replace(
-        r"^([0-9\.]+)\s+(?:(\([\w\s\.\<\=\-\/\,]+\)?\s?)+)", r"\1", regex=True
-    )
+    series = series.str.replace(r"^([0-9\.]+)\s+\(.*$", r"\1", regex=True)
     series = series.str.replace(
         r"^(?![0-9]{4}\-[0-9]{2,4})([0-9\.]+)\s?(?:(\-[\w\s\.\<\=\-\(\)]+)+)",
         r"\1",
