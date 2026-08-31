@@ -149,9 +149,6 @@ def _remove_series_bracketed_footnotes(
     return series.str.replace(r"\[footnote\s*\d+\]", "", regex=True)
 
 
-_MULTIPLE_VALUES_WITH_NOTES = r"^[~<>=]?\s*[0-9\.]+\s+\([^()]*\)[^0-9A-Za-z]*[0-9]"
-
-
 def _where_multiple_values_with_notes(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
@@ -168,7 +165,9 @@ def _where_multiple_values_with_notes(
     from a footnote reference, which is always preceded by words
     (e.g. ``'400 (with VNI SIPS) - Note 8'``).
     """
-    return series.str.contains(_MULTIPLE_VALUES_WITH_NOTES, regex=True, na=False)
+    return series.str.contains(
+        r"^[~<>=]?\s*[0-9\.]+\s+\([^()]*\)[^0-9A-Za-z]*[0-9]", regex=True, na=False
+    )
 
 
 def _remove_series_notes_after_values(
