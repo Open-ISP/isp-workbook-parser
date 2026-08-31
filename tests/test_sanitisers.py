@@ -315,14 +315,18 @@ MULTIPLE_VALUE_CASES = [
     # the first parenthesis-free bracketed run, so the "2023" below is part of the
     # note rather than a second value.
     ("5325 (provided cost ($5,035) 2023)", False, "5325"),
-    # -- Shapes outside the substitution this predicate guards, left to the others.
+    # -- Two values, but not in the shape substitution 1 matches, so the predicate has
+    # nothing to guard against: no note is stripped and the cell comes through whole.
     ("930(NSW works) 964 (QLD works)", False, "930(NSW works) 964 (QLD works)"),
-    ("930 - NSW works 964 - QLD works", False, "930"),
     (
         "about 930 (NSW works) 964 (QLD works)",
         False,
         "about 930 (NSW works) 964 (QLD works)",
     ),
+    # -- A known gap. Two values delimited by hyphens rather than bracketed notes are
+    # still cut down to the first, by substitution 2, which this predicate does not
+    # guard. Whether the workbooks hold cells of this shape has not been checked.
+    ("930 - NSW works 964 - QLD works", False, "930"),
     # -- Nothing to flag.
     ("930 (NSW works)", False, "930"),
     ("930", False, "930"),
