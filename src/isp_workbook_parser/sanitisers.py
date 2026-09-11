@@ -175,12 +175,15 @@ def _remove_series_notes_after_values(
 ) -> pd.Index | pd.Series:
     """Removes notes after numeric values in a `pandas.Series` or `pandas.Index`
 
-    This is done using three regular expression substitutions:
+    Cells that hold more than one value, each with its own note (see
+    `_where_multiple_values_with_notes`), are left as text rather than run through any
+    of the three substitutions below, since no single one of their values can stand in
+    for the cell.
+
+    The substitutions are:
         1. Capture a value (digits and decimal points) that is followed by whitespace
             and then an opening parenthesis. Retain the captured group and discard
-            everything from the parenthesis onwards. Cells that hold more than one
-            value, each with its own note (see `_where_multiple_values_with_notes`),
-            are left as text.
+            everything from the parenthesis onwards.
         2. Capture a value (digits and decimal points) followed by one or more sequences
             of text preceded by a hyphen (with or without a space between the value
             and the hyphen), BUT not where a hyphen is used to denote a financial year
@@ -189,15 +192,14 @@ def _remove_series_notes_after_values(
             hyphen with an empty string.
     """
     keep_full_text = _where_multiple_values_with_notes(series)
-    series = series.where(
-        keep_full_text, series.str.replace(r"^([0-9\.]+)\s+\(.*$", r"\1", regex=True)
-    )
-    series = series.str.replace(
+    cleaned = series.str.replace(r"^([0-9\.]+)\s+\(.*$", r"\1", regex=True)
+    cleaned = cleaned.str.replace(
         r"^(?![0-9]{4}\-[0-9]{2,4})([0-9\.]+)\s?(?:(\-[\w\s\.\<\=\-\(\)]+)+)",
         r"\1",
         regex=True,
     )
-    series = series.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
+    cleaned = cleaned.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
+    series = series.where(keep_full_text, cleaned)
     return series
 
 
