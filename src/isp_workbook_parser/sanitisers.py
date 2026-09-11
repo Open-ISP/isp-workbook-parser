@@ -149,12 +149,38 @@ def _remove_series_bracketed_footnotes(
     return series.str.replace(r"\[footnote\s*\d+\]", "", regex=True)
 
 
+def _where_multiple_values_with_notes(
+    series: pd.Index | pd.Series,
+) -> pd.Index | pd.Series:
+    """Flags cells that hold more than one value, each with its own bracketed note,
+    e.g. ``'930 (NSW works) 964 (QLD works)'``.
+
+    There is no single numeric value that can stand in for such a cell, so
+    `_remove_series_notes_after_values` leaves them as text rather than silently
+    discarding every value but the first.
+
+    A second value is only recognised where nothing but non-alphanumeric characters
+    (whitespace, a comma, an approximation symbol) separates it from the closing
+    parenthesis of the first note. This is what distinguishes a genuine second value
+    from a footnote reference, which is always preceded by words
+    (e.g. ``'400 (with VNI SIPS) - Note 8'``).
+    """
+    return series.str.contains(
+        r"^[~<>=]?\s*[0-9\.]+\s+\([^()]*\)[^0-9A-Za-z]*[0-9]", regex=True, na=False
+    )
+
+
 def _remove_series_notes_after_values(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
     """Removes notes after numeric values in a `pandas.Series` or `pandas.Index`
 
-    This is done using three regular expression substitutions:
+    Cells that hold more than one value, each with its own note (see
+    `_where_multiple_values_with_notes`), are left as text rather than run through any
+    of the three substitutions below, since no single one of their values can stand in
+    for the cell.
+
+    The substitutions are:
         1. Capture a value (digits and decimal points) that is followed by whitespace
             and then an opening parenthesis. Retain the captured group and discard
             everything from the parenthesis onwards.
@@ -165,13 +191,15 @@ def _remove_series_notes_after_values(
         3. Replace any hyphen followed by one or more sequences of text preceded by a
             hyphen with an empty string.
     """
-    series = series.str.replace(r"^([0-9\.]+)\s+\(.*$", r"\1", regex=True)
-    series = series.str.replace(
+    keep_full_text = _where_multiple_values_with_notes(series)
+    cleaned = series.str.replace(r"^([0-9\.]+)\s+\(.*$", r"\1", regex=True)
+    cleaned = cleaned.str.replace(
         r"^(?![0-9]{4}\-[0-9]{2,4})([0-9\.]+)\s?(?:(\-[\w\s\.\<\=\-\(\)]+)+)",
         r"\1",
         regex=True,
     )
-    series = series.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
+    cleaned = cleaned.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
+    series = series.where(keep_full_text, cleaned)
     return series
 
 
