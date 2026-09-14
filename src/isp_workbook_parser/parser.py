@@ -40,7 +40,6 @@ class Parser:
     3. Extract tables using a user-specified config with `Parser.get_table_from_config`.
 
     Examples:
-
     Create a Parser instance for a particular workbook. Will also check config is available for workbook version.
 
     >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
@@ -48,6 +47,7 @@ class Parser:
     Save all the tables with available config to the directory example_output as csv files.
 
     >>> workbook.save_tables('example_output') # doctest: +SKIP
+
     """
 
     def __init__(
@@ -112,7 +112,7 @@ class Parser:
             config_path = config_path / Path(f"{self.workbook_version}/")
         return config_path
 
-    def _check_version_is_supported(self, config_path) -> None:
+    def _check_version_is_supported(self, config_path: Path) -> None:
         """Check the default config directory contains a subdirectory that matches the workbook version number."""
         versions = config_path.iterdir()
         if self.workbook_version not in versions:
@@ -149,7 +149,7 @@ class Parser:
             configs.update(config_dict)
         return configs
 
-    def _get_table_names_by_sheet(self):
+    def g_get_table_names_by_sheet(self) -> dict:
         table_names_by_sheet = {}
         for table_name, config in self.table_configs.items():
             if config.sheet_name not in table_names_by_sheet:
@@ -265,7 +265,7 @@ class Parser:
 
     @staticmethod
     def _check_columns_unique(data: pd.DataFrame, name: str) -> None:
-        """Check that columns in the data are unique
+        """Check that columns in the data are unique.
 
         Unique columns names are required for sanitisation to work without error (i.e. in
         `isp_workbook_parser.sanitisers._values_casting_and_sanitisation`). If an error
@@ -279,7 +279,7 @@ class Parser:
     def _check_for_missed_column_on_right_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, cellrange: str, name: str
     ) -> None:
-        """Checks if there is data in the column adjacent to last column specified in the config.
+        """Checkg if there is data in the column adjacent to last column specified in the config.
 
         It appears that the column adjacent to the last column in a table is always blank. Therefore, checking if
         there is data in the adjacent column can help detect when the column range in the config has been incorrectly
@@ -319,7 +319,7 @@ class Parser:
     def _check_for_missed_column_on_left_hand_side_of_table(
         self, sheet_name: str, start_row: int, end_row: int, cellrange: str, name: str
     ) -> None:
-        """Checks if there is data in the column adjacent to first column specified in the config.
+        """Check if there is data in the column adjacent to first column specified in the config.
 
         It appears that the column adjacent to the first column in a table is always blank. Therefore, checking if
         there is data in the adjacent column can help detect when the column range in the config has been incorrectly
@@ -357,8 +357,10 @@ class Parser:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
             raise TableConfigError(error_message)
 
-    def _check_if_header_row_and_end_row_are_on_sheet(self, table_config) -> None:
-        """Checks if first row of header and end_row are within the sheet."""
+    def _check_if_header_row_and_end_row_are_on_sheet(
+        self, table_config: TableConfig
+    ) -> None:
+        """Check if first row of header and end_row are within the sheet."""
         if isinstance(table_config.header_rows, int):
             first_header_row = table_config.header_rows
         else:
@@ -371,8 +373,10 @@ class Parser:
             error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _check_if_start_and_end_column_are_on_sheet(self, table_config) -> None:
-        """Checks if first column and last column in config are within the sheet."""
+    def _check_if_start_and_end_column_are_on_sheet(
+        self, table_config: TableConfig
+    ) -> None:
+        """Check if first column and last column in config are within the sheet."""
         first_column = table_config.column_range.split(":")[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         if first_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
@@ -385,8 +389,8 @@ class Parser:
             error_message = f"The last column for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _build_checks(self, data, table_config):
-        """Builds a dict mapping each skippable check name to its check method and arguments.
+    def _build_checks(self, data: pd.DataFrame, table_config: TableConfig) -> dict:
+        """Build a dict mapping each skippable check name to its check method and arguments.
 
         The keys must stay in sync with `CheckName` in `config_model` (enforced by
         `test_skippable_check_names_match_config_literal`).
@@ -451,7 +455,7 @@ class Parser:
             ),
         }
 
-    def _check_table(self, data, table_config) -> None:
+    def _check_table(self, data: pd.DataFrame, table_config: TableConfig) -> None:
         checks = self._build_checks(data, table_config)
         skips = table_config.skip_checks or []
         for check_name, (check, args) in checks.items():
@@ -477,6 +481,7 @@ class Parser:
         Returns:
             `pandas.DataFrame` with percentage columns multiplied by 100 (i.e.
             values should be between 0 and 100)
+
         """
         percentage_columns = []
         sheet = self.openpyxl_file[table_config.sheet_name]
@@ -530,7 +535,7 @@ class Parser:
         return data
 
     def get_table_names(self) -> list[str]:
-        """Returns a dict of table names by sheet name that there is config for.
+        """Return a dict of table names by sheet name that there is config for.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
@@ -543,16 +548,16 @@ class Parser:
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
+
         """
         return self.table_names_by_sheet
 
     def get_table_from_config(
         self, table_config: TableConfig, config_checks: bool = True
     ) -> pd.DataFrame:
-        """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
+        """Retrieve a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
         Examples:
-
         >>> import pandas as pd
         >>> from isp_workbook_parser import TableConfig
 
@@ -599,9 +604,9 @@ class Parser:
         return data
 
     def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
-        """Retrieves a table from the assumptions workbook and returns as `pd.DataFrame`.
+        """Retrieve a table from the assumptions workbook and returns as `pd.DataFrame`.
 
-        Examples
+        Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
@@ -618,6 +623,7 @@ class Parser:
             table_name: Specified the table to retrieve.
             config_checks: Specifies whether to check the tabe config by checking if the data
                 starts and ends where expected and the workbook header matches the config header.
+
         """
         if not isinstance(table_name, str):
             msg = "The parameter table_name must be provided as a string."
@@ -639,7 +645,7 @@ class Parser:
         tables: list[str] | str = "all",
         config_checks: bool = True,
     ) -> None:
-        """Saves tables from the provided workbook to the specified directory as CSV files.
+        """Save tables from the provided workbook to the specified directory as CSV files.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
@@ -656,6 +662,7 @@ class Parser:
 
         Returns:
             None
+
         """
         directory = self._make_path_object(directory)
         if not directory.exists():

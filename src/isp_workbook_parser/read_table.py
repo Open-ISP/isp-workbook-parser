@@ -16,7 +16,7 @@ from .sanitisers import _column_name_sanitiser
 
 
 def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
-    """Parses a table given a YAML config for the table
+    """Parse a table given a YAML config for the table.
 
     If `table.header_rows` is an integer, the table is parsed directly.
 
@@ -34,7 +34,6 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         header rows in the table are dropped
 
     Examples:
-
     The example below reads the "Existing Generators Summary" table from the 2024
     version 6 workbook.
 
@@ -68,6 +67,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
 
     Returns:
         Table as a pandas DataFrame
+
     """
     if isinstance(table.header_rows, int):
         df = pd.read_excel(
@@ -148,7 +148,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
 def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
     """
     Forward fills the highest header row (parsed as DataFrame columns) for processing
-    a multi-header table
+    a multi-header table.
     """
     initial_header[initial_header.str.contains("Unnamed")] = pd.NA
     return initial_header.ffill().reset_index(drop=True).fillna("")
@@ -159,7 +159,7 @@ def _ffill_intermediate_header_row(
 ) -> pd.Series:
     """
     Forward fills intermediate header row (parsed as a DataFrame row), with the
-    following strategy:
+    following strategy.
 
     1. If the nth element value of the intermediate header is NaN, make the
     nth element equal to the (n-1)th value in the intermediate header row if the
@@ -187,8 +187,9 @@ def _process_last_header_row(
     last_header: pd.Series, preceding_header: pd.Series
 ) -> pd.Series:
     """
-    Processes last header row by removing duplicated table names if the nth element
-    value is equal to the nth value of the preceding header,
+    Process last header row by removing duplicated table names if the nth element
+    value is equal to the nth value of the preceding header.
+
     (e.g. "Name" in row 1 and "Name" in row 2).
     This is done by making the nth element value an empty string
     """
@@ -204,7 +205,8 @@ def _build_cleaned_dataframe(
     forward_fill_values: bool,
 ) -> pd.DataFrame:
     """
-    Builds a cleaned DataFrame with the merged headers by:
+    Build a cleaned DataFrame with the merged headers using the following steps.
+
     1. Dropping the header rows in the table
     2. Applying the merged headers as the columns of the DataFrame
     3. Forward fill values across columns if `forward_fill_values` is True
@@ -222,7 +224,7 @@ def _skip_rows_in_dataframe(
 ) -> pd.DataFrame:
     """
     Drop rows specified by `skip_rows` by applying an offset from the header and
-    dropping based on index values
+    dropping based on index values.
     """
     df_reset_index = df.reset_index(drop=True)
     if isinstance(config_skip_rows, int):
@@ -241,7 +243,7 @@ def _handle_merged_rows(
     column_range: str,
 ) -> pd.DataFrame:
     """
-    Forward fill down columns in `columns_with_merged_rows`
+    Forward fill down columns in `columns_with_merged_rows`.
     """
     if isinstance(config_cols_with_merged_rows, str):
         cols = [config_cols_with_merged_rows]
@@ -256,7 +258,7 @@ def _handle_merged_rows(
 def _find_data_column_index(
     column_alphabetical: str, column_range_from_table_config: str
 ) -> int:
-    """Returns the zero-index (integer) index of a column within a table defined by
+    """Return the zero-index (integer) index of a column within a table defined by
     a TableConfig column range.
 
     Args:
@@ -267,6 +269,7 @@ def _find_data_column_index(
     Returns:
         Integer index of the column that `column_alphabetical` refers to in the data
         (zero-indexed)
+
     """
     first_col_index = openpyxl.utils.column_index_from_string(
         column_range_from_table_config.split(":", maxsplit=1)[0]
