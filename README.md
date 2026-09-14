@@ -88,7 +88,7 @@ from isp_workbook_parser import Parser
 
 workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
-workbook.save_tables('<path/to/output directory>')
+workbook.save_tables("<path/to/output directory>")
 ```
 
 ### List tables with configuration files
@@ -103,7 +103,7 @@ workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.x
 
 names = workbook.get_table_names()
 
-names['Build limits']
+names["Build limits"]
 ```
 
 ### Get table as DataFrame
@@ -128,11 +128,11 @@ from isp_workbook_parser import Parser, TableConfig
 workbook = Parser("<path/to/workbook>/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
 table_config = TableConfig(
-  name="table_name",
-  sheet_name="sheet_name",
-  header_rows=5,
-  end_row=21,
-  column_range="B:J",
+    name="table_name",
+    sheet_name="sheet_name",
+    header_rows=5,
+    end_row=21,
+    column_range="B:J",
 )
 
 workbook.get_table_from_config(table_config)
