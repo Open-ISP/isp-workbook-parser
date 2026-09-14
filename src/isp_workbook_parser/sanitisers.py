@@ -67,9 +67,9 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                     _strip_series_whitespaces,
                     _remove_series_trailing_asterisks,
                     _remove_series_thousands_commas,
-                    _remove_series_notes_after_values,
                     _remove_series_bracketed_footnotes,
                     _remove_series_trailing_footnotes,
+                    _remove_series_notes_after_values,
                     _extract_numeric_value_millions,
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
