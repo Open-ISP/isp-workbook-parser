@@ -144,7 +144,7 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
         path: pathlib Path instance specifying the location of the YAML file.
 
     """
-    with open(path, "r") as f:
+    with Path.open(path) as f:
         config = yaml.safe_load(f)
         f.close()
     if config is not None:

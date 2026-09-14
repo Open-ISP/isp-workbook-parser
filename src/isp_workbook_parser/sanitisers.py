@@ -5,6 +5,7 @@
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 
+import contextlib
 import re
 
 import numpy as np
@@ -29,8 +30,7 @@ def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Serie
     columns = columns.str.strip()
     columns = _replace_series_newlines_with_whitespace(columns)
     columns = _remove_series_double_whitespaces(columns)
-    columns = _remove_column_name_trailing_footnotes(columns)
-    return columns
+    return _remove_column_name_trailing_footnotes(columns)
 
 
 def _custom_string_replacements(
@@ -61,7 +61,7 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
     will return `pd.NA`
     """
     df = _replace_dataframe_hyphens_with_na(df)
-    for object_col in df.dtypes[df.dtypes == "object"].keys():
+    for object_col in df.dtypes[df.dtypes == "object"]:
         try:
             df.loc[:, object_col] = pd.to_numeric(df[object_col])
         except (ValueError, TypeError):
@@ -80,10 +80,8 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
             # re-attempt conversion following sanitisation
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 df[object_col] = pd.to_numeric(df[object_col])
-            except (ValueError, TypeError):
-                pass
     return df
 
 
@@ -166,8 +164,7 @@ def _remove_series_notes_after_values(
         r"\1",
         regex=True,
     )
-    series = series.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
-    return series
+    return series.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
 
 
 def _extract_numeric_value_millions(
@@ -191,9 +188,8 @@ def _extract_numeric_value_millions(
             if num_str.replace(".", "", 1).isdigit():
                 # Convert to float and multiply by 1,000,000
                 return float(num_str) * 1_000_000
-            else:
-                # If not a valid number, return the original value
-                return val
+            # If not a valid number, return the original value
+            return val
         # Return value unchanged if pattern does not match
         return val
 

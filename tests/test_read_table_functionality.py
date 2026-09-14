@@ -45,7 +45,7 @@ def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6):
         end_row=48,
         column_range="B:R",
         # Victoria
-        skip_rows=(list(range(29, 35)) + [48]),
+        skip_rows=[*list(range(29, 35)), 48],
     )
     df = workbook_v6.get_table_from_config(table_config)
     assert len(df) == (table_config.end_row - table_config.header_rows[-1] - 7)
