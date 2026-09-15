@@ -149,7 +149,7 @@ class Parser:
             configs.update(config_dict)
         return configs
 
-    def g_get_table_names_by_sheet(self) -> dict:
+    def _get_table_names_by_sheet(self) -> dict:
         table_names_by_sheet = {}
         for table_name, config in self.table_configs.items():
             if config.sheet_name not in table_names_by_sheet:
