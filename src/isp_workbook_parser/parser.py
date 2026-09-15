@@ -114,7 +114,7 @@ class Parser:
 
     def _check_version_is_supported(self, config_path: Path) -> None:
         """Check the default config directory contains a subdirectory that matches the workbook version number."""
-        versions = config_path.iterdir()
+        versions = [dir.name for dir in config_path.iterdir()]
         if self.workbook_version not in versions:
             msg = f"The workbook version {self.workbook_version} is not supported."
             raise ValueError(msg)
