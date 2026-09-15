@@ -16,7 +16,7 @@ from .sanitisers import _column_name_sanitiser
 
 
 def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
-    """Parses a table given a YAML config for the table
+    """Parse a table given a YAML config for the table.
 
     If `table.header_rows` is an integer, the table is parsed directly.
 
@@ -34,7 +34,6 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         header rows in the table are dropped
 
     Examples:
-
     The example below reads the "Existing Generators Summary" table from the 2024
     version 6 workbook.
 
@@ -68,6 +67,7 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
 
     Returns:
         Table as a pandas DataFrame
+
     """
     if isinstance(table.header_rows, int):
         df = pd.read_excel(
@@ -85,70 +85,73 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
                 df, table.columns_with_merged_rows, table.column_range
             )
         return df
+
+    df_initial = pd.read_excel(
+        workbook_file,
+        sheet_name=table.sheet_name,
+        header=(table.header_rows[0] - 1),
+        usecols=table.column_range,
+        nrows=(table.end_row - table.header_rows[0]),
+        # do not parse dtypes
+        dtype="object",
+    )
+    df_initial.columns = _column_name_sanitiser(df_initial.columns)
+    # check that header_rows list is sorted
+    if sorted(table.header_rows) != table.header_rows:
+        msg = "table header rows are not sorted"
+        raise ValueError(msg)
+    # check that the header_rows are adjacent
+    if set(np.diff(table.header_rows)) != {1}:
+        msg = "header rows are not adjacent"
+        raise ValueError(msg)
+    # start processing multiple header rows
+    header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
+    initial_header = pd.Series(df_initial.columns)
+    ffilled_initial_header = _ffill_highest_header(initial_header)
+    filled_headers = []
+    # ffill intermediate header rows
+    for i in range(header_rows_in_table - 1):
+        if i == 0:
+            preceding_header = initial_header
+        filled_headers.append(
+            _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
+        )
+        preceding_header = df_initial.iloc[i, :]
+    # process last header row
+    if not filled_headers:
+        processed_last_header = _process_last_header_row(
+            df_initial.iloc[header_rows_in_table - 1, :], ffilled_initial_header
+        )
     else:
-        df_initial = pd.read_excel(
-            workbook_file,
-            sheet_name=table.sheet_name,
-            header=(table.header_rows[0] - 1),
-            usecols=table.column_range,
-            nrows=(table.end_row - table.header_rows[0]),
-            # do not parse dtypes
-            dtype="object",
+        processed_last_header = _process_last_header_row(
+            df_initial.iloc[header_rows_in_table - 1, :], filled_headers[-1]
         )
-        df_initial.columns = _column_name_sanitiser(df_initial.columns)
-        # check that header_rows list is sorted
-        assert sorted(table.header_rows) == table.header_rows
-        # check that the header_rows are adjacent
-        assert set(np.diff(table.header_rows)) == set([1])
-        # start processing multiple header rows
-        header_rows_in_table = table.header_rows[-1] - table.header_rows[0]
-        initial_header = pd.Series(df_initial.columns)
-        ffilled_initial_header = _ffill_highest_header(initial_header)
-        filled_headers = []
-        # ffill intermediate header rows
-        for i in range(0, header_rows_in_table - 1):
-            if i == 0:
-                preceding_header = initial_header
-            filled_headers.append(
-                _ffill_intermediate_header_row(df_initial.iloc[i, :], preceding_header)
-            )
-            preceding_header = df_initial.iloc[i, :]
-        # process last header row
-        if not filled_headers:
-            processed_last_header = _process_last_header_row(
-                df_initial.iloc[header_rows_in_table - 1, :], ffilled_initial_header
-            )
-        else:
-            processed_last_header = _process_last_header_row(
-                df_initial.iloc[header_rows_in_table - 1, :], filled_headers[-1]
-            )
-        filled_headers.append(processed_last_header)
-        # add separators manually - ignore any "" entries
-        for series in filled_headers:
-            series[series != ""] = "_" + series[series != ""]
-        merged_headers = ffilled_initial_header.str.cat(filled_headers)
-        df_cleaned = _build_cleaned_dataframe(
-            df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
+    filled_headers.append(processed_last_header)
+    # add separators manually - ignore any "" entries
+    for series in filled_headers:
+        series[series != ""] = "_" + series[series != ""]
+    merged_headers = ffilled_initial_header.str.cat(filled_headers)
+    df_cleaned = _build_cleaned_dataframe(
+        df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
+    )
+    if table.skip_rows:
+        df_cleaned = _skip_rows_in_dataframe(
+            df_cleaned, table.skip_rows, table.header_rows[-1]
         )
-        if table.skip_rows:
-            df_cleaned = _skip_rows_in_dataframe(
-                df_cleaned, table.skip_rows, table.header_rows[-1]
-            )
-        if table.columns_with_merged_rows:
-            df_cleaned = _handle_merged_rows(
-                df_cleaned, table.columns_with_merged_rows, table.column_range
-            )
-        return df_cleaned
+    if table.columns_with_merged_rows:
+        df_cleaned = _handle_merged_rows(
+            df_cleaned, table.columns_with_merged_rows, table.column_range
+        )
+    return df_cleaned
 
 
 def _ffill_highest_header(initial_header: pd.Series) -> pd.Series:
     """
     Forward fills the highest header row (parsed as DataFrame columns) for processing
-    a multi-header table
+    a multi-header table.
     """
     initial_header[initial_header.str.contains("Unnamed")] = pd.NA
-    ffill_initial_header = initial_header.ffill().reset_index(drop=True).fillna("")
-    return ffill_initial_header
+    return initial_header.ffill().reset_index(drop=True).fillna("")
 
 
 def _ffill_intermediate_header_row(
@@ -156,7 +159,7 @@ def _ffill_intermediate_header_row(
 ) -> pd.Series:
     """
     Forward fills intermediate header row (parsed as a DataFrame row), with the
-    following strategy:
+    following strategy.
 
     1. If the nth element value of the intermediate header is NaN, make the
     nth element equal to the (n-1)th value in the intermediate header row if the
@@ -168,7 +171,7 @@ def _ffill_intermediate_header_row(
     N.B. "Unnamed" columns in pandas are actually NaNs
     """
     int_header = intermediate_header.copy(deep=True)
-    for n, value in zip(range(1, len(int_header)), int_header.iloc[1:]):
+    for n, value in zip(range(1, len(int_header)), int_header.iloc[1:], strict=True):
         preceding_value = preceding_header.iloc[n]
         if pd.isna(value):
             if pd.isna(preceding_value):
@@ -177,23 +180,22 @@ def _ffill_intermediate_header_row(
             int_header.iloc[n] = pd.NA
 
     _ffill_intermediate_header = int_header.reset_index(drop=True).fillna("")
-    _ffill_intermediate_header = _column_name_sanitiser(_ffill_intermediate_header)
-    return _ffill_intermediate_header
+    return _column_name_sanitiser(_ffill_intermediate_header)
 
 
 def _process_last_header_row(
     last_header: pd.Series, preceding_header: pd.Series
 ) -> pd.Series:
     """
-    Processes last header row by removing duplicated table names if the nth element
-    value is equal to the nth value of the preceding header,
+    Process last header row by removing duplicated table names if the nth element
+    value is equal to the nth value of the preceding header.
+
     (e.g. "Name" in row 1 and "Name" in row 2).
     This is done by making the nth element value an empty string
     """
     last_header = last_header.reset_index(drop=True).fillna("")
     last_header = _column_name_sanitiser(last_header)
-    last_header = last_header.where(last_header != preceding_header, "")
-    return last_header
+    return last_header.where(last_header != preceding_header, "")
 
 
 def _build_cleaned_dataframe(
@@ -203,7 +205,8 @@ def _build_cleaned_dataframe(
     forward_fill_values: bool,
 ) -> pd.DataFrame:
     """
-    Builds a cleaned DataFrame with the merged headers by:
+    Build a cleaned DataFrame with the merged headers using the following steps.
+
     1. Dropping the header rows in the table
     2. Applying the merged headers as the columns of the DataFrame
     3. Forward fill values across columns if `forward_fill_values` is True
@@ -213,8 +216,7 @@ def _build_cleaned_dataframe(
     df_cleaned.columns = new_headers
     if forward_fill_values:
         df_cleaned = df_cleaned.ffill(axis=1)
-    df_cleaned = df_cleaned.reset_index(drop=True)
-    return df_cleaned
+    return df_cleaned.reset_index(drop=True)
 
 
 def _skip_rows_in_dataframe(
@@ -222,7 +224,7 @@ def _skip_rows_in_dataframe(
 ) -> pd.DataFrame:
     """
     Drop rows specified by `skip_rows` by applying an offset from the header and
-    dropping based on index values
+    dropping based on index values.
     """
     df_reset_index = df.reset_index(drop=True)
     if isinstance(config_skip_rows, int):
@@ -232,8 +234,7 @@ def _skip_rows_in_dataframe(
         skip_rows = np.subtract(skip_rows, last_header_row + 1)
     else:
         skip_rows = np.subtract(config_skip_rows, last_header_row + 1)
-    dropped = df_reset_index.drop(index=skip_rows).reset_index(drop=True)
-    return dropped
+    return df_reset_index.drop(index=skip_rows).reset_index(drop=True)
 
 
 def _handle_merged_rows(
@@ -242,15 +243,13 @@ def _handle_merged_rows(
     column_range: str,
 ) -> pd.DataFrame:
     """
-    Forward fill down columns in `columns_with_merged_rows`
+    Forward fill down columns in `columns_with_merged_rows`.
     """
     if isinstance(config_cols_with_merged_rows, str):
         cols = [config_cols_with_merged_rows]
     else:
         cols = config_cols_with_merged_rows
-    actual_col_indices = list(
-        map(lambda col: _find_data_column_index(col, column_range), cols)
-    )
+    actual_col_indices = [_find_data_column_index(col, column_range) for col in cols]
     for index in actual_col_indices:
         df.iloc[:, index] = df.iloc[:, index].ffill()
     return df
@@ -259,7 +258,7 @@ def _handle_merged_rows(
 def _find_data_column_index(
     column_alphabetical: str, column_range_from_table_config: str
 ) -> int:
-    """Returns the zero-index (integer) index of a column within a table defined by
+    """Return the zero-index (integer) index of a column within a table defined by
     a TableConfig column range.
 
     Args:
@@ -270,9 +269,10 @@ def _find_data_column_index(
     Returns:
         Integer index of the column that `column_alphabetical` refers to in the data
         (zero-indexed)
+
     """
     first_col_index = openpyxl.utils.column_index_from_string(
-        column_range_from_table_config.split(":")[0]
+        column_range_from_table_config.split(":", maxsplit=1)[0]
     )
     data_col_index = openpyxl.utils.column_index_from_string(column_alphabetical)
     return data_col_index - first_col_index

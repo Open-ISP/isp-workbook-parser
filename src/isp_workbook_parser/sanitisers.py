@@ -5,6 +5,7 @@
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 
+import contextlib
 import re
 
 import numpy as np
@@ -15,7 +16,8 @@ from isp_workbook_parser.custom_string_replacements import typos_and_notes
 
 def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Series:
     """
-    Sanitises column names by:
+    Sanitises column names using the following steps.
+
     1. Removing 'versioning' from column names introduced by `mangle_dupe_cols` in
     pandas parser, e.g. 'Generator.1' is sanitised to 'Generator'
     2. Stripping leading and trailing whitespaces
@@ -29,14 +31,13 @@ def _column_name_sanitiser(columns: pd.Index | pd.Series) -> pd.Index | pd.Serie
     columns = columns.str.strip()
     columns = _replace_series_newlines_with_whitespace(columns)
     columns = _remove_series_double_whitespaces(columns)
-    columns = _remove_column_name_trailing_footnotes(columns)
-    return columns
+    return _remove_column_name_trailing_footnotes(columns)
 
 
 def _custom_string_replacements(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """If a known typo or unwanted note exits replace it with a known correction"""
+    """If a known typo or unwanted note exits replace it with a known correction."""
     for known_bad_string, correction in typos_and_notes.items():
         series = series.str.replace(known_bad_string, correction, regex=True)
     return series
@@ -45,7 +46,9 @@ def _custom_string_replacements(
 def _remove_column_name_trailing_footnotes(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Removes footnotes by replacing a single trailing digit not preceded by
+    """Remove footnotes.
+
+    It does this by replacing a single trailing digit not preceded by
     a hat (e.g. power to in loss equations), whitespace (e.g. name of a unit),
     another digit (i.e. footnotes are assumed to be single digit) or
     a capital letter preceded by an underscore (e.g. REZ names) with an empty string"""
@@ -53,7 +56,7 @@ def _remove_column_name_trailing_footnotes(
 
 
 def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
-    """Attempts to convert `pd.DataFrame` values to numeric types. If this fails,
+    """Attempt to convert `pd.DataFrame` values to numeric types. If this fails,
     sanitises strings in the same column and then re-attempts casting to a numeric type.
 
     String sanitisation is only applied to string values in columns that cannot be
@@ -81,29 +84,27 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
                 ):
                     df.loc[where_str_values, object_col] = series_func(df[object_col])
             # re-attempt conversion following sanitisation
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 df[object_col] = pd.to_numeric(df[object_col])
-            except (ValueError, TypeError):
-                pass
     return df
 
 
 def _replace_dataframe_hyphens_with_na(df: pd.DataFrame) -> pd.DataFrame:
-    """Replaces any hyphen values with a `pandas.NA`"""
+    """Replace any hyphen values with a `pandas.NA`."""
     return df.replace("-", np.nan, regex=False)
 
 
 def _replace_series_newlines_with_whitespace(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Replaces newlines in a `pandas.Series` or `pandas.Index` with a whitespace"""
+    """Replace newlines in a `pandas.Series` or `pandas.Index` with a whitespace."""
     return series.str.replace(r"\n", " ", regex=True)
 
 
 def _remove_series_double_whitespaces(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Removes any duplicated whitespaces in a `pandas.Series` or `pandas.Index`"""
+    """Remove any duplicated whitespaces in a `pandas.Series` or `pandas.Index`."""
     return series.str.replace(r"\s\s", " ", regex=True)
 
 
@@ -111,8 +112,8 @@ def _remove_series_trailing_asterisks(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
     """
-    Replaces trailing asterisks with an empty string in a `pandas.Series`
-    or `pandas.Index`
+    Replace trailing asterisks with an empty string in a `pandas.Series`
+    or `pandas.Index`.
     """
     return series.str.replace(r"\*$", "", regex=True)
 
@@ -120,7 +121,7 @@ def _remove_series_trailing_asterisks(
 def _remove_series_trailing_footnotes(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Removes footnotes in a `pandas.Series` or `pandas.Index`
+    """Remove footnotes in a `pandas.Series` or `pandas.Index`.
 
     This is done by replacing a single trailing digit NOT preceded by a whitespace
     (e.g. name of a unit), another digit (i.e. footnotes are assumed
@@ -132,15 +133,15 @@ def _remove_series_trailing_footnotes(
 
 
 def _strip_series_whitespaces(series: pd.Index | pd.Series) -> pd.Index | pd.Series:
-    """Strips trailing and leading whitespaces in a `pandas.Series` or `pandas.Index`"""
+    """Strip trailing and leading whitespaces in a `pandas.Series` or `pandas.Index`."""
     return series.str.strip(" ")
 
 
 def _remove_series_thousands_commas(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Removes thousands commas (i.e. commas preceded by and following digits)
-    in a `pandas.Series` or `pandas.Index`"""
+    """Remove thousands commas (i.e. commas preceded by and following digits)
+    in a `pandas.Series` or `pandas.Index`."""
     return series.str.replace(r"(?<=[0-9]),(?=[0-9]{1,3})", "", regex=True)
 
 
@@ -180,7 +181,7 @@ def _where_multiple_values_with_notes(
 def _remove_series_notes_after_values(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
-    """Removes notes after numeric values in a `pandas.Series` or `pandas.Index`
+    """Remove notes after numeric values in a `pandas.Series` or `pandas.Index`.
 
     Cells that hold more than one value, each with its own note (see
     `_where_multiple_values_with_notes`), are left as text rather than run through any
@@ -206,7 +207,7 @@ def _remove_series_notes_after_values(
         regex=True,
     )
     cleaned = cleaned.str.replace(r"^\-\s?(?:(\([\w\s\.\<\=\-\(\)]+)+)", "", regex=True)
-    series = series.where(keep_full_text, cleaned)
+    return series.where(keep_full_text, cleaned)
     return series
 
 
@@ -214,11 +215,12 @@ def _extract_numeric_value_millions(
     series: pd.Index | pd.Series,
 ) -> pd.Index | pd.Series:
     """
-    Extracts numeric value from strings like "$ 2849 M" and multiplies by 1 million.
+    Extract numeric value from strings like "$ 2849 M" and multiplies by 1 million.
+
     If no 'M' is present, returns the value as is.
     """
 
-    def extract(val):
+    def extract(val: any) -> any:
         # Return value unchanged if it's not a string
         if not isinstance(val, str):
             return val
@@ -231,9 +233,8 @@ def _extract_numeric_value_millions(
             if num_str.replace(".", "", 1).isdigit():
                 # Convert to float and multiply by 1,000,000
                 return float(num_str) * 1_000_000
-            else:
-                # If not a valid number, return the original value
-                return val
+            # If not a valid number, return the original value
+            return val
         # Return value unchanged if pattern does not match
         return val
 

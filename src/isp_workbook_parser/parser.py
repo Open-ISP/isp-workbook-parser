@@ -5,8 +5,6 @@
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 
-import glob
-import os
 import warnings
 from pathlib import Path
 from typing import Any
@@ -42,7 +40,6 @@ class Parser:
     3. Extract tables using a user-specified config with `Parser.get_table_from_config`.
 
     Examples:
-
     Create a Parser instance for a particular workbook. Will also check config is available for workbook version.
 
     >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
@@ -50,10 +47,13 @@ class Parser:
     Save all the tables with available config to the directory example_output as csv files.
 
     >>> workbook.save_tables('example_output') # doctest: +SKIP
+
     """
 
     def __init__(
-        self, file_path: str | Path, user_config_directory_path: str | Path = None
+        self,
+        file_path: str | Path,
+        user_config_directory_path: str | Path | None = None,
     ) -> None:
         self.file_path = self._make_path_object(file_path)
 
@@ -96,7 +96,7 @@ class Parser:
 
     def _determine_config_path(
         self,
-        user_config_directory_path: str | Path = None,
+        user_config_directory_path: str | Path | None = None,
     ) -> Path:
         """Determine the path to where the directory containing config YAML files are stored.
 
@@ -112,25 +112,23 @@ class Parser:
             config_path = config_path / Path(f"{self.workbook_version}/")
         return config_path
 
-    def _check_version_is_supported(self, config_path) -> None:
+    def _check_version_is_supported(self, config_path: Path) -> None:
         """Check the default config directory contains a subdirectory that matches the workbook version number."""
-        versions = os.listdir(config_path)
+        versions = [dir.name for dir in config_path.iterdir()]
         if self.workbook_version not in versions:
-            raise ValueError(
-                f"The workbook version {self.workbook_version} is not supported."
-            )
+            msg = f"The workbook version {self.workbook_version} is not supported."
+            raise ValueError(msg)
 
     def _load_config(self) -> dict[str, dict[str, Any]]:
         """Load all the YAML files stored in the config directory into a nested dictionary with sheet names as keys
         and table names as second level keys. For robustness across workbook versions, the config sheet name
         is matched with a workbook sheet name in case-agnostic manner.
         """
-        pattern = os.path.join(self.config_path, "*.yaml")
-        config_files = glob.glob(pattern)
+        config_files = Path(self.config_path).glob("*.yaml")
         configs = {}
         for file in config_files:
             config_dict = load_yaml(Path(file))
-            for config_name in config_dict.keys():
+            for config_name in config_dict:
                 config = config_dict[config_name]
                 config_sheet_name_lowercase = config.sheet_name.lower()
                 sheet_names = [
@@ -139,20 +137,19 @@ class Parser:
                     if sheet_name.lower() == config_sheet_name_lowercase
                 ]
                 if len(sheet_names) > 1:
-                    raise TableConfigError(
-                        f"Workbook sheet '{config.sheet_name}' is not unique"
-                    )
-                elif len(sheet_names) < 1:
-                    raise TableConfigError(
+                    msg = f"Workbook sheet '{config.sheet_name}' is not unique"
+                    raise TableConfigError(msg)
+                if len(sheet_names) < 1:
+                    msg = (
                         f" Sheet '{config.sheet_name}' cannot be found in the workbook"
                     )
-                else:
-                    config.sheet_name = sheet_names.pop()
+                    raise TableConfigError(msg)
+                config.sheet_name = sheet_names.pop()
                 config_dict[config_name] = config
             configs.update(config_dict)
         return configs
 
-    def _get_table_names_by_sheet(self):
+    def _get_table_names_by_sheet(self) -> dict:
         table_names_by_sheet = {}
         for table_name, config in self.table_configs.items():
             if config.sheet_name not in table_names_by_sheet:
@@ -191,7 +188,7 @@ class Parser:
                 raise TableConfigError(error_message)
 
     def _check_no_data_above_first_header_row(
-        self, tab: str, header_rows: int, range: str, name: str
+        self, tab: str, header_rows: int, cellrange: str, name: str
     ) -> None:
         """Check that the cell before the first header row of the table in the second column is blank.
 
@@ -199,7 +196,7 @@ class Parser:
         second column appears to be always blank. Therefore, checking that this cell is blank can be used to verify
         that the config has not specified a table header row that is after the first header row of the table.
         """
-        first_column = range.split(":")[0]
+        first_column = cellrange.split(":", maxsplit=1)[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         second_col_index = first_col_index + 1
 
@@ -268,7 +265,7 @@ class Parser:
 
     @staticmethod
     def _check_columns_unique(data: pd.DataFrame, name: str) -> None:
-        """Check that columns in the data are unique
+        """Check that columns in the data are unique.
 
         Unique columns names are required for sanitisation to work without error (i.e. in
         `isp_workbook_parser.sanitisers._values_casting_and_sanitisation`). If an error
@@ -280,15 +277,15 @@ class Parser:
             raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_right_hand_side_of_table(
-        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+        self, sheet_name: str, start_row: int, end_row: int, cellrange: str, name: str
     ) -> None:
-        """Checks if there is data in the column adjacent to last column specified in the config.
+        """Checkg if there is data in the column adjacent to last column specified in the config.
 
         It appears that the column adjacent to the last column in a table is always blank. Therefore, checking if
         there is data in the adjacent column can help detect when the column range in the config has been incorrectly
         specified.
         """
-        last_column = range.split(":")[1]
+        last_column = cellrange.split(":")[1]
         last_col_index = openpyxl.utils.column_index_from_string(last_column)
         column_next_to_last_column = openpyxl.utils.get_column_letter(
             last_col_index + 1
@@ -320,15 +317,15 @@ class Parser:
             raise TableConfigError(error_message)
 
     def _check_for_missed_column_on_left_hand_side_of_table(
-        self, sheet_name: str, start_row: int, end_row: int, range: str, name: str
+        self, sheet_name: str, start_row: int, end_row: int, cellrange: str, name: str
     ) -> None:
-        """Checks if there is data in the column adjacent to first column specified in the config.
+        """Check if there is data in the column adjacent to first column specified in the config.
 
         It appears that the column adjacent to the first column in a table is always blank. Therefore, checking if
         there is data in the adjacent column can help detect when the column range in the config has been incorrectly
         specified.
         """
-        first_column = range.split(":")[0]
+        first_column = cellrange.split(":", maxsplit=1)[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         column_next_to_first_column = openpyxl.utils.get_column_letter(
             first_col_index - 1
@@ -345,10 +342,9 @@ class Parser:
                 usecols=column_next_to_first_column,
                 nrows=(end_row - start_row),
             )
-            if data[data.columns[0]].isna().all():
-                range_error = False
-            elif (
-                "DO NOT DELETE THIS COLUMN" in str(data.columns[0])
+            if (
+                data[data.columns[0]].isna().all()
+                or "DO NOT DELETE THIS COLUMN" in str(data.columns[0])
                 or first_column == "B"
             ):
                 range_error = False
@@ -361,8 +357,10 @@ class Parser:
             error_message = f"There is data in the column adjacent to the first column in the table {name}."
             raise TableConfigError(error_message)
 
-    def _check_if_header_row_and_end_row_are_on_sheet(self, table_config) -> None:
-        """Checks if first row of header and end_row are within the sheet."""
+    def _check_if_header_row_and_end_row_are_on_sheet(
+        self, table_config: TableConfig
+    ) -> None:
+        """Check if first row of header and end_row are within the sheet."""
         if isinstance(table_config.header_rows, int):
             first_header_row = table_config.header_rows
         else:
@@ -375,8 +373,10 @@ class Parser:
             error_message = f"The end_row for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _check_if_start_and_end_column_are_on_sheet(self, table_config) -> None:
-        """Checks if first column and last column in config are within the sheet."""
+    def _check_if_start_and_end_column_are_on_sheet(
+        self, table_config: TableConfig
+    ) -> None:
+        """Check if first column and last column in config are within the sheet."""
         first_column = table_config.column_range.split(":")[0]
         first_col_index = openpyxl.utils.column_index_from_string(first_column)
         if first_col_index > self.openpyxl_file[table_config.sheet_name].max_column:
@@ -389,8 +389,8 @@ class Parser:
             error_message = f"The last column for table {table_config.name} is not within the excel sheet."
             raise TableConfigError(error_message)
 
-    def _build_checks(self, data, table_config):
-        """Builds a dict mapping each skippable check name to its check method and arguments.
+    def _build_checks(self, data: pd.DataFrame, table_config: TableConfig) -> dict:
+        """Build a dict mapping each skippable check name to its check method and arguments.
 
         The keys must stay in sync with `CheckName` in `config_model` (enforced by
         `test_skippable_check_names_match_config_literal`).
@@ -455,7 +455,7 @@ class Parser:
             ),
         }
 
-    def _check_table(self, data, table_config) -> None:
+    def _check_table(self, data: pd.DataFrame, table_config: TableConfig) -> None:
         checks = self._build_checks(data, table_config)
         skips = table_config.skip_checks or []
         for check_name, (check, args) in checks.items():
@@ -481,6 +481,7 @@ class Parser:
         Returns:
             `pandas.DataFrame` with percentage columns multiplied by 100 (i.e.
             values should be between 0 and 100)
+
         """
         percentage_columns = []
         sheet = self.openpyxl_file[table_config.sheet_name]
@@ -505,7 +506,7 @@ class Parser:
                     if isinstance(sr, list) and cell.row in sr:
                         skipped_rows += 1
                         continue
-                    elif isinstance(sr, int) and cell.row == sr:
+                    if isinstance(sr, int) and cell.row == sr:
                         skipped_rows += 1
                         continue
                 if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
@@ -521,7 +522,7 @@ class Parser:
             # add the data column index if the entire column consists of percentage values
             # else, add the individual cells as a list of tuples
             if len(percentage_cells) == (table_config.end_row - min_row + 1):
-                percentage_columns.append(set(x[1] for x in percentage_cells).pop())
+                percentage_columns.append({x[1] for x in percentage_cells}.pop())
             else:
                 percentage_columns.append(percentage_cells)
 
@@ -534,7 +535,7 @@ class Parser:
         return data
 
     def get_table_names(self) -> list[str]:
-        """Returns a dict of table names by sheet name that there is config for.
+        """Return a dict of table names by sheet name that there is config for.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
@@ -547,16 +548,16 @@ class Parser:
 
         Returns:
             List of the tables that there is configuration information for extracting from the workbook.
+
         """
         return self.table_names_by_sheet
 
     def get_table_from_config(
         self, table_config: TableConfig, config_checks: bool = True
     ) -> pd.DataFrame:
-        """Retrieves a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
+        """Retrieve a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
         Examples:
-
         >>> import pandas as pd
         >>> from isp_workbook_parser import TableConfig
 
@@ -603,9 +604,9 @@ class Parser:
         return data
 
     def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
-        """Retrieves a table from the assumptions workbook and returns as `pd.DataFrame`.
+        """Retrieve a table from the assumptions workbook and returns as `pd.DataFrame`.
 
-        Examples
+        Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx")
 
         >>> workbook.get_table('wind_high_capacity_factors').head()
@@ -622,19 +623,21 @@ class Parser:
             table_name: Specified the table to retrieve.
             config_checks: Specifies whether to check the tabe config by checking if the data
                 starts and ends where expected and the workbook header matches the config header.
+
         """
         if not isinstance(table_name, str):
-            raise ValueError("The parameter table_name must be provided as a string.")
-        if table_name not in self.table_configs.keys():
+            msg = "The parameter table_name must be provided as a string."
+            raise TypeError(msg)
+        if table_name not in self.table_configs:
             closest = process.extractOne(table_name, self.table_configs.keys())[0]
-            raise ValueError(
+            msg = (
                 f"The table_name ({table_name}) provided is not in the config for this workbook version."
-                + f" Did you mean '{closest}'?"
+                f" Did you mean '{closest}'?"
             )
+            raise ValueError(msg)
 
         table_config = self.table_configs[table_name]
-        data = self.get_table_from_config(table_config, config_checks=config_checks)
-        return data
+        return self.get_table_from_config(table_config, config_checks=config_checks)
 
     def save_tables(
         self,
@@ -642,7 +645,7 @@ class Parser:
         tables: list[str] | str = "all",
         config_checks: bool = True,
     ) -> None:
-        """Saves tables from the provided workbook to the specified directory as CSV files.
+        """Save tables from the provided workbook to the specified directory as CSV files.
 
         Examples:
         >>> workbook = Parser("workbooks/6.0/2024-isp-inputs-and-assumptions-workbook.xlsx") # doctest: +SKIP
@@ -659,24 +662,26 @@ class Parser:
 
         Returns:
             None
+
         """
         directory = self._make_path_object(directory)
         if not directory.exists():
             directory.mkdir(parents=True)
 
         if not directory.is_dir():
-            raise ValueError("The path provided is not a directory.")
+            msg = "The path provided is not a directory."
+            raise ValueError(msg)
 
-        if not (isinstance(tables, str) or isinstance(tables, list)):
-            raise ValueError(
-                "The parameter tables must be provided as str or list[str]."
-            )
+        if not (isinstance(tables, (str, list))):
+            msg = "The parameter tables must be provided as str or list[str]."
+            raise TypeError(msg)
 
         if isinstance(tables, str) and tables != "all":
-            raise ValueError(
+            msg = (
                 "If the parameter tables is provided as a str it must \n",
                 f"have the value 'all' but '{tables}' was provided.",
             )
+            raise ValueError(msg)
 
         if tables == "all":
             tables = self.table_configs.keys()

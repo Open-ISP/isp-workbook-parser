@@ -28,7 +28,6 @@ class TableConfig(BaseModel):
     The `Pydantic` class verifies the type of each element of the configuration.
 
     Examples:
-
     A TableConfig instance can be manually defined:
 
     >>> table_config = TableConfig(
@@ -70,6 +69,7 @@ class TableConfig(BaseModel):
             'missed_column_on_right_hand_side', 'missed_column_on_left_hand_side',
             'last_column_isnt_empty', 'over_run_into_another_table',
             'over_run_into_notes'.
+
     """
 
     name: str
@@ -84,13 +84,12 @@ class TableConfig(BaseModel):
 
 
 def load_yaml(path: Path) -> dict[str, TableConfig]:
-    """Loads the YAML file specified by the path returning a dict of `TableConfig`s.
+    """Load the YAML file specified by the path returning a dict of `TableConfig`s.
 
     Each table config defined in a YAML file is converted to a `TableConfig` and stored in the dictionary using its name
     as the key value.
 
     Examples:
-
     >>> path_to_yaml = Path("src/isp_table_configs/6.0/capacity_factors.yaml")
 
     The contents of the YAML file should look like:
@@ -144,7 +143,7 @@ def load_yaml(path: Path) -> dict[str, TableConfig]:
         path: pathlib Path instance specifying the location of the YAML file.
 
     """
-    with open(path, "r") as f:
+    with Path.open(path) as f:
         config = yaml.safe_load(f)
         f.close()
     if config is not None:
