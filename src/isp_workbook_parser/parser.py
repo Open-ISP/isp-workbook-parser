@@ -553,7 +553,7 @@ class Parser:
         return self.table_names_by_sheet
 
     def get_table_from_config(
-        self, table_config: TableConfig, config_checks: bool = True
+        self, table_config: TableConfig, *, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieve a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -603,7 +603,7 @@ class Parser:
             self._check_table(data, table_config)
         return data
 
-    def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
+    def get_table(self, table_name: str, *, config_checks: bool = True) -> pd.DataFrame:
         """Retrieve a table from the assumptions workbook and returns as `pd.DataFrame`.
 
         Examples:
@@ -643,6 +643,7 @@ class Parser:
         self,
         directory: str | Path,
         tables: list[str] | str = "all",
+        *,
         config_checks: bool = True,
     ) -> None:
         """Save tables from the provided workbook to the specified directory as CSV files.
