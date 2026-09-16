@@ -64,7 +64,7 @@ def _values_casting_and_sanitisation(df: pd.DataFrame) -> pd.DataFrame:
     will return `pd.NA`
     """
     df = _replace_dataframe_hyphens_with_na(df)
-    for object_col in df.dtypes[df.dtypes == "object"].keys():
+    for object_col in df.dtypes[df.dtypes == "object"].keys():  # noqa: SIM118
         try:
             df.loc[:, object_col] = pd.to_numeric(df[object_col])
         except (ValueError, TypeError):

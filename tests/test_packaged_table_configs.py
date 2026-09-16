@@ -34,9 +34,7 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
     for index, value in enumerate(sheet_header_end_row_combos):
         if sheet_header_end_row_combos.count(value) > 1:
             duplicate_configs.append(table_names[index])
-    if len(duplicate_configs) > 0:
-        print(duplicate_configs)
-    assert len(duplicate_configs) == 0
+    assert len(duplicate_configs) == 0, duplicate_configs
 
     save_dir = Path(f"example_output/{workbook.workbook_version}")
     save_dir.mkdir(parents=True, exist_ok=True)
@@ -50,8 +48,8 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
             error_tables[table_name] = e
     if error_tables:
         error_str = ""
-        for key in error_tables:
-            error_str += key + ":" + str(error_tables[key]) + "\n"
+        for key, value in error_tables.items():
+            error_str += key + ":" + str(value) + "\n"
         raise TableLoadError(error_str)
 
 
