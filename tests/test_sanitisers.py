@@ -8,6 +8,7 @@
 from pathlib import Path
 
 import pandas as pd
+from pandas import Series
 
 from isp_workbook_parser.sanitisers import (
     _extract_numeric_value_millions,
@@ -24,7 +25,7 @@ from isp_workbook_parser.sanitisers import (
 )
 
 
-def test_sanitisation_on_flow_path_transfer_capability():
+def test_sanitisation_on_flow_path_transfer_capability() -> None:
     unsanitised = pd.read_csv(Path("tests", "test_data", "unsanitised.csv"))
     expected = pd.read_csv(Path("tests", "test_data", "sanitised.csv"))
     # handle carriage return on Windows
@@ -37,7 +38,7 @@ def test_sanitisation_on_flow_path_transfer_capability():
     pd.testing.assert_frame_equal(test_sanitised, expected, check_dtype=False)
 
 
-def test_replace_series_newlines_with_whitespace(sample_series):
+def test_replace_series_newlines_with_whitespace(sample_series: Series) -> None:
     result = _replace_series_newlines_with_whitespace(sample_series)
     expected = pd.Series(
         [
@@ -62,7 +63,7 @@ def test_replace_series_newlines_with_whitespace(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_extract_numeric_value_millions(sample_series):
+def test_extract_numeric_value_millions(sample_series: Series) -> None:
     result = _extract_numeric_value_millions(sample_series)
     expected = pd.Series(
         [
@@ -87,7 +88,7 @@ def test_extract_numeric_value_millions(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_double_whitespaces(sample_series):
+def test_remove_series_double_whitespaces(sample_series: Series) -> None:
     result = _remove_series_double_whitespaces(sample_series)
     expected = pd.Series(
         [
@@ -112,7 +113,7 @@ def test_remove_series_double_whitespaces(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_trailing_asterisks(sample_series):
+def test_remove_series_trailing_asterisks(sample_series: Series) -> None:
     result = _remove_series_trailing_asterisks(sample_series)
     expected = pd.Series(
         [
@@ -137,7 +138,7 @@ def test_remove_series_trailing_asterisks(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_trailing_footnotes(sample_series):
+def test_remove_series_trailing_footnotes(sample_series: Series) -> None:
     result = _remove_series_trailing_footnotes(sample_series)
     expected = pd.Series(
         [
@@ -162,7 +163,7 @@ def test_remove_series_trailing_footnotes(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_strip_series_whitespaces(sample_series):
+def test_strip_series_whitespaces(sample_series: Series) -> None:
     result = _strip_series_whitespaces(sample_series)
     expected = pd.Series(
         [
@@ -187,7 +188,7 @@ def test_strip_series_whitespaces(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_thousands_commas(sample_series):
+def test_remove_series_thousands_commas(sample_series: Series) -> None:
     result = _remove_series_thousands_commas(sample_series)
     expected = pd.Series(
         [
@@ -212,7 +213,7 @@ def test_remove_series_thousands_commas(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_notes_after_values(sample_series):
+def test_remove_series_notes_after_values(sample_series: Series) -> None:
     result = _remove_series_notes_after_values(sample_series)
     expected = pd.Series(
         [
@@ -237,7 +238,7 @@ def test_remove_series_notes_after_values(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_notes_after_values_with_special_characters():
+def test_remove_series_notes_after_values_with_special_characters() -> None:
     unsanitised = pd.Series(
         [
             (
@@ -264,7 +265,7 @@ def test_remove_series_notes_after_values_with_special_characters():
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_bracketed_footnotes():
+def test_remove_series_bracketed_footnotes() -> None:
     unsanitised = pd.Series(
         [
             "750[footnote14]",
@@ -348,7 +349,7 @@ MULTIPLE_VALUE_CASES = [
 ]
 
 
-def test_multiple_values_with_notes_detection_and_sanitisation():
+def test_multiple_values_with_notes_detection_and_sanitisation() -> None:
     """Cells holding two values are detected and kept whole; cells holding one value
     and a note are still cut down to that value."""
     cells, fires, sanitised = (
@@ -363,7 +364,7 @@ def test_multiple_values_with_notes_detection_and_sanitisation():
     )
 
 
-def test_where_multiple_values_with_notes_on_mixed_and_index_input():
+def test_where_multiple_values_with_notes_on_mixed_and_index_input() -> None:
     """Columns reaching the sanitisers hold a mix of strings, numbers and nulls, and
     the sanitisers are also applied to a `pandas.Index` of column names."""
     series = pd.Series(["250 (generation) 325 (pump)", "250 (generation)", 42.0, None])
@@ -375,7 +376,7 @@ def test_where_multiple_values_with_notes_on_mixed_and_index_input():
     assert list(_where_multiple_values_with_notes(index)) == [True, False]
 
 
-def test_values_casting_and_sanitisation_leaves_multi_value_column_as_text():
+def test_values_casting_and_sanitisation_leaves_multi_value_column_as_text() -> None:
     """A column containing a multi-value cell cannot be cast to a numeric type, which
     is the signal to consumers that the cell holds more than one value."""
     df = pd.DataFrame({"capacity": ["250 (generation) 325 (pump)", "500 (generation)"]})
