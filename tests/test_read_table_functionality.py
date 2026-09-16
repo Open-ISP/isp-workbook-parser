@@ -5,7 +5,8 @@
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 
-from isp_workbook_parser.config_model import Parser, TableConfig
+from isp_workbook_parser.config_model import TableConfig
+from isp_workbook_parser.parser import Parser
 
 
 def test_skip_single_row_in_single_header_row_table(workbook_v6: Parser) -> None:
