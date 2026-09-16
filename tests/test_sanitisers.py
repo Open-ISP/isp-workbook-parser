@@ -313,8 +313,10 @@ MULTIPLE_VALUE_CASES = [
     ("0.16 (apply from 5,400 MW)", False, "0.16"),  # 6.0 Build limits, decimal value
     (  # 6.0 Network Capability. The digit after the note is a footnote reference, not
         # a second value, so the separator between them may not contain letters.
-        "400 (with VNI SIPS) - Note 8 (Snowy 2.0 generation or pump load <= 660 "
-        "- Note 11)",
+        (
+            "400 (with VNI SIPS) - Note 8 (Snowy 2.0 generation or pump load <= 660 "
+            "- Note 11)"
+        ),
         False,
         "400",
     ),

@@ -54,4 +54,4 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
 
 
 class TableLoadError(Exception):
-    """Exception to throw if table loading fails"""
+    """Exception to throw if table loading fails."""
