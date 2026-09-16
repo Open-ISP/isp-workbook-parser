@@ -44,7 +44,7 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
             table = workbook.get_table(table_name)
             save_path = save_dir / Path(f"{table_name}.csv")
             table.to_csv(save_path, index=False)
-        except Exception as e:
+        except (FileNotFoundError, PermissionError, OSError) as e:
             error_tables[table_name] = e
     if error_tables:
         error_str = ""
