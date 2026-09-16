@@ -14,7 +14,7 @@ from isp_workbook_parser import Parser
 workbook_path = Path("workbooks")
 
 
-@pytest.mark.parametrize("workbook_version_folder", workbook_path.iterdir())
+@pytest.mark.parametrize("workbook_version_folder", list(workbook_path.iterdir()))
 def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
     xl_file = [file for file in workbook_version_folder.glob("[!.]*.xls*")]
     assert len(xl_file) == 1, (
