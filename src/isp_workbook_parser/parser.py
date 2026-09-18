@@ -509,7 +509,7 @@ class Parser:
                     if isinstance(sr, int) and cell.row == sr:
                         skipped_rows += 1
                         continue
-                if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
+                if isinstance(cell.value, int | float) and "%" in cell.number_format:
                     percentage_cells.append(
                         (
                             cell.row - min_row - skipped_rows,
@@ -673,7 +673,7 @@ class Parser:
             msg = "The path provided is not a directory."
             raise ValueError(msg)
 
-        if not (isinstance(tables, (str, list))):
+        if not (isinstance(tables, str | list)):
             msg = "The parameter tables must be provided as str or list[str]."
             raise TypeError(msg)
 
