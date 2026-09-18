@@ -15,8 +15,8 @@ workbook_path = Path("workbooks")
 
 
 @pytest.mark.parametrize("workbook_version_folder", list(workbook_path.iterdir()))
-def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
-    xl_file = [file for file in workbook_version_folder.glob("[!.]*.xls*")]
+def test_packaged_table_configs_for_each_version(workbook_version_folder: Path) -> None:
+    xl_file = list(workbook_version_folder.glob("[!.]*.xls*"))
     assert len(xl_file) == 1, (
         f"There should only be one Excel workbook in each version sub-directory, got {xl_file}"
     )
@@ -34,9 +34,7 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
     for index, value in enumerate(sheet_header_end_row_combos):
         if sheet_header_end_row_combos.count(value) > 1:
             duplicate_configs.append(table_names[index])
-    if len(duplicate_configs) > 0:
-        print(duplicate_configs)
-    assert len(duplicate_configs) == 0
+    assert len(duplicate_configs) == 0, duplicate_configs
 
     save_dir = Path(f"example_output/{workbook.workbook_version}")
     save_dir.mkdir(parents=True, exist_ok=True)
@@ -46,14 +44,14 @@ def test_packaged_table_configs_for_each_version(workbook_version_folder: Path):
             table = workbook.get_table(table_name)
             save_path = save_dir / Path(f"{table_name}.csv")
             table.to_csv(save_path, index=False)
-        except Exception as e:
+        except (FileNotFoundError, PermissionError, OSError) as e:
             error_tables[table_name] = e
     if error_tables:
         error_str = ""
-        for key in error_tables:
-            error_str += key + ":" + str(error_tables[key]) + "\n"
+        for key, value in error_tables.items():
+            error_str += key + ":" + str(value) + "\n"
         raise TableLoadError(error_str)
 
 
 class TableLoadError(Exception):
-    """Exception to throw if table loading fails"""
+    """Exception to throw if table loading fails."""

@@ -6,9 +6,10 @@
 # (at your option) any later version.
 
 from isp_workbook_parser.config_model import TableConfig
+from isp_workbook_parser.parser import Parser
 
 
-def test_skip_single_row_in_single_header_row_table(workbook_v6):
+def test_skip_single_row_in_single_header_row_table(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="build_cost_current_policies",
         sheet_name="Build costs",
@@ -22,7 +23,7 @@ def test_skip_single_row_in_single_header_row_table(workbook_v6):
     assert df[df.Technology.str.contains("Hydrogen")].empty
 
 
-def test_skip_multiple_rows_in_single_header_row_table(workbook_v6):
+def test_skip_multiple_rows_in_single_header_row_table(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="existing_generator_maintenance_rates",
         sheet_name="Maintenance",
@@ -37,7 +38,7 @@ def test_skip_multiple_rows_in_single_header_row_table(workbook_v6):
     assert df[df["Generator type"].str.contains("Coal")].empty
 
 
-def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6):
+def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="wind_high_capacity_factors",
         sheet_name="Capacity Factors ",
@@ -52,7 +53,7 @@ def test_skip_multiple_rows_in_multiple_header_row_table(workbook_v6):
     assert df[df["Wind High_REZ ID"].str.contains("V")].empty
 
 
-def test_no_forward_fill_in_rows(workbook_v6):
+def test_no_forward_fill_in_rows(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="outages_new_entrants",
         sheet_name="Generator Reliability Settings",

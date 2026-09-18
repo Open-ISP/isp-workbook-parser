@@ -114,7 +114,7 @@ class Parser:
 
     def _check_version_is_supported(self, config_path: Path) -> None:
         """Check the default config directory contains a subdirectory that matches the workbook version number."""
-        versions = [dir.name for dir in config_path.iterdir()]
+        versions = [directory.name for directory in config_path.iterdir()]
         if self.workbook_version not in versions:
             msg = f"The workbook version {self.workbook_version} is not supported."
             raise ValueError(msg)
@@ -509,7 +509,7 @@ class Parser:
                     if isinstance(sr, int) and cell.row == sr:
                         skipped_rows += 1
                         continue
-                if isinstance(cell.value, (int, float)) and "%" in cell.number_format:
+                if isinstance(cell.value, int | float) and "%" in cell.number_format:
                     percentage_cells.append(
                         (
                             cell.row - min_row - skipped_rows,
@@ -553,7 +553,7 @@ class Parser:
         return self.table_names_by_sheet
 
     def get_table_from_config(
-        self, table_config: TableConfig, config_checks: bool = True
+        self, table_config: TableConfig, *, config_checks: bool = True
     ) -> pd.DataFrame:
         """Retrieve a table from the assumptions workbook using the config provided and returns as pd.DataFrame.
 
@@ -603,7 +603,7 @@ class Parser:
             self._check_table(data, table_config)
         return data
 
-    def get_table(self, table_name: str, config_checks: bool = True) -> pd.DataFrame:
+    def get_table(self, table_name: str, *, config_checks: bool = True) -> pd.DataFrame:
         """Retrieve a table from the assumptions workbook and returns as `pd.DataFrame`.
 
         Examples:
@@ -643,6 +643,7 @@ class Parser:
         self,
         directory: str | Path,
         tables: list[str] | str = "all",
+        *,
         config_checks: bool = True,
     ) -> None:
         """Save tables from the provided workbook to the specified directory as CSV files.
@@ -672,7 +673,7 @@ class Parser:
             msg = "The path provided is not a directory."
             raise ValueError(msg)
 
-        if not (isinstance(tables, (str, list))):
+        if not (isinstance(tables, str | list)):
             msg = "The parameter tables must be provided as str or list[str]."
             raise TypeError(msg)
 

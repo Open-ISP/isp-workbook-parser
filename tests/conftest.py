@@ -17,7 +17,7 @@ def workbook_v6() -> Parser:
 
 
 @pytest.fixture(scope="module")
-def sample_series():
+def sample_series() -> pd.Series:
     return pd.Series(
         [
             "First line\nSecond line",

@@ -13,10 +13,10 @@ import pytest
 from pydantic import ValidationError
 
 from isp_workbook_parser.config_model import CheckName, TableConfig
-from isp_workbook_parser.parser import TableConfigError
+from isp_workbook_parser.parser import Parser, TableConfigError
 
 
-def test_end_row_not_on_sheet_throws_error(workbook_v6):
+def test_end_row_not_on_sheet_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -31,7 +31,7 @@ def test_end_row_not_on_sheet_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_first_header_row_not_on_sheet_throws_error(workbook_v6):
+def test_first_header_row_not_on_sheet_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -44,7 +44,7 @@ def test_first_header_row_not_on_sheet_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_first_column_not_on_sheet_throws_error(workbook_v6):
+def test_first_column_not_on_sheet_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -59,7 +59,7 @@ def test_first_column_not_on_sheet_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_last_column_not_on_sheet_throws_error(workbook_v6):
+def test_last_column_not_on_sheet_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -74,7 +74,7 @@ def test_last_column_not_on_sheet_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_last_column_empty_throws_error(workbook_v6):
+def test_last_column_empty_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Generation limits",
@@ -87,7 +87,7 @@ def test_last_column_empty_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_row_runs_into_another_table_throws_error(workbook_v6):
+def test_end_row_runs_into_another_table_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Aggregated energy storages",
@@ -103,7 +103,7 @@ def test_end_row_runs_into_another_table_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_row_runs_into_notes_throws_error(workbook_v6):
+def test_end_row_runs_into_notes_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -118,7 +118,7 @@ def test_end_row_runs_into_notes_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_first_header_row_too_late_throws_error(workbook_v6):
+def test_first_header_row_too_late_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Generator Reliability Settings",
@@ -131,7 +131,7 @@ def test_first_header_row_too_late_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_row_too_soon_throws_error(workbook_v6):
+def test_end_row_too_soon_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -146,7 +146,7 @@ def test_end_row_too_soon_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_end_column_too_soon_throws_error(workbook_v6):
+def test_end_column_too_soon_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -161,7 +161,7 @@ def test_end_column_too_soon_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_start_column_too_far_throws_error(workbook_v6):
+def test_start_column_too_far_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -176,7 +176,7 @@ def test_start_column_too_far_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_duplicate_column_names_throws_error(workbook_v6):
+def test_duplicate_column_names_throws_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -189,7 +189,7 @@ def test_duplicate_column_names_throws_error(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_good_config_throws_no_error(workbook_v6):
+def test_good_config_throws_no_error(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -200,14 +200,14 @@ def test_good_config_throws_no_error(workbook_v6):
     workbook_v6.get_table_from_config(table_config)
 
 
-def test_incorrect_table_name_throws_error(workbook_v6):
+def test_incorrect_table_name_throws_error(workbook_v6: Parser) -> None:
     error_message = "The table_name (affine_heat_rates_new_entrant) provided is not in the config for this workbook version. Did you mean 'affine_heat_rates_new_entrants'?"
     error_message = re.escape(error_message)
     with pytest.raises(ValueError, match=error_message):
         workbook_v6.get_table("affine_heat_rates_new_entrant")
 
 
-def test_skip_checks_silences_named_check(workbook_v6):
+def test_skip_checks_silences_named_check(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -219,7 +219,7 @@ def test_skip_checks_silences_named_check(workbook_v6):
     workbook_v6.get_table_from_config(table_config)
 
 
-def test_skip_checks_does_not_silence_other_checks(workbook_v6):
+def test_skip_checks_does_not_silence_other_checks(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",
@@ -235,7 +235,7 @@ def test_skip_checks_does_not_silence_other_checks(workbook_v6):
         workbook_v6.get_table_from_config(table_config)
 
 
-def test_skip_checks_invalid_check_name_throws_error():
+def test_skip_checks_invalid_check_name_throws_error() -> None:
     with pytest.raises(ValidationError):
         TableConfig(
             name="DUMMY",
@@ -247,7 +247,7 @@ def test_skip_checks_invalid_check_name_throws_error():
         )
 
 
-def test_skippable_check_names_match_config_literal(workbook_v6):
+def test_skippable_check_names_match_config_literal(workbook_v6: Parser) -> None:
     table_config = TableConfig(
         name="DUMMY",
         sheet_name="Network Capability",

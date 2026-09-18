@@ -8,7 +8,7 @@
 from pathlib import Path
 
 import pandas as pd
-import pytest
+from pandas import Series
 
 from isp_workbook_parser.sanitisers import (
     _extract_numeric_value_millions,
@@ -25,7 +25,7 @@ from isp_workbook_parser.sanitisers import (
 )
 
 
-def test_sanitisation_on_flow_path_transfer_capability():
+def test_sanitisation_on_flow_path_transfer_capability() -> None:
     unsanitised = pd.read_csv(Path("tests", "test_data", "unsanitised.csv"))
     expected = pd.read_csv(Path("tests", "test_data", "sanitised.csv"))
     # handle carriage return on Windows
@@ -38,7 +38,7 @@ def test_sanitisation_on_flow_path_transfer_capability():
     pd.testing.assert_frame_equal(test_sanitised, expected, check_dtype=False)
 
 
-def test_replace_series_newlines_with_whitespace(sample_series):
+def test_replace_series_newlines_with_whitespace(sample_series: Series) -> None:
     result = _replace_series_newlines_with_whitespace(sample_series)
     expected = pd.Series(
         [
@@ -63,7 +63,7 @@ def test_replace_series_newlines_with_whitespace(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_extract_numeric_value_millions(sample_series):
+def test_extract_numeric_value_millions(sample_series: Series) -> None:
     result = _extract_numeric_value_millions(sample_series)
     expected = pd.Series(
         [
@@ -88,7 +88,7 @@ def test_extract_numeric_value_millions(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_double_whitespaces(sample_series):
+def test_remove_series_double_whitespaces(sample_series: Series) -> None:
     result = _remove_series_double_whitespaces(sample_series)
     expected = pd.Series(
         [
@@ -113,7 +113,7 @@ def test_remove_series_double_whitespaces(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_trailing_asterisks(sample_series):
+def test_remove_series_trailing_asterisks(sample_series: Series) -> None:
     result = _remove_series_trailing_asterisks(sample_series)
     expected = pd.Series(
         [
@@ -138,7 +138,7 @@ def test_remove_series_trailing_asterisks(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_trailing_footnotes(sample_series):
+def test_remove_series_trailing_footnotes(sample_series: Series) -> None:
     result = _remove_series_trailing_footnotes(sample_series)
     expected = pd.Series(
         [
@@ -163,7 +163,7 @@ def test_remove_series_trailing_footnotes(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_strip_series_whitespaces(sample_series):
+def test_strip_series_whitespaces(sample_series: Series) -> None:
     result = _strip_series_whitespaces(sample_series)
     expected = pd.Series(
         [
@@ -188,7 +188,7 @@ def test_strip_series_whitespaces(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_thousands_commas(sample_series):
+def test_remove_series_thousands_commas(sample_series: Series) -> None:
     result = _remove_series_thousands_commas(sample_series)
     expected = pd.Series(
         [
@@ -213,7 +213,7 @@ def test_remove_series_thousands_commas(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_notes_after_values(sample_series):
+def test_remove_series_notes_after_values(sample_series: Series) -> None:
     result = _remove_series_notes_after_values(sample_series)
     expected = pd.Series(
         [
@@ -238,19 +238,25 @@ def test_remove_series_notes_after_values(sample_series):
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_notes_after_values_with_special_characters():
+def test_remove_series_notes_after_values_with_special_characters() -> None:
     unsanitised = pd.Series(
         [
-            "4758 (Marinus Link Pty Ltd and TasNetworks have advised that $534 million, "
-            "in $2023, of this amount relates to approved early works and other incurred "
-            "costs that should be excluded from the cost estimate for the 2026 ISP in "
-            "accordance with the AER's CBA Guidelines. AEMO has removed this from the "
-            "estimate of $5035 million in $2023, and has then adjusted to $2025.)",
-            "7035 (Transgrid has advised $565 million of this amount relates to approved "
-            "early works and other incurred costs that should be excluded from the total "
-            "cost estimate of $7600 million for the 2026 ISP.)",
-            "2431 (This figure reflects the estimate from Option 2 with a portion costed "
-            "at Class 5b removed.)",
+            (
+                "4758 (Marinus Link Pty Ltd and TasNetworks have advised that $534 million, "
+                "in $2023, of this amount relates to approved early works and other incurred "
+                "costs that should be excluded from the cost estimate for the 2026 ISP in "
+                "accordance with the AER's CBA Guidelines. AEMO has removed this from the "
+                "estimate of $5035 million in $2023, and has then adjusted to $2025.)"
+            ),
+            (
+                "7035 (Transgrid has advised $565 million of this amount relates to approved "
+                "early works and other incurred costs that should be excluded from the total "
+                "cost estimate of $7600 million for the 2026 ISP.)"
+            ),
+            (
+                "2431 (This figure reflects the estimate from Option 2 with a portion costed "
+                "at Class 5b removed.)"
+            ),
             "1749.5 (only part of this figure is included)",
         ]
     )
@@ -259,7 +265,7 @@ def test_remove_series_notes_after_values_with_special_characters():
     pd.testing.assert_series_equal(result, expected)
 
 
-def test_remove_series_bracketed_footnotes():
+def test_remove_series_bracketed_footnotes() -> None:
     unsanitised = pd.Series(
         [
             "750[footnote14]",
@@ -308,8 +314,10 @@ MULTIPLE_VALUE_CASES = [
     ("0.16 (apply from 5,400 MW)", False, "0.16"),  # 6.0 Build limits, decimal value
     (  # 6.0 Network Capability. The digit after the note is a footnote reference, not
         # a second value, so the separator between them may not contain letters.
-        "400 (with VNI SIPS) - Note 8 (Snowy 2.0 generation or pump load <= 660 "
-        "- Note 11)",
+        (
+            "400 (with VNI SIPS) - Note 8 (Snowy 2.0 generation or pump load <= 660 "
+            "- Note 11)"
+        ),
         False,
         "400",
     ),
@@ -341,10 +349,12 @@ MULTIPLE_VALUE_CASES = [
 ]
 
 
-def test_multiple_values_with_notes_detection_and_sanitisation():
+def test_multiple_values_with_notes_detection_and_sanitisation() -> None:
     """Cells holding two values are detected and kept whole; cells holding one value
     and a note are still cut down to that value."""
-    cells, fires, sanitised = (list(field) for field in zip(*MULTIPLE_VALUE_CASES))
+    cells, fires, sanitised = (
+        list(field) for field in zip(*MULTIPLE_VALUE_CASES, strict=True)
+    )
     unsanitised = pd.Series(cells)
     pd.testing.assert_series_equal(
         _where_multiple_values_with_notes(unsanitised), pd.Series(fires)
@@ -354,7 +364,7 @@ def test_multiple_values_with_notes_detection_and_sanitisation():
     )
 
 
-def test_where_multiple_values_with_notes_on_mixed_and_index_input():
+def test_where_multiple_values_with_notes_on_mixed_and_index_input() -> None:
     """Columns reaching the sanitisers hold a mix of strings, numbers and nulls, and
     the sanitisers are also applied to a `pandas.Index` of column names."""
     series = pd.Series(["250 (generation) 325 (pump)", "250 (generation)", 42.0, None])
@@ -366,7 +376,7 @@ def test_where_multiple_values_with_notes_on_mixed_and_index_input():
     assert list(_where_multiple_values_with_notes(index)) == [True, False]
 
 
-def test_values_casting_and_sanitisation_leaves_multi_value_column_as_text():
+def test_values_casting_and_sanitisation_leaves_multi_value_column_as_text() -> None:
     """A column containing a multi-value cell cannot be cast to a numeric type, which
     is the signal to consumers that the cell holds more than one value."""
     df = pd.DataFrame({"capacity": ["250 (generation) 325 (pump)", "500 (generation)"]})

@@ -132,7 +132,10 @@ def read_table(workbook_file: pd.ExcelFile, table: TableConfig) -> pd.DataFrame:
         series[series != ""] = "_" + series[series != ""]
     merged_headers = ffilled_initial_header.str.cat(filled_headers)
     df_cleaned = _build_cleaned_dataframe(
-        df_initial, header_rows_in_table, merged_headers, table.forward_fill_values
+        df_initial,
+        header_rows_in_table,
+        merged_headers,
+        forward_fill_values=table.forward_fill_values,
     )
     if table.skip_rows:
         df_cleaned = _skip_rows_in_dataframe(
@@ -202,6 +205,7 @@ def _build_cleaned_dataframe(
     df_initial: pd.DataFrame,
     header_rows_in_table: int,
     new_headers: pd.Series,
+    *,
     forward_fill_values: bool,
 ) -> pd.DataFrame:
     """
